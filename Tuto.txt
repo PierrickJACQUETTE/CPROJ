@@ -1,0 +1,45 @@
+Pour la bibliothèque libxml2
+
+	- se rendre sur le site : http://xmlsoft.org/downloads.html
+
+	La première ligne du corps de la page : "The latest versions of libxml2 can be found on the xmlsoft.org server ( FTP and rsync are available)......"
+	- Cliquer sur "xmlsoft.org"
+	- Vous arrivez sur la page : "ftp://xmlsoft.org/libxml2/"
+	- Descendre dans la page et chercher l'archive libxml2-2.9.3.tar.gz
+	- Cliquer sur le lien "libxml2-2.9.3.tar.gz" pour le télécharger (il a l'avantage d'être compatible toute os car il fera appel aux packages en fonctions de votre machine (linux, mac, 32, 64)
+	- Décompresser le tar.gz (soit en graphique soit en console tar -zxvf chemin_fichier/nomdufichier)
+	- En console, se placer le dossier qui s'est créer en décompressant
+	- taper : ./configure
+	- vérifier si il y a des pacquets non installé : pour le savoir : 
+		- c'est une ligne du type : "./configure: line 15140: python2.7-config: command not found"
+		- taper ./configure | more (enter pour descendre)
+		si il y en a, alors les installes a la main, pour connaitre le package qu'il vous manque taper le nom du package dans la console, il vous répond dans la commande pour l'installer
+	- taper : make (des warnings et notes s'affichent, c'est pas grave le temps que ce ne sont pas des erreurs)
+	- taper : sudo make install
+	
+	C'est installer pour le tester !
+	
+	- Creer un dossier de test
+	- Mettre en exemple de parser  : soit vous en trouvez : 
+		* là : http://xmlsoft.org/examples/index.html , parse1.c ou parse2.c ou parse3.c ou parse4.c
+			- pour afficher le code d'un exemple sur ce site c'est un peu étrange, il faut cliquer sur le nom du fichier , par exemple pour parse1.c vous arrivez sur http://xmlsoft.org/examples/parse1.c
+			- copier-coller ce code sur un fichier : fichier.c
+		* dans ce dossier il y a parse1.c
+	- maintenant taper en console : 
+		gcc nomFichier.c `xml2-config --cflags --libs` attention ce ne sont pas des ' mais `!! Il faut faire AltGr + 7 + 7 (rester enfoncer sur AltGr et appuyer deux fois sur la touche 7)
+	- Fini ? Presque
+		- si il a pas d'erreur passer à l'étape d'en dessous
+		- si il a des erreurs essayer cela : 
+			- sudo apt-get install xml-core 
+ 			- sudo apt-get install libxslt1-dev
+			Puis réssayer gcc, si les erreurs persistent, j'ai pas la solution
+	- taper ./a.out
+	
+	C'est bon c'est fini libxml2 est installé et opérationnel
+
+Pour la bibliothèque libsdl
+
+	- taper : sudo apt-get install libsdl1.2-dev 
+	- normalement vous avez le fichier "testSdl.c" , il affiche une fenetre noir
+	- taper : gcc testSdl.c `sdl-config --cflags --libs` ou gcc nomFichier.c `sdl-config --cflags --libs`
+	- taper ./a.out
