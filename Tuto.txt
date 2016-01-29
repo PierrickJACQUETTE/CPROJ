@@ -39,7 +39,7 @@ Pour la bibliothèque libxml2
 
 Pour la bibliothèque libsdl
 
-	- taper : sudo apt-get install libsdl1.2-dev 
-	- normalement vous avez le fichier "testSdl.c" , il affiche une fenetre noir
-	- taper : gcc testSdl.c `sdl-config --cflags --libs` ou gcc nomFichier.c `sdl-config --cflags --libs`
-	- taper ./a.out
+	- taper : sudo apt-get install libsdl2-dev
+	- normalement vous avez le fichier "testSdl.c" , il affiche une fenetre, milieu transparent pendant 3 secondes
+	- taper : gcc testSdl.c `sdl2-config --cflags --libs` ou gcc nomFichier.c `sdl2-config --cflags --libs`  attention ce ne sont pas des ' mais `!! Il faut faire AltGr + 7 + 7 (rester enfoncer sur AltGr et appuyer deux fois sur la touche 7)
+	- taper ./a.out 	Normalement la fenetre s'affiche
