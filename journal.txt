@@ -12,3 +12,4 @@ Objectif semaine pour le 03/02 :
 
 - creer un commit par personne
 - réussir à installer les deux bibliothèques : libsdl2 et libxml2
+- premiers tests sur les 2 librairies
