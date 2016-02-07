@@ -1,0 +1,37 @@
+Dans ce fichier vous retrouverez tous les types de balises que l'on veux repérez pour construire notre map 
+
+Les rues:
+	<tag k="highway" v="residential"/>
+
+Attention v= "crossing" = passage pièton 
+
+
+Les batiments: 
+	<tag k="building" v="yes"/>
+
+Les cours d'eau (fleuves, rivière, canaux...) :
+	canal
+	<tag k="waterway" v="canal"/> 
+	
+	rivière
+  	<tag k="waterway" v="river"/> 
+!! les tracer comme des rues avec une couleurs spéciale pour pouvoir les distingués !! 
+
+
+Les lacs :
+ 	<tag k="waterway" v="water"/> 
+
+
+Les rivages (mers, océeans, ...): 
+	<tag k="waterway" v="coastline"/> 
+
+Les espces verts : 
+	pelouse
+	<tag k="landuse" v="grass"/> 
+
+	parc
+	<tag k="leisure" v="park"/>
+
+	forêt
+	<tag k="landuse" v="forest"/> 
+  
