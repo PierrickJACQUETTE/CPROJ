@@ -6,4 +6,4 @@ gcc nomFichier.c `xml2-config --cflags --libs`
 
 // pour sdl 
 
-gcc nomFichier.c `sdl2-config --cflags --libs`
+gcc fichier.c -o tutorial1 -lGL -lGLU `sdl2-config --cflags --libs`
