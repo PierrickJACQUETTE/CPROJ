@@ -1,9 +1,28 @@
+Exemple de osm: 
+
+<osm ... >
+	<bounds> // il nous faut les 4 arguments
+	<node> // il faut id, lat, lon
+	...
+	<node>
+	<way>
+		<nd> // ref = id noeud 
+			...
+		<nd>
+		<tag>
+		...
+		<tag>
+	</way>
+</osm>
+
+
+
 Dans ce fichier vous retrouverez tous les types de balises que l'on veux repérez pour construire notre map 
 
 Les rues:
 	<tag k="highway" v="residential"/>
 
-Attention v= "crossing" = passage pièton 
+Attention v= "crossing" = passage pièton ou intersection
 
 
 Les batiments: 
