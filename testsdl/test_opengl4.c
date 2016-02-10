@@ -1,4 +1,3 @@
-#include "SDL.h"
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
@@ -13,8 +12,8 @@ gcc fichier.c -o tutorial1 -lGL -lGLU `sdl2-config --cflags --libs`
 #include <GL/glu.h>
 
 enum status {QUIT, CONTINUE};
-#define COLOR_RUE 0,0,255
-int heigth = 500;
+#define COLOR_RUE 0,0,255 // collor bleu
+int heigth = 500; // taille fenetre par défaut
 int width = 500;
 
 typedef struct Coordonnees{
@@ -25,7 +24,7 @@ typedef struct Coordonnees{
 void drawNoeud(float minHeight, float minWidth, float maxHeight, float maxWidth){
 
 	int length = 10;
-	Coordonnees *tab = malloc (length * sizeof (Coordonnees));
+	Coordonnees *tab = malloc (length * sizeof (Coordonnees)); // stockage des coordonnees des differents noeuds
 	int i;
 //	for(i=0;i<length;i++){
 		tab[0].latitude = -0.08;
@@ -50,13 +49,14 @@ void drawNoeud(float minHeight, float minWidth, float maxHeight, float maxWidth)
 		tab[9].longitude = 0.41;
 
 //	}
-	glColor3ub(COLOR_RUE);
-	glBegin(GL_POLYGON);
+	glLoadIdentity();
+	glColor3ub(COLOR_RUE); // defini la color de remplissage de la forme
+	glBegin(GL_POLYGON); // defini le type de la forme (polygone, triangle ,..) 
 	for(i=0;i<length;i++){
-		glVertex2f(  0.0,  1.0); /* Top */
+		glVertex2f(  0.0,  1.0); /* Top */  // flottant en 2D
 		glVertex2f( -1.0, -1.0); /* Bottom Left */
-		glVertex2f(tab[i].latitude,tab[i].longitude);
-		printf("p[%d] = (%lf, %lf)\n", i, tab[i].latitude, tab[i].longitude);
+		glVertex2f(tab[i].latitude,tab[i].longitude); // appel les champs de la structures
+		printf("p[%d] = (%lf, %lf)\n", i, tab[i].latitude, tab[i].longitude); 
 	}
 	glEnd();//end drawing of polygon
 
@@ -65,28 +65,28 @@ void drawNoeud(float minHeight, float minWidth, float maxHeight, float maxWidth)
 void Display_Render( SDL_Renderer* displayRenderer)
 {
 	/* Set the background black */
-	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f );
+	glClearColor( 0.0f, 0.0f, 0.0f, 0.0f ); // RGB + opacité
 	/* Clear The Screen And The Depth Buffer */
-	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); // nettoyer la fenetre 
 
-	drawNoeud(50,50,100,100);
+	drawNoeud(50,50,100,100); // dessine le noeud
 
 
-	SDL_RenderPresent(displayRenderer);
+	SDL_RenderPresent(displayRenderer); // ajouter la forme à la fenetre
 }
 
 void evenement(){
-	enum status status = CONTINUE;
+	enum status status = CONTINUE; // enumeration de statuts == while infini
 	do {
 		SDL_Event e;
-		if (SDL_PollEvent(&e)) {
+		if (SDL_PollEvent(&e)) { // detecte si il y a un even
 			switch (e.type) {
 				case SDL_QUIT :
 				printf("fermeture de la fenetre.\n");
 				status = QUIT;
 				break;
 
-			}
+			} // on prend comme seul even un quitter à la souris
 		}
 	}
 	while (status != QUIT);
@@ -95,23 +95,23 @@ void evenement(){
 int main(int argc, char *argv[])
 {
 
-	heigth = 480;
-	width = 600;
+	heigth = 480; // dimension de fenetre en px 
+	width = 600; 
 
-	SDL_Window* window = NULL;
-	window = SDL_CreateWindow
+	SDL_Window* window = NULL; // initiailisation de fenetre vide
+	window = SDL_CreateWindow // creation fenetre
 	(
-		"Test3", SDL_WINDOWPOS_UNDEFINED,
-		SDL_WINDOWPOS_UNDEFINED,
-		width, heigth,
+		"Test3", SDL_WINDOWPOS_UNDEFINED, // nom
+		SDL_WINDOWPOS_UNDEFINED, 
+		width, heigth, // taille 
 		SDL_WINDOW_SHOWN
 	);
-	SDL_Renderer* renderer = NULL;
-	renderer =  SDL_CreateRenderer( window, -1, SDL_RENDERER_ACCELERATED);
+	SDL_Renderer* renderer = NULL; // initialise le fond de la fenetre
+	renderer =  SDL_CreateRenderer( window, -1, SDL_RENDERER_ACCELERATED); // met le fond
 
-	Display_Render(renderer);
+	Display_Render(renderer); // dessin reel
 
-	evenement();
+	evenement(); 
 
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);

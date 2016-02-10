@@ -33,7 +33,7 @@ int Display_SetViewport( int width, int height )
     glLoadIdentity( );
 
     /* Set our perspective */
-    gluPerspective( 45.0f, ratio, 0.1f, 100.0f );
+    gluPerspective( 45.0f, ratio, 0.1f, 100.0f ); // ratio = zoom
 
     /* Make sure we're chaning the model view and not the projection */
     glMatrixMode( GL_MODELVIEW );
@@ -53,7 +53,7 @@ void Display_Render( SDL_Renderer* displayRenderer)
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
     /* Move Left 1.5 Units And Into The Screen 6.0 */
-    glLoadIdentity();
+    glLoadIdentity(); 			// revenir au milieu de la fenetre
     glTranslatef( -1.5f, 0.0f, -6.0f );
 
     glBegin( GL_TRIANGLES );            /* Drawing Using Triangles */
