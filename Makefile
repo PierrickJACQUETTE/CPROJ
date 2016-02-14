@@ -1,9 +1,24 @@
-// une Makefile qui nous dit juste les commande pour compiler pour le moment 
+CC=gcc
+HEADERS = $(wildcard *.h)
+OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c)) 
+EXEC=XML SDL
+Exe= ./a.out ./tutorial
 
-// pour un fichier xml: 
-gcc nomFichier.c `xml2-config --cflags --libs`
+all: $(EXEC)
+
+XML: *.c
+	$(CC) $^ `xml2-config --cflags --libs` 
+
+SDL: *sdl.c
+	$(CC) $^ -o tutorial1 -lGL -lGLU `sdl2-config --cflags --libs` 
+
+#%.o: %.c $(HEADERS)
+#	$(CC) -c $^
+
+clean:
+	rm -f $(OBJECTS)
+
+mrproper: clean
+	rm -f $(Exe)
 
 
-// pour sdl 
-
-gcc fichier.c -o tutorial1 -lGL -lGLU `sdl2-config --cflags --libs`
