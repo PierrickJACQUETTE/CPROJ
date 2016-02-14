@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <libxml/xmlmemory.h>
-#include <libxml/parser.h>
+#include "parseur.h"
 
 /*Fonction that prints the elements needed and the attributs with their content*/
 static void print_elements(xmlNode * a_node){
@@ -25,9 +21,12 @@ static void print_elements(xmlNode * a_node){
 			//if we find a "node" element, we print the element's name with it's id and visible attributs
 			if(strcmp(cur_node->name,"node")==0){
             			printf("%s : ", cur_node->name);
-			
 				xmlAttr *node_attr = cur_node->properties;
-				while(node_attr != NULL && ( strcmp(node_attr->name,"id")==0 || strcmp(node_attr->name,"visible")==0) ) {
+				
+				//we browse the element's properties list and we only print the attributs we need to
+				while(node_attr != NULL && 
+				( strcmp(node_attr->name,"id")==0 || strcmp(node_attr->name,"visible")==0 || strcmp(node_attr->name,"lat")==0 					|| strcmp(node_attr->name,"lon")==0 ))
+				{
 					printf("%s = %s ", node_attr->name, (node_attr->children)->content);
 					node_attr = node_attr->next;
 				}
