@@ -1,4 +1,7 @@
 Objectif semaine pour le 17/02 : 
+- lire notre fichier xml  
+- avoir une meilleure connaissance de la doc 
+- essayer d'extraire les informations presentes dans les elements (par exemple l'element bounds)
 
 Objectif semaine pour le 10/02 : 
 - comprendre la structure généralisée du xml émis par openStreetMap:
@@ -9,7 +12,6 @@ Objectif semaine pour le 10/02 :
 
 
 Objectif semaine pour le 03/02 :
-
 - creer un commit par personne
 - réussir à installer les deux bibliothèques : libsdl2 et libxml2
 - premiers tests sur les 2 librairies
