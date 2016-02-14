@@ -4,11 +4,15 @@
 #include <libxml/xmlmemory.h>
 #include <libxml/parser.h>
 
-static void print_element_names(xmlNode * a_node){
+/*Fonction that prints the elements needed and the attributs with their content*/
+static void print_elements(xmlNode * a_node){
+	//Saves the current node's position
     	xmlNode *cur_node = NULL;
 	
+	//Loop that navigates the tree 
     	for (cur_node = a_node; cur_node; cur_node = cur_node->next) {
         	if (cur_node->type == XML_ELEMENT_NODE) {
+			//if we find a "bounds" element, we print the element's name with it's attributs
 			if(strcmp(cur_node->name,"bounds")==0){
             			printf("Element %s\n", cur_node->name);
 			
@@ -18,16 +22,27 @@ static void print_element_names(xmlNode * a_node){
 					node_attr = node_attr->next;
 				}	
 			}
+			//if we find a "node" element, we print the element's name with it's id and visible attributs
+			if(strcmp(cur_node->name,"node")==0){
+            			printf("%s : ", cur_node->name);
+			
+				xmlAttr *node_attr = cur_node->properties;
+				while(node_attr != NULL && ( strcmp(node_attr->name,"id")==0 || strcmp(node_attr->name,"visible")==0) ) {
+					printf("%s = %s ", node_attr->name, (node_attr->children)->content);
+					node_attr = node_attr->next;
+				}
+				printf("\n");	
+			}
         	}
 
-        	print_element_names(cur_node->children);
+        	print_elements(cur_node->children);
     	}
 }
 
-
+/*Fonction that parses the file*/
 static void parseDoc(char* filename){
 	xmlDocPtr doc;
-	xmlNode *root_element = NULL;
+	xmlNode *root_element;
 
     	doc = xmlReadFile(filename, NULL, 0);
     	
@@ -39,7 +54,7 @@ static void parseDoc(char* filename){
 	/*Get the root element node */
    	root_element = xmlDocGetRootElement(doc);
 
-	print_element_names(root_element);
+	print_elements(root_element);
 
 	xmlFreeDoc(doc);
 }
