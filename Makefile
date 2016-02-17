@@ -2,15 +2,15 @@ CC=gcc
 HEADERS = $(wildcard *.h)
 OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c)) 
 EXEC=XML SDL
-Exe= ./a.out ./tutorial
+Exe= ./XML ./SDL
 
 all: $(EXEC)
 
 XML: *.c
-	$(CC) $^ `xml2-config --cflags --libs` 
+	$(CC) $^ -o XML `xml2-config --cflags --libs`
 
 SDL: *sdl.c
-	$(CC) $^ -o tutorial1 -lGL -lGLU `sdl2-config --cflags --libs` 
+	$(CC) $^ -o SDL -lGL -lGLU `sdl2-config --cflags --libs` 
 
 #%.o: %.c $(HEADERS)
 #	$(CC) -c $^
