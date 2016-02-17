@@ -1,3 +1,9 @@
+Objectif semaine pour le 24/02 :
+- Ameliorer le parseur
+- Creation de la structure de donnée 
+- Fonctions mathematiques (calcul de points lat/long, calcul taille de la fenetre)
+- Installer/Lire doxygen 
+
 Objectif semaine pour le 17/02 : 
 - lire notre fichier xml  
 - avoir une meilleure connaissance de la doc 
@@ -15,3 +21,4 @@ Objectif semaine pour le 03/02 :
 - creer un commit par personne
 - réussir à installer les deux bibliothèques : libsdl2 et libxml2
 - premiers tests sur les 2 librairies
+
