@@ -2,7 +2,7 @@
 * \file core.h
 * \brief Declaration of structure for the project
 * \author Isabelle MARINO Pierrick JACQUETTE Hafca TIRICHINE
-* \version 0.1
+* \version 0.2
 * \date 18 february 2016
 *
 * Declaratioin of structure for the project open stree map
@@ -27,13 +27,13 @@ typedef struct{
  * \struct bounds
  * \brief Objet that represente bounds for an open street map
  *
- * min is the coordinates of the minimum's point that it can have 
- * max is the coordinates of the maximum's point that it can have 
+ * min is the coordinates of the minimum's point that it can have
+ * max is the coordinates of the maximum's point that it can have
  */
 typedef struct{
 	coordinate min;
 	coordinate max;
-}bounds;
+}Bounds;
 
 /**
  * \struct node
@@ -44,10 +44,10 @@ typedef struct{
  * visible represente if this point is visible or not
  */
 typedef struct{
-	long id; // ou int
+ 	int id;
 	coordinate c;
 	char visible; // T = true, F= false;
-}node;
+}Node;
 
 /**
  * \struct way
@@ -60,9 +60,25 @@ typedef struct{
  * k is the value of this object
  */
 typedef struct{
-	long id;
+	int id;
 	//liste de Node nd à definir
 	char visible; // T = true, F= false;
 	char* tag;
 	char* k;
-}way;
+}Way;
+
+/**
+* \struct Avl Avl.h
+* \brief This is the structure for representing an AVL .
+*
+* This structure consists of:
+* - the label : an int
+* - the son left : tree pointer
+* - the son right : tree pointer
+* - the height of the tree : an int
+*/
+typedef struct sAvl{
+  Node* node;
+  int height;
+  struct sAvl* left,* right;
+}Avl;
