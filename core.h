@@ -33,7 +33,7 @@ typedef struct{
 typedef struct{
 	coordinate min;
 	coordinate max;
-}Bounds;
+}bounds;
 
 /**
  * \struct node
