@@ -28,12 +28,14 @@
  */
 
 coordinate* conversionLatLon(float lat, float lon){
-	lat=(lat*40030)/360;
-	printf("LAT : %f   -> ", lat);
 	int error; 
 	// JE DOIS AJOUTER LES ERREUR EN FONCTION DE L'OU L'ON SE TROUVE POUR LA LONGITUDES CAR CIRCONFERENCE DIFFERENTES AU POLE (MIN =0) ET A L'ÉQUATEUR (MAX)
-	lon= (lon*40030)/360;
-	printf("LONG :%f \n", lon);
+	double rayon = 111.11;
+	printf(" %f \n", cosf((lat*180)/M_PI)); // pour passer de radian en degre 
+	lon= rayon*cosf((lat*180)/M_PI)*(lon*180)/M_PI; // 1° = RAYON*COS(LAT)
+	printf("LONG :%f ->    ", lon);
+	lat=(((lat*180)/M_PI)*40000)/360;  //1°= LAT*RAYON
+	printf("LAT : %f   \n ", lat);
 	coordinate *c= malloc(sizeof(coordinate));
 	c->x=lat;
 	c->y=lon;
@@ -107,8 +109,8 @@ void distance(float lat1, float lon1, float lat2, float lon2){
  */
 int main(){
 	coordinate *c = conversionLatLon(48.8289403,2.3798326);
-	printf("LONG :%f \n", c->y);
 	conversionLatLon(48.8310657,2.3810055);
+	conversionLatLon(50,1);
 	return 0;
 }
 

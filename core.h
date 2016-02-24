@@ -31,8 +31,8 @@ typedef struct{
  * max is the coordinates of the maximum's point that it can have
  */
 typedef struct{
-	coordinate min;
-	coordinate max;
+	coordinate* min;
+	coordinate* max;
 }bounds;
 
 /**
