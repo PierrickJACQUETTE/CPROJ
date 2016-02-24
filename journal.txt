@@ -1,3 +1,9 @@
+Objectif semaine pour le 23/02 :
+- Makefile (Documentation)
+- Revoir les fonctions mathematiques
+- Stockage dans la structure Bounds, Avl
+- Affichage du stockage
+
 Objectif semaine pour le 24/02 :
 - Ameliorer le parseur
 - Creation de la structure de donnée 
