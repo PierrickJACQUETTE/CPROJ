@@ -2,8 +2,8 @@
 
 void 
 parseWay (xmlDocPtr doc, xmlNodePtr cur) {
-	xmlChar *nd, *tag;
-	xmlAttr *node_attr = cur->properties; 
+	xmlAttr *node_attr = cur->properties;
+	xmlNodePtr tmpcur=NULL; 
 
 	//we browse the element's properties list and we only print the attributs we need to
 	while(node_attr != NULL){ 
@@ -14,16 +14,26 @@ parseWay (xmlDocPtr doc, xmlNodePtr cur) {
 		}
 		node_attr = node_attr->next;
 	}
+	tmpcur = cur->xmlChildrenNode;
+	while(tmpcur != NULL){// tant qu'il y a des enfants dans la way
+		if (tmpcur->type == XML_ELEMENT_NODE) {
+			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag")==0 ){
+				printf("< %s : k = %s, v = %s >\n", tmpcur->name, xmlGetProp(tmpcur, "k"), xmlGetProp(tmpcur, "v"));
+			}
+      	if( xmlStrcmp(tmpcur->name,(const xmlChar *)"nd")==0 ){
+				printf("< %s : ref = %s >\n", tmpcur->name, xmlGetProp(tmpcur, "ref"));
+			}
+      }
+		tmpcur = tmpcur->next;
+	}
 }
 
-void 
-parseNode (xmlDocPtr doc, xmlNodePtr cur) {
-	xmlChar *tag;
-	xmlNodePtr child_node;
+void parseNode (xmlDocPtr doc, xmlNodePtr cur) {
 	xmlAttr *node_attr = cur->properties; 
-
+	
 	//we browse the element's properties list and we only print the attributs we need to
-	while(node_attr != NULL){ 
+	while(node_attr != NULL)
+	{ 
 		if( xmlStrcmp(node_attr->name,(const xmlChar *)"id")==0 
 		|| xmlStrcmp(node_attr->name,(const xmlChar *)"visible")==0 
 		|| xmlStrcmp(node_attr->name,(const xmlChar *)"lat")==0 
@@ -33,71 +43,45 @@ parseNode (xmlDocPtr doc, xmlNodePtr cur) {
 		}
 		node_attr = node_attr->next;
 	}
-	
-	/*cur = cur->next;
-	if (cur->type == XML_ELEMENT_NODE && (xmlStrcmp(cur->name,(const xmlChar *)"tag")==0) ) {
-            printf("name: %s\n", cur->name);
-        }*/
-
-	while((cur->children)!=NULL){
-	if(xmlStrcmp((cur->xmlChildrenNode)->name,(const xmlChar *)"text")==0){
-		printf("has child\n");
-	}
-	cur = cur->children;
-	}
-
-
-	/*if ((!xmlStrcmp(cur->name, (const xmlChar *)"tag"))) {
-  		tag = xmlNodeListGetString(doc, cur->xmlChildrenNode, 1);
-       		printf("tag: %s\n", tag);		
-        	xmlFree(tag);
-       	}*/
 }
 		
 /*Fonction that prints the elements needed and the attributs with their content*/
-static void 
-print_elements(xmlDocPtr doc, xmlNodePtr cur){
-	//xmlChar *bounds;
+static void print_elements(xmlDocPtr doc, xmlNodePtr cur){
 	cur = cur->xmlChildrenNode; 
 
 	while (cur != NULL) {
-
-		if ((!xmlStrcmp(cur->name, (const xmlChar *)"bounds"))){
-			printf("Element %s\n", cur->name);
-			xmlAttr *node_attr = cur->properties;
-			while(node_attr != NULL) {
-				printf("%s = %s\n", node_attr->name, (node_attr->children)->content);
-				node_attr = node_attr->next;
-
+		if (cur->type == XML_ELEMENT_NODE) {
+			if (!xmlStrcmp(cur->name, (const xmlChar *)"bounds")){
+				printf("Element %s\n", cur->name);
+				xmlAttr *node_attr = cur->properties;
+				while(node_attr != NULL) {
+					printf("%s = %s\n", node_attr->name, (node_attr->children)->content);
+					node_attr = node_attr->next;
+				}
 			}
-			/*bounds = xmlNodeListGetString(doc, cur->xmlChildrenNode, 1);
-       			printf("bounds: %s\n", bounds);
-        		xmlFree(bounds);*/
-		}
 
-		if ((!xmlStrcmp(cur->name, (const xmlChar *)"node"))){
-			printf("Element %s\n", cur->name);
-        		parseNode (doc, cur);
-			printf("\n");
-		}
+			if ((!xmlStrcmp(cur->name, (const xmlChar *)"node"))){
+				printf("Element %s\n", cur->name);
+		     	parseNode (doc, cur);
+				printf("\n");
+			}
 
-		if ((!xmlStrcmp(cur->name, (const xmlChar *)"way"))){
-			printf("Element %s\n", cur->name);
-        		parseWay (doc, cur);
-			printf("\n");
+			if ((!xmlStrcmp(cur->name, (const xmlChar *)"way"))){
+				printf("Element %s\n", cur->name);
+				parseWay (doc, cur);
+				printf("\n");
+			}
 		}
-
 		cur = cur->next;
 	}
 }
 
 /*Fonction that parses the file*/
-static void 
-parseDoc(char* filename){
+static void parseDoc(char* filename){
 	xmlDocPtr doc;
 	xmlNodePtr root_element;
 
-    	doc = xmlParseFile(filename);
+   doc = xmlParseFile(filename);
     	
 	if (doc == NULL) {
         	fprintf(stderr, "Failed to parse %s\n", filename);
@@ -105,7 +89,7 @@ parseDoc(char* filename){
     	}
 	
 	/*Get the root element node */
-   	root_element = xmlDocGetRootElement(doc);
+   root_element = xmlDocGetRootElement(doc);
 
 	if (root_element == NULL){
 		fprintf(stderr, "empty document\n");
@@ -129,7 +113,7 @@ int main(int argc, char **argv) {
 		filename = argv[1];
 		parseDoc (filename);	
 		/* Free the global variables that may have been allocated by the parser */
-    		xmlCleanupParser();
+    	xmlCleanupParser();
 		exit(1);
 	}
 	
