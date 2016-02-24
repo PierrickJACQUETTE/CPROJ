@@ -1,11 +1,11 @@
 /**
- * \file math.c
+ * \file conversionElements.c
  * \brief Calculate the transformation for a node by open street map
  * \author Isabelle MARINO Pierrick JACQUETTE Hafca TIRICHINE
  * \version 0.1
  * \date 19 february 2016
  *
- * Calculate node's coordinates: transform an openstreetmap coordinates to an standar coordinates
+ * Calculate node's Coordinates: transform an openstreetmap Coordinates to an standar Coordinates
  * Caculate the bounds proportion   
  *
  */
@@ -14,20 +14,20 @@
 #define __CORE_H__
 #include <stdio.h>
 #include <math.h>
-#include "core.h"
+#include "Core.h"
 #include <stdlib.h>
 
 
 /**
- * \fn coordinate* conversionLatLon(float lat, float lon)
- * \brief calculate the coordinate for a point in openstreetmap
+ * \fn Coordinate* conversionLatLon(float lat, float lon)
+ * \brief calculate the Coordinate for a point in openstreetmap
  *
  * \param lat float that represente the latitude of this point
  * \param lon float that represente the longitude of this point
- * \return coordinate *
+ * \return Coordinate *
  */
 
-coordinate* conversionLatLon(float lat, float lon){
+Coordinate* conversionLatLon(float lat, float lon){
 	int error; 
 	// JE DOIS AJOUTER LES ERREUR EN FONCTION DE L'OU L'ON SE TROUVE POUR LA LONGITUDES CAR CIRCONFERENCE DIFFERENTES AU POLE (MIN =0) ET A L'ÉQUATEUR (MAX)
 	double rayon = 111.11;
@@ -36,7 +36,7 @@ coordinate* conversionLatLon(float lat, float lon){
 	printf("LONG :%f ->    ", lon);
 	lat=(((lat*180)/M_PI)*40000)/360;  //1°= LAT*RAYON
 	printf("LAT : %f   \n ", lat);
-	coordinate *c= malloc(sizeof(coordinate));
+	Coordinate *c= malloc(sizeof(Coordinate));
 	c->x=lat;
 	c->y=lon;
 	return c;
@@ -50,12 +50,12 @@ coordinate* conversionLatLon(float lat, float lon){
  * \param lon_max float that represente the maximal longitude on the map
  * \param lat_min float that represente the minium latitude on the map
  * \param lon_min float that represente the minimum longitude on the map
- * \return bounds*
+ * \return Bounds*
  */
-bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
-	bounds *b=malloc(sizeof(bounds));
-	b->min =malloc(sizeof(coordinate)); 
-	b->max = malloc(sizeof(coordinate));
+Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
+	Bounds *b=malloc(sizeof(Bounds));
+	b->min =malloc(sizeof(Coordinate)); 
+	b->max = malloc(sizeof(Coordinate));
 	b->min= conversionLatLon(lat_min, lon_min);
 	b->max= conversionLatLon(lat_max, lon_max);
 	b->max->x = b->max->x - b->min->x;
@@ -66,16 +66,16 @@ bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
 }
 
 /**
- * \fn coordinate* coordinatesNode(coordinate *min, float lat, float lon)
- * \brief calculate the coordinate for a point in a map
+ * \fn Coordinate* CoordinatesNode(Coordinate *min, float lat, float lon)
+ * \brief calculate the Coordinate for a point in a map
  *
  * \param min represente the minimum point that we have on the map
  * \param lat float that represente the latitude of this point
  * \param lon float that represente the longitude of this point
- * \return coordinate *
+ * \return Coordinate *
  */
-coordinate* coordinatesNode(coordinate *min, float lat, float lon){
-	coordinate *c= malloc(sizeof(coordinate));
+Coordinate* CoordinatesNode(Coordinate *min, float lat, float lon){
+	Coordinate *c= malloc(sizeof(Coordinate));
 	c=conversionLatLon(lat, lon);
 	c->x = c->x- min->x;
 	c->y = c->y - min->y;
@@ -94,8 +94,8 @@ coordinate* coordinatesNode(coordinate *min, float lat, float lon){
  * \return void
  */
 void distance(float lat1, float lon1, float lat2, float lon2){
-	coordinate *c1 = conversionLatLon(lat1, lon1);
-	coordinate *c2= conversionLatLon(lat2, lon2);
+	Coordinate *c1 = conversionLatLon(lat1, lon1);
+	Coordinate *c2= conversionLatLon(lat2, lon2);
 	float distx= sqrt(pow(c2->x -c1->x, 2));
 	float disty= sqrt(pow(c2->y - c1->y, 2));
 }
@@ -108,7 +108,7 @@ void distance(float lat1, float lon1, float lat2, float lon2){
  * \return 0
  */
 int main(){
-	coordinate *c = conversionLatLon(48.8289403,2.3798326);
+	Coordinate *c = conversionLatLon(48.8289403,2.3798326);
 	conversionLatLon(48.8310657,2.3810055);
 	conversionLatLon(50,1);
 	return 0;

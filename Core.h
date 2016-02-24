@@ -1,17 +1,17 @@
 /**
-* \file core.h
+* \file Core.h
 * \brief Declaration of structure for the project
 * \author Isabelle MARINO Pierrick JACQUETTE Hafca TIRICHINE
 * \version 0.2
 * \date 18 february 2016
 *
-* Declaratioin of structure for the project open stree map
+* Declaration of structure for the project open stree map
 *
 */
 #include <stdio.h>
 
 /**
- * \struct coordinate
+ * \struct Coordinate
  * \brief Objet that represente the coordinate of a point
  *
  * x is the abscissa's coordinate
@@ -21,22 +21,22 @@
 typedef struct{
 	float x;
 	float y;
-}coordinate;
+}Coordinate;
 
 /**
- * \struct bounds
+ * \struct Bounds
  * \brief Objet that represente bounds for an open street map
  *
  * min is the coordinates of the minimum's point that it can have
  * max is the coordinates of the maximum's point that it can have
  */
 typedef struct{
-	coordinate* min;
-	coordinate* max;
-}bounds;
+	Coordinate* min;
+	Coordinate* max;
+}Bounds;
 
 /**
- * \struct node
+ * \struct Node
  * \brief Objet that represente a point in openstreetmap
  *
  * id represente the name of this object
@@ -45,12 +45,38 @@ typedef struct{
  */
 typedef struct{
  	int id;
-	coordinate c;
+	Coordinate* c;
 	char visible; // T = true, F= false;
 }Node;
 
 /**
- * \struct way
+ * \struct refList
+ * \brief Objet that represente a Node and the next Node 
+ *
+ * nd is the principal Node
+ * next is the next Node 
+ */
+typedef struct{
+	Node * nd;
+	Node * next;
+	
+}refList;
+
+/**
+ * \struct List
+ * \brief Objet that represente a List of Node
+ *
+ * firstRef is the first Node of the List
+ * lastRef is the last Node of the List
+ */
+typedef struct{
+	refList * firstRef; 
+	refList * lastRef;
+}List;
+
+
+/**
+ * \struct Way
  * \brief Objet that represente a construction like a building or a garden in openstreetmap
  *
  * id represente the name of this object
@@ -63,8 +89,8 @@ typedef struct{
 	int id;
 	//liste de Node nd à definir
 	char visible; // T = true, F= false;
-	char* tag;
-	char* k;
+	char* tagKey;
+	char* tagValue;
 }Way;
 
 /**
