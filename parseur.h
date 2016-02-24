@@ -13,8 +13,13 @@ struct Noeud{
 };
 
 /*Fonction that parses a file*/
-static void parseDoc(char* filename);
+static void 
+parseDoc(char* filename);
 
 /*Fonction that prints the elements needed and the attributs with their content*/
-static void print_elements(xmlNode * a_node);
+static void 
+print_elements(xmlDocPtr doc, xmlNodePtr cur);
+
+void 
+parseNode (xmlDocPtr doc, xmlNodePtr cur);
 
