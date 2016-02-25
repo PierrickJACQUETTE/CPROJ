@@ -104,9 +104,9 @@ Node* distanceToBounds(Bounds *b, Node* n);
  * \param lon1 float that represente the longitude of point1 
  * \param lat2 float that represente the latitude of point 2
  * \param lon2 float that represente the longitude of point2 
- * \return void
+ * \return float
  */
-void distanceLatLon(float lat1, float lon1, float lat2, float lon2);
+float distanceLatLon(float lat1, float lon1, float lat2, float lon2);
 
 
 #endif /* __CORE_H__ */

@@ -37,10 +37,10 @@ Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
 	Bounds *b=malloc(sizeof(Bounds));
 	b->min =malloc(sizeof(Coordinate)); 
 	b->max = malloc(sizeof(Coordinate));
-	b->min= conversionLatLon(lat_min, lon_min);
+	b->min= conversionLatLon(lat_min, lon_min); 
 	b->max= conversionLatLon(lat_max, lon_max);
-	b->max->x = b->max->x - b->min->x;
-	b->max->y = b->max->y - b->min->y;
+	b->max->x = b->max->x - b->min->x; // b->min->x= distanceLatLon(lat_min, lon_min, lat_min, lon_max); plus precis
+	b->max->y = b->max->y - b->min->y; // b->min->y= distanceLatLon(lat_min, lon_min, lat_max, lon_min); plus precis
 	b->min->x=0;
 	b->min->y=0;
 	return b;
