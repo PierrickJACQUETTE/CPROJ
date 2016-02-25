@@ -10,48 +10,29 @@
  *
  */
 
-#ifndef __CORE_H__
-#define __CORE_H__
-#include <stdio.h>
-#include <math.h>
-#include "Core.h"
-#include <stdlib.h>
+#include "conversionElements.h"
 
-
-/**
- * \fn Coordinate* conversionLatLon(float lat, float lon)
- * \brief calculate the Coordinate for a point in openstreetmap
- *
- * \param lat float that represente the latitude of this point
- * \param lon float that represente the longitude of this point
- * \return Coordinate *
- */
 
 Coordinate* conversionLatLon(float lat, float lon){
-	int error; 
-	// JE DOIS AJOUTER LES ERREUR EN FONCTION DE L'OU L'ON SE TROUVE POUR LA LONGITUDES CAR CIRCONFERENCE DIFFERENTES AU POLE (MIN =0) ET A L'ÉQUATEUR (MAX)
-	double rayon = 111.11;
-	printf(" %f \n", cosf((lat*180)/M_PI)); // pour passer de radian en degre 
-	lon= rayon*cosf((lat*180)/M_PI)*(lon*180)/M_PI; // 1° = RAYON*COS(LAT)
-	printf("LONG :%f ->    ", lon);
-	lat=(((lat*180)/M_PI)*40000)/360;  //1°= LAT*RAYON
-	printf("LAT : %f   \n ", lat);
 	Coordinate *c= malloc(sizeof(Coordinate));
-	c->x=lat;
-	c->y=lon;
+	int EarthCircumference= 40075;
+	int EarthPerimeter = 40000;
+	c->x= (EarthCircumference*cosf(lat)*lon)/360; // 1° = RAYON*COS(LAT)
+	c->y=(lat*EarthPerimeter)/360;  //1°= LAT*RAYON
+	printf("LONG :%f -> LAT: %f  \n", c->x, c->y);
 	return c;
 }
 
-/**
- * \fn initBounds(float lat_min,float lat_max, float lon_min, float lon_max)
- * \brief initialise the bounds of a map
- *
- * \param lat_max float that represente the maximal latitude on the map
- * \param lon_max float that represente the maximal longitude on the map
- * \param lat_min float that represente the minium latitude on the map
- * \param lon_min float that represente the minimum longitude on the map
- * \return Bounds*
- */
+
+Node* initNoeud(int id, float lat, float lon, char visible){
+	Node * n= malloc(sizeof(Node));
+	n->id=id;
+	n->c= malloc(sizeof(Coordinate));
+	n->c= conversionLatLon(lat, lon);
+	n->visible= visible;
+	return n;
+}
+
 Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
 	Bounds *b=malloc(sizeof(Bounds));
 	b->min =malloc(sizeof(Coordinate)); 
@@ -65,59 +46,45 @@ Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
 	return b;
 }
 
-/**
- * \fn Coordinate* CoordinatesNode(Coordinate *min, float lat, float lon)
- * \brief calculate the Coordinate for a point in a map
- *
- * \param min represente the minimum point that we have on the map
- * \param lat float that represente the latitude of this point
- * \param lon float that represente the longitude of this point
- * \return Coordinate *
- */
-Coordinate* CoordinatesNode(Coordinate *min, float lat, float lon){
-	Coordinate *c= malloc(sizeof(Coordinate));
-	c=conversionLatLon(lat, lon);
-	c->x = c->x- min->x;
-	c->y = c->y - min->y;
-	return c;
 
-}
-
-/**
- * \fn void distance(float lat1, float lon1, float lat2, float lon2)
- * \brief calculate the distance beetween 2 points
- *
- * \param lat1 float that represente the latitude of point 1 
- * \param lon1 float that represente the longitude of point1 
- * \param lat2 float that represente the latitude of point 2
- * \param lon2 float that represente the longitude of point2 
- * \return void
- */
-void distance(float lat1, float lon1, float lat2, float lon2){
-	Coordinate *c1 = conversionLatLon(lat1, lon1);
-	Coordinate *c2= conversionLatLon(lat2, lon2);
-	float distx= sqrt(pow(c2->x -c1->x, 2));
-	float disty= sqrt(pow(c2->y - c1->y, 2));
+float distanceXY(float x1, float y1, float x2, float y2){
+	return sqrt(pow(x2-x1, 2) + pow(y2-y1, 2));
 }
 
 
-/**
- * \fn int main (void)
- * \brief main function of this programme
- *
- * \return 0
- */
+float distanceY(float y1, float y2){
+	return distanceXY(0, y1, 0, y2);
+}
+
+float distanceX(float x1, float x2){
+	return distanceXY(x1, 0, x2, 0);
+}
+
+Node* distanceToBounds(Bounds *b, Node* n){
+	n->c->x = distanceX(b->min->x, n->c->x);
+	n->c->y = distanceY(b->min->y, n->c->x);
+	return n;
+}
+
+
+float distanceLatLon(float lat1, float lon1, float lat2, float lon2){
+	int EarthRayon = 6378.137;
+	lon1= lon1*M_PI/180;
+	lon2= lon2*M_PI/180;
+	lat1= lat1*M_PI/180;
+	lat2= lat2*M_PI/180;
+	float dlon= (lon2-lon1)/2;
+	float dlat= (lat2-lat1)/2;
+	float a = sinf(dlat)*sinf(dlat)+ cosf(lat1)*cosf(lat2) *sinf(dlon)*sinf(dlon);
+	return EarthRayon *2 *atan2(sqrt(a), sqrt(1-a));	
+}
+
 int main(){
-	Coordinate *c = conversionLatLon(48.8289403,2.3798326);
-	conversionLatLon(48.8310657,2.3810055);
+	Coordinate *c = conversionLatLon(48.9141080,2.2569605);
+	Coordinate *c1= conversionLatLon(48.9141155,2.2570123);
+	float d = distanceXY(c1->x, c1->y, c->x, c->y);
+	float d1 = distanceLatLon(48.9141080, 2.2569605, 48.9141155, 2.2570123);
+	printf("%f \n%f \n", d, d1);
 	conversionLatLon(50,1);
 	return 0;
 }
-
-#endif /* __CORE_H__ */
-
-
-// pour faire des simulations voilà un site plutot pas mal
-
-
- // http://www.lexilogos.com/calcul_distances.htm // 
