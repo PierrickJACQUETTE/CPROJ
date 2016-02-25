@@ -54,4 +54,10 @@ void init(Avl **a,int content);
  */
 void print(Avl **a,int nombre);
 
+/**
+ * Frees the memory tree
+ * @param avl Self-balancing binary search tree
+ */
+void delete(Avl** avl);
+
 #endif

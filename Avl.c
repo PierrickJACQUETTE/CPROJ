@@ -104,7 +104,16 @@ Avl* insert(Avl **a,int content){
 	}
 	else{
 		aux = (Avl*) malloc(sizeof(Avl));
+		if ( aux == NULL )
+		{
+			fprintf(stderr,"Allocation impossible : %s\n","fonction insert feuille");
+			exit(EXIT_FAILURE);
+		}
 		Node *n = (Node*)malloc(sizeof(Node));
+		if(n==NULL){
+			fprintf(stderr,"Allocation impossible : %s\n","fonction insert feuille Node");
+			exit(EXIT_FAILURE);
+		}
 		aux->left = aux->right = NULL;
 		n->id = content;
 		aux->node = n;
@@ -132,11 +141,19 @@ void init(Avl **a,int content){
 	Avl *aux = (Avl*)malloc(sizeof(Avl));
 	if(aux!=NULL){
 		Node *n = (Node*)malloc(sizeof(Node));
+		if(n==NULL){
+			fprintf(stderr,"Allocation impossible : %s\n","fonction init node");
+			exit(EXIT_FAILURE);
+		}
 		n->id=content;
 		aux->left = aux->right = NULL;
 		aux->height = 1;
 		aux->node =n;
 		*a = aux;
+	}
+	else {
+		fprintf(stderr,"Allocation impossible : %s\n","fonction init");
+		exit(EXIT_FAILURE);
 	}
 }
 
@@ -156,6 +173,11 @@ void print(Avl **a,int nombre){
 		printf("%d\n",(*a)->node->id);
 	}
 	print(&((*a)->left),nombre+1);
+}
+
+void delete(Avl** avl){
+	free(avl);
+	avl =NULL;
 }
 
 int main(){
@@ -180,6 +202,6 @@ int main(){
 	else{
 		printf("Node id : %d is not find \n",key);
 	}
-
+	delete(&a);
 	return 0;
 }
