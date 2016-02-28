@@ -1,7 +1,6 @@
 #include "parseur.h"
 
-void 
-parseWay (xmlDocPtr doc, xmlNodePtr cur) {
+void parseWay (xmlDocPtr doc, xmlNodePtr cur){
 	xmlAttr *node_attr = cur->properties;
 	xmlNodePtr tmpcur=NULL; 
 
@@ -15,13 +14,15 @@ parseWay (xmlDocPtr doc, xmlNodePtr cur) {
 		node_attr = node_attr->next;
 	}
 	tmpcur = cur->xmlChildrenNode;
-	while(tmpcur != NULL){// tant qu'il y a des enfants dans la way
+	
+	//while "way" has childs
+	while(tmpcur != NULL){ 
 		if (tmpcur->type == XML_ELEMENT_NODE) {
 			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag")==0 ){
-				printf("< %s : k = %s, v = %s >\n", tmpcur->name, xmlGetProp(tmpcur, "k"), xmlGetProp(tmpcur, "v"));
+				printf("< %s : k = %s, v = %s >\n", tmpcur->name, xmlGetProp(tmpcur, (const xmlChar *)"k"), xmlGetProp(tmpcur, (const xmlChar *)"v"));
 			}
       	if( xmlStrcmp(tmpcur->name,(const xmlChar *)"nd")==0 ){
-				printf("< %s : ref = %s >\n", tmpcur->name, xmlGetProp(tmpcur, "ref"));
+				printf("< %s : ref = %s >\n", tmpcur->name, xmlGetProp(tmpcur, (const xmlChar *)"ref"));
 			}
       }
 		tmpcur = tmpcur->next;
@@ -44,20 +45,33 @@ void parseNode (xmlDocPtr doc, xmlNodePtr cur) {
 		node_attr = node_attr->next;
 	}
 }
+
+Bounds* parseBounds (xmlNodePtr cur) {
+	Bounds *b;
+	float minlat, minlon, maxlat, maxlon;
+	
+	minlat = strtof((const char *)(xmlGetProp(cur, (const xmlChar *)"minlat")),NULL);
+	minlon = strtof((const char *)(xmlGetProp(cur, (const xmlChar *)"minlon")),NULL);
+	maxlat = strtof((const char *)(xmlGetProp(cur, (const xmlChar *)"maxlat")),NULL);
+	maxlon = strtof((const char *)(xmlGetProp(cur, (const xmlChar *)"maxlon")),NULL);
+	printf("minlat: %f, minlon: %f, maxlat: %f, maxlon: %f \n",minlat,minlon,maxlat,maxlon);
+	b = initBounds(minlat,maxlat,minlon,maxlon);
+	return b;
+}
 		
 /*Fonction that prints the elements needed and the attributs with their content*/
-static void print_elements(xmlDocPtr doc, xmlNodePtr cur){
+static void parseElements(xmlDocPtr doc, xmlNodePtr cur){
+	//Bounds *b;
 	cur = cur->xmlChildrenNode; 
 
 	while (cur != NULL) {
 		if (cur->type == XML_ELEMENT_NODE) {
 			if (!xmlStrcmp(cur->name, (const xmlChar *)"bounds")){
 				printf("Element %s\n", cur->name);
-				xmlAttr *node_attr = cur->properties;
-				while(node_attr != NULL) {
-					printf("%s = %s\n", node_attr->name, (node_attr->children)->content);
-					node_attr = node_attr->next;
-				}
+				//as we are not using it yet, we let it on comment
+				//b = parseBounds(cur);
+				parseBounds(cur);
+				printf("\n");
 			}
 
 			if ((!xmlStrcmp(cur->name, (const xmlChar *)"node"))){
@@ -97,7 +111,7 @@ static void parseDoc(char* filename){
 		return;
 	}
 
-	print_elements(doc, root_element);
+	parseElements(doc, root_element);
 	xmlFreeDoc(doc);
 	return;
 }
