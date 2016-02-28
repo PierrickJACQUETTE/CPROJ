@@ -1,7 +1,7 @@
 /**
  * \file conversionElements.h
  * \brief Daclare fonction to calculate the transformation for a node by open street map
- * \author Isabelle MARINO Pierrick JACQUETTE Hafca TIRICHINE
+ * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
  * \version 0.1
  * \date 25 february 2016
  *   
@@ -12,8 +12,8 @@
 #define __CORE_H__
 #include <stdio.h>
 #include <math.h>
-#include "Core.h"
 #include <stdlib.h>
+#include "Core.h"
 
 
 /**
@@ -51,7 +51,7 @@ Node* initNode(int id, float lat, float lon, char visible);
  * \param lon_min float that represente the minimum longitude on the map
  * \return Bounds*
  */
-Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max);
+extern Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max);
 
 
 /**

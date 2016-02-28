@@ -1,7 +1,7 @@
 /**
  * \file conversionElements.c
  * \brief Calculate the transformation for a node by open street map
- * \author Isabelle MARINO Pierrick JACQUETTE Hafca TIRICHINE
+ * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
  * \version 0.1
  * \date 19 february 2016
  *
@@ -33,7 +33,7 @@ Node* initNoeud(int id, float lat, float lon, char visible){
 	return n;
 }
 
-Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
+extern Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
 	Bounds *b=malloc(sizeof(Bounds));
 	b->min =malloc(sizeof(Coordinate)); 
 	b->max = malloc(sizeof(Coordinate));
@@ -79,7 +79,7 @@ float distanceLatLon(float lat1, float lon1, float lat2, float lon2){
 	return EarthRayon *2 *atan2(sqrt(a), sqrt(1-a));	
 }
 
-int main(){
+/*int main(){
 	Coordinate *c = conversionLatLon(48.9141080,2.2569605);
 	Coordinate *c1= conversionLatLon(48.9141155,2.2570123);
 	float d = distanceXY(c1->x, c1->y, c->x, c->y);
@@ -87,4 +87,4 @@ int main(){
 	printf("%f \n%f \n", d, d1);
 	conversionLatLon(50,1);
 	return 0;
-}
+}*/
