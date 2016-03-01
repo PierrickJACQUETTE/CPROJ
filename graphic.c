@@ -17,24 +17,29 @@ void affichage(int xClick,int yClick)
 }
 
 int miseAEchelleAbs(float x, Bounds* bounds){
+	int f= (int)(x*width/(bounds->max->x));
+	printf( " fdmlhsfmdmsfsmdfsmugfdsmugfsmugfsmugfsmugdmuig %d \n ", f);
 	return (int)(x*width/(bounds->max->x));
 }
 
 int miseAEchelleOrd(float x, Bounds* bounds){
+	int f= (int)(x*heigth/(bounds->max->y));
+	printf( " fdmlhsfmdmsfsmdfsmugfdsmugfsmugfsmugfsmugdmuig %d  %f \n ", f ,(bounds->max->y) );
 	return (int)(x*heigth/(bounds->max->y));
 }
 
-void parcoursAvl(Avl *a, Bounds* bounds){
-  if(a->left!=NULL){
-    return parcoursAvl(a->left,bounds);
+void parcoursAvl(Avl **a, Bounds* bounds){
+  if((*a)->left!=NULL){    //printf("affichage  %d \n", a->node->id);
+    parcoursAvl(&((*a)->left),bounds);
   }
-  
-  int h=miseAEchelleAbs(a->node->c->x,bounds);
-  int w=miseAEchelleOrd(a->node->c->y,bounds);
+	  printf("affichage  %d \n", (*a)->node->id);
+		printf("affichage  %f \n", (*a)->node->c->x);
+  int h=miseAEchelleAbs((*a)->node->c->x,bounds);
+  int w=miseAEchelleOrd((*a)->node->c->y,bounds);
   affichage(h,w);
   
-  if(a->right!=NULL){
-    return parcoursAvl(a->right,bounds);
+  if((*a)->right!=NULL){  //printf("affichage\n"); printf("affichage  %d \n", a->node->id);
+    parcoursAvl(&((*a)->right),bounds);
   }
 }
 
@@ -74,11 +79,11 @@ void printMap(Map* map){
   glViewport(0,0,width,heigth);
   gluOrtho2D(0,width,0,heigth);
   
-  parcoursAvl(map->avl,map->bounds);
-  
+  parcoursAvl(&(map->avl),map->bounds);
+ 
   SDL_RenderPresent(renderer);
   evenement();
-
+// parcoursAvl(map->avl,map->bounds);
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
   SDL_Quit();

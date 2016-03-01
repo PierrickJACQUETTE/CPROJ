@@ -15,7 +15,7 @@
 void affichage(int xClick,int yClick);
 int miseAEchelleAbs(float x, Bounds* bounds);
 int miseAEchelleOrd(float x, Bounds* bounds);
-void parcoursAvl(Avl *a, Bounds* bounds);
+void parcoursAvl(Avl **a, Bounds* bounds);
 void evenement();
 void printMap(Map* map);
 

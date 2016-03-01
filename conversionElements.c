@@ -19,7 +19,7 @@ Coordinate* conversionLatLon(float lat, float lon){
 	int EarthPerimeter = 40000;
 	c->x= (EarthCircumference*cosf(lat)*lon)/360; // 1° = RAYON*COS(LAT)
 	c->y=(lat*EarthPerimeter)/360;  //1°= LAT*RAYON
-//	printf("LONG :%f -> LAT: %f  \n", c->x, c->y);
+	printf("LONG :%f -> LAT: %f  \n", c->x, c->y);
 	return c;
 }
 
@@ -85,6 +85,8 @@ float distanceLatLon(float lat1, float lon1, float lat2, float lon2){
 	float d = distanceXY(c1->x, c1->y, c->x, c->y);
 	float d1 = distanceLatLon(48.9141080, 2.2569605, 48.9141155, 2.2570123);
 	printf("%f \n%f \n", d, d1);
-	conversionLatLon(50,1);
+	Node *n = initNode(123456, 48.9141080, 2.2569605, "true");
+	printf("%f %f %s \n", n->c->x, n->c->y, n->visible);
+	//conversionLatLon(50,1);
 	return 0;
 }*/
