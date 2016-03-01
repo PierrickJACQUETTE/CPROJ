@@ -11,9 +11,9 @@ int main(int argc, char **argv) {
 	else{
 		filename = argv[1];
 		Map* map= malloc(sizeof(Map));
-		map =parseDoc(filename);
+		map =parseDoc(filename);		
+		printMap(map);
 		xmlCleanupParser();
-		printMap();
 		exit(1);
 	}
 

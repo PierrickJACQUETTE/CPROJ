@@ -1,14 +1,5 @@
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_opengl.h>
 #include "graphic.h"
-/*
-gcc fichier.c -o tutorial1 -lGL -lGLU `sdl2-config --cflags --libs`
-)*/
-#include <stdlib.h>
-#include <GL/glu.h>
+
 
 enum status {QUIT, CONTINUE};
 int heigth = 400; // taille fenetre par défaut
@@ -25,13 +16,25 @@ void affichage(int xClick,int yClick)
   glEnd();
 }
 
-void parcoursAvl(Avl *a){
+int miseAEchelleAbs(float x, Bounds* bounds){
+	return (int)(x*width/(bounds->max->x));
+}
+
+int miseAEchelleOrd(float x, Bounds* bounds){
+	return (int)(x*heigth/(bounds->max->y));
+}
+
+void parcoursAvl(Avl *a, Bounds* bounds){
   if(a->left!=NULL){
-    return parcoursAvl(a->left);
+    return parcoursAvl(a->left,bounds);
   }
-  affichage(a->node->c->x,a->node->c->y);
+  
+  int h=miseAEchelleAbs(a->node->c->x,bounds);
+  int w=miseAEchelleOrd(a->node->c->y,bounds);
+  affichage(h,w);
+  
   if(a->right!=NULL){
-    return parcoursAvl(a->right);
+    return parcoursAvl(a->right,bounds);
   }
 }
 
@@ -51,10 +54,7 @@ void evenement(){
   while (status != QUIT);
 }
 
-int printMap(Map* map){
-  int tabX[10] = {0,60,100,150,200,300,100,150,300,400};
-  int tabY[10] = {0,60,90,100,104,10,80,70,150,160};
-
+void printMap(Map* map){
   SDL_Window* window = NULL; // initiailisation de fenetre vide
   window = SDL_CreateWindow // creation fenetre
   (
@@ -73,12 +73,9 @@ int printMap(Map* map){
   glLoadIdentity();
   glViewport(0,0,width,heigth);
   gluOrtho2D(0,width,0,heigth);
-  affichage(300,100);
-  affichage(200,100);
-  int i;
-  for(i=0;i<10;i++){
-    affichage(tabX[i],tabY[i]);
-  }
+  
+  parcoursAvl(map->avl,map->bounds);
+  
   SDL_RenderPresent(renderer);
   evenement();
 
@@ -86,5 +83,4 @@ int printMap(Map* map){
   SDL_DestroyWindow(window);
   SDL_Quit();
 
-  return 0;
 }
