@@ -22,6 +22,6 @@ static void parseDoc(char* filename);
 static void parseElements(xmlDocPtr doc, xmlNodePtr cur);
 
 Bounds* parseBounds (xmlNodePtr cur); 
-void parseNode (xmlDocPtr doc, xmlNodePtr cur);
+Node* parseNode (xmlDocPtr doc, xmlNodePtr cur);
 void parseWay (xmlDocPtr doc, xmlNodePtr cur);
 

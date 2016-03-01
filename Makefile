@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS=-Wall -lm -lGL -lGLU `xml2-config --cflags --libs` `sdl2-config --cflags --libs`
 HEADERS = $(wildcard *.h)
 OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c)) 
-EXEC= Avl parseur #conversionElements
+EXEC= parseur # Avl conversionElements
 Exe= projet conversionElements Avl parseur
 
 all: $(EXEC)

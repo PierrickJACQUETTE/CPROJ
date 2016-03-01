@@ -29,21 +29,36 @@ void parseWay (xmlDocPtr doc, xmlNodePtr cur){
 	}
 }
 
-void parseNode (xmlDocPtr doc, xmlNodePtr cur) {
+Node* parseNode (xmlDocPtr doc, xmlNodePtr cur) {
+	Node* node;
+	int id;
+	float lat, lon;
+	char *visible;
+	
 	xmlAttr *node_attr = cur->properties; 
 	
 	//we browse the element's properties list and we only print the attributs we need to
 	while(node_attr != NULL)
 	{ 
-		if( xmlStrcmp(node_attr->name,(const xmlChar *)"id")==0 
-		|| xmlStrcmp(node_attr->name,(const xmlChar *)"visible")==0 
-		|| xmlStrcmp(node_attr->name,(const xmlChar *)"lat")==0 
-		|| xmlStrcmp(node_attr->name,(const xmlChar *)"lon")==0 )
-		{
-			printf("%s = %s\n", node_attr->name, (node_attr->children)->content);			
+		if( xmlStrcmp(node_attr->name,(const xmlChar *)"id")==0 ){
+			id = atoi((const char *)((node_attr->children)->content));
 		}
+		else if( xmlStrcmp(node_attr->name,(const xmlChar *)"visible")==0  ){
+			visible = (char *)((node_attr->children)->content);
+		}
+		else if( xmlStrcmp(node_attr->name,(const xmlChar *)"lat")==0 ){
+			lat = strtof((const char *)((node_attr->children)->content),NULL);
+		}
+		else if( xmlStrcmp(node_attr->name,(const xmlChar *)"lon")==0 ){
+			lon = strtof((const char *)((node_attr->children)->content),NULL);
+		}			
 		node_attr = node_attr->next;
 	}
+	
+	printf("id = %d, lat = %f, lon = %f, visible=%s \n", id,lat,lon,visible);	
+	node = initNode(id,lat,lon,visible);
+	
+	return node;
 }
 
 Bounds* parseBounds (xmlNodePtr cur) {
@@ -62,6 +77,11 @@ Bounds* parseBounds (xmlNodePtr cur) {
 /*Fonction that prints the elements needed and the attributs with their content*/
 static void parseElements(xmlDocPtr doc, xmlNodePtr cur){
 	//Bounds *b;
+	Node *node;
+	
+	Avl **a = NULL;
+	int flag = 1;
+	
 	cur = cur->xmlChildrenNode; 
 
 	while (cur != NULL) {
@@ -76,7 +96,11 @@ static void parseElements(xmlDocPtr doc, xmlNodePtr cur){
 
 			if ((!xmlStrcmp(cur->name, (const xmlChar *)"node"))){
 				printf("Element %s\n", cur->name);
-		     	parseNode (doc, cur);
+				node = parseNode (doc, cur);
+				if(flag==1){
+					init(a,node->id);
+					flag=0;
+				}
 				printf("\n");
 			}
 
