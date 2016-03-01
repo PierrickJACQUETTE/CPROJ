@@ -1,4 +1,5 @@
 #include "parseur.h"
+#include "graphic.h"
 
 int main(int argc, char **argv) {
 	char *filename;
@@ -12,6 +13,7 @@ int main(int argc, char **argv) {
 		Map* map= malloc(sizeof(Map));
 		map =parseDoc(filename);
 		xmlCleanupParser();
+		printMap();
 		exit(1);
 	}
 

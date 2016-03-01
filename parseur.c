@@ -101,7 +101,7 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 					init(&a,node->id);
 					flag=0;
 				}
-				//insertAVL
+				insert(&a,node->id);
 				printf("\n");
 			}
 			if ((!xmlStrcmp(cur->name, (const xmlChar *)"way"))){
@@ -112,6 +112,7 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 		}
 		cur = cur->next;
 	}
+	
 	map->avl=a;
 	return map;
 }
