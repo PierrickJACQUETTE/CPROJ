@@ -6,7 +6,7 @@
  * \date 19 february 2016
  *
  * Calculate node's Coordinates: transform an openstreetmap Coordinates to an standar Coordinates
- * Caculate the bounds proportion   
+ * Caculate the bounds proportion
  *
  */
 
@@ -19,12 +19,12 @@ Coordinate* conversionLatLon(float lat, float lon){
 	int EarthPerimeter = 40000;
 	c->x= (EarthCircumference*cosf(lat)*lon)/360; // 1° = RAYON*COS(LAT)
 	c->y=(lat*EarthPerimeter)/360;  //1°= LAT*RAYON
-	printf("LONG :%f -> LAT: %f  \n", c->x, c->y);
+//	printf("LONG :%f -> LAT: %f  \n", c->x, c->y);
 	return c;
 }
 
 
-Node* initNoeud(int id, float lat, float lon, char visible){
+Node* initNode(int id, float lat, float lon, char* visible){
 	Node * n= malloc(sizeof(Node));
 	n->id=id;
 	n->c= malloc(sizeof(Coordinate));
@@ -35,9 +35,9 @@ Node* initNoeud(int id, float lat, float lon, char visible){
 
 extern Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
 	Bounds *b=malloc(sizeof(Bounds));
-	b->min =malloc(sizeof(Coordinate)); 
+	b->min =malloc(sizeof(Coordinate));
 	b->max = malloc(sizeof(Coordinate));
-	b->min= conversionLatLon(lat_min, lon_min); 
+	b->min= conversionLatLon(lat_min, lon_min);
 	b->max= conversionLatLon(lat_max, lon_max);
 	b->max->x = b->max->x - b->min->x; // b->min->x= distanceLatLon(lat_min, lon_min, lat_min, lon_max); plus precis
 	b->max->y = b->max->y - b->min->y; // b->min->y= distanceLatLon(lat_min, lon_min, lat_max, lon_min); plus precis
@@ -76,7 +76,7 @@ float distanceLatLon(float lat1, float lon1, float lat2, float lon2){
 	float dlon= (lon2-lon1)/2;
 	float dlat= (lat2-lat1)/2;
 	float a = sinf(dlat)*sinf(dlat)+ cosf(lat1)*cosf(lat2) *sinf(dlon)*sinf(dlon);
-	return EarthRayon *2 *atan2(sqrt(a), sqrt(1-a));	
+	return EarthRayon *2 *atan2(sqrt(a), sqrt(1-a));
 }
 
 /*int main(){

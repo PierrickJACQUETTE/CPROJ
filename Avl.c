@@ -179,7 +179,7 @@ void delete(Avl** avl){
 	free(avl);
 	avl =NULL;
 }
-
+/*
 int main(){
 	Avl *a = NULL;
 	init(&a, 4);
@@ -205,3 +205,4 @@ int main(){
 	delete(&a);
 	return 0;
 }
+*/

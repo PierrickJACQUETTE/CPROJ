@@ -1,42 +1,20 @@
-CC=gcc
-CFLAGS=-Wall -lm -lGL -lGLU `xml2-config --cflags --libs` `sdl2-config --cflags --libs`
+CC = gcc
+CFLAGS = -Wall -lm -lGL -lGLU `sdl2-config --cflags --libs` `xml2-config --cflags --libs`
+EXEC = test
 HEADERS = $(wildcard *.h)
-OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c)) 
-EXEC= parseur # Avl conversionElements
-Exe= projet conversionElements Avl parseur
+OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
 
 all: $(EXEC)
 
-#main: parseur.o Avl.o conversionElements.o main.o
-#	$(CC) -o projet conversionElements.o main.o
+$(EXEC): $(OBJECTS)
+	$(CC) -o $@ $^ $(CFLAGS)
 
-conversionElements.o: conversionElements.c conversionElements.h
-	$(CC) -o conversionElements.o -c conversionElements.c $(CFLAGS)
-
-conversionElements:conversionElements.o
-	$(CC) -o conversionElements conversionElements.o $(CFLAGS)
-
-Avl.o: Avl.c Avl.h
-	$(CC) -o Avl.o -c Avl.c $(CFLAGS)
-
-Avl:Avl.o
-	$(CC) -o Avl Avl.o $(CFLAGS)
-
-parseur.o: parseur.c parseur.h
-
-	$(CC) -o parseur.o -c parseur.c $(CFLAGS)
-
-parseur: parseur.o conversionElements.o
-	$(CC) -o parseur parseur.o conversionElements.o $(CFLAGS)
-
-#%.o: %.c $(HEADERS)
-#	$(CC) -c $^
+%.o: %.c $(HEADERS)
+	$(CC) -c $^ $(CFLAGS)
 
 clean:
 	rm -f $(OBJECTS)
 
 mrproper: clean
-	rm -f $(Exe)
+	rm -f $(EXEC)
 	rm -f *.gch
-
-

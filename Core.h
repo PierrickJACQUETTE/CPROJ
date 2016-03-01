@@ -46,20 +46,20 @@ typedef struct{
 typedef struct{
  	int id;
 	Coordinate* c;
-	char visible; // T = true, F= false;
+	char* visible; // True,False;
 }Node;
 
 /**
  * \struct refList
- * \brief Objet that represente a Node and the next Node 
+ * \brief Objet that represente a Node and the next Node
  *
  * nd is the principal Node
- * next is the next Node 
+ * next is the next Node
  */
 typedef struct{
 	Node * nd;
 	Node * next;
-	
+
 }refList;
 
 /**
@@ -70,7 +70,7 @@ typedef struct{
  * lastRef is the last Node of the List
  */
 typedef struct{
-	refList * firstRef; 
+	refList * firstRef;
 	refList * lastRef;
 }List;
 
@@ -108,3 +108,9 @@ typedef struct sAvl{
   int height;
   struct sAvl* left,* right;
 }Avl;
+
+typedef struct{
+	Avl* avl;
+	Bounds* bounds;
+	//WAy ....
+}Map;

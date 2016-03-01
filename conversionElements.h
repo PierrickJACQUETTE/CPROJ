@@ -4,16 +4,15 @@
  * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
  * \version 0.1
  * \date 25 february 2016
- *   
+ *
  *
  */
 
 #ifndef __CORE_H__
 #define __CORE_H__
-#include <stdio.h>
+#include "Core.h"
 #include <math.h>
 #include <stdlib.h>
-#include "Core.h"
 
 
 /**
@@ -32,13 +31,13 @@ Coordinate* conversionLatLon(float lat, float lon);
  * \fn initNode(int id, float lat, float lon, char visible)
  * \brief initalise a Node for a point in a map
  *
- * \param id represente the name of this point 
+ * \param id represente the name of this point
  * \param lat float that represente the latitude of this point
  * \param lon float that represente the longitude of this point
  * \param visible char that represente if the node is visibl or not
  * \return Node*
  */
-Node* initNode(int id, float lat, float lon, char visible);
+Node* initNode(int id, float lat, float lon, char* visible);
 
 
 /**
@@ -58,10 +57,10 @@ extern Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_
  * \fn void distanceXY(float x1, float y1, float x2, float y2)
  * \brief calculate the distance beetween 2 points in a carthesien repere
  *
- * \param x1 float that represente the abcisse of point 1 
- * \param y1 float that represente the ordinate of point1 
+ * \param x1 float that represente the abcisse of point 1
+ * \param y1 float that represente the ordinate of point1
  * \param x2 float that represente the abcisse of point 2
- * \param y2 float that represente the ordinate of point2 
+ * \param y2 float that represente the ordinate of point2
  * \return float
  */
 float distanceXY(float x1, float y1, float x2, float y2);
@@ -70,8 +69,8 @@ float distanceXY(float x1, float y1, float x2, float y2);
  * \fn void distanceY(float y1, float y2)
  * \brief calculate the ordinate's distance beetween 2 points in a carthesien repere
  *
- * \param y1 float that represente the ordinate of point1 
- * \param y2 float that represente the ordinate of point2 
+ * \param y1 float that represente the ordinate of point1
+ * \param y2 float that represente the ordinate of point2
  * \return float
  */
 float distanceY(float y1, float y2);
@@ -80,7 +79,7 @@ float distanceY(float y1, float y2);
  * \fn void distanceX(float x1, float x2)
  * \brief calculate the abscisse's distance beetween 2 points in a carthesien repere
  *
- * \param x1 float that represente the abcisse of point 1 
+ * \param x1 float that represente the abcisse of point 1
  * \param x2 float that represente the abcisse of point 2
  * \return float
  */
@@ -90,7 +89,7 @@ float distanceX(float x1, float x2);
  * \fn distanceToBounds(Bounds *b, Node* n)
  * \brief calcule the distance between a Node and the Bounds's map
  *
- * \param n represente the point on the map 
+ * \param n represente the point on the map
  * \param b represente the bounds of the map
  * \return Node*
  */
@@ -100,10 +99,10 @@ Node* distanceToBounds(Bounds *b, Node* n);
  * \fn void distanceLatLon(float lat1, float lon1, float lat2, float lon2)
  * \brief calculate the distance beetween 2 points in a map
  *
- * \param lat1 float that represente the latitude of point 1 
- * \param lon1 float that represente the longitude of point1 
+ * \param lat1 float that represente the latitude of point 1
+ * \param lon1 float that represente the longitude of point1
  * \param lat2 float that represente the latitude of point 2
- * \param lon2 float that represente the longitude of point2 
+ * \param lon2 float that represente the longitude of point2
  * \return float
  */
 float distanceLatLon(float lat1, float lon1, float lat2, float lon2);

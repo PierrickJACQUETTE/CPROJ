@@ -21,7 +21,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "Core.h"
+#include "conversionElements.h"
 
 /**
 * search function in an AVL according to a key, this key is the reference node
