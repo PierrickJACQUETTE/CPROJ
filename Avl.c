@@ -85,19 +85,20 @@ void equilibrateAVL(Avl **a){
 	}
 }
 
-Avl* insert(Avl **a,int content){
+Avl* insert(Avl **a,Node *n){
+	printf("InsertTest LONG :%f -> LAT: %f  \n", n->c->x, n->c->y);
 	Avl *aux =NULL;
 	if(*a){
-		if((*a)->node->id == content){
+		if((*a)->node->id == n->id){
 			aux = *a;
 		}
-		else if(content < (*a)->node->id){
-			(*a)->left = insert(&((*a)->left),content);
+		else if(n->id < (*a)->node->id){
+			(*a)->left = insert(&((*a)->left),n);
 			equilibrateAVL(&(*a));
 			aux= *a;
 		}
-		else if(content > (*a)->node->id){
-			(*a)->right = insert(&((*a)->right),content);
+		else if(n->id > (*a)->node->id){
+			(*a)->right = insert(&((*a)->right),n);
 			equilibrateAVL(&(*a));
 			aux = *a;
 		}
@@ -115,8 +116,9 @@ Avl* insert(Avl **a,int content){
 			exit(EXIT_FAILURE);
 		}
 		aux->left = aux->right = NULL;
-		n->id = content;
+		printf("insert LONG :%f -> LAT: %f  \n", n->c->x, n->c->y);
 		aux->node = n;
+		printf("insertpost LONG :%f -> LAT: %f  \n", aux->node->c->x, aux->node->c->y);
 		aux->height = 1;
 	}
 	return aux;
@@ -137,15 +139,13 @@ Node* search(Avl *a, int key){
 	return NULL;
 }
 
-void init(Avl **a,int content){
+void init(Avl **a,Node* n){
 	Avl *aux = (Avl*)malloc(sizeof(Avl));
 	if(aux!=NULL){
-		Node *n = (Node*)malloc(sizeof(Node));
 		if(n==NULL){
 			fprintf(stderr,"Allocation impossible : %s\n","fonction init node");
 			exit(EXIT_FAILURE);
 		}
-		n->id=content;
 		aux->left = aux->right = NULL;
 		aux->height = 1;
 		aux->node =n;
@@ -167,7 +167,7 @@ void print(Avl **a,int nombre){
 		for(i=0;i<nombre-1;i++){
 			printf("|\t");
 		}
-		printf("|-------%d\n",(*a)->node->id);
+		printf("|-------%f\n",(*a)->node->c->x);
 	}
 	else{
 		printf("%d\n",(*a)->node->id);

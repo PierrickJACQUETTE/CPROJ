@@ -98,10 +98,11 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 				printf("Element %s\n", cur->name);
 				node = parseNode (doc, cur);
 				if(flag==1){
-					init(&a,node->id);
+					init(&a,node);
 					flag=0;
 				}
-				insert(&a,node->id);
+				insert(&a,node);
+				printf("parseElement LONG :%f -> LAT: %f  \n", a->node->c->x, a->node->c->y);
 				printf("\n");
 			}
 			if ((!xmlStrcmp(cur->name, (const xmlChar *)"way"))){
@@ -112,7 +113,7 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 		}
 		cur = cur->next;
 	}
-	
+
 	map->avl=a;
 	return map;
 }
