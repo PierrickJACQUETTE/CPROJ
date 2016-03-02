@@ -73,15 +73,3 @@ float distanceLatLon(float lat1, float lon1, float lat2, float lon2){
 	float a = sinf(dlat)*sinf(dlat)+ cosf(lat1)*cosf(lat2) *sinf(dlon)*sinf(dlon);
 	return EarthRayon *2 *atan2(sqrt(a), sqrt(1-a));
 }
-
-/*int main(){
-	Coordinate *c = conversionLatLon(48.9141080,2.2569605);
-	Coordinate *c1= conversionLatLon(48.9141155,2.2570123);
-	float d = distanceXY(c1->x, c1->y, c->x, c->y);
-	float d1 = distanceLatLon(48.9141080, 2.2569605, 48.9141155, 2.2570123);
-	printf("%f \n%f \n", d, d1);
-	Node *n = initNode(123456, 48.9141080, 2.2569605, "true");
-	printf("%f %f %s \n", n->c->x, n->c->y, n->visible);
-	//conversionLatLon(50,1);
-	return 0;
-}*/

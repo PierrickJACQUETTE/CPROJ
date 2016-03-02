@@ -179,30 +179,3 @@ void delete(Avl** avl){
 	free(avl);
 	avl =NULL;
 }
-/*
-int main(){
-	Avl *a = NULL;
-	init(&a, 4);
-	int tab[10] = {0,6,9,10,14,1,8,7,15,16};
-	int i;
-	for(i=0;i<10;i++){
-		printf("%d ",tab[i]);
-	}
-	printf("\n");
-	for(i=0;i<10;i++){
-		insert(&a, tab[i]);
-		print(&a,0);
-		puts("\n-----------------------\n");
-	}
-	int key = 2;
-	Node * n = search(a,key);
-	if(n!=NULL){
-		printf("Node id : %d is find \n",n->id);
-	}
-	else{
-		printf("Node id : %d is not find \n",key);
-	}
-	delete(&a);
-	return 0;
-}
-*/
