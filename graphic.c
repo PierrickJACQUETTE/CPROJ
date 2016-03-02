@@ -74,7 +74,6 @@ void printMap(Map* map){
   glClearColor( 0.0f, 0.0f, 0.0f, 0.0f ); // RGB + opacité
   /* Clear The Screen And The Depth Buffer */
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); // nettoyer la fenetre
-  glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
   glViewport(0,0,width,heigth);
   gluOrtho2D(0,width,0,heigth);
