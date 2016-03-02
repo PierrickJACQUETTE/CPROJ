@@ -86,7 +86,7 @@ void equilibrateAVL(Avl **a){
 }
 
 Avl* insert(Avl **a,Node *n){
-	printf("InsertTest LONG :%f -> LAT: %f  \n", n->c->x, n->c->y);
+	//printf("InsertTest LONG :%f -> LAT: %f  \n", n->c->x, n->c->y);
 	Avl *aux =NULL;
 	if(*a){
 		if((*a)->node->id == n->id){
@@ -103,18 +103,18 @@ Avl* insert(Avl **a,Node *n){
 			aux = *a;
 		}
 	}
-	else{
+	else{printf("InsertElse LONG :%f -> LAT: %f  \n", n->c->x, n->c->y);
 		aux = (Avl*) malloc(sizeof(Avl));
 		if ( aux == NULL )
 		{
 			fprintf(stderr,"Allocation impossible : %s\n","fonction insert feuille");
 			exit(EXIT_FAILURE);
 		}
-		Node *n = (Node*)malloc(sizeof(Node));
-		if(n==NULL){
+		//Node *n = (Node*)malloc(sizeof(Node));
+		/*if(n==NULL){
 			fprintf(stderr,"Allocation impossible : %s\n","fonction insert feuille Node");
 			exit(EXIT_FAILURE);
-		}
+		}*/
 		aux->left = aux->right = NULL;
 		printf("insert LONG :%f -> LAT: %f  \n", n->c->x, n->c->y);
 		aux->node = n;

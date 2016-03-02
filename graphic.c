@@ -18,25 +18,25 @@ void affichage(int xClick,int yClick)
 
 int miseAEchelleAbs(float x, Bounds* bounds){
 	int f= (int)(x*width/(bounds->max->x));
-	printf( " fdmlhsfmdmsfsmdfsmugfdsmugfsmugfsmugfsmugdmuig %d \n ", f);
-	return (int)(x*width/(bounds->max->x));
+	printf( " Abs  %f %d  \n ",x,  f);
+	return f;
 }
 
 int miseAEchelleOrd(float x, Bounds* bounds){
 	int f= (int)(x*heigth/(bounds->max->y));
-	printf( " fdmlhsfmdmsfsmdfsmugfdsmugfsmugfsmugfsmugdmuig %d  %f \n ", f ,(bounds->max->y) );
-	return (int)(x*heigth/(bounds->max->y));
+	printf( " Ordonne  %f  %d  \n ",x,  f );
+	return f;
 }
 
 void parcoursAvl(Avl **a, Bounds* bounds){
   if((*a)->left!=NULL){    //printf("affichage  %d \n", a->node->id);
     parcoursAvl(&((*a)->left),bounds);
   }
-	  printf("affichage  %d \n", (*a)->node->id);
-		printf("affichage  %f \n", (*a)->node->c->x);
-  int h=miseAEchelleAbs((*a)->node->c->x,bounds);
-  int w=miseAEchelleOrd((*a)->node->c->y,bounds);
-  affichage(h,w);
+	//  printf("affichage  %d \n", (*a)->node->id);
+		//printf("affichage  %f \n", (*a)->node->c->x);
+  int w=miseAEchelleAbs((*a)->node->c->x,bounds);
+  int h=miseAEchelleOrd((*a)->node->c->y,bounds);
+  affichage(w,h);
   
   if((*a)->right!=NULL){  //printf("affichage\n"); printf("affichage  %d \n", a->node->id);
     parcoursAvl(&((*a)->right),bounds);

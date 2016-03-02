@@ -37,7 +37,7 @@ Coordinate* conversionLatLon(float lat, float lon);
  * \param visible char that represente if the node is visibl or not
  * \return Node*
  */
-Node* initNode(int id, float lat, float lon, char* visible);
+Node* initNode(int id, float lat, float lon, char* visible, Bounds *b);
 
 
 /**
@@ -48,10 +48,13 @@ Node* initNode(int id, float lat, float lon, char* visible);
  * \param lon_max float that represente the maximal longitude on the map
  * \param lat_min float that represente the minium latitude on the map
  * \param lon_min float that represente the minimum longitude on the map
+ * \param b 
  * \return Bounds*
  */
-extern Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max);
+Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max);
 
+
+Bounds* convertBounds(Bounds *b );
 
 /**
  * \fn void distanceXY(float x1, float y1, float x2, float y2)

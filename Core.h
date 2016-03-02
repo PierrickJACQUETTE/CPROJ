@@ -94,7 +94,7 @@ typedef struct{
 }Way;
 
 /**
-* \struct Avl Avl.h
+* \struct Avl 
 * \brief This is the structure for representing an AVL .
 *
 * This structure consists of:
@@ -109,6 +109,15 @@ typedef struct sAvl{
   struct sAvl* left,* right;
 }Avl;
 
+/**
+* \struct Map
+* \brief This is the structure for representing a Map from OpenstreetMap .
+*
+* the label : an int
+* - the son left : tree pointer
+* - the son right : tree pointer
+* - the height of the tree : an int
+*/
 typedef struct{
 	Avl* avl;
 	Bounds* bounds;

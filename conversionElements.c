@@ -24,28 +24,33 @@ Coordinate* conversionLatLon(float lat, float lon){
 }
 
 
-Node* initNode(int id, float lat, float lon, char* visible){
+Node* initNode(int id, float lat, float lon, char* visible, Bounds *b){
 	Node * n= malloc(sizeof(Node));
 	n->id=id;
 	n->c= malloc(sizeof(Coordinate));
 	n->c= conversionLatLon(lat, lon);
+	n->c->x= n->c->x - b->min->x;
+	n->c->y= n->c->y - b->min->y;
 	n->visible= visible;
 	return n;
 }
 
-extern Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
+Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
 	Bounds *b=malloc(sizeof(Bounds));
 	b->min =malloc(sizeof(Coordinate));
 	b->max = malloc(sizeof(Coordinate));
 	b->min= conversionLatLon(lat_min, lon_min);
 	b->max= conversionLatLon(lat_max, lon_max);
+	return b;
+}
+
+Bounds* convertBounds(Bounds *b ){
 	b->max->x = b->max->x - b->min->x; // b->min->x= distanceLatLon(lat_min, lon_min, lat_min, lon_max); plus precis
 	b->max->y = b->max->y - b->min->y; // b->min->y= distanceLatLon(lat_min, lon_min, lat_max, lon_min); plus precis
 	b->min->x=0;
 	b->min->y=0;
 	return b;
 }
-
 
 float distanceXY(float x1, float y1, float x2, float y2){
 	return sqrt(pow(x2-x1, 2) + pow(y2-y1, 2));

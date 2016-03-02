@@ -22,5 +22,5 @@ Map* parseDoc(char* filename);
 Map* parseElements(xmlDocPtr doc, xmlNodePtr cur);
 
 Bounds* parseBounds (xmlNodePtr cur);
-Node* parseNode (xmlDocPtr doc, xmlNodePtr cur);
+Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds);
 void parseWay (xmlDocPtr doc, xmlNodePtr cur);

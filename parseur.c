@@ -29,7 +29,7 @@ void parseWay (xmlDocPtr doc, xmlNodePtr cur){
 	}
 }
 
-Node* parseNode (xmlDocPtr doc, xmlNodePtr cur) {
+Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
 	Node* node;
 	int id;
 	float lat, lon;
@@ -56,7 +56,7 @@ Node* parseNode (xmlDocPtr doc, xmlNodePtr cur) {
 	}
 
 	printf("id = %d, lat = %f, lon = %f, visible=%s \n", id,lat,lon,visible);
-	node = initNode(id,lat,lon,visible);
+	node = initNode(id,lat,lon,visible, bounds);
 
 	return node;
 }
@@ -96,7 +96,7 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 
 			if ((!xmlStrcmp(cur->name, (const xmlChar *)"node"))){
 				printf("Element %s\n", cur->name);
-				node = parseNode (doc, cur);
+				node = parseNode (doc, cur, map->bounds);
 				if(flag==1){
 					init(&a,node);
 					flag=0;
@@ -115,6 +115,7 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 	}
 
 	map->avl=a;
+	map->bounds=convertBounds(map->bounds);
 	return map;
 }
 
