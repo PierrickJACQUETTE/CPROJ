@@ -1,4 +1,11 @@
-Objectif semaine pour le 23/02 :
+Objectif semaine pour le 09/03 :
+- Documentation .h
+- Free (malloc, xml)
+- Finir les fonctions mathematiques
+- Stockage dans la structure Way
+- Affichage du stockage (point, voir en lignes)
+
+Objectif semaine pour le 02/03 :
 - Makefile (Documentation)
 - Revoir les fonctions mathematiques
 - Stockage dans la structure Bounds, Avl
