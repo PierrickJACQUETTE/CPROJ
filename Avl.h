@@ -1,5 +1,5 @@
 /**
-* \file AVL.h
+* \file Avl.h
 * \brief This file can create, insert and retrieve nodes in an AVL ( balanced
 * binary tree search )
 * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
@@ -15,8 +15,8 @@
 */
 
 
-#ifndef AVL_H
-#define AVL_H
+#ifndef __AVL_H__
+#define __AVL_H__
 
 #include <stdio.h>
 #include <stdlib.h>
