@@ -5,7 +5,7 @@ Coordinate* conversionLatLon(float lat, float lon){
 	Coordinate *c= malloc(sizeof(Coordinate));
 	int EarthCircumference= 40075;
 	int EarthPerimeter = 40000;
-	c->x= (EarthCircumference*/*cosf(lat)*/lon)/360; // 1° = RAYON*COS(LAT)
+	c->x= (EarthCircumference* /*cosf(lat)*/ lon)/360; // 1° = RAYON*COS(LAT)
 	c->y=(lat*EarthPerimeter)/360;  //1°= LAT*RAYON
 	printf("LONG :%f -> LAT: %f  \n", c->x, c->y);
 	return c;

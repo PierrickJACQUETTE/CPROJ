@@ -74,9 +74,8 @@ Bounds* parseBounds (xmlNodePtr cur) {
 	return b;
 }
 
-/*Fonction that prints the elements needed and the attributs with their content*/
+/*Fonction that parses the elements needed*/
 Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
-	//Bounds *b;
 	Node *node;
 	Map * map = malloc(sizeof(Map));
 	Avl *a = NULL;
@@ -88,8 +87,6 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 		if (cur->type == XML_ELEMENT_NODE) {
 			if (!xmlStrcmp(cur->name, (const xmlChar *)"bounds")){
 				printf("Element %s\n", cur->name);
-				//as we are not using it yet, we let it on comment
-				//b = parseBounds(cur);
 				map->bounds = parseBounds(cur);
 				printf("\n");
 			}

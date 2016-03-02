@@ -1,13 +1,16 @@
 /**
 * \file Core.h
 * \brief Declaration of structure for the project
-* \author Isabelle MARINO Pierrick JACQUETTE Hafca TIRICHINE
-* \version 0.2
-* \date 18 february 2016
+* \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
+* \date 02 mars 2016
 *
 * Declaration of structure for the project open stree map
 *
 */
+
+#ifndef __CORE_H__
+#define __CORE_H__
+
 #include <stdio.h>
 
 /**
@@ -123,3 +126,5 @@ typedef struct{
 	Bounds* bounds;
 	//WAy ....
 }Map;
+
+#endif  /* __CORE_H__ */

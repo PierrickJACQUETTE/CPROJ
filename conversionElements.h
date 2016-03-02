@@ -1,18 +1,18 @@
 /**
  * \file conversionElements.h
- * \brief Daclare fonction to calculate the transformation for a node by open street map
+ * \brief Declare fonctions to calculate the transformation for a node by open street map
  * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
  * \date 25 february 2016
  *
  *
  */
 
-#ifndef __CORE_H__
-#define __CORE_H__
-#include "Core.h"
+#ifndef __CONVERSIONELEMENTS_H__
+#define __CONVERSIONELEMENTS_H__
+
 #include <math.h>
 #include <stdlib.h>
-
+#include "Core.h"
 
 /**
  * \fn Coordinate* conversionLatLon(float lat, float lon)
@@ -116,4 +116,4 @@ Node* distanceToBounds(Bounds *b, Node* n);
 float distanceLatLon(float lat1, float lon1, float lat2, float lon2);
 
 
-#endif /* __CORE_H__ */
+#endif /* __CONVERSIONELEMENTS_H__ */
