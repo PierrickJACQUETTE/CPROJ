@@ -55,7 +55,6 @@ Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
 		node_attr = node_attr->next;
 	}
 
-	printf("id = %ld, lat = %f, lon = %f, visible=%s \n", id,lat,lon,visible);
 	node = initNode(id,lat,lon,visible, bounds);
 
 	return node;
@@ -69,7 +68,6 @@ Bounds* parseBounds (xmlNodePtr cur) {
 	minlon = strtof((const char *)(xmlGetProp(cur, (const xmlChar *)"minlon")),NULL);
 	maxlat = strtof((const char *)(xmlGetProp(cur, (const xmlChar *)"maxlat")),NULL);
 	maxlon = strtof((const char *)(xmlGetProp(cur, (const xmlChar *)"maxlon")),NULL);
-	printf("minlat: %f, minlon: %f, maxlat: %f, maxlon: %f \n",minlat,minlon,maxlat,maxlon);
 	b = initBounds(minlat,maxlat,minlon,maxlon);
 	return b;
 }
@@ -86,21 +84,16 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 	while (cur != NULL) {
 		if (cur->type == XML_ELEMENT_NODE) {
 			if (!xmlStrcmp(cur->name, (const xmlChar *)"bounds")){
-				printf("Element %s\n", cur->name);
 				map->bounds = parseBounds(cur);
-				printf("\n");
 			}
 
 			if ((!xmlStrcmp(cur->name, (const xmlChar *)"node"))){
-				printf("Element %s\n", cur->name);
 				node = parseNode (doc, cur, map->bounds);
 				if(flag==1){
 					init(&a,node);
 					flag=0;
 				}
 				insert(&a,node);
-				printf("parseElement LONG :%f -> LAT: %f  \n", a->node->c->x, a->node->c->y);
-				printf("\n");
 			}
 			if ((!xmlStrcmp(cur->name, (const xmlChar *)"way"))){
 				printf("Element %s\n", cur->name);

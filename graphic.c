@@ -69,7 +69,6 @@ void printMap(Map* map){
 
   SDL_RenderPresent(renderer);
   evenement();
-// parcoursAvl(map->avl,map->bounds);
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
   SDL_Quit();
