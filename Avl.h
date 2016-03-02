@@ -29,7 +29,7 @@
 * @param  key it is the reference node
 * @return     return the node if it exists, otherwise null
 */
-Node* search(Avl *a, int key);
+Node* search(Avl *a, unsigned long key);
 
 /**
  * function to insert the key in the AVL in the right place according to its
@@ -52,7 +52,7 @@ void init(Avl **a,Node *n);
  * @param a      Self-balancing binary search tree
  * @param nombre dentifier of the tree level view
  */
-void print(Avl **a,int nombre);
+void print(Avl **a,unsigned long nombre);
 
 /**
  * Frees the memory tree

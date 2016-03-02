@@ -44,8 +44,8 @@ typedef struct{
  * visible represente if this point is visible or not
  */
 typedef struct{
- 	int id;
-	Coordinate* c;
+ 	unsigned long id;
+	Coordinate* c; 
 	char* visible; // True,False;
 }Node;
 

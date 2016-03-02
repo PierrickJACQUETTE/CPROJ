@@ -124,7 +124,7 @@ Avl* insert(Avl **a,Node *n){
 	return aux;
 }
 
-Node* search(Avl *a, int key){
+Node* search(Avl *a, unsigned long key){
 	if(a!=NULL){
 		if(key == a->node->id){
 			return a->node;
@@ -157,7 +157,7 @@ void init(Avl **a,Node* n){
 	}
 }
 
-void print(Avl **a,int nombre){
+void print(Avl **a,unsigned long nombre){
 	if(*a == NULL){
 		return;
 	}
@@ -170,7 +170,7 @@ void print(Avl **a,int nombre){
 		printf("|-------%f\n",(*a)->node->c->x);
 	}
 	else{
-		printf("%d\n",(*a)->node->id);
+		printf("%ld\n",(*a)->node->id);
 	}
 	print(&((*a)->left),nombre+1);
 }

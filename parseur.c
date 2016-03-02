@@ -31,7 +31,7 @@ void parseWay (xmlDocPtr doc, xmlNodePtr cur){
 
 Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
 	Node* node;
-	int id;
+	unsigned long id;
 	float lat, lon;
 	char *visible;
 
@@ -41,7 +41,7 @@ Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
 	while(node_attr != NULL)
 	{
 		if( xmlStrcmp(node_attr->name,(const xmlChar *)"id")==0 ){
-			id = atoi((const char *)((node_attr->children)->content));
+			id = strtoul((const char *)((node_attr->children)->content),NULL,0);
 		}
 		else if( xmlStrcmp(node_attr->name,(const xmlChar *)"visible")==0  ){
 			visible = (char *)((node_attr->children)->content);
@@ -55,7 +55,7 @@ Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
 		node_attr = node_attr->next;
 	}
 
-	printf("id = %d, lat = %f, lon = %f, visible=%s \n", id,lat,lon,visible);
+	printf("id = %ld, lat = %f, lon = %f, visible=%s \n", id,lat,lon,visible);
 	node = initNode(id,lat,lon,visible, bounds);
 
 	return node;
