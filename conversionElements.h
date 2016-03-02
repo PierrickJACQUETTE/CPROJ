@@ -2,7 +2,6 @@
  * \file conversionElements.h
  * \brief Daclare fonction to calculate the transformation for a node by open street map
  * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
- * \version 0.1
  * \date 25 february 2016
  *
  *
@@ -28,16 +27,17 @@ Coordinate* conversionLatLon(float lat, float lon);
 
 
 /**
- * \fn initNode(int id, float lat, float lon, char visible)
+ * \fn initNode(unsigned long id, float lat, float lon, char visible, Bounds* b)
  * \brief initalise a Node for a point in a map
  *
  * \param id represente the name of this point
  * \param lat float that represente the latitude of this point
  * \param lon float that represente the longitude of this point
  * \param visible char that represente if the node is visibl or not
+ * \param b Bounds that represente the bounds of the map
  * \return Node*
  */
-Node* initNode(int id, float lat, float lon, char* visible, Bounds *b);
+Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b);
 
 
 /**
@@ -48,12 +48,17 @@ Node* initNode(int id, float lat, float lon, char* visible, Bounds *b);
  * \param lon_max float that represente the maximal longitude on the map
  * \param lat_min float that represente the minium latitude on the map
  * \param lon_min float that represente the minimum longitude on the map
- * \param b 
  * \return Bounds*
  */
 Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max);
 
-
+/**
+ * \fn Bounds* convertBounds(Bounds *b )
+ * \brief convert the bounds of the map to the min is (0,0) 
+ *
+ * \param b Bounds that represente the bounds of the map before the changement
+ * \return Bounds*
+ */
 Bounds* convertBounds(Bounds *b );
 
 /**

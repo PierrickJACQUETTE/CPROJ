@@ -1,3 +1,11 @@
+/**
+ * \file graphic.h
+ * \brief Display the Node and the way from a map
+ * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
+ * \date 2 march 2016
+ *
+ */
+
 #ifndef __CORE_H__
 #define __CORE_H__
 

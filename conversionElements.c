@@ -1,15 +1,3 @@
-/**
- * \file conversionElements.c
- * \brief Calculate the transformation for a node by open street map
- * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
- * \version 0.1
- * \date 19 february 2016
- *
- * Calculate node's Coordinates: transform an openstreetmap Coordinates to an standar Coordinates
- * Caculate the bounds proportion
- *
- */
-
 #include "conversionElements.h"
 
 
@@ -24,7 +12,7 @@ Coordinate* conversionLatLon(float lat, float lon){
 }
 
 
-Node* initNode(int id, float lat, float lon, char* visible, Bounds *b){
+Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b){
 	Node * n= malloc(sizeof(Node));
 	n->id=id;
 	n->c= malloc(sizeof(Coordinate));
