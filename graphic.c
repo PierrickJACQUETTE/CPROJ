@@ -1,42 +1,31 @@
 #include "graphic.h"
 
-
 enum status {QUIT, CONTINUE};
 int heigth = 400; // taille fenetre par défaut
 int width = 600;
 SDL_Renderer* renderer;
 Avl* avl;
 
-void affichage(int xClick,int yClick)
-{
-
+void affichage(float x,float y){
   glBegin(GL_POINTS);
   glColor3f(1,1,1);
-  glVertex2i(xClick,yClick);  // xClick et yClick sont des int
+  glVertex2f(x,y);
   glEnd();
 }
 
-int miseAEchelleAbs(float x, Bounds* bounds){
-	int f= (int)(x*width/(bounds->max->x));
-	printf("Abs      %f  %d  ::::",x,  f);
-	return f;
-}
-
-int miseAEchelleOrd(float x, Bounds* bounds){
-	int f= (int)(x*heigth/(bounds->max->y));
-	printf("Ordonne  %f  %d  \n",x,  f );
-	return f;
+float miseAEchelle(float x, float y,int size){
+	return x*size/y;
 }
 
 void parcoursAvl(Avl **a, Bounds* bounds){
-  if((*a)->left!=NULL){   
+  if((*a)->left!=NULL){
     parcoursAvl(&((*a)->left),bounds);
   }
-  int w=miseAEchelleAbs((*a)->node->c->x,bounds);
-  int h=miseAEchelleOrd((*a)->node->c->y,bounds);
+  float w=miseAEchelle((*a)->node->c->x,bounds->max->x,width);
+  float h=miseAEchelle((*a)->node->c->y,bounds->max->y,heigth);
   affichage(w,h);
-  
-  if((*a)->right!=NULL){  
+
+  if((*a)->right!=NULL){
     parcoursAvl(&((*a)->right),bounds);
   }
 }
@@ -75,9 +64,9 @@ void printMap(Map* map){
   glLoadIdentity();
   glViewport(0,0,width,heigth);
   gluOrtho2D(0,width,0,heigth);
-  
+
   parcoursAvl(&(map->avl),map->bounds);
- 
+
   SDL_RenderPresent(renderer);
   evenement();
 // parcoursAvl(map->avl,map->bounds);
