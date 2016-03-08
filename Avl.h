@@ -20,7 +20,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "conversionElements.h"
+#include "init.h"
 
 /**
 * search function in an AVL according to a key, this key is the reference node
@@ -53,10 +53,5 @@ void init(Avl **a,Node *n);
  */
 void print(Avl **a,unsigned long nombre);
 
-/**
- * Frees the memory tree
- * @param avl Self-balancing binary search tree
- */
-void delete(Avl** avl);
 
 #endif /* __AVL_H__ */

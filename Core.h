@@ -39,18 +39,6 @@ typedef struct{
 }Bounds;
 
 /**
- * \struct Tag
- * \brief Objet that represente tags for an open street map
- *
- * tagKey is the key of the tags
- * tagValue is the value of the tags
- */
-typedef struct{
-	char* tagKey;
-	char* tagValue;
-}Tag;
-
-/**
  * \struct Color
  * \brief Objet that represente color in rgb
  *
@@ -63,6 +51,22 @@ typedef struct{
 	int green;
 	int blue;
 }Color;
+
+
+/**
+ * \struct Tag
+ * \brief Objet that represente tags for an open street map
+ *
+ * tagKey is the key of the tags
+ * tagValue is the value of the tags
+ * Color is the color of this type of element
+ */
+typedef struct{
+	char* tagKey;
+	char* tagValue;
+	Color* c;
+}Tag;
+
 
 
 /**
@@ -182,12 +186,14 @@ typedef struct sAvl{
 * Avl of Node
 * Avl of Way
 * List Way
+* Table of Tag that represente the principal tag and their particularities.
 */
 typedef struct{
 	Bounds* bounds;
 	Avl* avl;
 	Avl* avlWay;
 	ListWay* listWay;
+	Tag** referenceTag;
 }Map;
 
 #endif  /* __CORE_H__ */

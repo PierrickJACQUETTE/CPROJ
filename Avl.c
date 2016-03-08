@@ -166,8 +166,3 @@ void print(Avl **a,unsigned long nombre){
 	}
 	print(&((*a)->left),nombre+1);
 }
-
-void delete(Avl** avl){
-	free(avl);
-	avl =NULL;
-}

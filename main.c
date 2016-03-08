@@ -1,19 +1,6 @@
 #include "parseur.h"
 #include "graphic.h"
-
-void deleteMap(Map *map){
-	if(map!=NULL){
-		//bounds
-		free(map->bounds->min);
-		free(map->bounds->max);
-		free(map->bounds);
-		//way
-
-		// avl	
-		delete(&(map->avl));
-	}
-}
-
+#include "delete.h"
 
 int main(int argc, char **argv) {
 	char *filename;
