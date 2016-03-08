@@ -1,16 +1,31 @@
 #include "parseur.h"
 
-void parseWay (xmlDocPtr doc, xmlNodePtr cur){
+Way* parseWay (xmlDocPtr doc, xmlNodePtr cur){
+	Way* w;
+	unsigned long id;
+	char *visible;
+	ListNode* ln=initListNode(0);
+	Tag* tag=NULL;
+
+	
 	xmlAttr *node_attr = cur->properties;
 	xmlNodePtr tmpcur=NULL;
 
 	//we browse the element's properties list and we only print the attributs we need to
 	while(node_attr != NULL){
-		if( xmlStrcmp(node_attr->name,(const xmlChar *)"id")==0
+		if( xmlStrcmp(node_attr->name,(const xmlChar *)"id")==0 ){
+			id = strtoul((const char *)((node_attr->children)->content),NULL,0);
+			printf("%s = %s\n", node_attr->name, (node_attr->children)->content);
+		}
+		else if( xmlStrcmp(node_attr->name,(const xmlChar *)"visible")==0  ){
+			visible = (char *)((node_attr->children)->content);
+			printf("%s = %s\n", node_attr->name, (node_attr->children)->content);
+		}
+		/*if( xmlStrcmp(node_attr->name,(const xmlChar *)"id")==0
 		|| xmlStrcmp(node_attr->name,(const xmlChar *)"visible")==0 )
 		{
 			printf("%s = %s\n", node_attr->name, (node_attr->children)->content);
-		}
+		}*/
 		node_attr = node_attr->next;
 	}
 	tmpcur = cur->xmlChildrenNode;
@@ -22,11 +37,14 @@ void parseWay (xmlDocPtr doc, xmlNodePtr cur){
 				printf("< %s : k = %s, v = %s >\n", tmpcur->name, xmlGetProp(tmpcur, (const xmlChar *)"k"), xmlGetProp(tmpcur, (const xmlChar *)"v"));
 			}
 			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"nd")==0 ){
+				ln=addRefListNode( strtoul((const char *)((node_attr->children)->content),NULL,0), ln);
 				printf("< %s : ref = %s >\n", tmpcur->name, xmlGetProp(tmpcur, (const xmlChar *)"ref"));
 			}
 		}
 		tmpcur = tmpcur->next;
 	}
+	w= initWay(id,visible, ln,tag);
+	return w;
 }
 
 Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {

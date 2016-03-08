@@ -49,4 +49,14 @@ Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max);
 Tag** initReferenceTag();
 
 
+refListNode* initRefListNode(unsigned long n, refListNode* next);
+
+ListNode* initListNode(unsigned long first);
+
+ListNode* addRefListNode(unsigned long n, ListNode *l);
+
+Tag* initTag(char* key, char* value);
+
+Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag);
+
 #endif

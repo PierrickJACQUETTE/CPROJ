@@ -25,6 +25,57 @@ Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
 
 
 Tag** initReferenceTag(){
-
+	// a faire pour Isa
 	return NULL;
+}
+
+
+
+refListNode* initRefListNode(unsigned long  n, refListNode* next){
+	refListNode* r=malloc(sizeof(refListNode));
+	r->nd=n;
+	r->next=next;
+	return r;
+}
+
+ListNode* initListNode(unsigned long first){
+	ListNode* l=malloc(sizeof(ListNode));
+	refListNode* f=initRefListNode(first,NULL);
+	l->firstRef=f;
+	l->lastRef=f;
+	return l;
+}
+
+ListNode* addRefListNode(unsigned long n, ListNode *l){
+	refListNode* r=initRefListNode(n, NULL);
+	if(l!=NULL){
+		if((l->firstRef!=NULL) && (l->firstRef->nd!=0)){
+			l->lastRef->next=r;
+			l->lastRef=r;
+			return l;
+		}
+		else{
+			l->firstRef=r;
+			l->lastRef=r;
+			return l;
+		}
+	}
+	return l;
+}
+
+Tag* initTag(char* key, char* value){
+	Tag* t=malloc(sizeof(Tag));
+	t->tagKey=key;
+	t->tagValue=value;
+	//t->c voir si l'on le met en arguments ou si on le recherche dans les reference de tag;
+	return t;
+}
+
+Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag){
+	Way* w= malloc(sizeof(Way));
+	w->id=id;
+	w->listNd=ln;
+	w->visible=visible;
+	w->tag=tag;
+	return w;
 }

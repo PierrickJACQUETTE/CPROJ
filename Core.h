@@ -103,12 +103,12 @@ typedef struct{
  * \struct refList
  * \brief Objet that represente a Node and the next Node
  *
- * nd is the principal Node
+ * nd is the principal id Node
  * next is the next Node
  */
-typedef struct{
-	Node * nd;
-	Node * next;
+typedef struct refListNode{
+	unsigned long nd;
+	struct refListNode* next;
 }refListNode;
 
 /**
@@ -158,9 +158,9 @@ typedef struct{
  */
 typedef struct{
 	unsigned long id;
-	refListNode listNd;
-	char visible; // T = true, F= false;
-	Tag tag;
+	ListNode* listNd;
+	char* visible; // T = true, F= false;
+	Tag* tag;
 }Way;
 
 /**

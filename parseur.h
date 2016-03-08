@@ -60,6 +60,6 @@ Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds);
 * @param  xmlNodePtr cur which is a pointer to the current node 
 * @return  a pointer to a way structure created whith the attributes we got from the parsing
 */
-void parseWay (xmlDocPtr doc, xmlNodePtr cur);
+Way* parseWay (xmlDocPtr doc, xmlNodePtr cur);
 
 #endif /* __PARSEUR_H__ */
