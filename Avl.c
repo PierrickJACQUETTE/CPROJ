@@ -105,7 +105,19 @@ Avl* insert(Avl **a,Node *n, Way * w){
 			}
 		}
 		if(n==NULL){
-			////////////////////////////////////////////////////////////////////
+			if((*a)->way->id == w->id){
+				aux = *a;
+			}
+			else if(w->id < (*a)->way->id){
+				(*a)->left = insert(&((*a)->left),NULL,w);
+				equilibrateAVL(&(*a));
+				aux= *a;
+			}
+			else if(w->id > (*a)->way->id){
+				(*a)->right = insert(&((*a)->right),NULL,w);
+				equilibrateAVL(&(*a));
+				aux = *a;
+			}
 
 		}
 	}
@@ -121,20 +133,35 @@ Avl* insert(Avl **a,Node *n, Way * w){
 		if(w==NULL){aux->node = n;}
 		if(n==NULL){aux->way = w;}
 	}
-	
+
 	return aux;
 }
 
-Node* search(Avl *a, unsigned long key){
+Node* searchNode(Avl *a, unsigned long key){
 	if(a!=NULL){
 		if(key == a->node->id){
 			return a->node;
 		}
 		else if(key > a->node->id ){
-			return search(a->right,key);
+			return searchNode(a->right,key);
 		}
 		else{
-			return search(a->left,key);
+			return searchNode(a->left,key);
+		}
+	}
+	return NULL;
+}
+
+Way* searchWay(Avl *a, unsigned long key){
+	if(a!=NULL){
+		if(key == a->way->id){
+			return a->way;
+		}
+		else if(key > a->way->id ){
+			return searchWay(a->right,key);
+		}
+		else{
+			return searchWay(a->left,key);
 		}
 	}
 	return NULL;
@@ -159,20 +186,38 @@ void init(Avl **a,Node* n, Way *w){
 	}
 }
 
-void print(Avl **a,unsigned long nombre){
+void printNode(Avl **a,unsigned long nombre){
 	if(*a == NULL){
 		return;
 	}
-	print(&((*a)->right),nombre+1);
+	printNode(&((*a)->right),nombre+1);
 	if(nombre!=0){
 		int i;
 		for(i=0;i<nombre-1;i++){
 			printf("|\t");
 		}
-		printf("|-------%f\n",(*a)->node->c->x);
+		printf("|-----: %ld\n",(*a)->node->id);
 	}
 	else{
 		printf("%ld\n",(*a)->node->id);
 	}
-	print(&((*a)->left),nombre+1);
+	printNode(&((*a)->left),nombre+1);
+}
+
+void printWay(Avl **a,unsigned long nombre){
+	if(*a == NULL){
+		return;
+	}
+	printWay(&((*a)->right),nombre+1);
+	if(nombre!=0){
+		int i;
+		for(i=0;i<nombre-1;i++){
+			printf("|\t");
+		}
+		printf("|-----: %ld\n",(*a)->way->id);
+	}
+	else{
+		printf("%ld\n",(*a)->way->id);
+	}
+	printWay(&((*a)->left),nombre+1);
 }

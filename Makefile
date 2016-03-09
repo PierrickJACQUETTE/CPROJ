@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -lm -lGL -lGLU `sdl2-config --cflags --libs` `xml2-config --cflags --libs`
-EXEC = test
+EXEC = CPROJ
 HEADERS = $(wildcard *.h)
 OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
 

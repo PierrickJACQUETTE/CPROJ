@@ -28,7 +28,15 @@
 * @param  key it is the reference node
 * @return     return the node if it exists, otherwise null
 */
-Node* search(Avl *a, unsigned long key);
+Node* searchNode(Avl *a, unsigned long key);
+
+/**
+* search function in an AVL according to a key, this key is the reference way
+* @param  a   Self-balancing binary search tree
+* @param  key it is the reference node
+* @return     return the way if it exists, otherwise null
+*/
+Way* searchWay(Avl *a, unsigned long key);
 
 /**
  * function to insert the key in the AVL in the right place according to its
@@ -51,7 +59,14 @@ void init(Avl **a,Node *n, Way*w);
  * @param a      Self-balancing binary search tree
  * @param nombre dentifier of the tree level view
  */
-void print(Avl **a,unsigned long nombre);
+void printNode(Avl **a,unsigned long nombre);
 
+
+/**
+ * function allowing display of the AVL
+ * @param a      Self-balancing binary search tree
+ * @param nombre dentifier of the tree level view
+ */
+void printWay(Avl **a,unsigned long nombre);
 
 #endif /* __AVL_H__ */
