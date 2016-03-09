@@ -53,7 +53,7 @@ refListNode* initRefListNode(unsigned long n, refListNode* next);
 
 ListNode* initListNode(unsigned long first);
 
-ListNode* addRefListNode(unsigned long n, ListNode *l);
+/*ListNode**/void addRefListNode(unsigned long n, ListNode *l);
 
 Tag* initTag(char* key, char* value);
 

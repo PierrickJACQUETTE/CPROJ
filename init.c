@@ -46,10 +46,10 @@ ListNode* initListNode(unsigned long first){
 	return l;
 }
 
-ListNode* addRefListNode(unsigned long n, ListNode *l){
-	refListNode* r=initRefListNode(n, NULL);
-	if(l!=NULL){
-		if((l->firstRef!=NULL) && (l->firstRef->nd!=0)){
+/*ListNode**/void addRefListNode(unsigned long n, ListNode *l){
+	//refListNode* r=initRefListNode(n, NULL);
+	//if(l!=NULL){
+		/*if((l->firstRef!=NULL) && (l->firstRef->nd!=0)){
 			l->lastRef->next=r;
 			l->lastRef=r;
 			return l;
@@ -58,9 +58,12 @@ ListNode* addRefListNode(unsigned long n, ListNode *l){
 			l->firstRef=r;
 			l->lastRef=r;
 			return l;
-		}
+		}*/
+	//}
+	if(l==NULL){
+	printf("NULL\n");
 	}
-	return l;
+	return;
 }
 
 Tag* initTag(char* key, char* value){

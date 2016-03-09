@@ -85,21 +85,28 @@ void equilibrateAVL(Avl **a){
 	}
 }
 
-Avl* insert(Avl **a,Node *n){
+Avl* insert(Avl **a,Node *n, Way * w){
 	Avl *aux =NULL;
+
 	if(*a){
-		if((*a)->node->id == n->id){
-			aux = *a;
+		if(w==NULL){
+			if((*a)->node->id == n->id){
+				aux = *a;
+			}
+			else if(n->id < (*a)->node->id){
+				(*a)->left = insert(&((*a)->left),n,NULL);
+				equilibrateAVL(&(*a));
+				aux= *a;
+			}
+			else if(n->id > (*a)->node->id){
+				(*a)->right = insert(&((*a)->right),n,NULL);
+				equilibrateAVL(&(*a));
+				aux = *a;
+			}
 		}
-		else if(n->id < (*a)->node->id){
-			(*a)->left = insert(&((*a)->left),n);
-			equilibrateAVL(&(*a));
-			aux= *a;
-		}
-		else if(n->id > (*a)->node->id){
-			(*a)->right = insert(&((*a)->right),n);
-			equilibrateAVL(&(*a));
-			aux = *a;
+		if(n==NULL){
+			////////////////////////////////////////////////////////////////////
+
 		}
 	}
 	else{
@@ -110,9 +117,11 @@ Avl* insert(Avl **a,Node *n){
 			exit(EXIT_FAILURE);
 		}
 		aux->left = aux->right = NULL;
-		aux->node = n;
 		aux->height = 1;
+		if(w==NULL){aux->node = n;}
+		if(n==NULL){aux->way = w;}
 	}
+	
 	return aux;
 }
 
@@ -131,16 +140,17 @@ Node* search(Avl *a, unsigned long key){
 	return NULL;
 }
 
-void init(Avl **a,Node* n){
+void init(Avl **a,Node* n, Way *w){
 	Avl *aux = (Avl*)malloc(sizeof(Avl));
 	if(aux!=NULL){
-		if(n==NULL){
-			fprintf(stderr,"Allocation impossible : %s\n","fonction init node");
+		if(n==NULL && w==NULL){
+			fprintf(stderr,"Allocation impossible : %s\n","fonction initAVL");
 			exit(EXIT_FAILURE);
 		}
 		aux->left = aux->right = NULL;
 		aux->height = 1;
-		aux->node =n;
+		if(w==NULL){aux->node =n;}
+		if(n==NULL){aux->way =w;}
 		*a = aux;
 	}
 	else {

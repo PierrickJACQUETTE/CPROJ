@@ -37,14 +37,14 @@ Node* search(Avl *a, unsigned long key);
  * @param  contenu it is the reference node
  * @return         A tree under the pointer with the change
  */
-Avl* insert(Avl **a,Node *n);
+Avl* insert(Avl **a,Node *n, Way *w);
 
 /**
  * Initializing the AVL with the root , the parameter content
  * @param a       Self-balancing binary search tree
  * @param contenu it is the reference node
  */
-void init(Avl **a,Node *n);
+void init(Avl **a,Node *n, Way*w);
 
 /**
  * function allowing display of the AVL

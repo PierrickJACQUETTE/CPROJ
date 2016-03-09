@@ -175,6 +175,7 @@ typedef struct{
 */
 typedef struct sAvl{
   Node* node;
+	Way *way;
   int height;
   struct sAvl* left,* right;
 }Avl;
