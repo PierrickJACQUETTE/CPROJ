@@ -24,9 +24,35 @@ Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
 }
 
 
-Tag** initReferenceTag(){
-	// a faire pour Isa
-	return NULL;
+Tag* initReferenceTag(){
+	//= (Tag*)malloc(sizeof(Tag));
+	Tag *t[9];
+	//t[1]->tagKey ="building"; t[1]->tagValue ="yes"; 
+		/*struct Tag t[9]={{"building", "yes", {60,60,60}}, //grey
+		  {"highway", "resiential", {255,255,204}}, // beige clair
+		  {"waterway", "canal", {51,102,204}}, // bleu
+		  {"waterway", "river", {0,153,255}},
+		  {"waterway", "water", {51,204,255}},
+		  {"waterway", "coastline", {0,204,255}},
+		  {"landuse", "grass", {102,204,51}}, // green
+		  {"leisure", "park", {51,153,0}},
+		  {"landuse", "forest", {51,102,0}}};*/
+	int i=1;
+	for(i=0; i<9; i++){
+		t[i]=malloc(sizeof(Tag));
+		t[i]->c=malloc(sizeof(Color));
+	}
+	t[1]->tagKey ="building"; t[1]->tagValue ="yes"; t[1]->c->red=60; t[1]->c->green=60; t[1]->c->blue=60;
+	t[2]->tagKey ="highway"; t[2]->tagValue ="residential"; t[2]->c->red=255; t[2]->c->green=255; t[2]->c->blue=204;
+	t[3]->tagKey ="waterway"; t[3]->tagValue ="canal"; t[3]->c->red=51; t[3]->c->green=102; t[3]->c->blue=204;
+	t[4]->tagKey ="waterway"; t[4]->tagValue ="river"; t[4]->c->red=0; t[4]->c->green=153; t[4]->c->blue=255;
+	t[5]->tagKey ="waterway"; t[5]->tagValue ="water"; t[5]->c->red=51; t[5]->c->green=204; t[5]->c->blue=255;
+	t[6]->tagKey ="waterway"; t[6]->tagValue ="coastline"; t[6]->c->red=0; t[6]->c->green=204; t[6]->c->blue=255;
+	t[7]->tagKey ="landuse"; t[7]->tagValue ="grass"; t[7]->c->red=102; t[7]->c->green=204; t[7]->c->blue=51;
+	t[8]->tagKey ="leisure"; t[8]->tagValue ="park"; t[8]->c->red=51; t[8]->c->green=153; t[8]->c->blue=0;
+	t[9]->tagKey ="landuse"; t[9]->tagValue ="forest"; t[9]->c->red=51; t[9]->c->green=102; t[9]->c->blue=0;
+
+	return *t;
 }
 
 
@@ -66,7 +92,7 @@ ListNode* addRefListNode(unsigned long n, ListNode* l){
 	return l;
 }
 
-Tag* initTag(char* key, char* value, Tag** ref){
+Tag* initTag(char* key, char* value, Tag *ref){
 	Tag* t=malloc(sizeof(Tag));
 	t->tagKey=key;
 	t->tagValue=value;
@@ -83,10 +109,10 @@ Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag){
 	w->tag=tag;
 	return w;
 }
-char* goodTag(char * k, char *v, Tag ** ref){
-	//char* t='T';
+Tag* goodTag(char * k, char *v, Tag*  ref){
+	
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-	return "T";
+	return NULL;
 }
 
 
@@ -125,4 +151,10 @@ ListWay* addRefListWay(Way* w, ListWay* lw){
 		lw=initListWay(w->id);
 	}
 	return lw;
+}
+
+Map* initMap(){
+	Map * map = malloc(sizeof(Map));
+	map->referenceTag=initReferenceTag();
+	return map;
 }

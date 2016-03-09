@@ -1,12 +1,12 @@
 #include "parseur.h"
 
-Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
+Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag* refTag){
 	Way* w;
 	unsigned long id;
 	char *visible;
 	ListNode* ln=initListNode(0);
 	Tag* tag=NULL;
-
+	Tag* t=NULL;
 	
 	xmlAttr *node_attr = cur->properties;
 	xmlNodePtr tmpcur=NULL;
@@ -34,8 +34,9 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 	while(tmpcur != NULL){
 		if (tmpcur->type == XML_ELEMENT_NODE) {
 			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag")==0 ){
-				if(strcmp(goodTag((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"), refTag),"T")==0){
-					tag=initTag((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"),refTag);
+					t=goodTag((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"), refTag);
+				if(t!=NULL){
+					tag=t; printf("bon tag\n");
 					
 				}
 				printf("< %s : k = %s, v = %s >\n", tmpcur->name, xmlGetProp(tmpcur, (const xmlChar *)"k"), xmlGetProp(tmpcur, (const xmlChar *)"v"));
@@ -96,16 +97,15 @@ Bounds* parseBounds (xmlNodePtr cur) {
 
 /*Fonction that parses the elements needed*/
 Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
+	Map* map=initMap();
 	Node *node;
 	Way* way;
-	Map * map = malloc(sizeof(Map));
 	Avl *aNode = NULL;
 	Avl* avlWay =NULL;
 	ListWay* lw=NULL;
 	int flagN = 1;
 	int flagW = 1;
 	
-	map->referenceTag=initReferenceTag();
 
 	cur = cur->xmlChildrenNode;
 

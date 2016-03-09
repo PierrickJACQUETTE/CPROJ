@@ -46,7 +46,7 @@ Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max);
  *
  * \return Tag**
  */
-Tag** initReferenceTag();
+Tag* initReferenceTag();
 
 
 refListNode* initRefListNode(unsigned long n, refListNode* next);
@@ -55,14 +55,14 @@ ListNode* initListNode(unsigned long first);
 
 ListNode* addRefListNode(unsigned long n, ListNode *l);
 
-Tag* initTag(char* key, char* value,Tag** ref);
+Tag* initTag(char* key, char* value,Tag *ref);
 
 Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag);
 
-char* goodTag(char * k, char *v,Tag** ref);
+Tag* goodTag(char * k, char *v,Tag *ref);
 
 refListWay* initRefListWay(unsigned long  w, refListWay* next);
 ListWay* initListWay(unsigned long first);
 ListWay* addRefListWay(Way* w, ListWay* lw);
-
+Map* initMap();
 #endif

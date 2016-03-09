@@ -194,7 +194,7 @@ typedef struct{
 	Avl* avl;
 	Avl* avlWay;
 	ListWay* listWay;
-	Tag** referenceTag;
+	Tag* referenceTag;
 }Map;
 
 #endif  /* __CORE_H__ */

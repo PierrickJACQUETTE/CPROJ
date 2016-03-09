@@ -62,6 +62,6 @@ Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds);
 * @param  Tag** table represente the tag that we need 
 * @return  a pointer to a way structure created whith the attributes we got from the parsing
 */
-Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag);
+Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag* refTag);
 
 #endif /* __PARSEUR_H__ */
