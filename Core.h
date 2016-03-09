@@ -124,16 +124,16 @@ typedef struct{
 }ListNode;
 
 /**
- * \struct refListLong
+ * \struct refListWay
  * \brief Objet that represente a long and the next long (id)
  *
  * way is the principal way
  * next is the next way
  */
-typedef struct{
-	unsigned long * way;
-	unsigned long * next;
-}refListLong;
+typedef struct refListWay{
+	unsigned long way;
+	struct refListWay * next;
+}refListWay;
 
 /**
  * \struct List
@@ -143,8 +143,8 @@ typedef struct{
  * lastRef is the last Way of the List
  */
 typedef struct{
-	refListLong * firstRef;
-	refListLong * lastRef;
+	refListWay * firstRef;
+	refListWay * lastRef;
 }ListWay;
 
 /**

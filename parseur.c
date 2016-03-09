@@ -1,6 +1,6 @@
 #include "parseur.h"
 
-Way* parseWay (xmlDocPtr doc, xmlNodePtr cur){
+Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 	Way* w;
 	unsigned long id;
 	char *visible;
@@ -34,16 +34,20 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur){
 	while(tmpcur != NULL){
 		if (tmpcur->type == XML_ELEMENT_NODE) {
 			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag")==0 ){
+				if(strcmp(goodTag((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"), refTag),"T")==0){
+					tag=initTag((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"),refTag);
+					
+				}
 				printf("< %s : k = %s, v = %s >\n", tmpcur->name, xmlGetProp(tmpcur, (const xmlChar *)"k"), xmlGetProp(tmpcur, (const xmlChar *)"v"));
 			}
 			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"nd")==0 ){
-				//addRefListNode( strtoul((const char *)((node_attr->children)->content),NULL,0), ln);
+				ln=addRefListNode(strtoul((const char *)(xmlGetProp(tmpcur, (const xmlChar *)"ref")),NULL,0), ln);
 				printf("< %s : ref = %s >\n", tmpcur->name, xmlGetProp(tmpcur, (const xmlChar *)"ref"));
 			}
 		}
 		tmpcur = tmpcur->next;
 	}
-	w= initWay(id,visible, ln,tag);
+	w= initWay(id,visible,ln,tag);
 	return w;
 }
 
@@ -97,8 +101,11 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 	Map * map = malloc(sizeof(Map));
 	Avl *aNode = NULL;
 	Avl* avlWay =NULL;
+	ListWay* lw=NULL;
 	int flagN = 1;
 	int flagW = 1;
+	
+	map->referenceTag=initReferenceTag();
 
 	cur = cur->xmlChildrenNode;
 
@@ -118,7 +125,8 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 			}
 			if ((!xmlStrcmp(cur->name, (const xmlChar *)"way"))){
 				printf("Element %s\n", cur->name);
-				way=parseWay (doc, cur);
+				way=parseWay (doc, cur, map->referenceTag);
+				lw= addRefListWay(way, lw);
 				if(flagW==1){
 					init(&avlWay,NULL, way);
 					flagW=0;
@@ -133,6 +141,7 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 
 	map->avl=aNode;
 	map->avlWay=avlWay;
+	map->listWay=lw;
 	map->bounds=convertBounds(map->bounds);
 	return map;
 }

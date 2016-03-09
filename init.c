@@ -46,10 +46,10 @@ ListNode* initListNode(unsigned long first){
 	return l;
 }
 
-/*ListNode**/void addRefListNode(unsigned long n, ListNode *l){
-	//refListNode* r=initRefListNode(n, NULL);
-	//if(l!=NULL){
-		/*if((l->firstRef!=NULL) && (l->firstRef->nd!=0)){
+ListNode* addRefListNode(unsigned long n, ListNode* l){
+	refListNode* r=initRefListNode(n, NULL);
+	if(l!=NULL){
+		if((l->firstRef!=NULL) && (l->firstRef->nd!=0)){
 			l->lastRef->next=r;
 			l->lastRef=r;
 			return l;
@@ -58,18 +58,19 @@ ListNode* initListNode(unsigned long first){
 			l->firstRef=r;
 			l->lastRef=r;
 			return l;
-		}*/
-	//}
-	if(l==NULL){
-	printf("NULL\n");
+		}
 	}
-	return;
+	else{
+		l=initListNode(n);
+	}
+	return l;
 }
 
-Tag* initTag(char* key, char* value){
+Tag* initTag(char* key, char* value, Tag** ref){
 	Tag* t=malloc(sizeof(Tag));
 	t->tagKey=key;
 	t->tagValue=value;
+	// rechercher la couleur ici
 	//t->c voir si l'on le met en arguments ou si on le recherche dans les reference de tag;
 	return t;
 }
@@ -81,4 +82,47 @@ Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag){
 	w->visible=visible;
 	w->tag=tag;
 	return w;
+}
+char* goodTag(char * k, char *v, Tag ** ref){
+	//char* t='T';
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+	return "T";
+}
+
+
+
+refListWay* initRefListWay(unsigned long  w, refListWay* next){
+	refListWay* r=malloc(sizeof(refListWay));
+	r->way=w;
+	r->next=next;
+	return r;
+}
+
+ListWay* initListWay(unsigned long first){
+	ListWay* l=malloc(sizeof(ListWay));
+	refListWay* f=initRefListWay(first,NULL);
+	l->firstRef=f;
+	l->lastRef=f;
+	return l;
+}
+
+
+ListWay* addRefListWay(Way* w, ListWay* lw){
+	refListWay* r=initRefListWay(w->id, NULL);
+	if(lw!=NULL){
+		if((lw->firstRef!=NULL) && (lw->firstRef->way!=0)){
+			lw->lastRef->next=r;
+			lw->lastRef=r;
+			return lw;
+		}
+		else{
+			lw->firstRef=r;
+			lw->lastRef=r;
+			return lw;
+		}
+	}
+	else{
+		lw=initListWay(w->id);
+	}
+	return lw;
 }
