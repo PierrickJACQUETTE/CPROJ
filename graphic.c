@@ -4,31 +4,6 @@ enum status {QUIT, CONTINUE};
 int heigth = 400; // taille fenetre par défaut
 int width = 600;
 SDL_Renderer* renderer;
-Avl* avl;
-
-void affichage(float x,float y){
-  glBegin(GL_POINTS);
-  glColor3f(1,1,1);
-  glVertex2f(x,y);
-  glEnd();
-}
-
-float miseAEchelle(float x, float y,int size){
-	return x*size/y;
-}
-
-void parcoursAvl(Avl **a, Bounds* bounds){
-  if((*a)->left!=NULL){
-    parcoursAvl(&((*a)->left),bounds);
-  }
-  float w=miseAEchelle((*a)->node->c->x,bounds->max->x,width);
-  float h=miseAEchelle((*a)->node->c->y,bounds->max->y,heigth);
-  affichage(w,h);
-
-  if((*a)->right!=NULL){
-    parcoursAvl(&((*a)->right),bounds);
-  }
-}
 
 void evenement(){
   enum status status = CONTINUE; // enumeration de statuts == while infini
@@ -46,11 +21,11 @@ void evenement(){
   while (status != QUIT);
 }
 
-void printMap(Map* map){
+void printMap(Map* map,char* typeOfDessin){
   SDL_Window* window = NULL; // initiailisation de fenetre vide
   window = SDL_CreateWindow // creation fenetre
   (
-    "Test", SDL_WINDOWPOS_UNDEFINED, // nom
+    "CPROJ", SDL_WINDOWPOS_UNDEFINED, // nom
     SDL_WINDOWPOS_UNDEFINED,
     width, heigth, // taille
     SDL_WINDOW_SHOWN
@@ -64,8 +39,15 @@ void printMap(Map* map){
   glLoadIdentity();
   glViewport(0,0,width,heigth);
   gluOrtho2D(0,width,0,heigth);
-
-  parcoursAvl(&(map->avl),map->bounds);
+  if(strcmp(typeOfDessin,"point")==0){
+    parcoursAvl(&(map->avl),map->bounds,width,heigth);
+  }
+  else if(strcmp(typeOfDessin,"line")==0){
+    //je sais pas encore
+  }
+  else{
+    printf("Le deuxieme argument est inconnu %s\n", typeOfDessin);
+  }
 
   SDL_RenderPresent(renderer);
   evenement();
