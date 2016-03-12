@@ -43,7 +43,7 @@ void printMap(Map* map,char* typeOfDessin){
     parcoursAvl(&(map->avl),map->bounds,width,heigth);
   }
   else if(strcmp(typeOfDessin,"line")==0){
-    //je sais pas encore
+    parcoursListWay(map,width,heigth);
   }
   else{
     printf("Le deuxieme argument est inconnu %s\n", typeOfDessin);

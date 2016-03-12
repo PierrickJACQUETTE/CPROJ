@@ -14,12 +14,12 @@
 #include <stdio.h>
 
 /**
- * \struct Coordinate
- * \brief Objet that represente the coordinate of a point
- *
- * x is the abscissa's coordinate
- * y is the ordely's coordinate
- */
+* \struct Coordinate
+* \brief Objet that represente the coordinate of a point
+*
+* x is the abscissa's coordinate
+* y is the ordely's coordinate
+*/
 
 typedef struct{
 	float x;
@@ -27,25 +27,25 @@ typedef struct{
 }Coordinate;
 
 /**
- * \struct Bounds
- * \brief Objet that represente bounds for an open street map
- *
- * min is the coordinates of the minimum's point that it can have
- * max is the coordinates of the maximum's point that it can have
- */
+* \struct Bounds
+* \brief Objet that represente bounds for an open street map
+*
+* min is the coordinates of the minimum's point that it can have
+* max is the coordinates of the maximum's point that it can have
+*/
 typedef struct{
 	Coordinate* min;
 	Coordinate* max;
 }Bounds;
 
 /**
- * \struct Color
- * \brief Objet that represente color in rgb
- *
- * red is the proportion of red in the color
- * green is the proportion of green in the color
- * bleu is the proportion of bleu in the color
- */
+* \struct Color
+* \brief Objet that represente color in rgb
+*
+* red is the proportion of red in the color
+* green is the proportion of green in the color
+* bleu is the proportion of bleu in the color
+*/
 typedef struct{
 	int red;
 	int green;
@@ -54,13 +54,13 @@ typedef struct{
 
 
 /**
- * \struct Tag
- * \brief Objet that represente tags for an open street map
- *
- * tagKey is the key of the tags
- * tagValue is the value of the tags
- * Color is the color of this type of element
- */
+* \struct Tag
+* \brief Objet that represente tags for an open street map
+*
+* tagKey is the key of the tags
+* tagValue is the value of the tags
+* Color is the color of this type of element
+*/
 typedef struct{
 	char* tagKey;
 	char* tagValue;
@@ -70,14 +70,14 @@ typedef struct{
 
 
 /**
- * \struct TagDraw
- * \brief Objet that represente tags for an open street map
- *
- * tag is the tag
- * thickness is the thickness of this tag
- * contour is the outline color of this tag
- * background c is the background of this tag
- */
+* \struct TagDraw
+* \brief Objet that represente tags for an open street map
+*
+* tag is the tag
+* thickness is the thickness of this tag
+* contour is the outline color of this tag
+* background c is the background of this tag
+*/
 typedef struct{
 	Tag* tag;
 	int thickness;
@@ -86,76 +86,76 @@ typedef struct{
 }TagDraw;
 
 /**
- * \struct Node
- * \brief Objet that represente a point in openstreetmap
- *
- * id represente the name of this object
- * c represente where is this point on the map
- * visible represente if this point is visible or not
- */
+* \struct Node
+* \brief Objet that represente a point in openstreetmap
+*
+* id represente the name of this object
+* c represente where is this point on the map
+* visible represente if this point is visible or not
+*/
 typedef struct{
- 	unsigned long id;
+	unsigned long id;
 	Coordinate* c;
 	char* visible; // True,False;
 }Node;
 
 /**
- * \struct refList
- * \brief Objet that represente a Node and the next Node
- *
- * nd is the principal id Node
- * next is the next Node
- */
+* \struct refList
+* \brief Objet that represente a Node and the next Node
+*
+* nd is the principal id Node
+* next is the next Node
+*/
 typedef struct refListNode{
 	unsigned long nd;
 	struct refListNode* next;
 }refListNode;
 
 /**
- * \struct ListNode
- * \brief Objet that represente a List of Node
- *
- * firstRef is the first Node of the List
- * lastRef is the last Node of the List
- */
+* \struct ListNode
+* \brief Objet that represente a List of Node
+*
+* firstRef is the first Node of the List
+* lastRef is the last Node of the List
+*/
 typedef struct{
 	refListNode * firstRef;
 	refListNode * lastRef;
 }ListNode;
 
 /**
- * \struct refListWay
- * \brief Objet that represente a long and the next long (id)
- *
- * way is the principal way
- * next is the next way
- */
+* \struct refListWay
+* \brief Objet that represente a long and the next long (id)
+*
+* way is the principal way
+* next is the next way
+*/
 typedef struct refListWay{
 	unsigned long way;
 	struct refListWay * next;
 }refListWay;
 
 /**
- * \struct List
- * \brief Objet that represente a List of Way
- *
- * firstRef is the first Way of the List
- * lastRef is the last Way of the List
- */
+* \struct List
+* \brief Objet that represente a List of Way
+*
+* firstRef is the first Way of the List
+* lastRef is the last Way of the List
+*/
 typedef struct{
 	refListWay * firstRef;
 	refListWay * lastRef;
 }ListWay;
 
 /**
- * \struct Way
- * \brief Objet that represente a construction like a building or a garden in openstreetmap
- *
- * id represente the name of this object
- * listNd is the list of the differents node that it compose this object
- * visible represente if this point is visible or not
- * tag is the type of this object
- */
+* \struct Way
+* \brief Objet that represente a construction like a building or a garden in openstreetmap
+*
+* id represente the name of this object
+* listNd is the list of the differents node that it compose this object
+* visible represente if this point is visible or not
+* tag is the type of this object
+*/
 typedef struct{
 	unsigned long id;
 	ListNode* listNd;
@@ -174,10 +174,10 @@ typedef struct{
 * - the height of the tree : an int
 */
 typedef struct sAvl{
-  Node* node;
+	Node* node;
 	Way *way;
-  int height;
-  struct sAvl* left,* right;
+	int height;
+	struct sAvl* left,* right;
 }Avl;
 
 /**

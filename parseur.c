@@ -7,7 +7,7 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 	ListNode* ln=initListNode(0);
 	Tag* tag=NULL;
 	Tag* t=NULL;
-	
+
 	xmlAttr *node_attr = cur->properties;
 	xmlNodePtr tmpcur=NULL;
 
@@ -36,7 +36,7 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag")==0 ){
 					t=goodTag((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"), refTag);
 				if(t!=NULL){
-					tag=t;	
+					tag=t;
 				}
 				printf("< %s : k = %s, v = %s >\n", tmpcur->name, xmlGetProp(tmpcur, (const xmlChar *)"k"), xmlGetProp(tmpcur, (const xmlChar *)"v"));
 			}
@@ -96,7 +96,7 @@ Bounds* parseBounds (xmlNodePtr cur) {
 
 /*Fonction that parses the elements needed*/
 Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
-	Map* map=initMap();	
+	Map* map=initMap();
 	Node *node;
 	Way* way;
 	Avl *aNode = NULL;
@@ -104,7 +104,7 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 	ListWay* lw=NULL;
 	int flagN = 1;
 	int flagW = 1;
-	
+
 
 	cur = cur->xmlChildrenNode;
 
@@ -131,7 +131,7 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 					flagW=0;
 				}
 				insert(&avlWay,NULL,way);
-				
+
 				printf("\n");
 			}
 		}

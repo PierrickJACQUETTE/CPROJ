@@ -6,5 +6,8 @@
 #include <stdlib.h>
 #include <GL/glu.h>
 #include "Core.h"
+#include "Avl.h"
+
+void parcoursListWay(Map *map,int width,int heigth);
 
 #endif /* __LINE_H__ */
