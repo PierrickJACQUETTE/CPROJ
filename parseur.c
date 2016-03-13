@@ -37,6 +37,7 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 					t=goodTag((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"), refTag);
 				if(t!=NULL){
 					tag=t;
+					printf("RGB : ( %d , %d , %d )\n",tag->c->red,tag->c->green,tag->c->blue);
 				}
 				printf("< %s : k = %s, v = %s >\n", tmpcur->name, xmlGetProp(tmpcur, (const xmlChar *)"k"), xmlGetProp(tmpcur, (const xmlChar *)"v"));
 			}
