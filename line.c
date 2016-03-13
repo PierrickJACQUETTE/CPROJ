@@ -12,7 +12,7 @@ float echelle(float x, float y,int size){
 }
 
 void startLine(){
-  glBegin(GL_LINES);
+  glBegin(GL_LINE_STRIP);
 }
 
 void endLine(){
