@@ -54,13 +54,13 @@ void parcoursListWay(Map* map,int width,int heigth){
   refListWay * current =l->firstRef;
   while(current!=NULL){
     Way * currentWay =searchWay(map->avlWay,current->way);
-    printf("line.c currentway visible= %s\n",currentWay->visible);
-    //    if(strcmp(currentWay->visible,"true")==0){
-    drawWay(map,currentWay);
-    //    }
-    //    else if(strcmp(currentWay->visible,"false")!=0){
-    //printf("Le champs visible du way %ld ne vaut ni true ni false mais %s\n",currentWay->id,currentWay->visible );
-    //    }
+   // printf("line.c currentway visible= %s\n",currentWay->visible);
+    	if(strcmp(currentWay->visible,"true")==0){
+    		drawWay(map,currentWay);
+      }
+      else if(strcmp(currentWay->visible,"false")!=0){
+    		printf("Le champs visible du way %ld ne vaut ni true ni false mais %s\n",currentWay->id,currentWay->visible );
+      }
     current = current->next;
   }
 }

@@ -43,8 +43,13 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 		}
 		tmpcur = tmpcur->next;
 	}
-	w= initWay(id,visible,ln,tag);
-	return w;
+	if(tag!=NULL){
+		w= initWay(id,visible,ln,tag);
+		return w;
+	}
+	else{
+	return NULL;
+	}
 }
 
 Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
@@ -121,14 +126,16 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 			if ((!xmlStrcmp(cur->name, (const xmlChar *)"way"))){
 				printf("Element %s\n", cur->name);
 				way=parseWay (doc, cur, map->referenceTag);
-				lw= addRefListWay(way, lw);
-				if(flagW==1){
-					init(&avlWay,NULL, way);
-					flagW=0;
-				}
-				insert(&avlWay,NULL,way);
+				if(way!=NULL){
+					lw= addRefListWay(way, lw);
+					if(flagW==1){
+						init(&avlWay,NULL, way);
+						flagW=0;
+					}
+					insert(&avlWay,NULL,way);
 
-				printf("\n");
+					printf("\n");
+				}
 			}
 		}
 		cur = cur->next;

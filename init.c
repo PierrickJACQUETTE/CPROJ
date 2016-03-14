@@ -93,7 +93,9 @@ Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag){
 	Way* w= malloc(sizeof(Way));
 	w->id=id;
 	w->listNd=ln;
-	w->visible=visible;
+	if(strcmp(visible, "true")==0){	w->visible="true";}
+	else{ w->visible="false";}
+	w->tag=malloc(sizeof(Tag));
 	w->tag=tag;
 	return w;
 }

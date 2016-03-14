@@ -13,12 +13,12 @@ int main(int argc, char **argv) {
 		filename = argv[1];
 		Map* map= malloc(sizeof(Map));
 		map =parseDoc(filename);
-	//	printWay(&(map->avlWay),0);
+		//printWay(&(map->avlWay),0);
 		if(argc==3){
 			printMap(map,argv[2]);
 		}
 		else{
-		printf("\n\n\nELSE\n\n\n");
+		//printf("\n\n\nELSE\n\n\n");
 			printMap(map,"line");
 		}
 		xmlCleanupParser();
