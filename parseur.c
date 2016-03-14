@@ -21,11 +21,6 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 			visible = (char *)((node_attr->children)->content);
 			printf("%s = %s\n", node_attr->name, (node_attr->children)->content);
 		}
-		/*if( xmlStrcmp(node_attr->name,(const xmlChar *)"id")==0
-		|| xmlStrcmp(node_attr->name,(const xmlChar *)"visible")==0 )
-		{
-			printf("%s = %s\n", node_attr->name, (node_attr->children)->content);
-		}*/
 		node_attr = node_attr->next;
 	}
 	tmpcur = cur->xmlChildrenNode;

@@ -155,6 +155,7 @@ Node* searchNode(Avl *a, unsigned long key){
 Way* searchWay(Avl *a, unsigned long key){
 	if(a!=NULL){
 		if(key == a->way->id){
+		    printf("searchway visible = %s\n",a->way->visible);
 			return a->way;
 		}
 		else if(key > a->way->id ){

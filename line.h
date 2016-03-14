@@ -8,6 +8,12 @@
 #include "Core.h"
 #include "Avl.h"
 
+void printPoint(float x,float y);
+float echelle(float x, float y,int size);
+void startLine();
+void endLine();
+void sizeColor(Color * c);
+void drawWay(Map* map,Way * way);
 void parcoursListWay(Map *map,int width,int heigth);
 
 #endif /* __LINE_H__ */

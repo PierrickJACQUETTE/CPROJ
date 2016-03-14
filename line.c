@@ -52,10 +52,9 @@ void parcoursListWay(Map* map,int width,int heigth){
   widthR=width;
   ListWay * l = map->listWay;
   refListWay * current =l->firstRef;
-  while(current!=l->lastRef){
-
+  while(current!=NULL){
     Way * currentWay =searchWay(map->avlWay,current->way);
-    //printf("%s\n",currentWay->visible);
+    printf("line.c currentway visible= %s\n",currentWay->visible);
     //    if(strcmp(currentWay->visible,"true")==0){
     drawWay(map,currentWay);
     //    }
