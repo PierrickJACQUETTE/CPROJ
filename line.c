@@ -37,7 +37,7 @@ void drawWay(Map* map,Way * way){
     c->green=255;
     sizeColor(c);
   }
-  while(current!=l->lastRef){
+  while(current!=NULL){
     Node * currentNode =searchNode(map->avl,current->nd);
     float wi=echelle(currentNode->c->x,map->bounds->max->x,widthR);
     float he=echelle(currentNode->c->y,map->bounds->max->y,heigthR);
