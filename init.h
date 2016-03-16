@@ -61,9 +61,9 @@ Tag* initTag(char* key, char* value,Color *c);
 Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag);
 
 Tag* goodTag(char * k, char *v,Tag **ref);
-
+Relation* initRelation(unsigned long id, char* visible, ListWay* lw, Tag* tag);
 refListWay* initRefListWay(unsigned long  w, refListWay* next);
 ListWay* initListWay(unsigned long first);
-ListWay* addRefListWay(Way* w, ListWay* lw);
+ListWay* addRefListWay(unsigned long way, ListWay* lw);
 Map* initMap();
 #endif

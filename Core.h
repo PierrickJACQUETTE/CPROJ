@@ -60,11 +60,13 @@ typedef struct{
 * tagKey is the key of the tags
 * tagValue is the value of the tags
 * Color is the color of this type of element
+* thick represente the thickness of the way
 */
 typedef struct{
 	char* tagKey;
 	char* tagValue;
 	Color* c;
+	int thick;
 }Tag;
 
 
@@ -164,6 +166,47 @@ typedef struct{
 }Way;
 
 /**
+* \struct refListRel
+* \brief Objet that represente a long and the next long (id)
+*
+* Rel is the principal relation
+* next is the next relation
+*/
+typedef struct refListRel{
+	unsigned long way;
+	struct refListRel * next;
+}refListRel;
+
+
+/**
+* \struct List
+* \brief Objet that represente a List of Relation
+*
+* firstRef is the first Relation of the List
+* lastRef is the last Relation of the List
+*/
+typedef struct{
+	refListRel * firstRef;
+	refListRel * lastRef;
+}ListRelation;
+
+/**
+* \struct Relation
+* \brief Objet that represente a construction like a building or a garden in openstreetmap
+*
+* id represente the name of this object
+* listW is the list of the differents way that it compose this object
+* visible represente if this point is visible or not
+* tag is the type of this object
+*/
+typedef struct{
+	unsigned long id;
+	ListWay* listW;
+	char* visible; // T = true, F= false;
+	Tag* tag;
+}Relation;
+
+/**
 * \struct Avl
 * \brief This is the structure for representing an AVL .
 *
@@ -187,6 +230,7 @@ typedef struct sAvl{
 * Avl of Node
 * Avl of Way
 * List Way
+* List of relation
 * Table of Tag that represente the principal tag and their particularities.
 */
 typedef struct{
@@ -194,6 +238,7 @@ typedef struct{
 	Avl* avl;
 	Avl* avlWay;
 	ListWay* listWay;
+	ListRelation * listRelation;
 	Tag** referenceTag;
 }Map;
 

@@ -46,6 +46,48 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 	return NULL;
 	}*/
 }
+Relation* parseRelation(xmlDocPtr doc, xmlNodePtr cur){
+	Relation* r;
+	unsigned long id;
+	char *visible;
+	ListWay* lw=initListWay(0);
+	Tag* tag=NULL;
+	Tag* t=NULL;
+
+	xmlAttr *node_attr = cur->properties;
+	xmlNodePtr tmpcur=NULL;
+
+	//we browse the element's properties list and we only print the attributs we need to
+	while(node_attr != NULL){
+		if( xmlStrcmp(node_attr->name,(const xmlChar *)"id")==0 ){
+			id = strtoul((const char *)((node_attr->children)->content),NULL,0);
+		}
+		else if( xmlStrcmp(node_attr->name,(const xmlChar *)"visible")==0  ){
+			visible = (char *)((node_attr->children)->content);
+		}
+		node_attr = node_attr->next;
+	}
+	tmpcur = cur->xmlChildrenNode;
+
+	//while "way" has childs
+	while(tmpcur != NULL){
+		if (tmpcur->type == XML_ELEMENT_NODE) {
+			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag")==0 ){
+					//t=goodTag((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"), refTag);
+				if(t!=NULL){
+					tag=t;
+				}
+			}
+			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"member")==0 ){
+				lw=addRefListWay(strtoul((const char *)(xmlGetProp(tmpcur, (const xmlChar *)"ref")),NULL,0), lw);
+			}
+		}
+		tmpcur = tmpcur->next;
+	}
+	
+		r= initRelation(id,visible,lw,tag);
+		return r;
+}
 
 Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
 	Node* node;
@@ -121,13 +163,16 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 			if ((!xmlStrcmp(cur->name, (const xmlChar *)"way"))){
 				way=parseWay (doc, cur, map->referenceTag);
 				if(way!=NULL){
-					lw= addRefListWay(way, lw);
+					lw= addRefListWay(way->id, lw);
 					if(flagW==1){
 						init(&avlWay,NULL, way);
 						flagW=0;
 					}
 					insert(&avlWay,NULL,way);
 				}
+			}
+			if ((!xmlStrcmp(cur->name, (const xmlChar *)"relation"))){
+				printf("relation\n");
 			}
 		}
 		cur = cur->next;

@@ -63,4 +63,11 @@ Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds);
 */
 Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag);
 
+/**
+* Fonction that parses a relation
+* @param  xmlDocPtr doc which is the file parsed
+* @param  xmlNodePtr cur which is a pointer to the current node 
+* @return  a pointer to a relation structure created whith the attributes we got from the parsing
+*/
+Relation* parseRelation(xmlDocPtr doc, xmlNodePtr cur);
 #endif /* __PARSEUR_H__ */
