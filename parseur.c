@@ -127,8 +127,6 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 						flagW=0;
 					}
 					insert(&avlWay,NULL,way);
-
-					printf("\n");
 				}
 			}
 		}
