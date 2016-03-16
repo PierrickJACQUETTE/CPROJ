@@ -15,11 +15,9 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 	while(node_attr != NULL){
 		if( xmlStrcmp(node_attr->name,(const xmlChar *)"id")==0 ){
 			id = strtoul((const char *)((node_attr->children)->content),NULL,0);
-			printf("%s = %s\n", node_attr->name, (node_attr->children)->content);
 		}
 		else if( xmlStrcmp(node_attr->name,(const xmlChar *)"visible")==0  ){
 			visible = (char *)((node_attr->children)->content);
-			printf("%s = %s\n", node_attr->name, (node_attr->children)->content);
 		}
 		node_attr = node_attr->next;
 	}
@@ -32,24 +30,21 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 					t=goodTag((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"), refTag);
 				if(t!=NULL){
 					tag=t;
-					printf("RGB : ( %d , %d , %d )\n",tag->c->red,tag->c->green,tag->c->blue);
 				}
-				printf("< %s : k = %s, v = %s >\n", tmpcur->name, xmlGetProp(tmpcur, (const xmlChar *)"k"), xmlGetProp(tmpcur, (const xmlChar *)"v"));
 			}
 			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"nd")==0 ){
 				ln=addRefListNode(strtoul((const char *)(xmlGetProp(tmpcur, (const xmlChar *)"ref")),NULL,0), ln);
-				printf("< %s : ref = %s >\n", tmpcur->name, xmlGetProp(tmpcur, (const xmlChar *)"ref"));
 			}
 		}
 		tmpcur = tmpcur->next;
 	}
-	if(tag!=NULL){
+	//if(tag!=NULL){
 		w= initWay(id,visible,ln,tag);
 		return w;
-	}
+	/*}
 	else{
 	return NULL;
-	}
+	}*/
 }
 
 Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
@@ -124,7 +119,6 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 				insert(&aNode,node,NULL);
 			}
 			if ((!xmlStrcmp(cur->name, (const xmlChar *)"way"))){
-				printf("Element %s\n", cur->name);
 				way=parseWay (doc, cur, map->referenceTag);
 				if(way!=NULL){
 					lw= addRefListWay(way, lw);

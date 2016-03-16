@@ -10,7 +10,8 @@ Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b)
 	n->c->y= n->c->y - b->min->y;
 	//n->c->x= distanceLatLon(lat, lon, lat, b->min->x);
 	//n->c->y= distanceLatLon(lat, lon, b->min->y, lon);
-	n->visible= visible;
+	if(strcmp(visible, "true")==0){	n->visible="true";}
+	else{ n->visible="false";}
 	return n;
 }
 
