@@ -1,3 +1,9 @@
+Objectif semaine pour le 23/03 :
+-Free(xml, way , node, listWay, listNode, Coordinate, Tag, Avl)
+-Ajouter de la doc
+-Remplissage
+-Affichage rues 
+
 Objectif semaine pour le 16/03 :
 - Free(xml, way , node, listWay, listNode, Coordinate, Tag, Avl)
 - Stockage des tags
