@@ -32,7 +32,7 @@ Tag** initReferenceTag(){
 		t[i]=malloc(sizeof(Tag));
 		t[i]->c=malloc(sizeof(Color));
 	}
-	t[1]->tagKey ="building"; t[1]->tagValue ="yes"; t[1]->c->red=60; t[1]->c->green=60; t[1]->c->blue=60;
+	t[1]->tagKey ="building"; t[1]->tagValue ="yes"; t[1]->c->red=205; t[1]->c->green=183; t[1]->c->blue=158;
 	t[2]->tagKey ="highway"; t[2]->tagValue ="residential"; t[2]->c->red=255; t[2]->c->green=255; t[2]->c->blue=204;
 	t[3]->tagKey ="waterway"; t[3]->tagValue ="canal"; t[3]->c->red=51; t[3]->c->green=102; t[3]->c->blue=204;
 	t[4]->tagKey ="waterway"; t[4]->tagValue ="river"; t[4]->c->red=0; t[4]->c->green=153; t[4]->c->blue=255;

@@ -1,8 +1,8 @@
 #include "graphic.h"
 
 enum status {QUIT, CONTINUE};
-int heigth = 400; // taille fenetre par défaut
-int width = 600;
+int heigth = 600; // taille fenetre par défaut
+int width = 800;
 SDL_Renderer* renderer;
 
 void evenement(){
@@ -33,7 +33,7 @@ void printMap(Map* map,char* typeOfDessin){
   renderer = NULL; // initialise le fond de la fenetre
   renderer =  SDL_CreateRenderer( window, -1, SDL_RENDERER_ACCELERATED); // met le fond
 
-  glClearColor( 0.0f, 0.0f, 0.0f, 0.0f ); // RGB + opacité
+  glClearColor( 225.0f, 220.0f, 225.0f, 0.0f ); // RGB + opacité
   /* Clear The Screen And The Depth Buffer */
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); // nettoyer la fenetre
   glLoadIdentity();
