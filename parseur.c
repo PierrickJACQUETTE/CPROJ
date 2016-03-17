@@ -38,13 +38,13 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 		}
 		tmpcur = tmpcur->next;
 	}
-	//if(tag!=NULL){
+	if(tag!=NULL){
 		w= initWay(id,visible,ln,tag);
 		return w;
-	/*}
+	}
 	else{
 	return NULL;
-	}*/
+	}
 }
 Relation* parseRelation(xmlDocPtr doc, xmlNodePtr cur){
 	Relation* r;

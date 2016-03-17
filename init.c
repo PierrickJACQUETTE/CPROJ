@@ -33,7 +33,7 @@ Tag** initReferenceTag(){
 		t[i]->c=malloc(sizeof(Color));
 	}
 	t[0]->tagKey ="landuse"; t[0]->tagValue ="forest"; t[0]->c->red=51; t[0]->c->green=102; t[0]->c->blue=0;
-	t[1]->tagKey ="building"; t[1]->tagValue ="yes"; t[1]->c->red=60; t[1]->c->green=60; t[1]->c->blue=60;
+	t[1]->tagKey ="building"; t[1]->tagValue ="yes"; t[1]->c->red=205; t[1]->c->green=183; t[1]->c->blue=158;
 	t[2]->tagKey ="highway"; t[2]->tagValue ="residential"; t[2]->c->red=255; t[2]->c->green=255; t[2]->c->blue=204;
 	t[3]->tagKey ="waterway"; t[3]->tagValue ="canal"; t[3]->c->red=51; t[3]->c->green=102; t[3]->c->blue=204;
 	t[4]->tagKey ="waterway"; t[4]->tagValue ="river"; t[4]->c->red=0; t[4]->c->green=153; t[4]->c->blue=255;
@@ -49,12 +49,10 @@ Tag** initReferenceTag(){
 	t[14]->tagKey ="natural"; t[14]->tagValue ="water"; t[14]->c->red=0; t[14]->c->green=55; t[14]->c->blue=204;
 	t[15]->tagKey ="highway"; t[15]->tagValue ="primary"; t[15]->c->red=255; t[15]->c->green=255; t[15]->c->blue=204;
 	t[16]->tagKey ="bridge"; t[16]->tagValue ="yes"; t[16]->c->red=255; t[16]->c->green=255; t[16]->c->blue=204;
-	t[17]->tagKey ="highway"; t[17]->tagValue ="pedestrian"; t[17]->c->red=255; t[17]->c->green=255; t[17]->c->blue=204;
 	t[18]->tagKey ="leisure"; t[18]->tagValue ="garden"; t[18]->c->red=255; t[18]->c->green=0; t[18]->c->blue=0;
-	//t[17]->tagKey ="aeroway"; t[17]->tagValue ="heliport"; t[17]->c->red=255; t[17]->c->green=0; t[17]->c->blue=0;
+	t[17]->tagKey ="natural"; t[17]->tagValue ="coastline"; t[17]->c->red=255; t[17]->c->green=0; t[17]->c->blue=0;
 	
-//<tag k="amenity" v="ferry_terminal"/><tag k="leisure" v="garden"/><tag k="aeroway" v="heliport"/>
-
+//<tag k="amenity" v="ferry_terminal"/><tag k="leisure" v="garden"/><tag k="aeroway" v="heliport"/><tag k="aeroway" v="helipad"/>
 	return t;
 
 }
@@ -129,6 +127,7 @@ Relation* initRelation(unsigned long id, char* visible, ListWay* lw, Tag* tag){
 
 Tag* goodTag(char * k, char *v, Tag**  ref){
 	int i=0;
+	//printf(  "tag : %s \n", k);
 	if(ref!=NULL){
 		for(i=0; i<19; i++){
 			if(ref[i]!=NULL){
