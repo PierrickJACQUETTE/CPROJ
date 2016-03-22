@@ -7,6 +7,7 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 	ListNode* ln=initListNode(0);
 	Tag* tag=NULL;
 	Tag* t=NULL;
+	int size;
 
 	xmlAttr *node_attr = cur->properties;
 	xmlNodePtr tmpcur=NULL;
@@ -34,12 +35,13 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 			}
 			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"nd")==0 ){
 				ln=addRefListNode(strtoul((const char *)(xmlGetProp(tmpcur, (const xmlChar *)"ref")),NULL,0), ln);
+				size++;
 			}
 		}
 		tmpcur = tmpcur->next;
 	}
 	if(tag!=NULL){
-		w= initWay(id,visible,ln,tag);
+		w= initWay(id,visible,ln,tag,size);
 		return w;
 	}
 	else{

@@ -58,7 +58,7 @@ ListNode* addRefListNode(unsigned long n, ListNode *l);
 
 Tag* initTag(char* key, char* value,Color *c);
 
-Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag);
+Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size);
 
 Tag* goodTag(char * k, char *v,Tag **ref);
 Relation* initRelation(unsigned long id, char* visible, ListWay* lw, Tag* tag);

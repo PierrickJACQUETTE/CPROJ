@@ -163,6 +163,7 @@ typedef struct{
 	ListNode* listNd;
 	char* visible; // T = true, F= false;
 	Tag* tag;
+	int size;
 }Way;
 
 /**

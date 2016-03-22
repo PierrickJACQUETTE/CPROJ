@@ -53,6 +53,12 @@ Tag** initReferenceTag(){
 	t[17]->tagKey ="natural"; t[17]->tagValue ="coastline"; t[17]->c->red=255; t[17]->c->green=0; t[17]->c->blue=0;
 	
 //<tag k="amenity" v="ferry_terminal"/><tag k="leisure" v="garden"/><tag k="aeroway" v="heliport"/><tag k="aeroway" v="helipad"/>
+//t[19]->tagKey ="highway"; t[19]->tagValue ="pedestrian"; t[19]->c->red=255; t[19]->c->green=0; t[19]->c->blue=0;
+//t[20]->tagKey ="service"; t[19]->tagValue ="alley"; t[20]->c->red=255; t[20]->c->green=0; t[20]->c->blue=0;
+//t[21]->tagKey ="oneway"; t[19]->tagValue ="yes"; t[21]->c->red=255; t[21]->c->green=0; t[21]->c->blue=0;
+//t[22]->tagKey ="surface"; t[19]->tagValue ="ground"; t[22]->c->red=255; t[22]->c->green=0; t[22]->c->blue=0;
+//t[23]->tagKey ="surface"; t[19]->tagValue ="gravel"; t[23]->c->red=255; t[23]->c->green=0; t[23]->c->blue=0;
+
 	return t;
 
 }
@@ -102,7 +108,7 @@ Tag* initTag(char* key, char* value, Color* c){
 	return t;
 }
 
-Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag){
+Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size){
 	Way* w= malloc(sizeof(Way));
 	w->id=id;
 	w->listNd=ln;
@@ -110,6 +116,8 @@ Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag){
 	else{ w->visible="false";}
 	w->tag=malloc(sizeof(Tag));
 	w->tag=tag;
+	w->size=size;
+	printf("size way: %d\n",w->size);
 	return w;
 }
 
@@ -127,17 +135,17 @@ Relation* initRelation(unsigned long id, char* visible, ListWay* lw, Tag* tag){
 
 Tag* goodTag(char * k, char *v, Tag**  ref){
 	int i=0;
-	//printf(  "tag : %s \n", k);
+	printf( "tag : k %s, v %s  ->", k,v);
 	if(ref!=NULL){
 		for(i=0; i<19; i++){
 			if(ref[i]!=NULL){
-				if(strcmp(k, ref[i]->tagKey)==0){
-					if(strcmp(v, ref[i]->tagValue)==0){
-						return initTag(k, v, ref[i]->c);
-					}
+				if(strcmp(k, ref[i]->tagKey)==0 && strcmp(v, ref[i]->tagValue)==0){
+					printf("est tracé\n"); 
+					return initTag(k, v, ref[i]->c);
 				}
 			}
 		}
+		printf("N EST PAS TRACE \n");
 	}
 	return NULL;
 }
