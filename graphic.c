@@ -34,7 +34,6 @@ void printMap(Map* map,char* typeOfDessin){
   renderer =  SDL_CreateRenderer( window, -1, SDL_RENDERER_ACCELERATED); // met le fond
 
   glClearColor( 225.0f, 220.0f, 225.0f, 0.0f ); // RGB + opacité
-  /* Clear The Screen And The Depth Buffer */
   glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); // nettoyer la fenetre
   glLoadIdentity();
   glViewport(0,0,width,heigth);
@@ -43,7 +42,7 @@ void printMap(Map* map,char* typeOfDessin){
     parcoursAvl(&(map->avl),map->bounds,width,heigth);
   }
   else if(strcmp(typeOfDessin,"line")==0){
-    parcoursListWay(map,width,heigth);
+    parcoursListWay(map,width,heigth,renderer);
   }
   else{
     printf("Le deuxieme argument est inconnu %s\n", typeOfDessin);

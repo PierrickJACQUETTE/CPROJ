@@ -9,11 +9,11 @@
 #ifndef __GRAPHIC_H__
 #define __GRAPHIC_H__
 
-#include "point.h"
-#include "line.h"
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include "point.h"
+#include "line.h"
 
 /**
 * Fonction that permit the display

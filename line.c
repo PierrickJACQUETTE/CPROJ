@@ -23,25 +23,38 @@ void sizeColor(Color * c){
   glColor3ub(c->red,c->green,c->blue);
 }
 
-void fillWay(Map* map, Way * way){
+void fillWay(Map* map, Way * way, SDL_Renderer* renderer){
+  if(strcmp(way->tag->tagKey,"building")==0 && strcmp(way->tag->tagValue,"yes")==0){
   ListNode * l = way->listNd;
   refListNode * current =l->firstRef;
-  glBegin(GL_POLYGON);
+ 
+  int i=0; 
+  short coord_x [way->size];
+  short coord_y [way->size];
+  
+  /*glBegin(GL_POLYGON);
   if(way->tag!=NULL){
   	 sizeColor(way->tag->c);
   }
   else{
-    glEnd();
+    //glEnd();
     return;
-  }
+  } */
   while(current!=NULL){
     Node * currentNode =searchNode(map->avl,current->nd);
     float wi=echelle(currentNode->c->x,map->bounds->max->x,widthR);
     float he=echelle(currentNode->c->y,map->bounds->max->y,heigthR);
-    printPoint(wi,he);
+    coord_x[i]=wi; 
+    coord_y[i]=he; 
+    i++;
+    //printPoint(wi,he);
     current = current->next;
   }
-  glEnd();
+  
+  int n = i-1;
+  filledPolygonRGBA(renderer,coord_x,coord_y,n,way->tag->c->red,way->tag->c->green,way->tag->c->blue,155);
+  //glEnd();
+  }
 }
 
 void drawWay(Map* map,Way * way){
@@ -73,7 +86,7 @@ void drawWay(Map* map,Way * way){
   endLine();
 }
 
-void parcoursListWay(Map* map,int width,int heigth){
+void parcoursListWay(Map* map,int width,int heigth, SDL_Renderer* renderer){
   heigthR=heigth;
   widthR=width;
   ListWay * l = map->listWay;
@@ -82,7 +95,7 @@ void parcoursListWay(Map* map,int width,int heigth){
     Way * currentWay =searchWay(map->avlWay,current->way);
     	if(strcmp(currentWay->visible,"true")==0){
     		drawWay(map,currentWay);
-    		fillWay(map,currentWay);
+    		fillWay(map,currentWay,renderer);
       }
       else if(strcmp(currentWay->visible,"false")!=0){
     		printf("Le champs visible du way %ld ne vaut ni true ni false mais %s\n",currentWay->id,currentWay->visible );
