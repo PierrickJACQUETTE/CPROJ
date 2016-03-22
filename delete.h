@@ -13,12 +13,6 @@
 #include "Avl.h"
 
 /**
- * Frees the memory tree
- * @param avl Self-balancing binary search tree
- */
-void delete(Avl** avl);
-
-/**
  * Frees the memory of a Map
  * @param Map which is deleted
  */
