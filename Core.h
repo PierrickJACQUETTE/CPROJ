@@ -134,6 +134,7 @@ typedef struct{
 */
 typedef struct refListWay{
 	unsigned long way;
+	char *role;
 	struct refListWay * next;
 }refListWay;
 
@@ -166,15 +167,30 @@ typedef struct{
 	int size;
 }Way;
 
+
+/**
+* \struct Relation
+* \brief Objet that represente a construction like a building or a garden in openstreetmap
+*
+* id represente the name of this object
+* listW is the list of the differents way that it compose this object
+* visible represente if this point is visible or not
+*/
+typedef struct{
+	unsigned long id;
+	ListWay* listW;
+	char* visible; // T = true, F= false;
+}Relation;
+
 /**
 * \struct refListRel
 * \brief Objet that represente a long and the next long (id)
 *
-* Rel is the principal relation
+* Relation is the principal relation
 * next is the next relation
 */
 typedef struct refListRel{
-	unsigned long way;
+	Relation* relation;
 	struct refListRel * next;
 }refListRel;
 
@@ -191,21 +207,6 @@ typedef struct{
 	refListRel * lastRef;
 }ListRelation;
 
-/**
-* \struct Relation
-* \brief Objet that represente a construction like a building or a garden in openstreetmap
-*
-* id represente the name of this object
-* listW is the list of the differents way that it compose this object
-* visible represente if this point is visible or not
-* tag is the type of this object
-*/
-typedef struct{
-	unsigned long id;
-	ListWay* listW;
-	char* visible; // T = true, F= false;
-	Tag* tag;
-}Relation;
 
 /**
 * \struct Avl

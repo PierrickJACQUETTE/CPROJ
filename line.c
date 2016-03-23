@@ -37,7 +37,7 @@ void fillWay(Map* map, Way * way, SDL_Renderer* renderer){
   	 sizeColor(way->tag->c);
   }
   else{
-    //glEnd();
+    glEnd();
     return;
   } */
   while(current!=NULL){

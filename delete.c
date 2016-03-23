@@ -90,7 +90,7 @@ void deleteWay(Way *w){
 void deleteRelation(Relation *r){
 	deleteListWay(r->listW);
 	free(r->visible);
-	deleteTag(r->tag);
+	//deleteTag(r->tag);
 	free(r);
 }
 

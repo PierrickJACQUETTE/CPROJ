@@ -53,8 +53,8 @@ Relation* parseRelation(xmlDocPtr doc, xmlNodePtr cur){
 	unsigned long id;
 	char *visible;
 	ListWay* lw=initListWay(0);
-	Tag* tag=NULL;
-	Tag* t=NULL;
+	//Tag* tag=NULL;
+	//Tag* t=NULL;
 
 	xmlAttr *node_attr = cur->properties;
 	xmlNodePtr tmpcur=NULL;
@@ -74,20 +74,15 @@ Relation* parseRelation(xmlDocPtr doc, xmlNodePtr cur){
 	//while "way" has childs
 	while(tmpcur != NULL){
 		if (tmpcur->type == XML_ELEMENT_NODE) {
-			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag")==0 ){
-					//t=goodTag((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"), refTag);
-				if(t!=NULL){
-					tag=t;
-				}
-			}
 			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"member")==0 ){
-				lw=addRefListWay(strtoul((const char *)(xmlGetProp(tmpcur, (const xmlChar *)"ref")),NULL,0), lw);
+				if((strcmp((char *)xmlGetProp(tmpcur, (const xmlChar *)"role"),"inner")==0) || (strcmp((char *)xmlGetProp(tmpcur, (const xmlChar *)"role"),"outer")==0)){
+				lw=addRefListWay(strtoul((const char *)(xmlGetProp(tmpcur, (const xmlChar *)"ref")),NULL,0),(char *)xmlGetProp(tmpcur, (const xmlChar *)"role"), lw);
+			}
 			}
 		}
 		tmpcur = tmpcur->next;
-	}
-	
-		r= initRelation(id,visible,lw,tag);
+	}	
+		r= initRelation(id,visible,lw);
 		return r;
 }
 
@@ -139,9 +134,11 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 	Map* map=initMap();
 	Node *node;
 	Way* way;
+	Relation *r;
 	Avl *aNode = NULL;
 	Avl* avlWay =NULL;
 	ListWay* lw=NULL;
+	ListRelation* lr=NULL;
 	int flagN = 1;
 	int flagW = 1;
 
@@ -165,7 +162,7 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 			if ((!xmlStrcmp(cur->name, (const xmlChar *)"way"))){
 				way=parseWay (doc, cur, map->referenceTag);
 				if(way!=NULL){
-					lw= addRefListWay(way->id, lw);
+					lw= addRefListWay(way->id," ", lw);
 					if(flagW==1){
 						init(&avlWay,NULL, way);
 						flagW=0;
@@ -174,7 +171,11 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 				}
 			}
 			if ((!xmlStrcmp(cur->name, (const xmlChar *)"relation"))){
-				printf("relation\n");
+				r=parseRelation(doc, cur);
+				if(r!=NULL){
+					lr= addRefListRelation(r,lr);
+				}
+				
 			}
 		}
 		cur = cur->next;
@@ -183,6 +184,7 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 	map->avl=aNode;
 	map->avlWay=avlWay;
 	map->listWay=lw;
+	map->listRelation=lr;
 	map->bounds=convertBounds(map->bounds);
 	return map;
 }
