@@ -1,6 +1,9 @@
 # CPROJ
 Open Steet Map XML C
 
+Commande d'installation sdl2_gfx:
+- sudo apt-get install libsdl2-gfx-dev
+
 Lien intéressant pour se documenter sur libxml2, surtout pour le parser qu'il va falloir coder :
 - documentation de tout les fonctions de libxml2 : http://www.xmlsoft.org/html/
 - documentation pour parcourir un document xml :  http://www.xmlsoft.org/html/libxml-tree.html
