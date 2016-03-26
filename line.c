@@ -39,7 +39,7 @@ void fillWay(Map* map, Way * way, SDL_Renderer* renderer){
   else{
     glEnd();
     return;
-  } */
+  }*/ 
   while(current!=NULL){
     Node * currentNode =searchNode(map->avl,current->nd);
     float wi=echelle(currentNode->c->x,map->bounds->max->x,widthR);
@@ -47,7 +47,7 @@ void fillWay(Map* map, Way * way, SDL_Renderer* renderer){
     coord_x[i]=wi; 
     coord_y[i]=he; 
     i++;
-    //printPoint(wi,he);
+   // printPoint(wi,he);
     current = current->next;
   }
   
@@ -93,11 +93,11 @@ void parcoursListWay(Map* map,int width,int heigth, SDL_Renderer* renderer){
   refListWay * current =l->firstRef;
   while(current!=NULL){
     Way * currentWay =searchWay(map->avlWay,current->way);
-    	if(strcmp(currentWay->visible,"true")==0){
+    	if(strcmp(currentWay->visible,"T")==0){
     		drawWay(map,currentWay);
     		fillWay(map,currentWay,renderer);
       }
-      else if(strcmp(currentWay->visible,"false")!=0){
+      else if(strcmp(currentWay->visible,"F")!=0){
     		printf("Le champs visible du way %ld ne vaut ni true ni false mais %s\n",currentWay->id,currentWay->visible );
       }
     current = current->next;

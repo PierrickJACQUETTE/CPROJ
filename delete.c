@@ -21,13 +21,6 @@ void deleteTag(Tag *t){
 	free(t);
 }
 
-void deleteTagDraw(TagDraw *t){
-	deleteTag(t->tag);
-	deleteColor(t->contour);
-	deleteColor(t->background);
-	free(t);
-}
-
 void deleteTabTag(Tag **t){
 	int i;
 	for(i=0;i<19;i++){

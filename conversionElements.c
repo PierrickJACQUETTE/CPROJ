@@ -3,17 +3,21 @@
 
 Coordinate* conversionLatLon(float lat, float lon){
 	Coordinate *c= malloc(sizeof(Coordinate));
-	int EarthCircumference= 40075;
-	int EarthPerimeter = 40000;
-	c->x= (EarthCircumference* /*cosf(lat)*/ lon)/360; // 1° = RAYON*COS(LAT)
-	c->y=(lat*EarthPerimeter)/360;  //1°= LAT*RAYON
+	//int EarthCircumference= 40075;
+	//int EarthPerimeter = 40000;
+	//c->x= (EarthCircumference* /*cosf(lat)*/ lon)/360; // 1° = RAYON*COS(LAT)
+	//c->y=(lat*EarthPerimeter)/360;  //1°= LAT*RAYON
+	c->x=lon;
+	c->y=lat;
 	return c;
 }
 
 
 Bounds* convertBounds(Bounds *b ){
-	b->max->x = b->max->x - b->min->x; // b->min->x= distanceLatLon(lat_min, lon_min, lat_min, lon_max); plus precis
-	b->max->y = b->max->y - b->min->y; // b->min->y= distanceLatLon(lat_min, lon_min, lat_max, lon_min); plus precis
+	//b->max->x = b->max->x - b->min->x; 
+	b->max->x= distanceLatLon(b->min->y, b->min->x, b->min->y, b->max->x);
+	//b->max->y = b->max->y - b->min->y;
+	b->max->y= distanceLatLon(b->min->y, b->min->x, b->max->y, b->min->x); 
 	b->min->x=0;
 	b->min->y=0;
 	return b;
@@ -40,7 +44,7 @@ Node* distanceToBounds(Bounds *b, Node* n){
 
 
 float distanceLatLon(float lat1, float lon1, float lat2, float lon2){
-	int EarthRayon = 6378.137;
+	int EarthRayon = 6371;
 	lon1= lon1*M_PI/180;
 	lon2= lon2*M_PI/180;
 	lat1= lat1*M_PI/180;

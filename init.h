@@ -95,6 +95,15 @@ Tag* initTag(char* key, char* value,Color *c);
 Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size);
 
 /**
+ * \fn Tag* goodTagRelation(char * k, char *v);
+ * \brief analyse if a tag could be stock for a relation
+ * \param key represente the key of the tag
+ * \param value represente the value of the tag
+ * \return Tag*
+ */
+Tag * goodTagRelation(char * k, char *v);
+
+/**
  * \fn Tag* goodTag(char * k, char *v,Tag **ref);
  * \brief analyse if a tag could be stock 
  * \param key represente the key of the tag
@@ -108,11 +117,13 @@ Tag* goodTag(char * k, char *v,Tag **ref);
  * \fn Relation* initRelation(unsigned long id, char* visible, ListWay* lw, Tag* tag);
  * \brief initialise a Relation
  * \param id represente the id of the Relation
- * \param visible represente if the relation is visible or not
+ * \param visible represente if the relation is visible or not 
+ * \param tag represente the tag of the relation
  * \param lw represente the ListWay of the relation
+ * \param ln represente the ListNode of the relation
  * \return Realtion*
  */
-Relation* initRelation(unsigned long id, char* visible, ListWay* lw);
+Relation* initRelation(unsigned long id, char* visible,Tag* t, ListWay* lw, ListNode* ln);
 
 /**
  * \fn ListWay* initListWay();

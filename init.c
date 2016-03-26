@@ -4,14 +4,20 @@
 Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b){
 	Node * n= malloc(sizeof(Node));
 	n->id=id;
+	int negativex=0;
+	int negativey=0;
+	if(lat<(b->min->y)){negativey=1;}
+	if(lon<(b->min->x)){negativex=1;}
 	n->c= malloc(sizeof(Coordinate));
-	n->c= conversionLatLon(lat, lon);
-	n->c->x= n->c->x - b->min->x;
-	n->c->y= n->c->y - b->min->y;
-	//n->c->x= distanceLatLon(lat, lon, lat, b->min->x);
-	//n->c->y= distanceLatLon(lat, lon, b->min->y, lon);
-	if(strcmp(visible, "true")==0){	n->visible="true";}
-	else{ n->visible="false";}
+	//n->c= conversionLatLon(lat, lon);
+	//n->c->x= n->c->x - b->min->x;
+	//n->c->y= n->c->y - b->min->y;
+	n->c->x= distanceLatLon(lat, lon, lat, b->min->x);
+	if(negativex==1){ n->c->x = -(n->c->x);}
+	n->c->y= distanceLatLon(lat, lon, b->min->y, lon);
+	if(negativey==1){ n->c->y = -(n->c->y);}
+	if(strcmp(visible, "true")==0){	n->visible="T";}
+	else{ n->visible="F";}
 	return n;
 }
 
@@ -26,9 +32,9 @@ Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
 
 
 Tag** initReferenceTag(){
-	Tag **t=malloc(24*sizeof(Tag*));
+	Tag **t=malloc(28*sizeof(Tag*));
 	int i=1;
-	for(i=0; i<24; i++){
+	for(i=0; i<28; i++){
 		t[i]=malloc(sizeof(Tag));
 		t[i]->c=malloc(sizeof(Color));
 	}
@@ -51,14 +57,15 @@ Tag** initReferenceTag(){
 	t[16]->tagKey ="bridge"; t[16]->tagValue ="yes"; t[16]->c->red=255; t[16]->c->green=255; t[16]->c->blue=204;
 	t[18]->tagKey ="leisure"; t[18]->tagValue ="garden"; t[18]->c->red=255; t[18]->c->green=0; t[18]->c->blue=0;
 	t[17]->tagKey ="natural"; t[17]->tagValue ="coastline"; t[17]->c->red=255; t[17]->c->green=0; t[17]->c->blue=0;
-	
-//<tag k="amenity" v="ferry_terminal"/><tag k="leisure" v="garden"/><tag k="aeroway" v="heliport"/><tag k="aeroway" v="helipad"/>
-t[19]->tagKey ="highway"; t[19]->tagValue ="pedestrian"; t[19]->c->red=255; t[19]->c->green=0; t[19]->c->blue=0;
-t[20]->tagKey ="service"; t[19]->tagValue ="alley"; t[20]->c->red=255; t[20]->c->green=0; t[20]->c->blue=0;
-t[21]->tagKey ="oneway"; t[19]->tagValue ="yes"; t[21]->c->red=255; t[21]->c->green=0; t[21]->c->blue=0;
-t[22]->tagKey ="surface"; t[19]->tagValue ="ground"; t[22]->c->red=255; t[22]->c->green=0; t[22]->c->blue=0;
-t[23]->tagKey ="surface"; t[19]->tagValue ="gravel"; t[23]->c->red=255; t[23]->c->green=0; t[23]->c->blue=0;
-
+	t[19]->tagKey ="highway"; t[19]->tagValue ="pedestrian"; t[19]->c->red=255; t[19]->c->green=0; t[19]->c->blue=0;
+	t[20]->tagKey ="service"; t[20]->tagValue ="alley"; t[20]->c->red=255; t[20]->c->green=0; t[20]->c->blue=0;
+	t[21]->tagKey ="layer"; t[21]->tagValue ="1"; t[21]->c->red=255; t[21]->c->green=0; t[21]->c->blue=0;
+	t[22]->tagKey ="surface"; t[22]->tagValue ="ground"; t[22]->c->red=255; t[22]->c->green=0; t[22]->c->blue=0;
+	t[23]->tagKey ="surface"; t[23]->tagValue ="gravel"; t[23]->c->red=255; t[23]->c->green=0; t[23]->c->blue=0;
+	t[24]->tagKey ="source"; t[24]->tagValue ="cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"; t[24]->c->red=255; t[24]->c->green=0; t[24]->c->blue=0;		
+	t[25]->tagKey ="waterway"; t[25]->tagValue ="riverband"; t[25]->c->red=0; t[25]->c->green=50; t[25]->c->blue=200;
+	t[26]->tagKey ="highway"; t[26]->tagValue ="footway"; t[26]->c->red=0; t[26]->c->green=50; t[26]->c->blue=0;
+	t[27]->tagKey ="barrier"; t[27]->tagValue ="wall"; t[27]->c->red=0; t[27]->c->green=50; t[27]->c->blue=0;
 	return t;
 
 }
@@ -112,8 +119,8 @@ Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size){
 	Way* w= malloc(sizeof(Way));
 	w->id=id;
 	w->listNd=ln;
-	if(strcmp(visible, "true")==0){	w->visible="true";}
-	else{ w->visible="false";}
+	if(strcmp(visible, "true")==0){	w->visible="T";}
+	else{ w->visible="F";}
 	w->tag=malloc(sizeof(Tag));
 	w->tag=tag;
 	w->size=size;
@@ -121,29 +128,36 @@ Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size){
 	return w;
 }
 
-Relation* initRelation(unsigned long id, char* visible, ListWay* lw){
+Relation* initRelation(unsigned long id, char* visible,Tag* t, ListWay* lw, ListNode* ln){
 	Relation* r= malloc(sizeof(Relation));
 	r->id=id;
 	r->listW=lw;
-	if(strcmp(visible, "true")==0){	r->visible="true";}
-	else{ r->visible="false";}
+	r->listN=ln;
+	r->tag=t;
+	if(strcmp(visible, "true")==0){	r->visible="T";}
+	else{ r->visible="F";}
 	return r;
 }
-
+Tag * goodTagRelation(char * k, char *v){
+	if(strcmp(k, "type")==0 && (strcmp(v,"multipolygon")==0 ||strcmp(v,"route")==0) ){ 
+		return initTag(k, v, NULL);
+	}
+	return NULL;
+}
 
 Tag* goodTag(char * k, char *v, Tag**  ref){
 	int i=0;
 	printf( "tag : k %s, v %s  ->", k,v);
 	if(ref!=NULL){
-		for(i=0; i<24; i++){
+		for(i=0; i<28; i++){
 			if(ref[i]!=NULL){
 				if(strcmp(k, ref[i]->tagKey)==0 && strcmp(v, ref[i]->tagValue)==0){
-					printf("est tracé\n"); 
+					//printf("est tracé\n"); 
 					return initTag(k, v, ref[i]->c);
 				}
 			}
 		}
-		printf("N EST PAS TRACE \n");
+		printf("		N EST PAS TRACE \n");
 	}
 	return NULL;
 }
@@ -225,7 +239,6 @@ ListRelation* addRefListRelation(Relation* id ,ListRelation* lr){
 }
 Map* initMap(){
 	Map * map = malloc(sizeof(Map));
-	//map->referenceTag=malloc(9*sizeof(Tag*));
 	map->referenceTag=initReferenceTag();
 	return map;
 }

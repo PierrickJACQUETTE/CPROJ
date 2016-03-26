@@ -72,22 +72,6 @@ typedef struct{
 
 
 /**
-* \struct TagDraw
-* \brief Objet that represente tags for an open street map
-*
-* tag is the tag
-* thickness is the thickness of this tag
-* contour is the outline color of this tag
-* background c is the background of this tag
-*/
-typedef struct{
-	Tag* tag;
-	int thickness;
-	Color* contour;
-	Color* background;
-}TagDraw;
-
-/**
 * \struct Node
 * \brief Objet that represente a point in openstreetmap
 *
@@ -175,10 +159,13 @@ typedef struct{
 * id represente the name of this object
 * listW is the list of the differents way that it compose this object
 * visible represente if this point is visible or not
+* tag is the type of this object
 */
 typedef struct{
 	unsigned long id;
 	ListWay* listW;
+	ListNode* listN;
+	Tag* tag;
 	char* visible; // T = true, F= false;
 }Relation;
 
