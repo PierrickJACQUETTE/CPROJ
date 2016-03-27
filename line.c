@@ -18,9 +18,14 @@ void fillWay(Map* map, Way * way, SDL_Renderer* renderer){
     i++;
     current = current->next;
   }
-
   int n = i-1;
-  filledPolygonRGBA(renderer,coord_x,coord_y,n,way->tag->c->red,way->tag->c->green,way->tag->c->blue,155);
+  if(way->tag!=NULL){
+    filledPolygonRGBA(renderer,coord_x,coord_y,n,way->tag->c->red,way->tag->c->green,way->tag->c->blue,155);
+  }
+  else{
+    printf("test\n");
+    filledPolygonRGBA(renderer,coord_x,coord_y,n,0,0,255,155);
+  }
 }
 
 void parcoursListWay(Map* map,int width,int heigth, SDL_Renderer* renderer){

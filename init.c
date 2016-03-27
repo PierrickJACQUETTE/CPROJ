@@ -42,33 +42,33 @@ Tag** initReferenceTag(){
 		t[i]=malloc(sizeof(Tag));
 		t[i]->c=malloc(sizeof(Color));
 	}
-	t[0]->tagKey ="landuse"; t[0]->tagValue ="forest"; t[0]->c->red=51; t[0]->c->green=102; t[0]->c->blue=0;
-	t[1]->tagKey ="building"; t[1]->tagValue ="yes"; t[1]->c->red=205; t[1]->c->green=183; t[1]->c->blue=158;
-	t[2]->tagKey ="highway"; t[2]->tagValue ="residential"; t[2]->c->red=255; t[2]->c->green=255; t[2]->c->blue=204;
-	t[3]->tagKey ="waterway"; t[3]->tagValue ="canal"; t[3]->c->red=51; t[3]->c->green=102; t[3]->c->blue=204;
-	t[4]->tagKey ="waterway"; t[4]->tagValue ="river"; t[4]->c->red=0; t[4]->c->green=153; t[4]->c->blue=255;
+	t[0]->tagKey ="landuse"; t[0]->tagValue ="forest"; t[0]->c->red=51; t[0]->c->green=102; t[0]->c->blue=0; //vert
+	t[1]->tagKey ="building"; t[1]->tagValue ="yes"; t[1]->c->red=205; t[1]->c->green=183; t[1]->c->blue=158;	//beige
+	t[2]->tagKey ="highway"; t[2]->tagValue ="residential"; t[2]->c->red=255; t[2]->c->green=255; t[2]->c->blue=204; //jaune pale
+	t[3]->tagKey ="waterway"; t[3]->tagValue ="canal"; t[3]->c->red=51; t[3]->c->green=102; t[3]->c->blue=204; //bleu fonce
+	t[4]->tagKey ="waterway"; t[4]->tagValue ="river"; t[4]->c->red=0; t[4]->c->green=153; t[4]->c->blue=255; //bleu clair
 	t[5]->tagKey ="waterway"; t[5]->tagValue ="water"; t[5]->c->red=51; t[5]->c->green=204; t[5]->c->blue=255;
 	t[6]->tagKey ="waterway"; t[6]->tagValue ="coastline"; t[6]->c->red=0; t[6]->c->green=204; t[6]->c->blue=255;
 	t[7]->tagKey ="landuse"; t[7]->tagValue ="grass"; t[7]->c->red=102; t[7]->c->green=204; t[7]->c->blue=51;
 	t[8]->tagKey ="leisure"; t[8]->tagValue ="park"; t[8]->c->red=51; t[8]->c->green=153; t[8]->c->blue=0;
-	t[9]->tagKey ="highway"; t[9]->tagValue ="service"; t[9]->c->red=255; t[9]->c->green=255; t[9]->c->blue=204;
-	t[10]->tagKey ="highway"; t[10]->tagValue ="secondary"; t[10]->c->red=255; t[10]->c->green=255; t[10]->c->blue=204;
-	t[11]->tagKey ="highway"; t[11]->tagValue ="unclassified"; t[11]->c->red=255; t[11]->c->green=255; t[11]->c->blue=204;
-	t[12]->tagKey ="highway"; t[12]->tagValue ="motorway"; t[12]->c->red=255; t[12]->c->green=255; t[12]->c->blue=204;
-	t[13]->tagKey ="highway"; t[13]->tagValue ="motorway_link"; t[13]->c->red=255; t[13]->c->green=255; t[13]->c->blue=204;
+	t[9]->tagKey ="highway"; t[9]->tagValue ="service"; t[9]->c->red=255; t[9]->c->green=255; t[9]->c->blue=204; //jaune pale
+	t[10]->tagKey ="highway"; t[10]->tagValue ="secondary"; t[10]->c->red=255; t[10]->c->green=255; t[10]->c->blue=204; //jaune pale
+	t[11]->tagKey ="highway"; t[11]->tagValue ="unclassified"; t[11]->c->red=255; t[11]->c->green=255; t[11]->c->blue=204; //jaune pale
+	t[12]->tagKey ="highway"; t[12]->tagValue ="motorway"; t[12]->c->red=255; t[12]->c->green=255; t[12]->c->blue=204; //jaune pale
+	t[13]->tagKey ="highway"; t[13]->tagValue ="motorway_link"; t[13]->c->red=255; t[13]->c->green=255; t[13]->c->blue=204; //jaune pale
 	t[14]->tagKey ="natural"; t[14]->tagValue ="water"; t[14]->c->red=0; t[14]->c->green=55; t[14]->c->blue=204;
-	t[15]->tagKey ="highway"; t[15]->tagValue ="primary"; t[15]->c->red=255; t[15]->c->green=255; t[15]->c->blue=204;
-	t[16]->tagKey ="bridge"; t[16]->tagValue ="yes"; t[16]->c->red=255; t[16]->c->green=255; t[16]->c->blue=204;
-	t[18]->tagKey ="leisure"; t[18]->tagValue ="garden"; t[18]->c->red=255; t[18]->c->green=0; t[18]->c->blue=0;
-	t[17]->tagKey ="natural"; t[17]->tagValue ="coastline"; t[17]->c->red=255; t[17]->c->green=0; t[17]->c->blue=0;
-	t[19]->tagKey ="highway"; t[19]->tagValue ="pedestrian"; t[19]->c->red=255; t[19]->c->green=0; t[19]->c->blue=0;
-	t[20]->tagKey ="service"; t[20]->tagValue ="alley"; t[20]->c->red=255; t[20]->c->green=0; t[20]->c->blue=0;
-	t[21]->tagKey ="layer"; t[21]->tagValue ="1"; t[21]->c->red=255; t[21]->c->green=0; t[21]->c->blue=0;
-	t[22]->tagKey ="surface"; t[22]->tagValue ="ground"; t[22]->c->red=255; t[22]->c->green=0; t[22]->c->blue=0;
-	t[23]->tagKey ="surface"; t[23]->tagValue ="gravel"; t[23]->c->red=255; t[23]->c->green=0; t[23]->c->blue=0;
-	t[24]->tagKey ="source"; t[24]->tagValue ="cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"; t[24]->c->red=255; t[24]->c->green=0; t[24]->c->blue=0;
+	t[15]->tagKey ="highway"; t[15]->tagValue ="primary"; t[15]->c->red=255; t[15]->c->green=255; t[15]->c->blue=204; //jaune pale
+	t[16]->tagKey ="bridge"; t[16]->tagValue ="yes"; t[16]->c->red=255; t[16]->c->green=255; t[16]->c->blue=204; //jaune pale
+	t[18]->tagKey ="leisure"; t[18]->tagValue ="garden"; t[18]->c->red=0; t[18]->c->green=200; t[18]->c->blue=0;
+	t[17]->tagKey ="natural"; t[17]->tagValue ="coastline"; t[17]->c->red=0; t[17]->c->green=0; t[17]->c->blue=0; //noir
+	t[19]->tagKey ="highway"; t[19]->tagValue ="pedestrian"; t[19]->c->red=255; t[19]->c->green=255; t[19]->c->blue=204; //jaune pale
+	t[20]->tagKey ="service"; t[20]->tagValue ="alley"; t[20]->c->red=255; t[20]->c->green=255; t[20]->c->blue=204; //jaune pale
+	t[21]->tagKey ="layer"; t[21]->tagValue ="1"; t[21]->c->red=255; t[21]->c->green=255; t[21]->c->blue=204; //jaune pale
+	t[22]->tagKey ="surface"; t[22]->tagValue ="ground"; t[22]->c->red=0; t[22]->c->green=0; t[22]->c->blue=0; //noir
+	t[23]->tagKey ="surface"; t[23]->tagValue ="gravel"; t[23]->c->red=0; t[23]->c->green=0; t[23]->c->blue=0; //noir
+	t[24]->tagKey ="source"; t[24]->tagValue ="cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"; t[24]->c->red=0; t[24]->c->green=0; t[24]->c->blue=0; //noir
 	t[25]->tagKey ="waterway"; t[25]->tagValue ="riverband"; t[25]->c->red=0; t[25]->c->green=50; t[25]->c->blue=200;
-	t[26]->tagKey ="highway"; t[26]->tagValue ="footway"; t[26]->c->red=0; t[26]->c->green=50; t[26]->c->blue=0;
+	t[26]->tagKey ="highway"; t[26]->tagValue ="footway"; t[26]->c->red=255; t[26]->c->green=255; t[26]->c->blue=204; //jaune pale
 	t[27]->tagKey ="barrier"; t[27]->tagValue ="wall"; t[27]->c->red=0; t[27]->c->green=50; t[27]->c->blue=0;
 	return t;
 
@@ -132,7 +132,7 @@ Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size){
 	w->tag=malloc(sizeof(Tag));
 	w->tag=tag;
 	w->size=size;
-	printf("size way: %d\n",w->size);
+	//printf("size way: %d\n",w->size);
 	return w;
 }
 
@@ -159,7 +159,7 @@ Tag * goodTagRelation(char * k, char *v){
 
 Tag* goodTag(char * k, char *v, Tag**  ref){
 	int i=0;
-	printf( "tag : k %s, v %s  ->", k,v);
+	//printf( "tag : k %s, v %s  ->", k,v);
 	if(ref!=NULL){
 		for(i=0; i<28; i++){
 			if(ref[i]!=NULL){
@@ -169,7 +169,7 @@ Tag* goodTag(char * k, char *v, Tag**  ref){
 				}
 			}
 		}
-		printf("		N EST PAS TRACE \n");
+		//printf("		N EST PAS TRACE \n");
 	}
 	return NULL;
 }
