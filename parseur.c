@@ -28,7 +28,7 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 	while(tmpcur != NULL){
 		if (tmpcur->type == XML_ELEMENT_NODE) {
 			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag")==0 ){
-					t=goodTag((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"), refTag);
+				t=goodTag((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"), refTag);
 				if(t!=NULL){
 					tag=t;
 				}
@@ -45,7 +45,7 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 		return w;
 	}
 	else{
-	return NULL;
+		return NULL;
 	}
 }
 Relation* parseRelation(xmlDocPtr doc, xmlNodePtr cur){
@@ -76,7 +76,7 @@ Relation* parseRelation(xmlDocPtr doc, xmlNodePtr cur){
 	while(tmpcur != NULL){
 		if (tmpcur->type == XML_ELEMENT_NODE) {
 			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag")==0 ){
-					t=goodTagRelation((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"));
+				t=goodTagRelation((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"));
 				if(t!=NULL){
 					tag=t;
 				}
@@ -91,9 +91,9 @@ Relation* parseRelation(xmlDocPtr doc, xmlNodePtr cur){
 			}
 		}
 		tmpcur = tmpcur->next;
-	}	
-		r= initRelation(id,visible, tag,lw, ln);
-		return r;
+	}
+	r= initRelation(id,visible, tag,lw, ln);
+	return r;
 }
 
 Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
@@ -185,7 +185,7 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 				if(r!=NULL){
 					lr= addRefListRelation(r,lr);
 				}
-				
+
 			}
 		}
 		cur = cur->next;
@@ -195,7 +195,7 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 	map->avlWay=avlWay;
 	map->listWay=lw;
 	map->listRelation=lr;
-	map->bounds=convertBounds(map->bounds); 
+	map->bounds=convertBounds(map->bounds);
 	return map;
 }
 

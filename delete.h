@@ -18,7 +18,4 @@
  */
 void deleteMap(Map *map);
 
-
-
-
 #endif

@@ -39,34 +39,36 @@ Node* searchNode(Avl *a, unsigned long key);
 Way* searchWay(Avl *a, unsigned long key);
 
 /**
- * function to insert the key in the AVL in the right place according to its
- * value , and the transition if necessary, rebalanced the tree
- * @param  a       Self-balancing binary search tree
- * @param  contenu it is the reference node
- * @return         A tree under the pointer with the change
- */
+* function to insert the key in the AVL in the right place according to its
+* value , and the transition if necessary, rebalanced the tree
+* @param  a       Self-balancing binary search tree
+* @param  n it is the reference node
+* @param  w it is the reference way
+* @return         A tree under the pointer with the change
+*/
 Avl* insert(Avl **a,Node *n, Way *w);
 
 /**
- * Initializing the AVL with the root , the parameter content
- * @param a       Self-balancing binary search tree
- * @param contenu it is the reference node
- */
+* Initializing the AVL with the root , the parameter content
+* @param a       Self-balancing binary search tree
+* @param n it is the reference node
+* @param w it is the reference way
+*/
 void init(Avl **a,Node *n, Way*w);
 
 /**
- * function allowing display of the AVL
- * @param a      Self-balancing binary search tree
- * @param nombre dentifier of the tree level view
- */
+* function allowing display of the AVL
+* @param a      Self-balancing binary search tree
+* @param nombre dentifier of the tree level view
+*/
 void printNode(Avl **a,unsigned long nombre);
 
 
 /**
- * function allowing display of the AVL
- * @param a      Self-balancing binary search tree
- * @param nombre dentifier of the tree level view
- */
+* function allowing display of the AVL
+* @param a      Self-balancing binary search tree
+* @param nombre dentifier of the tree level view
+*/
 void printWay(Avl **a,unsigned long nombre);
 
 #endif /* __AVL_H__ */

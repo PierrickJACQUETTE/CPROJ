@@ -18,7 +18,6 @@ int main(int argc, char **argv) {
 			printMap(map,argv[2]);
 		}
 		else{
-		//printf("\n\n\nELSE\n\n\n");
 			printMap(map,"line");
 		}
 		xmlCleanupParser();

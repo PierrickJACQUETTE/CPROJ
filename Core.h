@@ -114,6 +114,7 @@ typedef struct{
 * \brief Objet that represente a long and the next long (id)
 *
 * way is the principal way
+* role is the role of the way
 * next is the next way
 */
 typedef struct refListWay{
@@ -142,6 +143,7 @@ typedef struct{
 * listNd is the list of the differents node that it compose this object
 * visible represente if this point is visible or not
 * tag is the type of this object
+* size is the number of Node
 */
 typedef struct{
 	unsigned long id;
@@ -158,6 +160,7 @@ typedef struct{
 *
 * id represente the name of this object
 * listW is the list of the differents way that it compose this object
+* listN is the list of the differents node that it compose this object
 * visible represente if this point is visible or not
 * tag is the type of this object
 */

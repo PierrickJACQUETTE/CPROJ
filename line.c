@@ -30,12 +30,12 @@ void parcoursListWay(Map* map,int width,int heigth, SDL_Renderer* renderer){
   refListWay * current =l->firstRef;
   while(current!=NULL){
     Way * currentWay =searchWay(map->avlWay,current->way);
-    	if(strcmp(currentWay->visible,"T")==0){
-    		fillWay(map,currentWay,renderer);
-      }
-      else if(strcmp(currentWay->visible,"F")!=0){
-    		printf("Le champs visible du way %ld ne vaut ni true ni false mais %s\n",currentWay->id,currentWay->visible );
-      }
+    if(strcmp(currentWay->visible,"T")==0){
+      fillWay(map,currentWay,renderer);
+    }
+    else if(strcmp(currentWay->visible,"F")!=0){
+      printf("Le champs visible du way %ld ne vaut ni true ni false mais %s\n",currentWay->id,currentWay->visible );
+    }
     current = current->next;
   }
 }
