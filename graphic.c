@@ -4,6 +4,37 @@ enum status {QUIT, CONTINUE};
 int heigth = 600; // taille fenetre par défaut
 int width = 800;
 SDL_Renderer* renderer;
+SDL_Window *window;
+
+int init_SDL() {
+  if(SDL_Init(SDL_INIT_VIDEO) < 0) {
+    printf("SDL could not initialize! SDL Error: %s\n",SDL_GetError());
+    return 0;
+  }
+  window = SDL_CreateWindow("CPROJ",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,width,heigth,SDL_WINDOW_SHOWN);
+  if(window == NULL) {
+    printf("Window could not be created! SDL Error: %s\n",SDL_GetError());
+    return 0;
+  }
+  renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
+  if(renderer == NULL) {
+    printf("Renderer could not be created! SDL Error: %s\n",SDL_GetError());
+    return 0;
+  }
+  if(SDL_SetRenderDrawColor(renderer,0xFF,0xFF,0xFF,0xFF) < 0) {
+    printf("Renderer color could not be set! SDL Error: %s\n",SDL_GetError());
+    return 0;
+  }
+  return 1;
+}
+
+void close_SDL() {
+  SDL_DestroyRenderer(renderer);
+  renderer = NULL;
+  SDL_DestroyWindow(window);
+  window = NULL;
+  SDL_Quit();
+}
 
 void evenement(){
   enum status status = CONTINUE; // enumeration de statuts == while infini
@@ -22,24 +53,12 @@ void evenement(){
 }
 
 void printMap(Map* map,char* typeOfDessin){
-  SDL_Window* window = NULL; // initiailisation de fenetre vide
-  window = SDL_CreateWindow // creation fenetre
-  (
-    "CPROJ", SDL_WINDOWPOS_UNDEFINED, // nom
-    SDL_WINDOWPOS_UNDEFINED,
-    width, heigth, // taille
-    SDL_WINDOW_SHOWN
-  );
-  renderer = NULL; // initialise le fond de la fenetre
-  renderer =  SDL_CreateRenderer( window, -1, SDL_RENDERER_ACCELERATED); // met le fond
-
-  glClearColor( 225.0f, 220.0f, 225.0f, 0.0f ); // RGB + opacité
-  glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); // nettoyer la fenetre
-  glLoadIdentity();
-  glViewport(0,0,width,heigth);
-  gluOrtho2D(0,width,0,heigth);
+  if(init_SDL()==0) {
+    exit(EXIT_FAILURE);
+  }
+  SDL_RenderClear(renderer);
   if(strcmp(typeOfDessin,"point")==0){
-    parcoursAvl(&(map->avl),map->bounds,width,heigth);
+    parcoursAvl(&(map->avl),map->bounds,width,heigth,renderer);
   }
   else if(strcmp(typeOfDessin,"line")==0){
     parcoursListWay(map,width,heigth,renderer);
@@ -47,11 +66,9 @@ void printMap(Map* map,char* typeOfDessin){
   else{
     printf("Le deuxieme argument est inconnu %s\n", typeOfDessin);
   }
-
   SDL_RenderPresent(renderer);
   evenement();
-  SDL_DestroyRenderer(renderer);
-  SDL_DestroyWindow(window);
-  SDL_Quit();
+  close_SDL();
+  exit(EXIT_SUCCESS);
 
 }
