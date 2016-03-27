@@ -27,11 +27,11 @@ void fillWay(Map* map, Way * way, SDL_Renderer* renderer){
   if(strcmp(way->tag->tagKey,"building")==0 && strcmp(way->tag->tagValue,"yes")==0){
   ListNode * l = way->listNd;
   refListNode * current =l->firstRef;
- 
-  int i=0; 
+
+  int i=0;
   short coord_x [way->size];
   short coord_y [way->size];
-  
+
   /*glBegin(GL_POLYGON);
   if(way->tag!=NULL){
   	 sizeColor(way->tag->c);
@@ -39,18 +39,18 @@ void fillWay(Map* map, Way * way, SDL_Renderer* renderer){
   else{
     glEnd();
     return;
-  }*/ 
+  }*/
   while(current!=NULL){
     Node * currentNode =searchNode(map->avl,current->nd);
     float wi=echelle(currentNode->c->x,map->bounds->max->x,widthR);
     float he=echelle(currentNode->c->y,map->bounds->max->y,heigthR);
-    coord_x[i]=wi; 
-    coord_y[i]=he; 
+    coord_x[i]=wi;
+    coord_y[i]=he;
     i++;
    // printPoint(wi,he);
     current = current->next;
   }
-  
+
   int n = i-1;
   filledPolygonRGBA(renderer,coord_x,coord_y,n,way->tag->c->red,way->tag->c->green,way->tag->c->blue,155);
   //glEnd();
