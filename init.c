@@ -36,9 +36,9 @@ Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
 
 
 Tag** initReferenceTag(){
-	Tag **t=malloc(28*sizeof(Tag*));
+	Tag **t=malloc(27*sizeof(Tag*));
 	int i=1;
-	for(i=0; i<28; i++){
+	for(i=0; i<27; i++){
 		t[i]=malloc(sizeof(Tag));
 		t[i]->c=malloc(sizeof(Color));
 	}
@@ -53,7 +53,7 @@ Tag** initReferenceTag(){
 	t[8]->tagKey ="leisure"; t[8]->tagValue ="park"; t[8]->c->red=51; t[8]->c->green=153; t[8]->c->blue=0;
 	t[9]->tagKey ="highway"; t[9]->tagValue ="service"; t[9]->c->red=255; t[9]->c->green=255; t[9]->c->blue=204; //jaune pale
 	t[10]->tagKey ="highway"; t[10]->tagValue ="secondary"; t[10]->c->red=255; t[10]->c->green=255; t[10]->c->blue=204; //jaune pale
-	t[11]->tagKey ="highway"; t[11]->tagValue ="unclassified"; t[11]->c->red=255; t[11]->c->green=255; t[11]->c->blue=204; //jaune pale
+	//t[11]->tagKey ="highway"; t[11]->tagValue ="unclassified"; t[11]->c->red=255; t[11]->c->green=255; t[11]->c->blue=204; //jaune pale
 	t[12]->tagKey ="highway"; t[12]->tagValue ="motorway"; t[12]->c->red=255; t[12]->c->green=255; t[12]->c->blue=204; //jaune pale
 	t[13]->tagKey ="highway"; t[13]->tagValue ="motorway_link"; t[13]->c->red=255; t[13]->c->green=255; t[13]->c->blue=204; //jaune pale
 	t[14]->tagKey ="natural"; t[14]->tagValue ="water"; t[14]->c->red=0; t[14]->c->green=55; t[14]->c->blue=204;
@@ -69,11 +69,10 @@ Tag** initReferenceTag(){
 	t[24]->tagKey ="source"; t[24]->tagValue ="cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"; t[24]->c->red=0; t[24]->c->green=0; t[24]->c->blue=0; //noir
 	t[25]->tagKey ="waterway"; t[25]->tagValue ="riverband"; t[25]->c->red=0; t[25]->c->green=50; t[25]->c->blue=200;
 	t[26]->tagKey ="highway"; t[26]->tagValue ="footway"; t[26]->c->red=255; t[26]->c->green=255; t[26]->c->blue=204; //jaune pale
-	t[27]->tagKey ="barrier"; t[27]->tagValue ="wall"; t[27]->c->red=0; t[27]->c->green=50; t[27]->c->blue=0;
+	t[11]->tagKey ="barrier"; t[11]->tagValue ="wall"; t[11]->c->red=0; t[11]->c->green=50; t[11]->c->blue=0;
 	return t;
 
 }
-
 
 refListNode* initRefListNode(unsigned long  n, refListNode* next){
 	refListNode* r=malloc(sizeof(refListNode));
@@ -161,7 +160,7 @@ Tag* goodTag(char * k, char *v, Tag**  ref){
 	int i=0;
 	//printf( "tag : k %s, v %s  ->", k,v);
 	if(ref!=NULL){
-		for(i=0; i<28; i++){
+		for(i=0; i<27; i++){
 			if(ref[i]!=NULL){
 				if(strcmp(k, ref[i]->tagKey)==0 && strcmp(v, ref[i]->tagValue)==0){
 					//printf("est tracé\n");
