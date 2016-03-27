@@ -23,7 +23,7 @@ void deleteTag(Tag *t){
 
 void deleteTabTag(Tag **t){
 	int i;
-	for(i=0;i<19;i++){
+	for(i=0;i<28;i++){
 		deleteTag(t[i]);
 	}
 }

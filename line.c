@@ -20,8 +20,20 @@ void fillWay(Map* map, Way * way, SDL_Renderer* renderer){
   }
   int n = i-1;
   if(way->tag!=NULL){
-  	 polygonRGBA(renderer,coord_x,coord_y,n,139,71,137,155);
-    filledPolygonRGBA(renderer,coord_x,coord_y,n,way->tag->c->red,way->tag->c->green,way->tag->c->blue,155);
+    if(strcmp(way->tag->tagKey,"highway")==0){
+      int i;
+      int x = coord_x[0];
+      int y = coord_y[0];
+      for(i=0;i<n;i++){
+        lineRGBA(renderer,x,y,coord_x[i],coord_y[i],255,0,0,155);
+        x=coord_x[i];
+        y=coord_y[i];
+      }
+    }
+    else{
+      polygonRGBA(renderer,coord_x,coord_y,n,139,71,137,155);
+      filledPolygonRGBA(renderer,coord_x,coord_y,n,way->tag->c->red,way->tag->c->green,way->tag->c->blue,155);
+    }
   }
   else{
     printf("test\n");

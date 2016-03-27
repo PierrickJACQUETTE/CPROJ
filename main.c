@@ -20,6 +20,7 @@ int main(int argc, char **argv) {
 		else{
 			printMap(map,"line");
 		}
+		deleteMap(map);
 		xmlCleanupParser();
 		exit(1);
 	}
