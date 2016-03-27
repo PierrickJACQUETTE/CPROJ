@@ -27,7 +27,7 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 	//while "way" has childs
 	while(tmpcur != NULL){
 		if (tmpcur->type == XML_ELEMENT_NODE) {
-			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag")==0 ){
+			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag")==0 &&tag==NULL){
 				t=goodTag((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"), refTag);
 				if(t!=NULL){
 					tag=t;
