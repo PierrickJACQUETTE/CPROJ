@@ -69,22 +69,49 @@ void parcourList(ListWay *l,Map* map,int width,int heigth, SDL_Renderer* rendere
 	}
 
 }
+
+void parcourRelation(ListRelation *lr, Map* map,int width,int heigth, SDL_Renderer* renderer){
+	if(lr!=NULL){
+		refListRel * current =lr->firstRef;
+		while(current!=NULL){
+		  	Relation * currentRel =current->relation;
+			if((strcmp(currentRel->visible,"T")==0) && currentRel->listW!=NULL){
+				refListWay * cW =currentRel->listW->firstRef;
+				while(cW!=NULL){
+					if(strcmp(cW->role,"outer")==0){
+			 			Way * currentWay =searchWay(map->avlWay,cW->way);
+						if((currentWay!=NULL) && (currentWay->draw== 0) && (strcmp(currentWay->visible,"T")==0)){
+							fillWay(map,currentWay,renderer);
+							currentWay->draw=1;
+					 	}
+					}
+					  cW = cW->next;
+				}
+				cW =currentRel->listW->firstRef;
+				while(cW!=NULL){
+					if(strcmp(cW->role,"inner")==0){
+			 			Way * currentWay =searchWay(map->avlWay,cW->way);
+						if((currentWay!=NULL) && (currentWay->draw== 0)&&(strcmp(currentWay->visible,"T")==0)){
+							fillWay(map,currentWay,renderer);
+							currentWay->draw=1;
+					 	}
+					}
+					cW = cW->next;
+				}
+			}
+			else if(strcmp(currentRel->visible,"F")!=0){
+		    		printf("Le champs visible de la relation  %ld ne vaut ni true ni false mais %s\n",currentRel->id,currentRel->visible );
+		  	}
+		  current = current->next;
+		}
+
+	}	
+}
+
 void parcoursListWay(Map* map,int width,int heigth, SDL_Renderer* renderer){
   heigthR=heigth;
   widthR=width;
-  /*ListWay * l = map->wayOther; // verif !=NULL ET LES FAIRE TOUS 
-  refListWay * current =l->firstRef;
-  while(current!=NULL){
-    Way * currentWay =searchWay(map->avlWay,current->way);
-    if(strcmp(currentWay->visible,"T")==0){
-      fillWay(map,currentWay,renderer);
-    }
-    else if(strcmp(currentWay->visible,"F")!=0){
-      printf("Le champs visible du way %ld ne vaut ni true ni false mais %s\n",currentWay->id,currentWay->visible );
-    }
-    current = current->next;
-  }*/
-	
+	parcourRelation(map->listRelation, map,width,heigth,renderer);
 
 	//parcourList(map->wayHighway,map,width,heigth,renderer);
 	parcourList(map->wayWater,map,width,heigth,renderer);	
@@ -92,8 +119,4 @@ void parcoursListWay(Map* map,int width,int heigth, SDL_Renderer* renderer){
 	parcourList(map->wayBuilding,map,width,heigth,renderer);
 	parcourList(map->wayOther,map,width,heigth,renderer);
 	parcourList(map->wayHighway,map,width,heigth,renderer);
-
-	
-
-
 }
