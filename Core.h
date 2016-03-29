@@ -61,12 +61,14 @@ typedef struct{
 * tagValue is the value of the tags
 * Color is the color of this type of element
 * thick represente the thickness of the way
+* type represente the type of the tag to know in which listWay it have to be
 */
 typedef struct{
 	char* tagKey;
 	char* tagValue;
 	Color* c;
 	int thick;
+	int type; // 1=water, 2=green, 3=highway, 4= building, 0=other;
 }Tag;
 
 
@@ -144,6 +146,7 @@ typedef struct{
 * visible represente if this point is visible or not
 * tag is the type of this object
 * size is the number of Node
+* draw egal 0 if the tag was never draw else 1 
 */
 typedef struct{
 	unsigned long id;
@@ -151,6 +154,7 @@ typedef struct{
 	char* visible; // T = true, F= false;
 	Tag* tag;
 	int size;
+	int draw; // 0 jamais tracé, 1 = déja tracé;
 }Way;
 
 
@@ -229,7 +233,11 @@ typedef struct{
 	Bounds* bounds;
 	Avl* avl;
 	Avl* avlWay;
-	ListWay* listWay;
+	ListWay* wayOther;
+	ListWay* wayWater;
+	ListWay* wayGreen;
+	ListWay* wayHighway;
+	ListWay* wayBuilding;
 	ListRelation * listRelation;
 	Tag** referenceTag;
 }Map;

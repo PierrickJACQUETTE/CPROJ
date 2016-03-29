@@ -41,10 +41,38 @@ void fillWay(Map* map, Way * way, SDL_Renderer* renderer){
   }
 }
 
+void parcourList(ListWay *l,Map* map,int width,int heigth, SDL_Renderer* renderer){
+	if(l!=NULL){
+		refListWay * current =l->firstRef;
+		while(current!=NULL){
+		  Way * currentWay =searchWay(map->avlWay,current->way);
+		  if((currentWay->draw== 0)&&(strcmp(currentWay->visible,"T")==0)){
+				if(strcmp(currentWay->tag->tagValue, "coastline")==0){ printf("coastline\n");
+					if(SDL_SetRenderDrawColor(renderer,0,0,0xFF,0) < 0) { // problème ne set pas en blue
+    				printf("Renderer color could not be set! SDL Error: %s\n",SDL_GetError());
+    			}
+					currentWay->tag->c->red=0;
+					currentWay->tag->c->blue=0;
+					currentWay->tag->c->green=0;
+					fillWay(map,currentWay,renderer);
+					return;
+				}
+		    fillWay(map,currentWay,renderer);
+				currentWay->draw=1;
+		  }
+		  else if(strcmp(currentWay->visible,"F")!=0){
+		    printf("Le champs visible du way %ld ne vaut ni true ni false mais %s\n",currentWay->id,currentWay->visible );
+		  }
+		  current = current->next;
+		}
+
+	}
+
+}
 void parcoursListWay(Map* map,int width,int heigth, SDL_Renderer* renderer){
   heigthR=heigth;
   widthR=width;
-  ListWay * l = map->listWay;
+  /*ListWay * l = map->wayOther; // verif !=NULL ET LES FAIRE TOUS 
   refListWay * current =l->firstRef;
   while(current!=NULL){
     Way * currentWay =searchWay(map->avlWay,current->way);
@@ -55,5 +83,17 @@ void parcoursListWay(Map* map,int width,int heigth, SDL_Renderer* renderer){
       printf("Le champs visible du way %ld ne vaut ni true ni false mais %s\n",currentWay->id,currentWay->visible );
     }
     current = current->next;
-  }
+  }*/
+	
+
+	//parcourList(map->wayHighway,map,width,heigth,renderer);
+	parcourList(map->wayWater,map,width,heigth,renderer);	
+	parcourList(map->wayGreen,map,width,heigth,renderer);	
+	parcourList(map->wayBuilding,map,width,heigth,renderer);
+	parcourList(map->wayOther,map,width,heigth,renderer);
+	parcourList(map->wayHighway,map,width,heigth,renderer);
+
+	
+
+
 }

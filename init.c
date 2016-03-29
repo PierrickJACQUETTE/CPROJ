@@ -53,7 +53,7 @@ Tag** initReferenceTag(){
 	t[8]->tagKey ="leisure"; t[8]->tagValue ="park"; t[8]->c->red=51; t[8]->c->green=153; t[8]->c->blue=0;
 	t[9]->tagKey ="highway"; t[9]->tagValue ="service"; t[9]->c->red=255; t[9]->c->green=255; t[9]->c->blue=204; //jaune pale
 	t[10]->tagKey ="highway"; t[10]->tagValue ="secondary"; t[10]->c->red=255; t[10]->c->green=255; t[10]->c->blue=204; //jaune pale
-	t[11]->tagKey ="highway"; t[11]->tagValue ="unclassified"; t[11]->c->red=255; t[11]->c->green=0; t[11]->c->blue=255; //violet
+/**/	t[11]->tagKey ="highway"; t[11]->tagValue ="unclassified"; t[11]->c->red=255; t[11]->c->green=255; t[11]->c->blue=204; //jaune pale
 	t[12]->tagKey ="highway"; t[12]->tagValue ="motorway"; t[12]->c->red=255; t[12]->c->green=255; t[12]->c->blue=204; //jaune pale
 	t[13]->tagKey ="highway"; t[13]->tagValue ="motorway_link"; t[13]->c->red=255; t[13]->c->green=255; t[13]->c->blue=204; //jaune pale
 	t[14]->tagKey ="natural"; t[14]->tagValue ="water"; t[14]->c->red=0; t[14]->c->green=55; t[14]->c->blue=204;
@@ -70,9 +70,39 @@ Tag** initReferenceTag(){
 	t[25]->tagKey ="waterway"; t[25]->tagValue ="riverband"; t[25]->c->red=0; t[25]->c->green=50; t[25]->c->blue=200;
 	t[26]->tagKey ="highway"; t[26]->tagValue ="footway"; t[26]->c->red=255; t[26]->c->green=255; t[26]->c->blue=204; //jaune pale
 	t[27]->tagKey ="barrier"; t[27]->tagValue ="wall"; t[27]->c->red=0; t[27]->c->green=50; t[27]->c->blue=0;
+	
+	t[0]->type= 2; t[0]->thick=0;  // 1=water, 2=green, 3=highway, 4= building, 0=other;
+	t[1]->type= 4; t[1]->thick=0;
+	t[2]->type= 3; t[2]->thick=0;
+	t[3]->type= 1; t[3]->thick=0;
+	t[4]->type= 1; t[4]->thick=0;
+	t[5]->type= 1; t[5]->thick=0;
+	t[6]->type= 1; t[6]->thick=0;
+	t[7]->type= 2; t[7]->thick=0;
+	t[8]->type= 2; t[8]->thick=0;
+	t[9]->type= 3; t[9]->thick=0;
+	t[10]->type=3; t[10]->thick=0;
+	t[11]->type= 3; t[11]->thick=0;
+	t[12]->type= 3; t[12]->thick=0;
+	t[13]->type= 3; t[13]->thick=0;
+	t[14]->type= 1; t[14]->thick=0;
+	t[15]->type= 3; t[15]->thick=0;
+	t[16]->type= 3; t[16]->thick=0;
+	t[17]->type= 1; t[17]->thick=0;
+	t[18]->type= 2; t[18]->thick=0;
+	t[19]->type= 3; t[19]->thick=0;
+	t[20]->type= 3; t[20]->thick=0;
+	t[21]->type= 0; t[21]->thick=0;
+	t[22]->type= 0; t[22]->thick=0;
+	t[23]->type= 0; t[23]->thick=0;
+	t[24]->type= 0; t[24]->thick=0;
+	t[25]->type= 1; t[25]->thick=0;
+	t[26]->type= 3; t[26]->thick=0;
+	t[27]->type= 4; t[27]->thick=0;
 	return t;
 
 }
+
 
 refListNode* initRefListNode(unsigned long  n, refListNode* next){
 	refListNode* r=malloc(sizeof(refListNode));
@@ -109,12 +139,13 @@ ListNode* addRefListNode(unsigned long n, ListNode* l){
 	return l;
 }
 
-Tag* initTag(char* key, char* value, Color* c){
+Tag* initTag(char* key, char* value, Color* c, int type, int thick){
 	Tag* t=malloc(sizeof(Tag));
 	t->tagKey=key;
 	t->tagValue=value;
-	// rechercher la couleur ici
-	t->c=c;// voir si l'on le met en arguments ou si on le recherche dans les reference de tag;
+	t->c=c;
+	t->type=type;
+	t->thick=thick;
 	return t;
 }
 
@@ -151,7 +182,7 @@ Relation* initRelation(unsigned long id, char* visible,Tag* t, ListWay* lw, List
 }
 Tag * goodTagRelation(char * k, char *v){
 	if(strcmp(k, "type")==0 && (strcmp(v,"multipolygon")==0 ||strcmp(v,"route")==0) ){
-		return initTag(k, v, NULL);
+		return initTag(k, v, NULL, -1, 0);
 	}
 	return NULL;
 }
@@ -164,7 +195,7 @@ Tag* goodTag(char * k, char *v, Tag**  ref){
 			if(ref[i]!=NULL){
 				if(strcmp(k, ref[i]->tagKey)==0 && strcmp(v, ref[i]->tagValue)==0){
 					//printf("est tracé\n");
-					return initTag(k, v, ref[i]->c);
+					return initTag(k, v, ref[i]->c,ref[i]->type, ref[i]->thick);
 				}
 			}
 		}

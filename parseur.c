@@ -147,7 +147,11 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 	Relation *r;
 	Avl *aNode = NULL;
 	Avl* avlWay =NULL;
-	ListWay* lw=NULL;
+	ListWay* wO=NULL;
+	ListWay* wW=NULL;
+	ListWay* wG=NULL;
+	ListWay* wH=NULL;
+	ListWay* wB=NULL;
 	ListRelation* lr=NULL;
 	int flagN = 1;
 	int flagW = 1;
@@ -172,7 +176,12 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 			if ((!xmlStrcmp(cur->name, (const xmlChar *)"way"))){
 				way=parseWay (doc, cur, map->referenceTag);
 				if(way!=NULL){
-					lw= addRefListWay(way->id," ", lw);
+					if((way->tag->type)==0){
+						wO=addRefListWay(way->id," ", wO);}
+					else if(way->tag->type==1){wW=addRefListWay(way->id," ", wW);}
+					else if(way->tag->type==2){ wG=addRefListWay(way->id," ", wG);}
+					else if(way->tag->type==3){ wH=addRefListWay(way->id," ", wH);}
+					else if(way->tag->type==4){ wB=addRefListWay(way->id," ", wB);}
 					if(flagW==1){
 						init(&avlWay,NULL, way);
 						flagW=0;
@@ -193,7 +202,11 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 
 	map->avl=aNode;
 	map->avlWay=avlWay;
-	map->listWay=lw;
+	map->wayWater=wW;
+	map->wayOther=wO;
+	map->wayGreen=wG;
+	map->wayBuilding=wB;
+	map->wayHighway=wH;
 	map->listRelation=lr;
 	map->bounds=convertBounds(map->bounds);
 	return map;

@@ -112,7 +112,11 @@ void deleteMap(Map *map){
 		if(map->avlWay !=NULL){
 			deleteAvl(&(map->avlWay));
 		}
-		deleteListWay(map->listWay);
+		deleteListWay(map->wayOther);
+		deleteListWay(map->wayGreen);
+		deleteListWay(map->wayWater);
+		deleteListWay(map->wayBuilding);
+		deleteListWay(map->wayHighway);
 		//		deleteListRelation(map->listRelation);
 		//		deleteTabTag(map->referenceTag);
 	}

@@ -75,9 +75,11 @@ ListNode* addRefListNode(unsigned long n, ListNode *l);
 * \param key represente the key of the tag
 * \param value represente the value of the tag
 * \param c represente the color for the tag
-* \return ListNode*
+* \param type represente the type for the tag
+* \param thick represente the thickness for the tag
+* \return Tag*
 */
-Tag* initTag(char* key, char* value,Color *c);
+Tag* initTag(char* key, char* value,Color *c,int type, int thick);
 
 /**
 * \fn Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size);
