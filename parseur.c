@@ -178,7 +178,7 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 				if(way!=NULL){
 					if((way->tag->type)==0){
 						wO=addRefListWay(way->id," ", wO);}
-					else if(way->tag->type==1){wW=addRefListWay(way->id," ", wW);}
+					else if(way->tag->type==1){ wW=addRefListWay(way->id," ", wW);}
 					else if(way->tag->type==2){ wG=addRefListWay(way->id," ", wG);}
 					else if(way->tag->type==3){ wH=addRefListWay(way->id," ", wH);}
 					else if(way->tag->type==4){ wB=addRefListWay(way->id," ", wB);}

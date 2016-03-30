@@ -60,13 +60,13 @@ Tag** initReferenceTag(){
 	t[15]->tagKey ="highway"; t[15]->tagValue ="primary"; t[15]->c->red=255; t[15]->c->green=255; t[15]->c->blue=204; //jaune pale
 	t[16]->tagKey ="bridge"; t[16]->tagValue ="yes"; t[16]->c->red=255; t[16]->c->green=255; t[16]->c->blue=204; //jaune pale
 	t[18]->tagKey ="leisure"; t[18]->tagValue ="garden"; t[18]->c->red=0; t[18]->c->green=200; t[18]->c->blue=0;
-	t[17]->tagKey ="natural"; t[17]->tagValue ="coastline"; t[17]->c->red=0; t[17]->c->green=0; t[17]->c->blue=0; //noir
+	t[17]->tagKey ="natural"; t[17]->tagValue ="coastline"; t[17]->c->red=255; t[17]->c->green=255; t[17]->c->blue=255; //blanc
 	t[19]->tagKey ="highway"; t[19]->tagValue ="pedestrian"; t[19]->c->red=255; t[19]->c->green=255; t[19]->c->blue=204; //jaune pale
 	t[20]->tagKey ="service"; t[20]->tagValue ="alley"; t[20]->c->red=255; t[20]->c->green=255; t[20]->c->blue=204; //jaune pale
 	t[21]->tagKey ="layer"; t[21]->tagValue ="1"; t[21]->c->red=255; t[21]->c->green=255; t[21]->c->blue=204; //jaune pale
-	t[22]->tagKey ="surface"; t[22]->tagValue ="ground"; t[22]->c->red=0; t[22]->c->green=0; t[22]->c->blue=0; //noir
-	t[23]->tagKey ="surface"; t[23]->tagValue ="gravel"; t[23]->c->red=0; t[23]->c->green=0; t[23]->c->blue=0; //noir
-	t[24]->tagKey ="source"; t[24]->tagValue ="cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"; t[24]->c->red=0; t[24]->c->green=0; t[24]->c->blue=0; //noir
+	t[22]->tagKey ="surface"; t[22]->tagValue ="ground"; t[22]->c->red=255; t[22]->c->green=255; t[22]->c->blue=255; //blanc
+	t[23]->tagKey ="surface"; t[23]->tagValue ="gravel"; t[23]->c->red=255; t[23]->c->green=255; t[23]->c->blue=255; //blanc
+	t[24]->tagKey ="source"; t[24]->tagValue ="cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"; t[24]->c->red=255; t[24]->c->green=255; t[24]->c->blue=255; //blanc
 	t[25]->tagKey ="waterway"; t[25]->tagValue ="riverband"; t[25]->c->red=0; t[25]->c->green=50; t[25]->c->blue=200;
 	t[26]->tagKey ="highway"; t[26]->tagValue ="footway"; t[26]->c->red=255; t[26]->c->green=255; t[26]->c->blue=204; //jaune pale
 	t[27]->tagKey ="barrier"; t[27]->tagValue ="wall"; t[27]->c->red=0; t[27]->c->green=50; t[27]->c->blue=0;

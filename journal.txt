@@ -1,3 +1,10 @@
+Objectif semaine pour le 4/04:
+- Résolution coastline
+- Largeurs des rues
+- Cours intérieur(Relation) 
+- Free
+- Makefile
+
 Objectif semaine pour le 23/03 :
 -Free(xml, way , node, listWay, listNode, Coordinate, Tag, Avl)
 -Ajouter de la doc
