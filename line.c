@@ -46,7 +46,6 @@ void parcourList(ListWay *l,Map* map,int width,int heigth, SDL_Renderer* rendere
       Way * currentWay =searchWay(map->avlWay,current->way);
       if((currentWay->draw== 0)&&(strcmp(currentWay->visible,"T")==0)){
         if(strcmp(currentWay->tag->tagValue, "coastline")==0){
-          printf("coastline\n");
           if(SDL_SetRenderDrawColor(renderer,0,0,0xFF,0xFF) < 0) { // problème ne set pas en blue
             printf("Renderer color could not be set! SDL Error: %s\n",SDL_GetError());
           }
@@ -60,8 +59,8 @@ void parcourList(ListWay *l,Map* map,int width,int heigth, SDL_Renderer* rendere
         fillWay(map,currentWay,renderer);
         currentWay->draw=1;
       }
-      else if(strcmp(currentWay->visible,"F")!=0){
-        printf("Le champs visible du way %ld ne vaut ni true ni false mais %s\n",currentWay->id,currentWay->visible );
+      else if((strcmp(currentWay->visible,"F")!=0) && (currentWay->draw!=1) ){
+        printf("Le champs visible du way %ld ne vaut ni true ni false mais %s draw: %d\n",currentWay->id,currentWay->visible, currentWay->draw );
       }
       current = current->next;
     }

@@ -36,9 +36,9 @@ Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
 
 
 Tag** initReferenceTag(){
-	Tag **t=malloc(28*sizeof(Tag*));
+	Tag **t=malloc(29*sizeof(Tag*));
 	int i=1;
-	for(i=0; i<28; i++){
+	for(i=0; i<29; i++){
 		t[i]=malloc(sizeof(Tag));
 		t[i]->c=malloc(sizeof(Color));
 	}
@@ -70,7 +70,7 @@ Tag** initReferenceTag(){
 	t[25]->tagKey ="waterway"; t[25]->tagValue ="riverband"; t[25]->c->red=0; t[25]->c->green=50; t[25]->c->blue=200;
 	t[26]->tagKey ="highway"; t[26]->tagValue ="footway"; t[26]->c->red=255; t[26]->c->green=255; t[26]->c->blue=204; //jaune pale
 	t[27]->tagKey ="barrier"; t[27]->tagValue ="wall"; t[27]->c->red=0; t[27]->c->green=50; t[27]->c->blue=0;
-	
+	t[28]->tagKey ="leisure"; t[28]->tagValue ="playground"; t[28]->c->red=51; t[28]->c->green=153; t[28]->c->blue=0;
 	t[0]->type= 2; t[0]->thick=0;  // 1=water, 2=green, 3=highway, 4= building, 0=other;
 	t[1]->type= 4; t[1]->thick=0;
 	t[2]->type= 3; t[2]->thick=0;
@@ -99,6 +99,7 @@ Tag** initReferenceTag(){
 	t[25]->type= 1; t[25]->thick=0;
 	t[26]->type= 3; t[26]->thick=0;
 	t[27]->type= 4; t[27]->thick=0;
+	t[28]->type= 2; t[28]->thick=0;
 	return t;
 
 }
@@ -189,17 +190,14 @@ Tag * goodTagRelation(char * k, char *v){
 
 Tag* goodTag(char * k, char *v, Tag**  ref){
 	int i=0;
-	//printf( "tag : k %s, v %s  ->", k,v);
 	if(ref!=NULL){
-		for(i=0; i<28; i++){
+		for(i=0; i<29; i++){
 			if(ref[i]!=NULL){
 				if(strcmp(k, ref[i]->tagKey)==0 && strcmp(v, ref[i]->tagValue)==0){
-					//printf("est tracé\n");
 					return initTag(k, v, ref[i]->c,ref[i]->type, ref[i]->thick);
 				}
 			}
 		}
-		//printf("		N EST PAS TRACE \n");
 	}
 	return NULL;
 }
