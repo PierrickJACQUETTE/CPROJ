@@ -1,7 +1,7 @@
 #include "Avl.h"
 
 int heightAVL(Avl **a){
-	return (*a==NULL)? 0 : (*a)->height;
+	return (*a == NULL)? 0 : (*a)->height;
 }
 
 int height(int hL, int hD){
@@ -54,23 +54,23 @@ void rotationLeftRight(Avl **a){
 
 void equilibrateAVL(Avl **a){
 	int heightleft,heightright;
-	if(*a!=NULL){
+	if(*a != NULL){
 		heightleft = heightAVL(&(*a)->left);
 		heightright = heightAVL(&(*a)->right);
 		if(heightleft - heightright == 2){
 			heightleft = heightAVL(&(*a)->left->left);
 			heightright = heightAVL(&(*a)->left->right);
-			if(heightleft>heightright){
+			if(heightleft > heightright){
 				rotationRight(&(*a));
 			}
 			else{
 				rotationLeftRight(&(*a));
 			}
 		}
-		else if(heightleft - heightright==-2){
+		else if(heightleft - heightright ==-2){
 			heightleft = heightAVL(&(*a)->right->left);
 			heightright = heightAVL(&(*a)->right->right);
-			if(heightright>heightleft){
+			if(heightright > heightleft){
 				rotationLeft(&(*a));
 			}
 			else{
@@ -85,18 +85,18 @@ void equilibrateAVL(Avl **a){
 	}
 }
 
-Avl* insert(Avl **a,Node *n, Way * w){
-	Avl *aux =NULL;
+Avl* insert(Avl **a, Node *n, Way * w){
+	Avl *aux = NULL;
 
 	if(*a){
-		if(w==NULL){
+		if(w == NULL){
 			if((*a)->node->id == n->id){
 				aux = *a;
 			}
 			else if(n->id < (*a)->node->id){
 				(*a)->left = insert(&((*a)->left),n,NULL);
 				equilibrateAVL(&(*a));
-				aux= *a;
+				aux = *a;
 			}
 			else if(n->id > (*a)->node->id){
 				(*a)->right = insert(&((*a)->right),n,NULL);
@@ -104,7 +104,7 @@ Avl* insert(Avl **a,Node *n, Way * w){
 				aux = *a;
 			}
 		}
-		if(n==NULL){
+		if(n == NULL){
 			if((*a)->way->id == w->id){
 				aux = *a;
 			}
@@ -130,15 +130,15 @@ Avl* insert(Avl **a,Node *n, Way * w){
 		}
 		aux->left = aux->right = NULL;
 		aux->height = 1;
-		if(w==NULL){aux->node = n;}
-		if(n==NULL){aux->way = w;}
+		if(w == NULL){aux->node = n;}
+		if(n == NULL){aux->way = w;}
 	}
 
 	return aux;
 }
 
 Node* searchNode(Avl *a, unsigned long key){
-	if(a!=NULL){
+	if(a != NULL){
 		if(key == a->node->id){
 			return a->node;
 		}
@@ -153,7 +153,7 @@ Node* searchNode(Avl *a, unsigned long key){
 }
 
 Way* searchWay(Avl *a, unsigned long key){
-	if(a!=NULL){
+	if(a != NULL){
 		if(key == a->way->id){
 			//  printf("searchway visible = %s\n",a->way->visible);
 			return a->way;
@@ -168,17 +168,17 @@ Way* searchWay(Avl *a, unsigned long key){
 	return NULL;
 }
 
-void init(Avl **a,Node* n, Way *w){
+void init(Avl **a, Node* n, Way *w){
 	Avl *aux = (Avl*)malloc(sizeof(Avl));
-	if(aux!=NULL){
-		if(n==NULL && w==NULL){
+	if(aux != NULL){
+		if(n == NULL && w == NULL){
 			fprintf(stderr,"Allocation impossible : %s\n","fonction initAVL");
 			exit(EXIT_FAILURE);
 		}
 		aux->left = aux->right = NULL;
 		aux->height = 1;
-		if(w==NULL){aux->node =n;}
-		if(n==NULL){aux->way =w;}
+		if(w == NULL){aux->node = n;}
+		if(n == NULL){aux->way = w;}
 		*a = aux;
 	}
 	else {
@@ -187,14 +187,14 @@ void init(Avl **a,Node* n, Way *w){
 	}
 }
 
-void printNode(Avl **a,unsigned long nombre){
+void printNode(Avl **a, unsigned long nombre){
 	if(*a == NULL){
 		return;
 	}
 	printNode(&((*a)->right),nombre+1);
-	if(nombre!=0){
+	if(nombre != 0){
 		int i;
-		for(i=0;i<nombre-1;i++){
+		for(i = 0; i < nombre-1; i++){
 			printf("|\t");
 		}
 		printf("|-----: %ld\n",(*a)->node->id);
@@ -205,14 +205,14 @@ void printNode(Avl **a,unsigned long nombre){
 	printNode(&((*a)->left),nombre+1);
 }
 
-void printWay(Avl **a,unsigned long nombre){
+void printWay(Avl **a, unsigned long nombre){
 	if(*a == NULL){
 		return;
 	}
 	printWay(&((*a)->right),nombre+1);
-	if(nombre!=0){
+	if(nombre != 0){
 		int i;
-		for(i=0;i<nombre-1;i++){
+		for(i=0; i<nombre-1; i++){
 			printf("|\t");
 		}
 		printf("|-----: %ld\n",(*a)->way->id);

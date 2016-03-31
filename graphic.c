@@ -57,10 +57,10 @@ void printMap(Map* map,char* typeOfDessin){
     exit(EXIT_FAILURE);
   }
   SDL_RenderClear(renderer);
-  if(strcmp(typeOfDessin,"point")==0){
+  if(strcmp(typeOfDessin,"point") ==0){
     parcoursAvl(&(map->avl),map->bounds,width,heigth,renderer);
   }
-  else if(strcmp(typeOfDessin,"line")==0){
+  else if(strcmp(typeOfDessin,"line") ==0){
     parcoursListWay(map,width,heigth,renderer);
   }
   else{
