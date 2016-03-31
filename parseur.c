@@ -7,7 +7,7 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 	ListNode* ln=initListNode(0);
 	Tag* tag=NULL;
 	Tag* t=NULL;
-	int size;
+	int size =0;
 
 	xmlAttr *node_attr = cur->properties;
 	xmlNodePtr tmpcur=NULL;
