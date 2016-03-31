@@ -16,11 +16,9 @@
 * \brief Courses way the list
 *
 * \param map This represents all of our data
-* \param width This is the width of the window
-* \param heigth This is the heigth of the window
 * \param renderer That's where we draw
 
 */
-void parcoursListWay(Map *map, int width, int heigth, SDL_Renderer* renderer);
+void parcoursListWay(Map *map);
 
 #endif /* __LINE_H__ */

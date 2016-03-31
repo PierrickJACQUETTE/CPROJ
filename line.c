@@ -1,10 +1,6 @@
 #include "line.h"
 
-int heigthR = 0;
-int widthR = 0;
-SDL_Renderer* rendererG =NULL;
 Map * map = NULL;
-
 
 void fillWay(Map* map, Way * way){
   if(map == NULL){
@@ -29,8 +25,8 @@ void fillWay(Map* map, Way * way){
       Node * currentNode = searchNode(map->avl,current->nd);
       if(currentNode != NULL){
         if(currentNode->c !=NULL){
-          coord_x[nbre] = miseAEchelleX(currentNode->c->x,map->bounds->max->x,widthR);
-          coord_y[nbre] = miseAEchelleY(currentNode->c->y,map->bounds->max->y,heigthR);
+          coord_x[nbre] = miseAEchelleX(currentNode->c->x,map->bounds->max->x,width);
+          coord_y[nbre] = miseAEchelleY(currentNode->c->y,map->bounds->max->y,heigth);
           nbre++;
         }
         else{
@@ -52,18 +48,18 @@ void fillWay(Map* map, Way * way){
           if(way->tag->thick == 0){
             thick = way->tag->thick+1; //pour l'instant : retirer le +1 quand valeur != 0 dans le tableau
           }
-          thickLineRGBA(rendererG,x,y,coord_x[i],coord_y[i],thick,255,0,0,155);
+          thickLineRGBA(renderer,x,y,coord_x[i],coord_y[i],thick,255,0,0,155);
           x = coord_x[i];
           y = coord_y[i];
         }
       }
       else{
-        polygonRGBA(rendererG,coord_x,coord_y,way->size,139,71,137,240);
-        filledPolygonRGBA(rendererG,coord_x,coord_y,way->size,way->tag->c->red,way->tag->c->green,way->tag->c->blue,240);
+        polygonRGBA(renderer,coord_x,coord_y,way->size,139,71,137,240);
+        filledPolygonRGBA(renderer,coord_x,coord_y,way->size,way->tag->c->red,way->tag->c->green,way->tag->c->blue,240);
       }
     }
     else{
-      filledPolygonRGBA(rendererG,coord_x,coord_y,way->size,0,0,255,200);
+      filledPolygonRGBA(renderer,coord_x,coord_y,way->size,0,0,255,200);
     }
   }
 }
@@ -77,11 +73,11 @@ void parcourList(ListWay *l){
       if(currentWay != NULL){
         if((currentWay->draw == 0)&&(strcmp(currentWay->visible,"T")==0)){
           if((strcmp(currentWay->tag->tagValue, "coastline") ==0) && (coastline ==0) ){
-            if(SDL_SetRenderDrawColor(rendererG,0,0,0xFF,100) < 0) {
+            if(SDL_SetRenderDrawColor(renderer,0,0,0xFF,100) < 0) {
               printf("Renderer color could not be set! SDL Error: %s\n",SDL_GetError());
             }
             coastline = 1;
-            SDL_RenderClear(rendererG);
+            SDL_RenderClear(renderer);
             fillWay(map,currentWay);
           }
           fillWay(map,currentWay);
@@ -136,10 +132,7 @@ void parcourRelation(ListRelation *lr){
   }
 }
 
-void parcoursListWay(Map* mapG,int width,int heigth, SDL_Renderer* renderer){
-  heigthR = heigth;
-  widthR = width;
-  rendererG=renderer;
+void parcoursListWay(Map* mapG){
   map = mapG;
   // parcourRelation(map->listRelation, map,width,heigth,renderer);
 

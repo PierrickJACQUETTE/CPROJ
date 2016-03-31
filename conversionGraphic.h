@@ -7,6 +7,10 @@
 #include "Core.h"
 
 
+extern int heigth;
+extern int width;
+extern SDL_Renderer* renderer;
+
 /**
 * Fonction that puts the ordonate's X value to the window scale
 *

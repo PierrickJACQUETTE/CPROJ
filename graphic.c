@@ -1,9 +1,6 @@
 #include "graphic.h"
 
 enum status {QUIT, CONTINUE};
-int heigth = 600; // taille fenetre par défaut
-int width = 800;
-SDL_Renderer* renderer;
 SDL_Window *window;
 
 int init_SDL() {
@@ -11,6 +8,8 @@ int init_SDL() {
     printf("SDL could not initialize! SDL Error: %s\n",SDL_GetError());
     return 0;
   }
+  width=800;
+  heigth=600;
   window = SDL_CreateWindow("CPROJ",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,width,heigth,SDL_WINDOW_SHOWN);
   if(window == NULL) {
     printf("Window could not be created! SDL Error: %s\n",SDL_GetError());
@@ -58,10 +57,10 @@ void printMap(Map* map,char* typeOfDessin){
   }
   SDL_RenderClear(renderer);
   if(strcmp(typeOfDessin,"point") ==0){
-    parcoursAvl(&(map->avl),map->bounds,width,heigth,renderer);
+    parcoursAvl(&(map->avl),map->bounds);
   }
   else if(strcmp(typeOfDessin,"line") ==0){
-    parcoursListWay(map,width,heigth,renderer);
+    parcoursListWay(map);
   }
   else{
     printf("Le deuxieme argument est inconnu %s\n", typeOfDessin);

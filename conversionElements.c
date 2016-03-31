@@ -14,10 +14,10 @@ Coordinate* conversionLatLon(float lat, float lon){
 
 
 Bounds* convertBounds(Bounds *b ){
-	//b->max->x = b->max->x - b->min->x; 
+	//b->max->x = b->max->x - b->min->x;
 	b->max->x= distanceLatLon(b->min->y, b->min->x, b->min->y, b->max->x);
 	//b->max->y = b->max->y - b->min->y;
-	b->max->y= distanceLatLon(b->min->y, b->min->x, b->max->y, b->min->x); 
+	b->max->y= distanceLatLon(b->min->y, b->min->x, b->max->y, b->min->x);
 	b->min->x=0;
 	b->min->y=0;
 	return b;
