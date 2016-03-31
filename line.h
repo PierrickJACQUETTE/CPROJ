@@ -21,6 +21,6 @@
 * \param renderer That's where we draw
 
 */
-void parcoursListWay(Map *map,int width,int heigth, SDL_Renderer* renderer);
+void parcoursListWay(Map *map, int width, int heigth, SDL_Renderer* renderer);
 
 #endif /* __LINE_H__ */
