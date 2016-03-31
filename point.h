@@ -11,7 +11,7 @@
 * @param  renderer r the renderer which draw
 * @return  nothing it just draws the point
 */
-void affichage(float x,float y,SDL_Renderer* renderer);
+void affichage(float x, float y, SDL_Renderer* renderer);
 
 /**
 * Fonction that browse the avl tree and displays the nodes in the window by calling the affichage fonction
@@ -21,6 +21,6 @@ void affichage(float x,float y,SDL_Renderer* renderer);
 * @param  renderer r the renderer which draw
 * @return  value of the abscisse put to scale
 */
-void parcoursAvl(Avl **a, Bounds* bounds,int w,int h,SDL_Renderer* renderer);
+void parcoursAvl(Avl **a, Bounds* bounds, int w, int h, SDL_Renderer* renderer);
 
 #endif /* __POINT_H__ */
