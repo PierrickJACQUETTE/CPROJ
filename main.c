@@ -12,6 +12,9 @@ int main(int argc, char **argv) {
 	else{
 		filename = argv[1];
 		Map* map= malloc(sizeof(Map));
+		if(map ==NULL){
+			printf("Le pointer vers la map est NULL dans fonction main \n");
+		}
 		map =parseDoc(filename);
 		//printWay(&(map->avlWay),0);
 		if(argc==3){
