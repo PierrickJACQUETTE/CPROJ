@@ -73,7 +73,7 @@ void parcourList(ListWay *l){
       if(currentWay != NULL){
         if((currentWay->draw == 0)&&(strcmp(currentWay->visible,"T")==0)){
           if((strcmp(currentWay->tag->tagValue, "coastline") ==0) && (coastline ==0) ){
-            if(SDL_SetRenderDrawColor(renderer,0,0,0xFF,100) < 0) {
+            if(SDL_SetRenderDrawColor(renderer,0,102,205,100) < 0) {
               printf("Renderer color could not be set! SDL Error: %s\n",SDL_GetError());
             }
             coastline = 1;

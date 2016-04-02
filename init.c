@@ -3,15 +3,20 @@
 
 Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b){
 	Node * n= malloc(sizeof(Node));
+	if(n == NULL){
+		fprintf(stderr,"Allocation impossible : %s\n","fonction initNode");
+		exit(EXIT_FAILURE);
+	}
 	n->id=id;
 	int negativex=0;
 	int negativey=0;
 	if(lat<(b->min->y)){negativey=1;}
 	if(lon<(b->min->x)){negativex=1;}
 	n->c= malloc(sizeof(Coordinate));
-	//n->c= conversionLatLon(lat, lon);
-	//n->c->x= n->c->x - b->min->x;
-	//n->c->y= n->c->y - b->min->y;
+	if(n->c == NULL){
+		fprintf(stderr,"Allocation impossible : %s\n","fonction initNode");
+		exit(EXIT_FAILURE);
+	}
 	n->c->x= distanceLatLon(lat, lon, lat, b->min->x);
 	if(negativex==1){ n->c->x = -(n->c->x);}
 	n->c->y= distanceLatLon(lat, lon, b->min->y, lon);
@@ -27,8 +32,20 @@ Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b)
 
 Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
 	Bounds *b=malloc(sizeof(Bounds));
+	if(b == NULL){
+		fprintf(stderr,"Allocation impossible : %s\n","fonction initBounds");
+		exit(EXIT_FAILURE);
+	}
 	b->min =malloc(sizeof(Coordinate));
+	if(b->min == NULL){
+		fprintf(stderr,"Allocation impossible : %s\n","fonction initBounds");
+		exit(EXIT_FAILURE);
+	}
 	b->max = malloc(sizeof(Coordinate));
+	if(b->max == NULL){
+		fprintf(stderr,"Allocation impossible : %s\n","fonction initBounds");
+		exit(EXIT_FAILURE);
+	}
 	b->min= conversionLatLon(lat_min, lon_min);
 	b->max= conversionLatLon(lat_max, lon_max);
 	return b;
@@ -37,10 +54,22 @@ Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
 
 Tag** initReferenceTag(){
 	Tag **t=malloc(29*sizeof(Tag*));
+	if(t == NULL){
+		fprintf(stderr,"Allocation impossible : %s\n","fonction initReferenceTag");
+		exit(EXIT_FAILURE);
+	}
 	int i=1;
 	for(i=0; i<29; i++){
 		t[i]=malloc(sizeof(Tag));
+		if(t[i] == NULL){
+			fprintf(stderr,"Allocation impossible : %s\n","fonction initReferenceTag");
+			exit(EXIT_FAILURE);
+		}
 		t[i]->c=malloc(sizeof(Color));
+		if(t[i]->c == NULL){
+			fprintf(stderr,"Allocation impossible : %s\n","fonction initReferenceTag");
+			exit(EXIT_FAILURE);
+		}
 	}
 	t[0]->tagKey ="landuse"; t[0]->tagValue ="forest"; t[0]->c->red=51; t[0]->c->green=102; t[0]->c->blue=0; //vert
 	t[1]->tagKey ="building"; t[1]->tagValue ="yes"; t[1]->c->red=205; t[1]->c->green=183; t[1]->c->blue=158;	//beige
@@ -107,6 +136,10 @@ Tag** initReferenceTag(){
 
 refListNode* initRefListNode(unsigned long  n, refListNode* next){
 	refListNode* r=malloc(sizeof(refListNode));
+	if(r == NULL){
+		fprintf(stderr,"Allocation impossible : %s\n","fonction initRefListNode");
+		exit(EXIT_FAILURE);
+	}
 	r->nd=n;
 	r->next=next;
 	return r;
@@ -114,6 +147,10 @@ refListNode* initRefListNode(unsigned long  n, refListNode* next){
 
 ListNode* initListNode(unsigned long first){
 	ListNode* l=malloc(sizeof(ListNode));
+	if(l == NULL){
+		fprintf(stderr,"Allocation impossible : %s\n","fonction initListNode");
+		exit(EXIT_FAILURE);
+	}
 	refListNode* f=initRefListNode(first,NULL);
 	l->firstRef=f;
 	l->lastRef=f;
@@ -121,7 +158,7 @@ ListNode* initListNode(unsigned long first){
 }
 
 ListNode* addRefListNode(unsigned long n, ListNode* l){
-	refListNode* r=initRefListNode(n, NULL);
+	refListNode* r=initRefListNode(n,NULL);
 	if(l!=NULL){
 		if((l->firstRef!=NULL) && (l->firstRef->nd!=0)){
 			l->lastRef->next=r;
@@ -142,6 +179,10 @@ ListNode* addRefListNode(unsigned long n, ListNode* l){
 
 Tag* initTag(char* key, char* value, Color* c, int type, int thick){
 	Tag* t=malloc(sizeof(Tag));
+	if(t == NULL){
+		fprintf(stderr,"Allocation impossible : %s\n","fonction initTag");
+		exit(EXIT_FAILURE);
+	}
 	t->tagKey=key;
 	t->tagValue=value;
 	t->c=c;
@@ -152,6 +193,10 @@ Tag* initTag(char* key, char* value, Color* c, int type, int thick){
 
 Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size){
 	Way* w= malloc(sizeof(Way));
+	if(w == NULL){
+		fprintf(stderr,"Allocation impossible : %s\n","fonction initWay");
+		exit(EXIT_FAILURE);
+	}
 	w->id=id;
 	w->listNd=ln;
 	if(strcmp(visible, "true")==0){
@@ -161,14 +206,23 @@ Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size){
 		w->visible="F";
 	}
 	w->tag=malloc(sizeof(Tag));
+	if(w->tag == NULL){
+		fprintf(stderr,"Allocation impossible : %s\n","fonction initWay");
+		exit(EXIT_FAILURE);
+	}
 	w->tag=tag;
 	w->size=size;
+	w->draw=0;
 	//printf("size way: %d\n",w->size);
 	return w;
 }
 
 Relation* initRelation(unsigned long id, char* visible,Tag* t, ListWay* lw, ListNode* ln){
 	Relation* r= malloc(sizeof(Relation));
+	if(r == NULL){
+		fprintf(stderr,"Allocation impossible : %s\n","fonction initRelation");
+		exit(EXIT_FAILURE);
+	}
 	r->id=id;
 	r->listW=lw;
 	r->listN=ln;
@@ -205,6 +259,10 @@ Tag* goodTag(char * k, char *v, Tag**  ref){
 
 refListWay* initRefListWay(unsigned long  w, char *role, refListWay* next){
 	refListWay* r=malloc(sizeof(refListWay));
+	if(r == NULL){
+		fprintf(stderr,"Allocation impossible : %s\n","fonction initRefListWay");
+		exit(EXIT_FAILURE);
+	}
 	r->way=w;
 	if(strcmp(role, "inner")==0){
 		r->role="inner";
@@ -218,6 +276,10 @@ refListWay* initRefListWay(unsigned long  w, char *role, refListWay* next){
 
 ListWay* initListWay(unsigned long first){
 	ListWay* l=malloc(sizeof(ListWay));
+	if(l == NULL){
+		fprintf(stderr,"Allocation impossible : %s\n","fonction initListWay");
+		exit(EXIT_FAILURE);
+	}
 	refListWay* f=initRefListWay(first, " ",NULL);
 	l->firstRef=f;
 	l->lastRef=f;
@@ -248,7 +310,15 @@ ListWay* addRefListWay(unsigned long way,char *role, ListWay* lw){
 
 refListRel* initRefListRel(Relation* id, refListRel* next){
 	refListRel* r=malloc(sizeof(refListRel));
+	if(r == NULL){
+		fprintf(stderr,"Allocation impossible : %s\n","fonction initRefListRel");
+		exit(EXIT_FAILURE);
+	}
 	r->relation=malloc(sizeof(Relation));
+	if(r->relation == NULL){
+		fprintf(stderr,"Allocation impossible : %s\n","fonction initRefListRel");
+		exit(EXIT_FAILURE);
+	}
 	r->relation=id;
 	r->next=next;
 	return r;
@@ -256,6 +326,10 @@ refListRel* initRefListRel(Relation* id, refListRel* next){
 
 ListRelation* initListRelation(Relation* first){
 	ListRelation* l=malloc(sizeof(ListRelation));
+	if(l == NULL){
+		fprintf(stderr,"Allocation impossible : %s\n","fonction initListRelation");
+		exit(EXIT_FAILURE);
+	}
 	refListRel* f=initRefListRel(first,NULL);
 	l->firstRef=f;
 	l->lastRef=f;
@@ -283,6 +357,10 @@ ListRelation* addRefListRelation(Relation* id ,ListRelation* lr){
 }
 Map* initMap(){
 	Map * map = malloc(sizeof(Map));
+	if(map == NULL){
+		fprintf(stderr,"Allocation impossible : %s\n","fonction initMap");
+		exit(EXIT_FAILURE);
+	}
 	map->referenceTag=initReferenceTag();
 	return map;
 }

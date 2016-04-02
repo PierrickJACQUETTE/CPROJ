@@ -23,9 +23,10 @@ void deleteTag(Tag *t){
 
 void deleteTabTag(Tag **t){
 	int i;
-	for(i=0;i<28;i++){
+	for(i=0;i<29;i++){
 		deleteTag(t[i]);
 	}
+	free(t);
 }
 
 void deleteRefListNode(refListNode *r){
@@ -82,8 +83,9 @@ void deleteWay(Way *w){
 
 void deleteRelation(Relation *r){
 	deleteListWay(r->listW);
+	deleteListNode(r->listN);
 	free(r->visible);
-	//deleteTag(r->tag);
+	deleteTag(r->tag);
 	free(r);
 }
 
@@ -117,7 +119,7 @@ void deleteMap(Map *map){
 		deleteListWay(map->wayWater);
 		deleteListWay(map->wayBuilding);
 		deleteListWay(map->wayHighway);
-		//		deleteListRelation(map->listRelation);
-		//		deleteTabTag(map->referenceTag);
+				deleteListRelation(map->listRelation);
+				deleteTabTag(map->referenceTag);
 	}
 }
