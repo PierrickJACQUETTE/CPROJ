@@ -8,6 +8,7 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 	Tag* tag=NULL;
 	Tag* t=NULL;
 	int size =0;
+	char* name=NULL;
 
 	xmlAttr *node_attr = cur->properties;
 	xmlNodePtr tmpcur=NULL;
@@ -27,8 +28,14 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 	//while "way" has childs
 	while(tmpcur != NULL){
 		if (tmpcur->type == XML_ELEMENT_NODE) {
-			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag")==0 &&tag==NULL){
-				t=goodTag((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"), refTag);
+			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag")==0){
+				if(tag==NULL){
+					t=goodTag((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"), refTag);
+				}
+				if( xmlStrcmp( (const xmlChar *) xmlGetProp( tmpcur, (const xmlChar *)"k" ), (const xmlChar *)"name" ) ==0){
+					name = (char *) xmlGetProp(tmpcur, (const xmlChar *)"v");
+					printf("name parseur %s\n",name);
+				}
 				if(t!=NULL){
 					tag=t;
 				}
@@ -41,7 +48,8 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 		tmpcur = tmpcur->next;
 	}
 	if(tag!=NULL){
-		w= initWay(id,visible,ln,tag,size);
+		w= initWay(id,visible,ln,tag,size,name);
+		printf("name parseur2 %s\n",w->name);
 		return w;
 	}
 	else{

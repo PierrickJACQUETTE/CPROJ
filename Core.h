@@ -155,6 +155,7 @@ typedef struct{
 	Tag* tag;
 	int size;
 	int draw; // 0 jamais tracé, 1 = déja tracé;
+	char* name;
 }Way;
 
 

@@ -91,7 +91,7 @@ Tag* initTag(char* key, char* value,Color *c,int type, int thick);
 * \param size represente the size of the way
 * \return Way*
 */
-Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size);
+Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size, char* name);
 
 /**
 * \fn Tag* goodTagRelation(char * k, char *v);

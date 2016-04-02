@@ -82,7 +82,7 @@ Tag** initReferenceTag(){
 	t[8]->tagKey ="leisure"; t[8]->tagValue ="park"; t[8]->c->red=51; t[8]->c->green=153; t[8]->c->blue=0;
 	t[9]->tagKey ="highway"; t[9]->tagValue ="service"; t[9]->c->red=255; t[9]->c->green=255; t[9]->c->blue=204; //jaune pale
 	t[10]->tagKey ="highway"; t[10]->tagValue ="secondary"; t[10]->c->red=255; t[10]->c->green=255; t[10]->c->blue=204; //jaune pale
-/**/	t[11]->tagKey ="highway"; t[11]->tagValue ="unclassified"; t[11]->c->red=255; t[11]->c->green=255; t[11]->c->blue=204; //jaune pale
+	t[11]->tagKey ="highway"; t[11]->tagValue ="unclassified"; t[11]->c->red=255; t[11]->c->green=255; t[11]->c->blue=204; //jaune pale
 	t[12]->tagKey ="highway"; t[12]->tagValue ="motorway"; t[12]->c->red=255; t[12]->c->green=255; t[12]->c->blue=204; //jaune pale
 	t[13]->tagKey ="highway"; t[13]->tagValue ="motorway_link"; t[13]->c->red=255; t[13]->c->green=255; t[13]->c->blue=204; //jaune pale
 	t[14]->tagKey ="natural"; t[14]->tagValue ="water"; t[14]->c->red=0; t[14]->c->green=55; t[14]->c->blue=204;
@@ -191,7 +191,8 @@ Tag* initTag(char* key, char* value, Color* c, int type, int thick){
 	return t;
 }
 
-Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size){
+Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size, char* name){
+	printf("name initway1 %s\n",name);
 	Way* w= malloc(sizeof(Way));
 	if(w == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initWay");
@@ -213,7 +214,8 @@ Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size){
 	w->tag=tag;
 	w->size=size;
 	w->draw=0;
-	//printf("size way: %d\n",w->size);
+	w->name=name;
+	printf("name initway2 %s\n",w->name);
 	return w;
 }
 
