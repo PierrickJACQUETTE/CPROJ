@@ -52,6 +52,20 @@ void fillWay(Map* map, Way * way){
           x = coord_x[i];
           y = coord_y[i];
         }
+        
+        //Code pour ecrire le nom des rues
+        
+        /*Node * firstNode = searchNode(map->avl,l->lastRef->nd); 
+        Sint16 coordx = (Sint16)(firstNode->c->x*100);
+        Sint16 coordy = (Sint16)(firstNode->c->y*100);
+        printf("Name: %s,coord noeud trouvé: %d, %d\n",way->name,coordx,coordy);
+        if(coordx>coordy){
+        	stringRGBA(renderer,coordx,coordy,way->name,0,0,0,255);
+        }
+        else{
+        	//stringRGBA(renderer,coordx,coordy,way->name,0,0,0,255);
+        }*/
+        
       }
       else{
         polygonRGBA(renderer,coord_x,coord_y,way->size,139,71,137,240);
