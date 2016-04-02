@@ -59,7 +59,7 @@ Tag** initReferenceTag(){
 		exit(EXIT_FAILURE);
 	}
 	int i=1;
-	for(i=0; i<29; i++){
+	for(i=0; i<30; i++){
 		t[i]=malloc(sizeof(Tag));
 		if(t[i] == NULL){
 			fprintf(stderr,"Allocation impossible : %s\n","fonction initReferenceTag");
@@ -100,6 +100,7 @@ Tag** initReferenceTag(){
 	t[26]->tagKey ="highway"; t[26]->tagValue ="footway"; t[26]->c->red=255; t[26]->c->green=255; t[26]->c->blue=204; //jaune pale
 	t[27]->tagKey ="barrier"; t[27]->tagValue ="wall"; t[27]->c->red=0; t[27]->c->green=50; t[27]->c->blue=0;
 	t[28]->tagKey ="leisure"; t[28]->tagValue ="playground"; t[28]->c->red=51; t[28]->c->green=153; t[28]->c->blue=0;
+	t[29]->tagKey ="highway"; t[29]->tagValue ="tertiary"; t[29]->c->red=255; t[29]->c->green=255; t[29]->c->blue=204; //jaune pale
 	t[0]->type= 2; t[0]->thick=0;  // 1=water, 2=green, 3=highway, 4= building, 0=other;
 	t[1]->type= 4; t[1]->thick=0;
 	t[2]->type= 3; t[2]->thick=0;
@@ -192,7 +193,6 @@ Tag* initTag(char* key, char* value, Color* c, int type, int thick){
 }
 
 Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size, char* name){
-	printf("name initway1 %s\n",name);
 	Way* w= malloc(sizeof(Way));
 	if(w == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initWay");
@@ -215,7 +215,6 @@ Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size, c
 	w->size=size;
 	w->draw=0;
 	w->name=name;
-	printf("name initway2 %s\n",w->name);
 	return w;
 }
 
@@ -247,7 +246,7 @@ Tag * goodTagRelation(char * k, char *v){
 Tag* goodTag(char * k, char *v, Tag**  ref){
 	int i=0;
 	if(ref!=NULL){
-		for(i=0; i<29; i++){
+		for(i=0; i<30; i++){
 			if(ref[i]!=NULL){
 				if(strcmp(k, ref[i]->tagKey)==0 && strcmp(v, ref[i]->tagValue)==0){
 					return initTag(k, v, ref[i]->c,ref[i]->type, ref[i]->thick);

@@ -34,7 +34,6 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 				}
 				if( xmlStrcmp( (const xmlChar *) xmlGetProp( tmpcur, (const xmlChar *)"k" ), (const xmlChar *)"name" ) ==0){
 					name = (char *) xmlGetProp(tmpcur, (const xmlChar *)"v");
-					printf("name parseur %s\n",name);
 				}
 				if(t!=NULL){
 					tag=t;
@@ -49,7 +48,6 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 	}
 	if(tag!=NULL){
 		w= initWay(id,visible,ln,tag,size,name);
-		printf("name parseur2 %s\n",w->name);
 		return w;
 	}
 	else{
