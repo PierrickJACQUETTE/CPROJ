@@ -154,9 +154,9 @@ void parcoursListWay(Map* mapG){
   parcourList(map->wayWater);
   parcourRelation(map->listRelation);
   parcourList(map->wayOther);
-  parcourList(map->wayHighway);
   parcourList(map->wayGreen);
   parcourList(map->wayBuilding);
+  parcourList(map->wayHighway);
 
 
 }

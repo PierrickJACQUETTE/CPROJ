@@ -53,7 +53,7 @@ Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
 
 
 Tag** initReferenceTag(){
-	Tag **t=malloc(29*sizeof(Tag*));
+	Tag **t=malloc(30*sizeof(Tag*));
 	if(t == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initReferenceTag");
 		exit(EXIT_FAILURE);
@@ -130,6 +130,7 @@ Tag** initReferenceTag(){
 	t[26]->type= 3; t[26]->thick=0;
 	t[27]->type= 4; t[27]->thick=0;
 	t[28]->type= 2; t[28]->thick=0;
+	t[28]->type= 3; t[28]->thick=0;
 	return t;
 
 }
@@ -214,6 +215,7 @@ Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size, c
 	w->tag=tag;
 	w->size=size;
 	w->draw=0;
+	w->name=malloc(sizeof(char*));
 	w->name=name;
 	return w;
 }
