@@ -216,7 +216,7 @@ Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size, c
 	w->size=size;
 	w->draw=0;
 	w->name=malloc(sizeof(char*));
-	w->name=name;
+	strcpy(w->name,name);
 	return w;
 }
 
