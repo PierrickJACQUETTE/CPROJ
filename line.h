@@ -12,7 +12,7 @@
 #include "Avl.h"
 
 /**
-* \fn  parcoursListWay(Map *map,int width,int heigth, SDL_Renderer* renderer);
+* \fn  parcoursListWay(Map *map);
 * \brief Courses way the list
 *
 * \param map This represents all of our data

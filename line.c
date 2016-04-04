@@ -1,6 +1,17 @@
 #include "line.h"
 
+
 Map * map = NULL;
+
+float rightCoordValue(float coord, int max){
+	if(coord<0){
+		return 0;
+	}
+	if(coord>max){
+		return max;
+	}
+	else return coord;
+}
 
 void fillWay(Map* map, Way * way){
   if(map == NULL){
@@ -25,8 +36,8 @@ void fillWay(Map* map, Way * way){
       Node * currentNode = searchNode(map->avl,current->nd);
       if(currentNode != NULL){
         if(currentNode->c !=NULL){
-          coord_x[nbre] = miseAEchelleX(currentNode->c->x,map->bounds->max->x,width);
-          coord_y[nbre] = miseAEchelleY(currentNode->c->y,map->bounds->max->y,heigth);
+          coord_x[nbre] = miseAEchelleX(currentNode->c->x,map->bounds->max->x,WINDOW_WIDTH);
+          coord_y[nbre] = miseAEchelleY(currentNode->c->y,map->bounds->max->y,WINDOW_HEIGHT);
           nbre++;
         }
         else{
@@ -53,21 +64,35 @@ void fillWay(Map* map, Way * way){
           y = coord_y[i];
         }
         
-        //Code pour ecrire le nom des rues
+        if(way->name!=NULL){
+        	Node * firstNode = searchNode(map->avl,l->firstRef->nd);
+        	Node * lastNode = searchNode(map->avl,l->lastRef->nd); 
+        	
+        	float coordxf= miseAEchelleX(firstNode->c->x ,map->bounds->max->x,WINDOW_WIDTH);
+        	float coordyf= miseAEchelleY(firstNode->c->y ,map->bounds->max->y,WINDOW_HEIGHT);
+        	float coordxl= miseAEchelleX(lastNode->c->x,map->bounds->max->x,WINDOW_WIDTH);
+        	float coordyl= miseAEchelleY(lastNode->c->y,map->bounds->max->y,WINDOW_HEIGHT);
+         
+        	coordxf = rightCoordValue(coordxf,WINDOW_WIDTH);
+        	coordxl = rightCoordValue(coordxl,WINDOW_WIDTH);
+        	coordyf = rightCoordValue(coordyf,WINDOW_HEIGHT);
+        	coordyl = rightCoordValue(coordyl,WINDOW_HEIGHT);
+        	
+        	//float coordx= miseAEchelleX((firstNode->c->x + lastNode->c->x) /2,map->bounds->max->x,WINDOW_WIDTH);
+        	//float coordy= miseAEchelleY((firstNode->c->y + lastNode->c->y) /2,map->bounds->max->y,WINDOW_HEIGHT);
+
+			float cx = (coordxf+coordxl)/2;
+			float cy = (coordyf+coordyl)/2;
+
+        	printf("Way id: %ld, Name: %s,coord noeud : %f, %f\n",way->id,way->name,fabs(cx),fabs(cy));
         
-        /*Node * firstNode = searchNode(map->avl,l->firstRef->nd); 
-        Sint16 coordx_firstNode = miseAEchelleX(firstNode->c->x,map->bounds->max->x,width);
-        Sint16 coordy_firstNode = miseAEchelleY(firstNode->c->y,map->bounds->max->y,heigth);
-        Node * lastNode = searchNode(map->avl,l->lastRef->nd); 
-        Sint16 coordx_lastNode = miseAEchelleX(lastNode->c->x,map->bounds->max->x,width);
-        Sint16 coordy_lastNode = miseAEchelleY(lastNode->c->y,map->bounds->max->y,heigth);
-        printf("Name: %s,coord noeud : %d, %d\n",way->name,(coordx_firstNode+coordx_lastNode)/2,(coordy_firstNode+coordy_lastNode)/2);
-        //if(coordx>coordy){
-        	stringRGBA(renderer,(coordx_firstNode+coordx_lastNode)/2,(coordy_firstNode+coordy_lastNode)/2,way->name,0,0,0,255);
-        //}
-        //else{
-        	//stringRGBA(renderer,coordx,coordy,way->name,0,0,0,255);
-        //}*/
+        	//if(cx>cy){
+        		stringRGBA(renderer,fabs(cx),fabs(cy),way->name,0,0,0,255);
+        	//}
+        	//else{
+        		//stringRGBA(renderer,coordx,coordy,way->name,0,0,0,255);
+        	//}
+        	}
         
       }
       else{
@@ -151,9 +176,9 @@ void parcourRelation(ListRelation *lr){
 
 void parcoursListWay(Map* mapG){
   map = mapG;
-  // parcourRelation(map->listRelation, map,width,heigth,renderer);
+  // parcourRelation(map->listRelation, map,WINDOW_WIDTH,WINDOW_HEIGHT,renderer);
 
-  //parcourList(map->wayHighway,map,width,heigth,renderer);
+  //parcourList(map->wayHighway,map,WINDOW_WIDTH,WINDOW_HEIGHT,renderer);
   parcourList(map->wayWater);
   parcourRelation(map->listRelation);
   parcourList(map->wayOther);
