@@ -1,16 +1,26 @@
-CC = gcc
-CFLAGS = -Wall -lm -lSDL2_gfx `sdl2-config --cflags --libs` `xml2-config --cflags --libs`
-EXEC = CPROJ
+CC 	  = gcc
+CFLAGS  = -Wall 
+HFLAGS  = -Ilib
+HXML 	  = `xml2-config --cflags`
+LIBXML  = `xml2-config --libs`  
+HSDL 	  = `sdl2-config --cflags`
+LIBSDL  = `sdl2-config --libs` -lSDL2_gfx -lm
+
+EXEC 	  = CPROJ
+
 HEADERS = $(wildcard *.h)
 OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
 
+
 all: $(EXEC)
 
-$(EXEC): $(OBJECTS)
-	$(CC) -o $@ $^ $(CFLAGS)
+
+CPROJ: $(OBJECTS)
+	$(CC) -o $@ $^ $(CFLAGS) $(LIBXML) $(LIBSDL)
 
 %.o: %.c $(HEADERS)
-	$(CC) -c $^ $(CFLAGS)
+	$(CC) -c -o $@ $< $(CFLAGS) $(HXML) $(HSDL) $(HFLAGS)
+
 
 clean:
 	rm -f $(OBJECTS)
