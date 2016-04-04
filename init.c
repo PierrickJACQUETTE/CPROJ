@@ -130,7 +130,7 @@ Tag** initReferenceTag(){
 	t[26]->type= 3; t[26]->thick=0;
 	t[27]->type= 4; t[27]->thick=0;
 	t[28]->type= 2; t[28]->thick=0;
-	t[28]->type= 3; t[28]->thick=0;
+	t[29]->type= 3; t[29]->thick=0;
 	return t;
 
 }
@@ -193,7 +193,7 @@ Tag* initTag(char* key, char* value, Color* c, int type, int thick){
 	return t;
 }
 
-Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size, char* name){
+Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size, char* nameway){
 	Way* w= malloc(sizeof(Way));
 	if(w == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initWay");
@@ -215,8 +215,13 @@ Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size, c
 	w->tag=tag;
 	w->size=size;
 	w->draw=0;
-	w->name=malloc(sizeof(char*));
-	strcpy(w->name,name);
+	if(nameway!=NULL){
+		w->name=malloc(sizeof(char*)*strlen(nameway));
+		strcpy(w->name,nameway);
+	}
+	else{
+		w->name=NULL;
+	}
 	return w;
 }
 
