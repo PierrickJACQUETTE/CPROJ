@@ -6,9 +6,8 @@
 #include <stdlib.h>
 #include "Core.h"
 
-
-extern int heigth;
-extern int width;
+extern const int WINDOW_HEIGHT;
+extern const int WINDOW_WIDTH;
 extern SDL_Renderer* renderer;
 
 /**

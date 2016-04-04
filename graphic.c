@@ -1,16 +1,19 @@
 #include "graphic.h"
 
-enum status {QUIT, CONTINUE};
 SDL_Window *window;
+SDL_Renderer* renderer;
+const int WINDOW_WIDTH = 800;
+const int WINDOW_HEIGHT = 600;
+
+enum status {QUIT, CONTINUE};
 
 int init_SDL() {
   if(SDL_Init(SDL_INIT_VIDEO) < 0) {
     printf("SDL could not initialize! SDL Error: %s\n",SDL_GetError());
     return 0;
   }
-  width=800;
-  heigth=600;
-  window = SDL_CreateWindow("CPROJ",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,width,heigth,SDL_WINDOW_SHOWN);
+  
+  window = SDL_CreateWindow("CPROJ",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,WINDOW_WIDTH,WINDOW_HEIGHT,SDL_WINDOW_SHOWN);
   if(window == NULL) {
     printf("Window could not be created! SDL Error: %s\n",SDL_GetError());
     return 0;
