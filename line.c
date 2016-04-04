@@ -55,16 +55,19 @@ void fillWay(Map* map, Way * way){
         
         //Code pour ecrire le nom des rues
         
-        /*Node * firstNode = searchNode(map->avl,l->lastRef->nd); 
-        Sint16 coordx = (Sint16)(firstNode->c->x*100);
-        Sint16 coordy = (Sint16)(firstNode->c->y*100);
-        printf("Name: %s,coord noeud trouvé: %d, %d\n",way->name,coordx,coordy);
-        if(coordx>coordy){
-        	stringRGBA(renderer,coordx,coordy,way->name,0,0,0,255);
-        }
-        else{
+        /*Node * firstNode = searchNode(map->avl,l->firstRef->nd); 
+        Sint16 coordx_firstNode = miseAEchelleX(firstNode->c->x,map->bounds->max->x,width);
+        Sint16 coordy_firstNode = miseAEchelleY(firstNode->c->y,map->bounds->max->y,heigth);
+        Node * lastNode = searchNode(map->avl,l->lastRef->nd); 
+        Sint16 coordx_lastNode = miseAEchelleX(lastNode->c->x,map->bounds->max->x,width);
+        Sint16 coordy_lastNode = miseAEchelleY(lastNode->c->y,map->bounds->max->y,heigth);
+        printf("Name: %s,coord noeud : %d, %d\n",way->name,(coordx_firstNode+coordx_lastNode)/2,(coordy_firstNode+coordy_lastNode)/2);
+        //if(coordx>coordy){
+        	stringRGBA(renderer,(coordx_firstNode+coordx_lastNode)/2,(coordy_firstNode+coordy_lastNode)/2,way->name,0,0,0,255);
+        //}
+        //else{
         	//stringRGBA(renderer,coordx,coordy,way->name,0,0,0,255);
-        }*/
+        //}*/
         
       }
       else{
