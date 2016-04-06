@@ -8,7 +8,7 @@
 #ifndef __LINE_H__
 #define __LINE_H__
 
-#include "conversionGraphic.h"
+#include "conversionElements.h"
 #include "Avl.h"
 
 /**
