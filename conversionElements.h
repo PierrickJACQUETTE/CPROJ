@@ -1,8 +1,12 @@
 /**
 * \file conversionElements.h
-* \brief Declare fonctions to calculate the transformation for a node by open street map
+* \brief Declare fonctions to convert elements
 * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
-* \date 25 february 2016
+* \date 6 April 2016
+*
+* Declare fonctions to convert elements: nodes, bounds
+* Calculate distances between points
+* Declare fonctions that put coordinates values to the window scale
 *
 *
 */
@@ -10,9 +14,17 @@
 #ifndef __CONVERSIONELEMENTS_H__
 #define __CONVERSIONELEMENTS_H__
 
-#include <math.h>
+
 #include <stdlib.h>
+#include <math.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL2_gfxPrimitives.h>
 #include "Core.h"
+
+extern const int WINDOW_HEIGHT;
+extern const int WINDOW_WIDTH;
+extern SDL_Renderer* renderer;
+
 
 /**
 * \fn Coordinate* conversionLatLon(float lat, float lon)
@@ -24,7 +36,6 @@
 */
 
 Coordinate* conversionLatLon(float lat, float lon);
-
 
 /**
 * \fn Bounds* convertBounds(Bounds *b )
@@ -88,6 +99,26 @@ Node* distanceToBounds(Bounds *b, Node* n);
 * \return float
 */
 float distanceLatLon(float lat1, float lon1, float lat2, float lon2);
+
+/**
+* Fonction that puts the ordonate's X value to the window scale
+*
+* \param  float x the ordonate value of the point
+* \param  float y Coordinate bounds the window's bounds
+* \param  int size Size window's
+* \return  value of the ordonate put to scale
+*/
+float miseAEchelleX(float x, float y,int size);
+
+/**
+* Fonction that puts the ordonate's X value to the window scale
+*
+* \param  float x the ordonate value of the point
+* \param  float y Coordinate bounds the window's bounds
+* \param  int size Size window's
+* \return  value of the ordonate put to scale
+*/
+float miseAEchelleY(float x, float y,int size);
 
 
 #endif /* __CONVERSIONELEMENTS_H__ */

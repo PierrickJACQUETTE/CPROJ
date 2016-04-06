@@ -1,9 +1,7 @@
 /**
 * \file Avl.h
-* \brief This file can create, insert and retrieve nodes in an AVL ( balanced
-* binary tree search )
+* \brief This file can create, insert and retrieve nodes in an AVL ( balanced binary tree search )
 * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
-* \date 21 fevrier 2016
 *
 * Basic operations of an AVL tree involve carrying out the same actions as would
 * be carried out on an unbalanced binary search tree, but modifications are
@@ -11,9 +9,7 @@
 * restore the height balance of the subtrees.
 *
 * The insertion, search are O(log n)
-
 */
-
 
 #ifndef __AVL_H__
 #define __AVL_H__
@@ -62,7 +58,6 @@ void init(Avl **a,Node *n, Way*w);
 * @param nombre dentifier of the tree level view
 */
 void printNode(Avl **a,unsigned long nombre);
-
 
 /**
 * function allowing display of the AVL

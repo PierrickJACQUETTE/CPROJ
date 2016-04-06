@@ -1,7 +1,16 @@
+/**
+* \file Point.h
+* \brief Declaration of fonctions that draws the map by using points
+* \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
+* \date 6 April 2016
+*
+*
+*/
+
 #ifndef __POINT_H__
 #define __POINT_H__
 
-#include "conversionGraphic.h"
+#include "conversionElements.h"
 
 /**
 * Fonction that draws a point in the window
