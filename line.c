@@ -108,12 +108,13 @@ void fillWay(Map* map, Way * way){
 
 void parcourList(ListWay *l){
   if(l!=NULL){
-    int coastline=0;
+		int coastline=0;
     refListWay * current = l->firstRef;
     while(current != NULL){
       Way * currentWay = searchWay(map->avlWay,current->way);
       if(currentWay != NULL){
         if((currentWay->draw == 0)&&(strcmp(currentWay->visible,"T")==0)){
+						// case coastline
           if((strcmp(currentWay->tag->tagValue, "coastline") ==0) && (coastline ==0) ){
             if(SDL_SetRenderDrawColor(renderer,0,102,205,100) < 0) {
               printf("Renderer color could not be set! SDL Error: %s\n",SDL_GetError());
@@ -136,6 +137,10 @@ void parcourList(ListWay *l){
     }
   }
 }
+
+
+
+
 
 void parcourRelation(ListRelation *lr){
   if(lr != NULL){
@@ -176,13 +181,12 @@ void parcourRelation(ListRelation *lr){
 
 void parcoursListWay(Map* mapG){
   map = mapG;
-  // parcourRelation(map->listRelation, map,WINDOW_WIDTH,WINDOW_HEIGHT,renderer);
 
   //parcourList(map->wayHighway,map,WINDOW_WIDTH,WINDOW_HEIGHT,renderer);
-  parcourList(map->wayWater);
+ parcourList(map->wayWater);
   parcourRelation(map->listRelation);
   parcourList(map->wayOther);
-  parcourList(map->wayGreen);
+  parcourList(map->wayGreen);	
   parcourList(map->wayBuilding);
   parcourList(map->wayHighway);
 

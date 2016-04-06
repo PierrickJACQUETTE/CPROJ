@@ -53,13 +53,13 @@ Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
 
 
 Tag** initReferenceTag(){
-	Tag **t=malloc(30*sizeof(Tag*));
+	Tag **t=malloc(32*sizeof(Tag*));
 	if(t == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initReferenceTag");
 		exit(EXIT_FAILURE);
 	}
 	int i=1;
-	for(i=0; i<30; i++){
+	for(i=0; i<32; i++){
 		t[i]=malloc(sizeof(Tag));
 		if(t[i] == NULL){
 			fprintf(stderr,"Allocation impossible : %s\n","fonction initReferenceTag");
@@ -75,7 +75,7 @@ Tag** initReferenceTag(){
 	t[1]->tagKey ="building"; t[1]->tagValue ="yes"; t[1]->c->red=205; t[1]->c->green=183; t[1]->c->blue=158;	//beige
 	t[2]->tagKey ="highway"; t[2]->tagValue ="residential"; t[2]->c->red=255; t[2]->c->green=255; t[2]->c->blue=204; //jaune pale
 	t[3]->tagKey ="waterway"; t[3]->tagValue ="canal"; t[3]->c->red=51; t[3]->c->green=102; t[3]->c->blue=204; //bleu fonce
-	t[4]->tagKey ="waterway"; t[4]->tagValue ="river"; t[4]->c->red=0; t[4]->c->green=153; t[4]->c->blue=255; //bleu clair
+	t[4]->tagKey ="waterway"; t[4]->tagValue ="river  "; t[4]->c->red=0; t[4]->c->green=153; t[4]->c->blue=204; //bleu clair
 	t[5]->tagKey ="waterway"; t[5]->tagValue ="water"; t[5]->c->red=51; t[5]->c->green=204; t[5]->c->blue=255;
 	t[6]->tagKey ="waterway"; t[6]->tagValue ="coastline"; t[6]->c->red=0; t[6]->c->green=204; t[6]->c->blue=255;
 	t[7]->tagKey ="landuse"; t[7]->tagValue ="grass"; t[7]->c->red=102; t[7]->c->green=204; t[7]->c->blue=51;
@@ -92,16 +92,22 @@ Tag** initReferenceTag(){
 	t[17]->tagKey ="natural"; t[17]->tagValue ="coastline"; t[17]->c->red=255; t[17]->c->green=255; t[17]->c->blue=255; //blanc
 	t[19]->tagKey ="highway"; t[19]->tagValue ="pedestrian"; t[19]->c->red=255; t[19]->c->green=255; t[19]->c->blue=204; //jaune pale
 	t[20]->tagKey ="service"; t[20]->tagValue ="alley"; t[20]->c->red=255; t[20]->c->green=255; t[20]->c->blue=204; //jaune pale
-	t[21]->tagKey ="layer"; t[21]->tagValue ="1"; t[21]->c->red=255; t[21]->c->green=255; t[21]->c->blue=204; //jaune pale
+	//t[21]->tagKey ="layer"; t[21]->tagValue ="1"; t[21]->c->red=255; t[21]->c->green=255; t[21]->c->blue=204; //jaune pale
+	t[21]->tagKey ="brigde"; t[21]->tagValue ="yes"; t[21]->c->red=255; t[21]->c->green=255; t[21]->c->blue=255; //blanc	
 	t[22]->tagKey ="surface"; t[22]->tagValue ="ground"; t[22]->c->red=255; t[22]->c->green=255; t[22]->c->blue=255; //blanc
-	t[23]->tagKey ="surface"; t[23]->tagValue ="gravel"; t[23]->c->red=255; t[23]->c->green=255; t[23]->c->blue=255; //blanc
-	t[24]->tagKey ="source"; t[24]->tagValue ="cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"; t[24]->c->red=255; t[24]->c->green=255; t[24]->c->blue=255; //blanc
-	t[25]->tagKey ="waterway"; t[25]->tagValue ="riverband"; t[25]->c->red=0; t[25]->c->green=50; t[25]->c->blue=200;
+	t[23]->tagKey ="surface"; t[23]->tagValue ="gravel"; t[23]->c->red=255; t[23]->c->green=0; t[23]->c->blue=0; //blanc
+	//t[24]->tagKey ="source  "; t[24]->tagValue ="cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"; t[24]->c->red=255; t[24]->c->green=255; t[24]->c->blue=255; //blanc
+t[24]->tagKey ="building"; t[24]->tagValue ="church"; t[24]->c->red=133; t[24]->c->green=109; t[24]->c->blue=77; //marron
+	t[25]->tagKey ="waterway"; t[25]->tagValue ="riverbank"; t[25]->c->red=0; t[25]->c->green=153; t[25]->c->blue=204;
 	t[26]->tagKey ="highway"; t[26]->tagValue ="footway"; t[26]->c->red=255; t[26]->c->green=255; t[26]->c->blue=204; //jaune pale
 	t[27]->tagKey ="barrier"; t[27]->tagValue ="wall"; t[27]->c->red=0; t[27]->c->green=50; t[27]->c->blue=0;
 	t[28]->tagKey ="leisure"; t[28]->tagValue ="playground"; t[28]->c->red=51; t[28]->c->green=153; t[28]->c->blue=0;
 	t[29]->tagKey ="highway"; t[29]->tagValue ="tertiary"; t[29]->c->red=255; t[29]->c->green=255; t[29]->c->blue=204; //jaune pale
-	t[0]->type= 2; t[0]->thick=0;  // 1=water, 2=green, 3=highway, 4= building, 0=other;
+	t[30]->tagKey ="leisure"; t[30]->tagValue ="marina"; t[30]->c->red=255; t[30]->c->green=255; t[30]->c->blue=204; // jaune pale
+	t[31]->tagKey ="landuse"; t[31]->tagValue ="residential"; t[31]->c->red=255; t[31]->c->green=255; t[31]->c->blue=255; //jaune pale	
+
+
+	t[0]->type= 2; t[0]->thick=0;  // 1=water, 2=green, 3=highway, 4= building, 0=other; 
 	t[1]->type= 4; t[1]->thick=0;
 	t[2]->type= 3; t[2]->thick=0;
 	t[3]->type= 1; t[3]->thick=0;
@@ -125,12 +131,14 @@ Tag** initReferenceTag(){
 	t[21]->type= 0; t[21]->thick=0;
 	t[22]->type= 0; t[22]->thick=0;
 	t[23]->type= 0; t[23]->thick=0;
-	t[24]->type= 0; t[24]->thick=0;
+	t[24]->type= 4; t[24]->thick=0;
 	t[25]->type= 1; t[25]->thick=0;
 	t[26]->type= 3; t[26]->thick=0;
 	t[27]->type= 4; t[27]->thick=0;
 	t[28]->type= 2; t[28]->thick=0;
 	t[29]->type= 3; t[29]->thick=0;
+	t[30]->type= 4; t[30]->thick=0;
+	t[31]->type= 5; t[31]->thick=0;
 	return t;
 
 }
@@ -253,7 +261,7 @@ Tag * goodTagRelation(char * k, char *v){
 Tag* goodTag(char * k, char *v, Tag**  ref){
 	int i=0;
 	if(ref!=NULL){
-		for(i=0; i<30; i++){
+		for(i=0; i<31; i++){
 			if(ref[i]!=NULL){
 				if(strcmp(k, ref[i]->tagKey)==0 && strcmp(v, ref[i]->tagValue)==0){
 					return initTag(k, v, ref[i]->c,ref[i]->type, ref[i]->thick);
