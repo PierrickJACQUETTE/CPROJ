@@ -98,7 +98,7 @@ Tag** initReferenceTag(){
 	t[22]->tagKey ="surface"; t[22]->tagValue ="ground"; t[22]->c->red=255; t[22]->c->green=255; t[22]->c->blue=255; //blanc
 	t[23]->tagKey ="surface"; t[23]->tagValue ="gravel"; t[23]->c->red=255; t[23]->c->green=0; t[23]->c->blue=0; //blanc
 	//t[24]->tagKey ="source  "; t[24]->tagValue ="cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"; t[24]->c->red=255; t[24]->c->green=255; t[24]->c->blue=255; //blanc
-t[24]->tagKey ="building"; t[24]->tagValue ="church"; t[24]->c->red=133; t[24]->c->green=109; t[24]->c->blue=77; //marron
+	t[24]->tagKey ="building"; t[24]->tagValue ="church"; t[24]->c->red=133; t[24]->c->green=109; t[24]->c->blue=77; //marron
 	t[25]->tagKey ="waterway"; t[25]->tagValue ="riverbank"; t[25]->c->red=0; t[25]->c->green=153; t[25]->c->blue=204;
 	t[26]->tagKey ="highway"; t[26]->tagValue ="footway"; t[26]->c->red=255; t[26]->c->green=102; t[26]->c->blue=51;//orange
 	t[27]->tagKey ="barrier"; t[27]->tagValue ="wall"; t[27]->c->red=0; t[27]->c->green=50; t[27]->c->blue=0;
