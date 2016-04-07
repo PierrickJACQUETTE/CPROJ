@@ -21,8 +21,8 @@
 #include <SDL2/SDL2_gfxPrimitives.h>
 #include "Core.h"
 
-extern const int WINDOW_HEIGHT;
-extern const int WINDOW_WIDTH;
+extern int windows_Height;
+extern int windows_Width;
 extern SDL_Renderer* renderer;
 
 

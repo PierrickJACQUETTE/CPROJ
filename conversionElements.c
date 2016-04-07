@@ -1,5 +1,10 @@
 #include "conversionElements.h"
 
+int windows_Height;
+int windows_Width;
+SDL_Renderer* renderer;
+
+
 Coordinate* conversionLatLon(float lat, float lon){
 	Coordinate *c= malloc(sizeof(Coordinate));
 	//int EarthCircumference= 40075;
@@ -50,9 +55,9 @@ float distanceLatLon(float lat1, float lon1, float lat2, float lon2){
 }
 
 float miseAEchelleX(float x, float y,int size){
-  return x*size/y;
+	return x*size/y;
 }
 
 float miseAEchelleY(float x, float y,int size){
-  return size-(x*size/y);
+	return size-(x*size/y);
 }
