@@ -55,11 +55,11 @@ void fillWay(Map* map, Way * way){
 				int x = coord_x[0];
 				int y = coord_y[0];
 				for(i=0;i<way->size;i++){
-					int thick =0;
-					if(way->tag->thick == 0){
-						thick = way->tag->thick+1; //pour l'instant : retirer le +1 quand valeur != 0 dans le tableau
+					int thick =1;
+					if(way->tag->thick != 0){
+						thick = way->tag->thick;
 					}
-					thickLineRGBA(renderer,x,y,coord_x[i],coord_y[i],thick,255,0,0,155);
+					thickLineRGBA(renderer,x,y,coord_x[i],coord_y[i],thick,way->tag->c->red,way->tag->c->green,way->tag->c->blue,255);
 					x = coord_x[i];
 					y = coord_y[i];
 				}

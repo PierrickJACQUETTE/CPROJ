@@ -14,6 +14,8 @@
 #include "conversionElements.h"
 #include "Core.h"
 
+#define SIZETABTAG 38 
+
 /**
 * \fn initNode(unsigned long id, float lat, float lon, char visible, Bounds* b)
 * \brief initalise a Node for a point in a map
