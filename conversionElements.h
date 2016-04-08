@@ -24,7 +24,7 @@
 extern int windows_Height;
 extern int windows_Width;
 extern SDL_Renderer* renderer;
-
+extern int quit;
 
 /**
 * \fn Coordinate* conversionLatLon(float lat, float lon)

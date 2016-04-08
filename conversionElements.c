@@ -3,14 +3,11 @@
 int windows_Height;
 int windows_Width;
 SDL_Renderer* renderer;
+int quit;
 
 
 Coordinate* conversionLatLon(float lat, float lon){
 	Coordinate *c= malloc(sizeof(Coordinate));
-	//int EarthCircumference= 40075;
-	//int EarthPerimeter = 40000;
-	//c->x= (EarthCircumference* /*cosf(lat)*/ lon)/360; // 1° = RAYON*COS(LAT)
-	//c->y=(lat*EarthPerimeter)/360;  //1°= LAT*RAYON
 	c->x=lon;
 	c->y=lat;
 	return c;

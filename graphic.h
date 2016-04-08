@@ -12,18 +12,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include "evenement.h"
 #include "point.h"
 #include "line.h"
-
-/**
-* Fonction that permit the display
-* While we haven't closed the window it is still on the screen
-* When we do close it, it displays a message saying we closed it
-* This event is handeled by a loop : while the statut is "CONTINUE" we keep the window to the screen
-* Otherwise, we close it and change the statut to "QUIT"
-
-*/
-void evenement();
 
 /**
 * Fonction that creates a window with the right scales, browse the avl tree by calling the "parcoursAvl" fonction
