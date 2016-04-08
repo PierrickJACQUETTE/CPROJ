@@ -79,6 +79,29 @@ float distanceY(float y1, float y2);
 float distanceX(float x1, float x2);
 
 /**
+ * \fn This method allows to normalize coordinates functions of the vector size
+ * @param  a      float Coordinate x1
+ * @param  b      float Coordinate x2
+ * @param  length float size of vector
+ * @return        the size of the normalize vector
+ */
+float normalize(float a, float b,float length);
+
+/**
+ * This method calculates the angle between two vectors.
+ * The returned value is in degrees
+ *
+ * @param  ax float X coordinate of point a
+ * @param  ay float Y coordinate of point a
+ * @param  bx float X coordinate of point b
+ * @param  by float Y coordinate of point b
+ * @param  cx float X coordinate of point c
+ * @param  cy float Y coordinate of point c
+ * @return    float : The angle between the two vectors AB and BC (degree)
+ */
+float angle(float ax, float ay, float bx,float by,float cx,float cy);
+
+/**
 * \fn distanceToBounds(Bounds *b, Node* n)
 * \brief calcule the distance between a Node and the Bounds's map
 *
@@ -96,9 +119,30 @@ Node* distanceToBounds(Bounds *b, Node* n);
 * \param lon1 float that represente the longitude of point1
 * \param lat2 float that represente the latitude of point 2
 * \param lon2 float that represente the longitude of point2
-* \return float
+* \return float the distance
 */
 float distanceLatLon(float lat1, float lon1, float lat2, float lon2);
+
+/**
+ * \fn This method calculates the points to draw the full polygon between two lines when is not extremite
+ * \param float b The known point center
+ * \param float e The new point
+ * \param int signe : This shows whether one is added or subtracted depending on the given angle
+ * \param Sint16 tab : The table points to draw the polygon
+ * \return Sint16 The table points to draw the polygon
+*/
+Sint16* midle(float b, float e, int signe, Sint16 tab[4]);
+
+/**
+ * \fn This method calculates the points to draw the full polygon between two lines for the extremites
+ * \param float a The known point center
+ * \param float d The new point
+ * \param float e The new point 
+ * \param Sint16 tab : The table points to draw the polygon
+ * \return Sint16 The table points to draw the polygon
+*/
+Sint16* extremite(float a, float d, float e, Sint16 tab[4]);
+
 
 /**
 * Fonction that puts the ordonate's X value to the window scale

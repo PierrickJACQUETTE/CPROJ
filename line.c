@@ -136,10 +136,6 @@ void parcourList(ListWay *l){
 	}
 }
 
-
-
-
-
 void parcourRelation(ListRelation *lr){
 	if(lr != NULL){
 		refListRel * current = lr->firstRef;

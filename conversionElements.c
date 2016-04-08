@@ -33,6 +33,10 @@ float distanceX(float x1, float x2){
 	return distanceXY(x1, 0, x2, 0);
 }
 
+float normalize(float a, float b,float length){
+	return (b-a)/length;
+}
+
 Node* distanceToBounds(Bounds *b, Node* n){
 	n->c->x = distanceX(b->min->x, n->c->x);
 	n->c->y = distanceY(b->min->y, n->c->x);
@@ -50,6 +54,40 @@ float distanceLatLon(float lat1, float lon1, float lat2, float lon2){
 	float a = sinf(dlat)*sinf(dlat)+ cosf(lat1)*cosf(lat2) *sinf(dlon)*sinf(dlon);
 	return EarthRayon *2 *atan2(sqrt(a), sqrt(1-a));
 }
+
+float angle(float ax, float ay, float bx,float by,float cx,float cy){
+	float longeurAB = distanceXY(ax,ay,bx,by);
+	float longeurBC = distanceXY(bx,by,cx,cy);
+	float quotient = ((bx-ax)*(cx-bx))-((by-ay)*(cy-by));
+	float sin = asinf(quotient/(longeurAB*longeurBC));
+	quotient = pow(longeurAB,2)+pow(longeurBC,2)-pow((distanceXY(ax,ay,cx,cy)),2);
+	float cos = acosf(quotient/(2*longeurAB*longeurBC));
+	if(sin>0){
+		return cos*180/M_PI;
+	}
+	else{
+		return 0-(cos*180/M_PI);
+	}
+}
+
+Sint16* extremite(float a, float d, float e, Sint16 tab[4]){
+	tab[0] = a + d;
+	tab[1] = a - e;
+	return tab;
+}
+
+Sint16* midle(float b, float e, int signe, Sint16 tab[4]){
+	if(signe==1){
+		tab[3]= b - e;
+		tab[2]= b + e;
+	}
+	else{
+		tab[3]= b + e;
+		tab[2]= b - e;
+	}
+	return tab;
+}
+
 
 float miseAEchelleX(float x, float y,int size){
 	return x*size/y;
