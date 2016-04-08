@@ -15,16 +15,16 @@ float rightCoordValue(float coord, int max){
 
 void fillWay(Map* map, Way * way){
 	if(map == NULL){
-		printf("La map est NULL dans line fonction fillWay\n");
+		fprintf(stderr,"La map est NULL dans line fonction fillWay\n");
 		return;
 	}
 	if(way == NULL){
-		printf("Le way est NULL dans line fonction fillWay\n");
+		fprintf(stderr,"Le way est NULL dans line fonction fillWay\n");
 		return;
 	}
 	ListNode * l = way->listNd;
 	if(l == NULL){
-		printf("Le way %ld a pas de noeud : line.c fonction fill way\n",way->id );
+		fprintf(stderr,"Le way %ld a pas de noeud : line.c fonction fill way\n",way->id );
 		return;
 	}
 	refListNode * current =l->firstRef;
@@ -41,12 +41,12 @@ void fillWay(Map* map, Way * way){
 					nbre++;
 				}
 				else{
-					printf("le node %ld n'a pas de coordonnees\n",current->nd );
+					fprintf(stderr,"le node %ld n'a pas de coordonnees\n",current->nd );
 				}
 				current = current->next;
 			}
 			else{
-				printf("Le node %ld n'est pas définis dans le fichier d'entree \n",current->nd );
+				fprintf(stderr,"Le node %ld n'est pas définis dans le fichier d'entree \n",current->nd );
 			}
 		}
 		if(way->tag != NULL && way->tag->tagKey != NULL && way->tag->c != NULL){
@@ -116,9 +116,7 @@ void parcourList(ListWay *l){
 				if((currentWay->draw == 0)&&(strcmp(currentWay->visible,"T")==0)){
 					// case coastline
 					if((strcmp(currentWay->tag->tagValue, "coastline") ==0) && (coastline ==0) ){
-						if(SDL_SetRenderDrawColor(renderer,0,102,205,100) < 0) {
-							printf("Renderer color could not be set! SDL Error: %s\n",SDL_GetError());
-						}
+						colorBackground(0,102,205,100);
 						coastline = 1;
 						SDL_RenderClear(renderer);
 						fillWay(map,currentWay);
@@ -127,11 +125,11 @@ void parcourList(ListWay *l){
 					currentWay->draw = 1;
 				}
 				else if((strcmp(currentWay->visible,"F") !=0) && (currentWay->draw !=1) ){
-					printf("Le champs visible du way %ld ne vaut ni true ni false mais %s draw: %d\n",currentWay->id,currentWay->visible, currentWay->draw );
+					fprintf(stderr,"Le champs visible du way %ld ne vaut ni true ni false mais %s draw: %d\n",currentWay->id,currentWay->visible, currentWay->draw );
 				}
 			}
 			else{
-				printf("Le way %ld n'est pas définis dans le fichier d'entree dans line parcourList\n",current->way );
+				fprintf(stderr,"Le way %ld n'est pas définis dans le fichier d'entree dans line parcourList\n",current->way );
 			}
 			current = current->next;
 		}
@@ -172,7 +170,7 @@ void parcourRelation(ListRelation *lr){
 				}
 			}
 			else if(strcmp(currentRel->visible,"F") != 0){
-				printf("Le champs visible de la relation  %ld ne vaut ni true ni false mais %s\n",currentRel->id,currentRel->visible );
+				fprintf(stderr,"Le champs visible de la relation  %ld ne vaut ni true ni false mais %s\n",currentRel->id,currentRel->visible );
 			}
 			current = current->next;
 		}

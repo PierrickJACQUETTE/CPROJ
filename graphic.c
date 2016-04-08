@@ -2,51 +2,39 @@
 
 SDL_Window *window;
 
-int colorBackground(){
-  if(SDL_SetRenderDrawColor(renderer,0xFF,0xFF,0xFF,0xFF) < 0) {
-    printf("Renderer color could not be set! SDL Error: %s\n",SDL_GetError());
-    return 0;
-  }
-  return 1;
-}
-
 void sizeWindows(Map* map){
-  float minX = map->bounds->min->x;
-  float maxX = map->bounds->max->x;
-  float minY = map->bounds->min->y;
-  float maxY = map->bounds->max->y;
-  float diffX = maxX - minX;
-  float diffY = maxY - minY;
-  float QX = windows_Width/diffX;
-  float QY = windows_Height/diffY;
+  float diffX = (map->bounds->max->x) - (map->bounds->min->x);
+  float diffY = (map->bounds->max->y) - (map->bounds->min->y);
+  float QX = windows_Width / diffX;
+  float QY = windows_Height / diffY;
   if(QX > QY){
-    windows_Width = diffX*QY;
-    windows_Height = diffY*QY;
+    windows_Width = diffX * QY;
+    windows_Height = diffY * QY;
   }
   else{
-    windows_Width = diffX*QX;
-    windows_Height = diffY*QX;
+    windows_Width = diffX * QX;
+    windows_Height = diffY * QX;
   }
 }
 
 int init_SDL() {
   if(SDL_Init(SDL_INIT_VIDEO) < 0) {
-    printf("SDL could not initialize! SDL Error: %s\n",SDL_GetError());
+    fprintf(stderr,"SDL could not initialize! SDL Error: %s\n",SDL_GetError());
     return 0;
   }
   windows_Width = 800;
   windows_Height = 600;
   window = SDL_CreateWindow("CPROJ",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,windows_Width,windows_Height,SDL_WINDOW_SHOWN);
   if(window == NULL) {
-    printf("Window could not be created! SDL Error: %s\n",SDL_GetError());
+    fprintf(stderr,"Window could not be created! SDL Error: %s\n",SDL_GetError());
     return 0;
   }
   renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
   if(renderer == NULL) {
-    printf("Renderer could not be created! SDL Error: %s\n",SDL_GetError());
+    fprintf(stderr,"Renderer could not be created! SDL Error: %s\n",SDL_GetError());
     return 0;
   }
-  return colorBackground();
+  return colorBackgroundDefault();
 }
 
 void close_SDL() {
@@ -55,21 +43,6 @@ void close_SDL() {
   SDL_DestroyWindow(window);
   window = NULL;
   SDL_Quit();
-}
-
-void drawMap(Map* map,char* typeOfDessin){
-  colorBackground();
-  SDL_RenderClear(renderer);
-  if(strcmp(typeOfDessin,"point") ==0){
-    parcoursAvl(&(map->avl),map->bounds);
-  }
-  else if(strcmp(typeOfDessin,"line") ==0){
-    parcoursListWay(map);
-  }
-  else{
-    printf("Le deuxieme argument est inconnu %s\n", typeOfDessin);
-  }
-  SDL_RenderPresent(renderer);
 }
 
 void printMap(Map* map,char* typeOfDessin){
@@ -91,7 +64,7 @@ void printMap(Map* map,char* typeOfDessin){
   }
   sizeWindows(map);
   quit = 1;
-  if(init_SDL()==0) {
+  if(init_SDL() ==0) {
     exit(EXIT_FAILURE);
   }
   drawMap(map, typeOfDessin);

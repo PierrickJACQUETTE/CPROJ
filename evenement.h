@@ -24,4 +24,12 @@
 */
 void evenement();
 
+/**
+* Fonction that browse the avl tree by calling the "parcoursAvl" fonction
+* and displays it to the screen by calling the "evenement" fonction
+* @param  Map* is the pointer to the information of map
+* @param  *typeOfDessin is the line or ponct
+*/
+void drawMap(Map* map, char* typeOfDessin);
+
 #endif

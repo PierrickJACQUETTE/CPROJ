@@ -58,3 +58,15 @@ float miseAEchelleX(float x, float y,int size){
 float miseAEchelleY(float x, float y,int size){
 	return size-(x*size/y);
 }
+
+int colorBackground(int red, int blue, int green,int oppacity){
+  if(SDL_SetRenderDrawColor(renderer,red,blue,green,oppacity) < 0) {
+    fprintf(stderr,"Renderer color could not be set! SDL Error: %s\n",SDL_GetError());
+    return 0;
+  }
+  return 1;
+}
+
+int colorBackgroundDefault(){
+	return colorBackground(0xFF,0xFF,0xFF,0xFF);
+}

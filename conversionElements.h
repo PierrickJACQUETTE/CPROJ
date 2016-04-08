@@ -120,5 +120,20 @@ float miseAEchelleX(float x, float y,int size);
 */
 float miseAEchelleY(float x, float y,int size);
 
+/**
+ * According initialising the bottom of the window
+ * @param  red      int color R
+ * @param  blue     int color G
+ * @param  green    int color B
+ * @param  oppacity int oppacity color
+ * @return          int Lets see if everything went well
+ */
+int colorBackground(int red, int blue, int green,int oppacity);
+
+/**
+ * According initialising the bottom of the window by default
+ * @return int Lets see if everything went well
+ */
+int colorBackgroundDefault();
 
 #endif /* __CONVERSIONELEMENTS_H__ */
