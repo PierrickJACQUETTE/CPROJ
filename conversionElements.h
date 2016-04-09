@@ -134,10 +134,17 @@ float distanceLatLon(float lat1, float lon1, float lat2, float lon2);
 Sint16* midle(float b, float e, int signe, Sint16 tab[4]);
 
 /**
+ * \fn boxes in the table 1 < -3 , 2 ​​> 4, 3 <0 , 4 < -0 . This puts 0 in box 3 and 4
+ * \param Sint16 tab[4] The table change
+ * \return The modified table
+*/
+Sint16* swap(Sint16 tab[4]);
+
+/**
  * \fn This method calculates the points to draw the full polygon between two lines for the extremites
  * \param float a The known point center
  * \param float d The new point
- * \param float e The new point 
+ * \param float e The new point
  * \param Sint16 tab : The table points to draw the polygon
  * \return Sint16 The table points to draw the polygon
 */

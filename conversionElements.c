@@ -88,6 +88,14 @@ Sint16* midle(float b, float e, int signe, Sint16 tab[4]){
 	return tab;
 }
 
+Sint16* swap(Sint16 tab[4]){
+	tab[0] = tab[2];
+	tab[1] = tab[3];
+	tab[2] = 0;
+	tab[3] = 0;
+	return tab;
+}
+
 
 float miseAEchelleX(float x, float y,int size){
 	return x*size/y;

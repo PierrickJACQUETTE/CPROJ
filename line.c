@@ -13,6 +13,86 @@ float rightCoordValue(float coord, int max){
 	else return coord;
 }
 
+void highway(Way *way, short coord_y[way->size],short coord_x[way->size],int thick){
+	Sint16 coord_xNode[4] = {0.0,0.0,0.0,0.0};
+	Sint16 coord_yNode[4] = {0.0,0.0,0.0,0.0};
+	int i;
+	for(i=1;i<way->size;i++){
+
+		if(i==1){
+			float length = distanceXY(coord_x[i-1],coord_y[i-1],coord_x[i],coord_y[i]);
+			float fx = normalize(coord_x[i-1],coord_x[i],length);
+			float gx = fx;
+			float fy = 0.0-normalize(coord_y[i-1],coord_y[i],length);
+			float gy = fy;
+			coord_xNode[0] = fx;
+			coord_xNode[1] = gx;
+			coord_yNode[0] = fy;
+			coord_yNode[1] = gy;
+			extremite(coord_x[i-1],fx*thick/2,gx*thick/2,coord_xNode);
+			extremite(coord_y[i-1],fy*thick/2,gy*thick/2,coord_yNode);
+		}
+		else if(i==way->size-1){
+			int j;
+			for(j=0;j<4;j++){
+				printf("Fin X : %d, Y %d\n",coord_xNode[j],coord_yNode[j] );
+			}
+			printf("\n");
+			float length = distanceXY(coord_x[i-1],coord_y[i-1],coord_x[i],coord_y[i]);
+			float fx = normalize(coord_x[i-1],coord_x[i],length);
+			float gx = fx;
+			float fy = 0.0-normalize(coord_y[i-1],coord_y[i],length);
+			float gy = fy;
+			coord_xNode[0] = fx;
+			coord_xNode[1] = gx;
+			coord_yNode[0] = fy;
+			coord_yNode[1] = gy;
+			extremite(coord_x[i],fx*thick/2,gx*thick/2,coord_xNode);
+			extremite(coord_y[i],fy*thick/2,gy*thick/2,coord_yNode);
+			for(j=0;j<4;j++){
+				printf("Fin X : %d, Y %d\n",coord_xNode[j],coord_yNode[j] );
+			}
+			printf("\n");
+
+			filledPolygonRGBA(renderer,coord_xNode,coord_yNode,4,255,0,0,255);
+		}
+		else{
+			float lengthAB = distanceXY(coord_x[i-2],coord_y[i-2],coord_x[i-1],coord_y[i-1]);
+			float resABy = normalize(coord_y[i-2],coord_y[i-1],lengthAB);
+			float resABx = normalize(coord_x[i-2],coord_x[i-1],lengthAB);
+
+			float lengthBC = distanceXY(coord_x[i-1],coord_y[i-1],coord_x[i],coord_y[i]);
+			float resBCx = normalize(coord_x[i-1],coord_x[i],lengthBC);
+			float resBCy = normalize(coord_y[i-1],coord_y[i],lengthBC);
+
+			float X = (resABx + resBCx)*thick/2;
+			float Y = (resABy + resBCy)*thick/2;
+
+			double angleCal = angle(coord_x[i-2],coord_y[i-2],coord_x[i-1],coord_y[i-1],coord_x[i],coord_y[i]);
+			if(angleCal >0){
+				midle(coord_x[i-1],X,0,coord_xNode);
+				midle(coord_y[i-1],Y,0,coord_yNode);
+			}
+			else{
+				midle(coord_x[i-1],X,1,coord_xNode);
+				midle(coord_y[i-1],Y,1,coord_yNode);
+			}
+			int j;
+			for(j=0;j<4;j++){
+				printf("Inter X : %d, Y %d\n",coord_xNode[j],coord_yNode[j] );
+			}
+			printf("\n");
+			filledPolygonRGBA(renderer,coord_xNode,coord_yNode,4,255,0,0,255);
+			//thickLineRGBA(renderer,coord_xNode[0],coord_yNode[0],coord_xNode[3],coord_yNode[3],1,0,255,0,255);
+			if(i !=way->size-2){
+				swap(coord_yNode);
+				swap(coord_xNode);
+			}
+		}
+		thickLineRGBA(renderer,coord_x[i-1],coord_y[i-1],coord_x[i],coord_y[i],thick,way->tag->c->red,way->tag->c->green,way->tag->c->blue,255);
+	}
+}
+
 void fillWay(Map* map, Way * way){
 	if(map == NULL){
 		fprintf(stderr,"La map est NULL dans line fonction fillWay\n");
@@ -51,18 +131,29 @@ void fillWay(Map* map, Way * way){
 		}
 		if(way->tag != NULL && way->tag->tagKey != NULL && way->tag->c != NULL){
 			if(strcmp(way->tag->tagKey,"highway")==0){
+				//generer le cas d'un node par un point
+				int thick =0;
+				if(way->tag->thick != 0){
+					thick = way->tag->thick;
+				}
 				int i;
 				int x = coord_x[0];
 				int y = coord_y[0];
 				for(i=0;i<way->size;i++){
-					int thick =1;
-					if(way->tag->thick != 0){
-						thick = way->tag->thick;
-					}
 					thickLineRGBA(renderer,x,y,coord_x[i],coord_y[i],thick,way->tag->c->red,way->tag->c->green,way->tag->c->blue,255);
 					x = coord_x[i];
 					y = coord_y[i];
 				}
+/*
+				int kk=0;
+				for(kk=0;kk<way->size;kk++){
+					printf("Coor X : %d, Y %d\n",coord_x[kk],coord_y[kk] );
+				}
+				printf("\n");
+			highway(way,coord_y,coord_x,thick);
+*/
+
+
 
 				if(way->name!=NULL){
 					Node * firstNode = searchNode(map->avl,l->firstRef->nd);
