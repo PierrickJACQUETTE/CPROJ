@@ -21,36 +21,50 @@ void highway(Way *way, short coord_y[way->size],short coord_x[way->size],int thi
 
 		if(i==1){
 			float length = distanceXY(coord_x[i-1],coord_y[i-1],coord_x[i],coord_y[i]);
-			float fx = normalize(coord_x[i-1],coord_x[i],length);
+			float fx = normalize(coord_y[i-1],coord_y[i],length);
 			float gx = fx;
-			float fy = 0.0-normalize(coord_y[i-1],coord_y[i],length);
+			float fy = 0.0-normalize(coord_x[i-1],coord_x[i],length);
 			float gy = fy;
 			coord_xNode[0] = fx;
 			coord_xNode[1] = gx;
 			coord_yNode[0] = fy;
 			coord_yNode[1] = gy;
-			extremite(coord_x[i-1],fx*thick/2,gx*thick/2,coord_xNode);
-			extremite(coord_y[i-1],fy*thick/2,gy*thick/2,coord_yNode);
+			float coeff = (coord_y[i-1]-coord_y[i])/(coord_x[i-1]-coord_x[i]);
+			if(coeff>0){
+				extremite(coord_x[i-1],fx*thick/2,gx*thick/2,coord_xNode,1,1);
+				extremite(coord_y[i-1],fy*thick/2,gy*thick/2,coord_yNode,1,1);
+			}
+			else{
+				extremite(coord_x[i-1],fx*thick/2,gx*thick/2,coord_xNode,0,1);
+				extremite(coord_y[i-1],fy*thick/2,gy*thick/2,coord_yNode,0,1);
+			}
 		}
-		else if(i==way->size-1){
+		if(i==way->size-1){
 			int j;
 			for(j=0;j<4;j++){
 				printf("Fin X : %d, Y %d\n",coord_xNode[j],coord_yNode[j] );
 			}
 			printf("\n");
 			float length = distanceXY(coord_x[i-1],coord_y[i-1],coord_x[i],coord_y[i]);
-			float fx = normalize(coord_x[i-1],coord_x[i],length);
+			float fx = normalize(coord_y[i-1],coord_y[i],length);
 			float gx = fx;
-			float fy = 0.0-normalize(coord_y[i-1],coord_y[i],length);
+			float fy = 0.0-normalize(coord_x[i-1],coord_x[i],length);
 			float gy = fy;
-			coord_xNode[0] = fx;
-			coord_xNode[1] = gx;
-			coord_yNode[0] = fy;
-			coord_yNode[1] = gy;
-			extremite(coord_x[i],fx*thick/2,gx*thick/2,coord_xNode);
-			extremite(coord_y[i],fy*thick/2,gy*thick/2,coord_yNode);
+			coord_xNode[2] = fx;
+			coord_xNode[3] = gx;
+			coord_yNode[2] = fy;
+			coord_yNode[3] = gy;
+			float coeff = (coord_y[i-1]-coord_y[i])/(coord_x[i-1]-coord_x[i]);
+			if(coeff>0){
+				extremite(coord_x[i],fx*thick/2,gx*thick/2,coord_xNode,1,2);
+				extremite(coord_y[i],fy*thick/2,gy*thick/2,coord_yNode,1,2);
+			}
+			else{
+				extremite(coord_x[i],fx*thick/2,gx*thick/2,coord_xNode,0,2);
+				extremite(coord_y[i],fy*thick/2,gy*thick/2,coord_yNode,0,2);
+			}
 			for(j=0;j<4;j++){
-				printf("Fin X : %d, Y %d\n",coord_xNode[j],coord_yNode[j] );
+				printf("Fin XX : %d, Y %d\n",coord_xNode[j],coord_yNode[j] );
 			}
 			printf("\n");
 
@@ -65,8 +79,8 @@ void highway(Way *way, short coord_y[way->size],short coord_x[way->size],int thi
 			float resBCx = normalize(coord_x[i-1],coord_x[i],lengthBC);
 			float resBCy = normalize(coord_y[i-1],coord_y[i],lengthBC);
 
-			float X = (resABx + resBCx)*thick/2;
-			float Y = (resABy + resBCy)*thick/2;
+			float X = (resABx - resBCx)*thick/2;
+			float Y = (resABy - resBCy)*thick/2;
 
 			double angleCal = angle(coord_x[i-2],coord_y[i-2],coord_x[i-1],coord_y[i-1],coord_x[i],coord_y[i]);
 			if(angleCal >0){
@@ -79,17 +93,18 @@ void highway(Way *way, short coord_y[way->size],short coord_x[way->size],int thi
 			}
 			int j;
 			for(j=0;j<4;j++){
+
 				printf("Inter X : %d, Y %d\n",coord_xNode[j],coord_yNode[j] );
 			}
 			printf("\n");
 			filledPolygonRGBA(renderer,coord_xNode,coord_yNode,4,255,0,0,255);
 			//thickLineRGBA(renderer,coord_xNode[0],coord_yNode[0],coord_xNode[3],coord_yNode[3],1,0,255,0,255);
-			if(i !=way->size-2){
+			if(i !=way->size-1){
 				swap(coord_yNode);
 				swap(coord_xNode);
 			}
 		}
-		thickLineRGBA(renderer,coord_x[i-1],coord_y[i-1],coord_x[i],coord_y[i],thick,way->tag->c->red,way->tag->c->green,way->tag->c->blue,255);
+		thickLineRGBA(renderer,coord_x[i-1],coord_y[i-1],coord_x[i],coord_y[i],thick,way->tag->c->red,way->tag->c->green,way->tag->c->blue,105);
 	}
 }
 
@@ -150,7 +165,7 @@ void fillWay(Map* map, Way * way){
 					printf("Coor X : %d, Y %d\n",coord_x[kk],coord_y[kk] );
 				}
 				printf("\n");
-			highway(way,coord_y,coord_x,thick);
+				highway(way,coord_y,coord_x,thick);
 */
 
 
