@@ -62,6 +62,7 @@ typedef struct{
 * Color is the color of this type of element
 * thick represente the thickness of the way
 * type represente the type of the tag to know in which listWay it have to be
+* priority represente the priority of have this tag, it permit to choose the better tag
 */
 typedef struct{
 	char* tagKey;
@@ -69,6 +70,7 @@ typedef struct{
 	Color* c;
 	int thick;
 	int type; // 1=water, 2=green, 3=highway, 4= building, 0=other;
+	int priority; 
 }Tag;
 
 
@@ -239,6 +241,7 @@ typedef struct{
 	ListWay* wayGreen;
 	ListWay* wayHighway;
 	ListWay* wayBuilding;
+	ListWay* wayCadastre;
 	ListRelation * listRelation;
 	Tag** referenceTag;
 }Map;

@@ -14,7 +14,7 @@
 #include "conversionElements.h"
 #include "Core.h"
 
-#define SIZETABTAG 38
+#define SIZETABTAG 39
 
 /**
 * \fn initNode(unsigned long id, float lat, float lon, char visible, Bounds* b)
@@ -79,9 +79,10 @@ ListNode* addRefListNode(unsigned long n, ListNode *l);
 * \param c represente the color for the tag
 * \param type represente the type for the tag
 * \param thick represente the thickness for the tag
+* \param priority represente the priority of the tag
 * \return Tag*
 */
-Tag* initTag(char* key, char* value,Color *c,int type, int thick);
+Tag* initTag(char* key, char* value,Color *c,int type, int thick,int priority);
 
 /**
 * \fn Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size);

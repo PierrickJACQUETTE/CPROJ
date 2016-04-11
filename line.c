@@ -197,6 +197,20 @@ void fillWay(Map* map, Way * way){
 	}
 }
 
+
+void analyseCoastline(Way* w, Map* map){
+	printf("analyse coastline\n");
+	refListNode * current =w->listNd->firstRef;
+	while(current!=NULL){
+		Node * currentNode = searchNode(map->avl,current->nd);
+		printf("lon= %f lat= %f \n", currentNode->c->x,currentNode->c->y);
+		current=current->next;
+	} 		
+	
+
+}
+
+
 void parcourList(ListWay *l){
 	if(l!=NULL){
 		int coastline=0;
@@ -206,11 +220,17 @@ void parcourList(ListWay *l){
 			if(currentWay != NULL){
 				if((currentWay->draw == 0)&&(strcmp(currentWay->visible,"T")==0)){
 					// case coastline
-					if((strcmp(currentWay->tag->tagValue, "coastline") ==0) && (coastline ==0) ){
-						colorBackground(0,102,205,100);
-						coastline = 1;
-						SDL_RenderClear(renderer);
-						fillWay(map,currentWay);
+					if(strcmp(currentWay->tag->tagValue, "coastline") ==0){
+						if(coastline==0){
+							colorBackground(0,102,205,100);
+							coastline = 1;
+							SDL_RenderClear(renderer);							
+							//analyseCoastline(currentWay, map);
+						}
+						else{
+						analyseCoastline(currentWay, map);
+						return;
+						}
 					}
 					fillWay(map,currentWay);
 					currentWay->draw = 1;
@@ -239,7 +259,9 @@ void parcourRelation(ListRelation *lr){
 						Way * currentWay =searchWay(map->avlWay,cW->way);
 						if((currentWay != NULL) && (currentWay->draw == 0) && (strcmp(currentWay->visible,"T") == 0)){
 							fillWay(map,currentWay);
-							currentWay->draw = 1;
+							if(strcmp(currentWay->tag->tagKey,"waterway") != 0){
+								currentWay->draw = 1;
+							}
 						}
 					}
 					cW = cW->next;
@@ -250,7 +272,10 @@ void parcourRelation(ListRelation *lr){
 						Way * currentWay = searchWay(map->avlWay,cW->way);
 						if((currentWay !=NULL) && (currentWay->draw == 0)&&(strcmp(currentWay->visible,"T") ==0)){
 							fillWay(map,currentWay);
-							currentWay->draw = 1;
+							if(strcmp(currentWay->tag->tagKey,"waterway") != 0){
+								currentWay->draw = 1;
+							}
+							//currentWay->draw = 1;
 						}
 					}
 					cW = cW->next;
@@ -268,12 +293,11 @@ void parcoursListWay(Map* mapG){
 	map = mapG;
 
 	//parcourList(map->wayHighway,map,WINDOW_WIDTH,WINDOW_HEIGHT,renderer);
-	parcourList(map->wayWater);
 	parcourRelation(map->listRelation);
+	parcourList(map->wayWater);
 	parcourList(map->wayOther);
 	parcourList(map->wayGreen);
 	parcourList(map->wayBuilding);
 	parcourList(map->wayHighway);
-
 
 }

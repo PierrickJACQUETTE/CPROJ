@@ -29,14 +29,12 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 	while(tmpcur != NULL){
 		if (tmpcur->type == XML_ELEMENT_NODE) {
 			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag")==0){
-				if(tag==NULL){
-					t=goodTag((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"), refTag);
-				}
+				t=goodTag((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"), refTag); 
 				if( xmlStrcmp( (const xmlChar *) xmlGetProp( tmpcur, (const xmlChar *)"k" ), (const xmlChar *)"name" ) ==0){
 					name = (char *) xmlGetProp(tmpcur, (const xmlChar *)"v");
 				}
-				if(t!=NULL){
-					tag=t;
+				if((t!=NULL&& tag==NULL) ||  ( t!= NULL && tag!=NULL && (t->priority>tag->priority))){
+					tag=t;		
 				}
 			}
 			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"nd")==0 ){
@@ -82,10 +80,13 @@ Relation* parseRelation(xmlDocPtr doc, xmlNodePtr cur){
 	while(tmpcur != NULL){
 		if (tmpcur->type == XML_ELEMENT_NODE) {
 			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag")==0 ){
-				t=goodTagRelation((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"));
-				if(t!=NULL){
-					tag=t;
-				}
+				
+				//else{
+					t=goodTagRelation((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"));
+					if(t!=NULL){
+						tag=t;
+					}
+				//}
 			}
 			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"member")==0 ){
 				if((strcmp((char *)xmlGetProp(tmpcur, (const xmlChar *)"type"),"way")==0)){
@@ -158,6 +159,7 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 	ListWay* wG=NULL;
 	ListWay* wH=NULL;
 	ListWay* wB=NULL;
+	ListWay* wC=NULL;
 	ListRelation* lr=NULL;
 	int flagN = 1;
 	int flagW = 1;
@@ -188,6 +190,7 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 					else if(way->tag->type==2){ wG=addRefListWay(way->id," ", wG);}
 					else if(way->tag->type==3){ wH=addRefListWay(way->id," ", wH);}
 					else if(way->tag->type==4){ wB=addRefListWay(way->id," ", wB);}
+					else if(way->tag->type==5){ wC=addRefListWay(way->id," ", wC);}
 					if(flagW==1){
 						init(&avlWay,NULL, way);
 						flagW=0;
@@ -213,6 +216,7 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 	map->wayGreen=wG;
 	map->wayBuilding=wB;
 	map->wayHighway=wH;
+	map->wayCadastre=wC;
 	map->listRelation=lr;
 	map->bounds=convertBounds(map->bounds);
 	return map;
