@@ -190,10 +190,10 @@ void fillWay(Map* map, Way * way){
 					float cx = (coordxf+coordxl)/2;
 					float cy = (coordyf+coordyl)/2;
 
-					printf("Way id: %ld, Name: %s,coord noeud : %f, %f\n",way->id,way->name,fabs(cx),fabs(cy));
+//					printf("Way id: %ld, Name: %s,coord noeud : %f, %f\n",way->id,way->name,fabs(cx),fabs(cy));
 
 					//if(cx>cy){
-					stringRGBA(renderer,fabs(cx),fabs(cy),way->name,0,0,0,255);
+//					stringRGBA(renderer,fabs(cx),fabs(cy),way->name,0,0,0,255);
 					//}
 					//else{
 					//stringRGBA(renderer,coordx,coordy,way->name,0,0,0,255);
@@ -215,12 +215,20 @@ void fillWay(Map* map, Way * way){
 
 void analyseCoastline(Way* w, Map* map){
 	printf("analyse coastline\n");
-	refListNode * current =w->listNd->firstRef;
-	while(current!=NULL){
-		Node * currentNode = searchNode(map->avl,current->nd);
-		printf("lon= %f lat= %f \n", currentNode->c->x,currentNode->c->y);
-		current=current->next;
-	} 		
+	ListNode * ln =w->listNd;
+	Node * first= searchNode(map->avl,w->listNd->firstRef->nd);
+	Node* last = searchNode(map->avl,w->listNd->lastRef->nd);
+	//while(current!=NULL){
+		//Node * currentNode = searchNode(map->avl,current->nd);
+		printf("lon= %f lat= %f \n", first->c->x,first->c->y);
+		printf("lon= %f lat= %f \n", last->c->x,last->c->y);
+	 
+		w->listNd=addRefListNode((unsigned long)3, ln);
+		w->size++;
+
+
+	//	current=current->next;
+	//} 		
 	
 
 }
@@ -235,16 +243,17 @@ void parcourList(ListWay *l){
 			if(currentWay != NULL){
 				if((currentWay->draw == 0)&&(strcmp(currentWay->visible,"T")==0)){
 					// case coastline
-					if(strcmp(currentWay->tag->tagValue, "coastline") ==0){
+					if(strcmp(currentWay->tag->tagValue, "coastline") ==0){ printf("coastline");
 						if(coastline==0){
 							colorBackground(0,102,205,100);
 							coastline = 1;
-							SDL_RenderClear(renderer);							
-							//analyseCoastline(currentWay, map);
+							SDL_RenderClear(renderer);
+							analyseCoastline(currentWay, map);
+							printf("id= %ld \n", currentWay->listNd->lastRef->nd);
+						fillWay(map,currentWay);
 						}
 						else{
 						analyseCoastline(currentWay, map);
-						return;
 						}
 					}
 					fillWay(map,currentWay);
@@ -274,9 +283,8 @@ void parcourRelation(ListRelation *lr){
 						Way * currentWay =searchWay(map->avlWay,cW->way);
 						if((currentWay != NULL) && (currentWay->draw == 0) && (strcmp(currentWay->visible,"T") == 0)){
 							fillWay(map,currentWay);
-							if(strcmp(currentWay->tag->tagKey,"waterway") != 0){
-								currentWay->draw = 1;
-							}
+							currentWay->draw = 1;
+							
 						}
 					}
 					cW = cW->next;
@@ -287,10 +295,7 @@ void parcourRelation(ListRelation *lr){
 						Way * currentWay = searchWay(map->avlWay,cW->way);
 						if((currentWay !=NULL) && (currentWay->draw == 0)&&(strcmp(currentWay->visible,"T") ==0)){
 							fillWay(map,currentWay);
-							if(strcmp(currentWay->tag->tagKey,"waterway") != 0){
-								currentWay->draw = 1;
-							}
-							//currentWay->draw = 1;
+							currentWay->draw = 1;
 						}
 					}
 					cW = cW->next;
@@ -308,11 +313,10 @@ void parcoursListWay(Map* mapG){
 	map = mapG;
 
 	//parcourList(map->wayHighway,map,WINDOW_WIDTH,WINDOW_HEIGHT,renderer);
-	parcourRelation(map->listRelation);
 	parcourList(map->wayWater);
+	parcourRelation(map->listRelation);	
 	parcourList(map->wayOther);
 	parcourList(map->wayGreen);
 	parcourList(map->wayBuilding);
 	parcourList(map->wayHighway);
-
 }

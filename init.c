@@ -71,7 +71,7 @@ Tag** initReferenceTag(){
 			fprintf(stderr,"Allocation impossible : %s\n","fonction initReferenceTag");
 			exit(EXIT_FAILURE);
 		}
-		t[i]->priority=100;
+		t[i]->priority=1;
 	}
 	t[0]->tagKey ="landuse"; t[0]->tagValue ="forest"; t[0]->c->red=51; t[0]->c->green=102; t[0]->c->blue=0; //vert
 	t[1]->tagKey ="building"; t[1]->tagValue ="yes"; t[1]->c->red=205; t[1]->c->green=183; t[1]->c->blue=158;	//beige
@@ -106,12 +106,12 @@ Tag** initReferenceTag(){
 	t[29]->tagKey ="highway"; t[29]->tagValue ="tertiary"; t[29]->c->red=80; t[29]->c->green=80; t[29]->c->blue=80; //gris fonce
 	t[30]->tagKey ="leisure"; t[30]->tagValue ="marina"; t[30]->c->red=255; t[30]->c->green=255; t[30]->c->blue=204; // jaune pale
 	/**/t[31]->tagKey ="landuse "; t[31]->tagValue ="residential"; t[31]->c->red=255; t[31]->c->green=255; t[31]->c->blue=255; //jaune pale
-	t[32]->tagKey ="highway"; t[15]->tagValue ="primary_link"; t[32]->c->red=255; t[32]->c->green=102; t[32]->c->blue=51; //orange
-	t[33]->tagKey ="highway"; t[10]->tagValue ="secondary_link"; t[33]->c->red=255; t[33]->c->green=204; t[33]->c->blue=51; //jaune
-	t[34]->tagKey ="highway"; t[29]->tagValue ="tertiary_link"; t[34]->c->red=80; t[34]->c->green=80; t[34]->c->blue=80; //gris fonce
-	t[35]->tagKey ="highway"; t[10]->tagValue ="trunk"; t[35]->c->red=255; t[35]->c->green=51; t[35]->c->blue=0; //orange fonce
-	t[36]->tagKey ="highway"; t[10]->tagValue ="trunk_link"; t[36]->c->red=255; t[36]->c->green=51; t[36]->c->blue=0; //orange fonce
-	t[37]->tagKey ="highway"; t[10]->tagValue ="road"; t[37]->c->red=155; t[37]->c->green=155; t[37]->c->blue=155; //gris moyen
+	t[32]->tagKey ="highway"; t[32]->tagValue ="primary_link"; t[32]->c->red=255; t[32]->c->green=102; t[32]->c->blue=51; //orange
+	t[33]->tagKey ="highway"; t[33]->tagValue ="secondary_link"; t[33]->c->red=255; t[33]->c->green=204; t[33]->c->blue=51; //jaune
+	t[34]->tagKey ="highway"; t[34]->tagValue ="tertiary_link"; t[34]->c->red=80; t[34]->c->green=80; t[34]->c->blue=80; //gris fonce
+	t[35]->tagKey ="highway"; t[35]->tagValue ="trunk"; t[35]->c->red=255; t[35]->c->green=51; t[35]->c->blue=0; //orange fonce
+	t[36]->tagKey ="highway"; t[36]->tagValue ="trunk_link"; t[36]->c->red=255; t[36]->c->green=51; t[36]->c->blue=0; //orange fonce
+	t[37]->tagKey ="highway"; t[37]->tagValue ="road"; t[37]->c->red=155; t[37]->c->green=155; t[37]->c->blue=155; //gris moyen
 	t[38]->tagKey ="source"; t[38]->tagValue ="cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"; t[38]->c->red=255; t[38]->c->green=255; t[38]->c->blue=255; //blanc
 
 	t[0]->type= 2; t[0]->thick=0;  // 1=water, 2=green, 3=highway, 4= building, 0=other; 5= cadastre;
@@ -143,7 +143,7 @@ Tag** initReferenceTag(){
 	t[26]->type= 3; t[26]->thick=1;
 	t[27]->type= 4; t[27]->thick=0;
 	t[28]->type= 2; t[28]->thick=0;
-	t[29]->type= 3; t[29]->thick=9;
+	t[29]->type= 3; t[29]->thick=9; 
 	t[30]->type= 4; t[30]->thick=0;
 	t[31]->type= 4; t[31]->thick=0;
 	t[32]->type= 3; t[32]->thick=9;
@@ -275,11 +275,10 @@ Tag * goodTagRelation(char * k, char *v){
 
 Tag* goodTag(char * k, char *v, Tag**  ref){
 	int i=0;
-	if(ref!=NULL){
+	if(ref!=NULL){					
 		for(i=0; i<SIZETABTAG; i++){
 			if(ref[i]!=NULL){
 				if(strcmp(k, ref[i]->tagKey)==0 && strcmp(v, ref[i]->tagValue)==0){
-					
 					return initTag(k, v, ref[i]->c,ref[i]->type, ref[i]->thick, ref[i]->priority);
 				}
 			}
