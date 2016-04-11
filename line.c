@@ -193,7 +193,7 @@ void fillWay(Map* map, Way * way){
 //					printf("Way id: %ld, Name: %s,coord noeud : %f, %f\n",way->id,way->name,fabs(cx),fabs(cy));
 
 					//if(cx>cy){
-//					stringRGBA(renderer,fabs(cx),fabs(cy),way->name,0,0,0,255);
+					stringRGBA(renderer,fabs(cx),fabs(cy),way->name,0,0,0,255);
 					//}
 					//else{
 					//stringRGBA(renderer,coordx,coordy,way->name,0,0,0,255);

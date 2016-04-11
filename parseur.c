@@ -34,7 +34,7 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 					name = (char *) xmlGetProp(tmpcur, (const xmlChar *)"v");
 				}
 				if((t!=NULL&& tag==NULL) ||  ( t!= NULL && tag!=NULL && (t->priority>tag->priority))){
-					tag=t;		
+					tag=t;	
 				}
 			}
 			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"nd")==0 ){
@@ -218,7 +218,19 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 	map->wayHighway=wH;
 	map->wayCadastre=wC;
 	map->listRelation=lr;
+	//add 4 Node for the 4 point of bounds
+	
+	Node* n0= initNode(0, map->bounds->min->y, map->bounds->min->x, "true", map->bounds);
+	Node* n1= initNode(1, map->bounds->max->y, map->bounds->min->x, "true", map->bounds);
+	Node* n2= initNode(2, map->bounds->max->y, map->bounds->max->x, "true", map->bounds);
+	Node* n3= initNode(3, map->bounds->min->y, map->bounds->max->x, "true", map->bounds);
+	insert(&aNode,n0,NULL);
+	insert(&aNode,n1,NULL);
+	insert(&aNode,n2,NULL);
+	insert(&aNode,n3,NULL);
 	map->bounds=convertBounds(map->bounds);
+
+
 	return map;
 }
 
