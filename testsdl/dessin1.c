@@ -256,22 +256,31 @@ float normalize(float a, float b,float length){
 float angle(float ax, float ay, float bx,float by,float cx,float cy){
 	float longeurAB = longeurPoint(ax,ay,bx,by);
 	float longeurBC = longeurPoint(bx,by,cx,cy);
-	float quotient = ((bx-ax)*(cx-bx))-((by-ay)*(cy-by));
-	float sin = asinf(quotient/(longeurAB*longeurBC));
-	quotient = pow(longeurAB,2)+pow(longeurBC,2)-pow((longeurPoint(ax,ay,cx,cy)),2);
-	float cos = acosf(quotient/(2*longeurAB*longeurBC));
-	if(sin>0){
+	float quotientSin = ((ax-bx)*(cx-bx))-((ay-by)*(cy-by));
+//	float sin = asinf(quotientSin/(longeurAB*longeurBC));
+	float quotient = ((ax-bx)*(cx-bx))+((ay-by)*(cy-by));
+	//quotient = pow(longeurAB,2)+pow(longeurBC,2)-pow((longeurPoint(ax,ay,cx,cy)),2);
+	float cos = acosf(quotient/(longeurAB*longeurBC));
+	printf("angle : %f\n",quotientSin);
+	if(quotientSin>0){
 		return cos*180/M_PI;
 	}
 	else{
 		return 0-(cos*180/M_PI);
 	}
+
 }
 
 // new 2
-Sint16* extremite(float a, float d, float e, Sint16 tab[4]){
-	tab[0] = a + d;
-	tab[1] = a - e;
+Sint16 * extremite(float a, float d, float e, Sint16 tab[4], int signe){
+	if(signe ==1){
+		tab[0] = a + d;
+		tab[1] = a - e;
+	}
+	else{
+		tab[0] = a - d;
+		tab[1] = a + e;
+	}
 	return tab;
 }
 
@@ -305,12 +314,12 @@ void highway(){
 		fprintf(stderr,"Allocation impossible : %s\n","normalize");
 		exit(EXIT_FAILURE);
 	}
-	a->x = 50;
-	a->y = 300;
+	c->x = 50;
+	c->y = 300;
 	b->x = 100;
-	b->y = 30;
-	c->x = 400;
-	c->y = 200;
+	b->y = 500;
+	a->x = 400;
+	a->y = 200;
 	int epaisseur = 24;
 
 	float length = longeurPoint(a->x,a->y,b->x,b->y);
@@ -320,8 +329,15 @@ void highway(){
 	float gy = fy;
 	Sint16 t[4]= {fx,gx,0.0,0.0};
 	Sint16 s[4]= {fy,gy,0.0,0.0};
-	extremite(a->x,fx*epaisseur/2,gx*epaisseur/2,t);
-	extremite(a->y,fy*epaisseur/2,gy*epaisseur/2,s);
+	float coeff = (a->y-b->y)/(a->x-b->x);
+	if( coeff> 0){
+	extremite(a->x,fx*epaisseur/2,gx*epaisseur/2,t,1);
+	extremite(a->y,fy*epaisseur/2,gy*epaisseur/2,s,1);
+}	
+else{
+	extremite(a->x,fx*epaisseur/2,gx*epaisseur/2,t,0);
+	extremite(a->y,fy*epaisseur/2,gy*epaisseur/2,s,0);
+}
 
 	//permet de connaitre le debut on doit etre sur le deuxime point
 
@@ -338,6 +354,7 @@ void highway(){
 	float Y = (resABy - resBCy)*epaisseur/2;
 
 	double angleCal = angle(a->x,a->y,b->x,b->y,c->x,c->y);
+	printf("angleCal %f \n",angleCal);
 	if(angleCal >0){
 		midle(b->x,X,0,t);
 		midle(b->y,Y,0,s);
@@ -356,8 +373,14 @@ void highway(){
 	gx = fx;
 	fy = 0.0-normalize(b->x,c->x,length);
 	gy = fy;
-	extremite(c->x,fx*epaisseur/2,gx*epaisseur/2,t);
-	extremite(c->y,fy*epaisseur/2,gy*epaisseur/2,s);
+	if( coeff> 0){
+	extremite(c->x,fx*epaisseur/2,gx*epaisseur/2,t,1);
+	extremite(c->y,fy*epaisseur/2,gy*epaisseur/2,s,1);
+}	
+else{
+	extremite(c->x,fx*epaisseur/2,gx*epaisseur/2,t,0);
+	extremite(c->y,fy*epaisseur/2,gy*epaisseur/2,s,0);
+}
 	filledPolygonRGBA(renderer,t,s,4,255,0,0,255);
 
 

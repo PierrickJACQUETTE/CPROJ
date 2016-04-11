@@ -58,11 +58,12 @@ float distanceLatLon(float lat1, float lon1, float lat2, float lon2){
 float angle(float ax, float ay, float bx,float by,float cx,float cy){
 	float longeurAB = distanceXY(ax,ay,bx,by);
 	float longeurBC = distanceXY(bx,by,cx,cy);
-	float quotient = ((bx-ax)*(cx-bx))-((by-ay)*(cy-by));
-	float sin = asinf(quotient/(longeurAB*longeurBC));
-	quotient = pow(longeurAB,2)+pow(longeurBC,2)-pow((distanceXY(ax,ay,cx,cy)),2);
+	float quotientSin = ((ax-bx)*(cx-bx))-((ay-by)*(cy-by));
+	float quotient = ((ax-bx)*(cx-bx))+((ay-by)*(cy-by));
+	//float sin = asinf(quotient/(longeurAB*longeurBC));
+	//quotient = pow(longeurAB,2)+pow(longeurBC,2)-pow((distanceXY(ax,ay,cx,cy)),2);
 	float cos = acosf(quotient/(2*longeurAB*longeurBC));
-	if(sin>0){
+	if(quotientSin>0){
 		return cos*180/M_PI;
 	}
 	else{
@@ -70,10 +71,29 @@ float angle(float ax, float ay, float bx,float by,float cx,float cy){
 	}
 }
 
-Sint16* extremite(float a, float d, float e, Sint16 tab[4]){
-	tab[0] = a + d;
-	tab[1] = a - e;
+Sint16 * extremite(float a, float d, float e, Sint16 tab[4], int signe,int extremite){
+	if(extremite == 2){
+		if(signe == 1){
+			tab[3] = a + d;
+			tab[2] = a - e;
+		}
+		else{
+			tab[3] = a - d;
+			tab[2] = a + e;
+		}
+	}
+	else{
+		if(signe ==1){
+			tab[0] = a + d;
+			tab[1] = a - e;
+		}
+		else{
+			tab[0] = a - d;
+			tab[1] = a + e;
+		}
+	}
 	return tab;
+
 }
 
 Sint16* midle(float b, float e, int signe, Sint16 tab[4]){
@@ -106,11 +126,11 @@ float miseAEchelleY(float x, float y,int size){
 }
 
 int colorBackground(int red, int blue, int green,int oppacity){
-  if(SDL_SetRenderDrawColor(renderer,red,blue,green,oppacity) < 0) {
-    fprintf(stderr,"Renderer color could not be set! SDL Error: %s\n",SDL_GetError());
-    return 0;
-  }
-  return 1;
+	if(SDL_SetRenderDrawColor(renderer,red,blue,green,oppacity) < 0) {
+		fprintf(stderr,"Renderer color could not be set! SDL Error: %s\n",SDL_GetError());
+		return 0;
+	}
+	return 1;
 }
 
 int colorBackgroundDefault(){

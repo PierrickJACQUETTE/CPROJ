@@ -146,9 +146,10 @@ Sint16* swap(Sint16 tab[4]);
  * \param float d The new point
  * \param float e The new point
  * \param Sint16 tab : The table points to draw the polygon
+ * \param signe int it is the order
  * \return Sint16 The table points to draw the polygon
 */
-Sint16* extremite(float a, float d, float e, Sint16 tab[4]);
+Sint16* extremite(float a, float d, float e, Sint16 tab[4],int signe, int extremite);
 
 
 /**
