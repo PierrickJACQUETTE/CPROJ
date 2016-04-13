@@ -72,6 +72,7 @@ Tag** initReferenceTag(){
 			exit(EXIT_FAILURE);
 		}
 		t[i]->priority=1;
+		t[i]->thick=0;
 	}
 	t[0]->tagKey ="landuse"; t[0]->tagValue ="forest"; t[0]->c->red=51; t[0]->c->green=102; t[0]->c->blue=0; //vert
 	t[1]->tagKey ="building"; t[1]->tagValue ="yes"; t[1]->c->red=205; t[1]->c->green=183; t[1]->c->blue=158;	//beige
@@ -114,45 +115,45 @@ Tag** initReferenceTag(){
 	t[37]->tagKey ="highway"; t[37]->tagValue ="road"; t[37]->c->red=155; t[37]->c->green=155; t[37]->c->blue=155; //gris moyen
 	t[38]->tagKey ="source"; t[38]->tagValue ="cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"; t[38]->c->red=255; t[38]->c->green=255; t[38]->c->blue=255; //blanc
 
-	t[0]->type= 2; t[0]->thick=0;  // 1=water, 2=green, 3=highway, 4= building, 0=other; 5= cadastre;
-	t[1]->type= 4; t[1]->thick=0;
+	t[0]->type= 2;   // 1=water, 2=green, 3=highway, 4= building, 0=other; 5= cadastre;
+	t[1]->type= 4; 
 	t[2]->type= 3; t[2]->thick=6;
-	t[3]->type= 1; t[3]->thick=0;
-	t[4]->type= 1; t[4]->thick=0;
-	t[5]->type= 1; t[5]->thick=0;
-	t[6]->type= 1; t[6]->thick=0;
-	t[7]->type= 2; t[7]->thick=0;
-	t[8]->type= 2; t[8]->thick=0;
+	t[3]->type= 1; 
+	t[4]->type= 1; 
+	t[5]->type= 1; 
+	t[6]->type= 1; 
+	t[7]->type= 2; 
+	t[8]->type= 2; 
 	t[9]->type= 3; t[9]->thick=5;
 	t[10]->type=3; t[10]->thick=9;
 	t[11]->type= 3; t[11]->thick=7;
 	t[12]->type= 3; t[12]->thick=9;
 	t[13]->type= 3; t[13]->thick=9;
-	t[14]->type= 1; t[14]->thick=0;
+	t[14]->type= 1; 
 	t[15]->type= 3; t[15]->thick=9;
-	t[16]->type= 3; t[16]->thick=0;
-	t[17]->type= 1; t[17]->thick=0;
-	t[18]->type= 2; t[18]->thick=0;
+	t[16]->type= 3; 
+	t[17]->type= 1; 
+	t[18]->type= 2; 
 	t[19]->type= 3; t[19]->thick=3;
-	t[20]->type= 3; t[20]->thick=0;
-	t[21]->type= 0; t[21]->thick=0;
-	t[22]->type= 0; t[22]->thick=0;
-	t[23]->type= 0; t[23]->thick=0;
-	t[24]->type= 4; t[24]->thick=0;
-	t[25]->type= 1; t[25]->thick=0;
+	t[20]->type= 3; 
+	t[21]->type= 0; 
+	t[22]->type= 0; 
+	t[23]->type= 0; 
+	t[24]->type= 4; 
+	t[25]->type= 1; 
 	t[26]->type= 3; t[26]->thick=1;
-	t[27]->type= 4; t[27]->thick=0;
-	t[28]->type= 2; t[28]->thick=0;
+	t[27]->type= 4; 
+	t[28]->type= 2; 
 	t[29]->type= 3; t[29]->thick=9; 
-	t[30]->type= 4; t[30]->thick=0;
-	t[31]->type= 4; t[31]->thick=0;
+	t[30]->type= 4; 
+	t[31]->type= 4; 
 	t[32]->type= 3; t[32]->thick=9;
 	t[33]->type= 3; t[33]->thick=9;
 	t[34]->type= 3; t[34]->thick=9;
 	t[35]->type= 3; t[35]->thick=9;
 	t[36]->type= 3; t[36]->thick=9;
 	t[37]->type= 3; t[37]->thick=4;
-	t[38]->type= 5; t[38]->thick=0; t[38]->priority=0;
+	t[38]->type= 5;                  t[38]->priority=0;
 	return t;
 
 }
