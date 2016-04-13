@@ -78,7 +78,7 @@ Tag** initReferenceTag(){
 	t[1]->tagKey ="building"; t[1]->tagValue ="yes"; t[1]->c->red=205; t[1]->c->green=183; t[1]->c->blue=158;	//beige
 	t[2]->tagKey ="highway"; t[2]->tagValue ="residential"; t[2]->c->red=135; t[2]->c->green=135; t[2]->c->blue=135; //gris clair
 	t[3]->tagKey ="waterway"; t[3]->tagValue ="canal"; t[3]->c->red=51; t[3]->c->green=102; t[3]->c->blue=204; //bleu fonce
-	t[4]->tagKey ="waterway"; t[4]->tagValue ="river "; t[4]->c->red=0; t[4]->c->green=153; t[4]->c->blue=204; //bleu clair
+	/**/t[4]->tagKey ="waterway"; t[4]->tagValue ="river "; t[4]->c->red=0; t[4]->c->green=153; t[4]->c->blue=204; //bleu clair
 	t[5]->tagKey ="waterway"; t[5]->tagValue ="water"; t[5]->c->red=51; t[5]->c->green=204; t[5]->c->blue=255;
 	t[6]->tagKey ="waterway"; t[6]->tagValue ="coastline"; t[6]->c->red=0; t[6]->c->green=204; t[6]->c->blue=255;
 	t[7]->tagKey ="landuse"; t[7]->tagValue ="grass"; t[7]->c->red=102; t[7]->c->green=204; t[7]->c->blue=51;
@@ -96,7 +96,7 @@ Tag** initReferenceTag(){
 	t[19]->tagKey ="highway"; t[19]->tagValue ="pedestrian"; t[19]->c->red=190; t[19]->c->green=190; t[19]->c->blue=190; //gris tres tres clair
 	t[20]->tagKey ="service"; t[20]->tagValue ="alley"; t[20]->c->red=255; t[20]->c->green=255; t[20]->c->blue=204; //jaune pale
 	//t[21]->tagKey ="layer"; t[21]->tagValue ="1"; t[21]->c->red=255; t[21]->c->green=255; t[21]->c->blue=204; //jaune pale
-	t[21]->tagKey ="brigde"; t[21]->tagValue ="yes"; t[21]->c->red=255; t[21]->c->green=255; t[21]->c->blue=255; //blanc
+	/**/t[21]->tagKey ="brigde  "; t[21]->tagValue ="yes"; t[21]->c->red=255; t[21]->c->green=255; t[21]->c->blue=255; //blanc
 	t[22]->tagKey ="surface"; t[22]->tagValue ="ground"; t[22]->c->red=255; t[22]->c->green=255; t[22]->c->blue=255; //blanc
 	t[23]->tagKey ="surface"; t[23]->tagValue ="gravel"; t[23]->c->red=255; t[23]->c->green=0; t[23]->c->blue=0; //blanc
 	t[24]->tagKey ="building"; t[24]->tagValue ="church"; t[24]->c->red=133; t[24]->c->green=109; t[24]->c->blue=77; //marron
@@ -131,12 +131,12 @@ Tag** initReferenceTag(){
 	t[13]->type= 3; t[13]->thick=9;
 	t[14]->type= 1; 
 	t[15]->type= 3; t[15]->thick=9;
-	t[16]->type= 3; 
+	t[16]->type= 0; t[16]->priority=0;
 	t[17]->type= 1; 
 	t[18]->type= 2; 
 	t[19]->type= 3; t[19]->thick=3;
 	t[20]->type= 3; 
-	t[21]->type= 0; 
+	t[21]->type= 0; t[21]->thick=3;
 	t[22]->type= 0; 
 	t[23]->type= 0; 
 	t[24]->type= 4; 
