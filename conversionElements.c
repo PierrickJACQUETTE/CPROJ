@@ -125,11 +125,13 @@ Sint16* swap(Sint16 tab[4]){
 
 
 float miseAEchelleX(float x, float y,int size){
-	return x*size/y;
+	return ((x*size/y)* zoom) + deplacX+ deplacZX;
+	//return ((x*size/y));
 }
 
 float miseAEchelleY(float x, float y,int size){
-	return size-(x*size/y);
+	return ((size-(x*size/y))* zoom) + deplacY+ deplacZY;
+	//return ((size-(x*size/y)));
 }
 
 float calculateZoom(int refX, int refY,float decalage,int flag){ //flag vaut 0 qd + 1 qd -

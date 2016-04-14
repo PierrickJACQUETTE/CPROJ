@@ -114,7 +114,7 @@ Sint16 checkColor(int color){
 	return color;
 }
 
-void fillWay(Map* map, Way * way){
+void fillWay(Way * way){
 	if(map == NULL){
 		fprintf(stderr,"La map est NULL dans line fonction fillWay\n");
 		return;
@@ -170,56 +170,55 @@ void fillWay(Map* map, Way * way){
 					x = coord_x[i];
 					y = coord_y[i];
 				}
-				/*
-				int kk=0;
-				for(kk=0;kk<way->size;kk++){
-				printf("Coor X : %d, Y %d\n",coord_x[kk],coord_y[kk] );
+
+				//int kk=0;
+				//for(kk=0;kk<way->size;kk++){
+				//	printf("Coor X : %d, Y %d\n",coord_x[kk],coord_y[kk] );
+				//}
+				//printf("\n");
+				//highway(way,coord_y,coord_x,thick);
+
+				if(way->name!=NULL){
+					Node * firstNode = searchNode(map->avl,l->firstRef->nd);
+					Node * lastNode = searchNode(map->avl,l->lastRef->nd);
+
+					float coordxf= miseAEchelleX(firstNode->c->x ,map->bounds->max->x,windows_Width);
+					float coordyf= miseAEchelleY(firstNode->c->y ,map->bounds->max->y,windows_Height);
+					float coordxl= miseAEchelleX(lastNode->c->x,map->bounds->max->x,windows_Width);
+					float coordyl= miseAEchelleY(lastNode->c->y,map->bounds->max->y,windows_Height);
+
+					coordxf = rightCoordValue(coordxf,windows_Width);
+					coordxl = rightCoordValue(coordxl,windows_Width);
+					coordyf = rightCoordValue(coordyf,windows_Height);
+					coordyl = rightCoordValue(coordyl,windows_Height);
+
+					//float coordx= miseAEchelleX((firstNode->c->x + lastNode->c->x) /2,map->bounds->max->x,WINDOW_WIDTH);
+					//float coordy= miseAEchelleY((firstNode->c->y + lastNode->c->y) /2,map->bounds->max->y,WINDOW_HEIGHT);
+
+					float cx = (coordxf+coordxl)/2;
+					float cy = (coordyf+coordyl)/2;
+
+					//					printf("Way id: %ld, Name: %s,coord noeud : %f, %f\n",way->id,way->name,fabs(cx),fabs(cy));
+
+					//if(cx>cy){
+					stringRGBA(renderer,fabs(cx),fabs(cy),way->name,0,0,0,255);
+					//}
+					//else{
+					//stringRGBA(renderer,coordx,coordy,way->name,0,0,0,255);
+					//}
+				}
 			}
-			printf("\n");
-			highway(way,coord_y,coord_x,thick);
-			*/
-
-			if(way->name!=NULL){
-				Node * firstNode = searchNode(map->avl,l->firstRef->nd);
-				Node * lastNode = searchNode(map->avl,l->lastRef->nd);
-
-				float coordxf= miseAEchelleX(firstNode->c->x ,map->bounds->max->x,windows_Width);
-				float coordyf= miseAEchelleY(firstNode->c->y ,map->bounds->max->y,windows_Height);
-				float coordxl= miseAEchelleX(lastNode->c->x,map->bounds->max->x,windows_Width);
-				float coordyl= miseAEchelleY(lastNode->c->y,map->bounds->max->y,windows_Height);
-
-				coordxf = rightCoordValue(coordxf,windows_Width);
-				coordxl = rightCoordValue(coordxl,windows_Width);
-				coordyf = rightCoordValue(coordyf,windows_Height);
-				coordyl = rightCoordValue(coordyl,windows_Height);
-
-				//float coordx= miseAEchelleX((firstNode->c->x + lastNode->c->x) /2,map->bounds->max->x,WINDOW_WIDTH);
-				//float coordy= miseAEchelleY((firstNode->c->y + lastNode->c->y) /2,map->bounds->max->y,WINDOW_HEIGHT);
-
-				float cx = (coordxf+coordxl)/2;
-				float cy = (coordyf+coordyl)/2;
-
-				//					printf("Way id: %ld, Name: %s,coord noeud : %f, %f\n",way->id,way->name,fabs(cx),fabs(cy));
-
-				//if(cx>cy){
-				stringRGBA(renderer,fabs(cx),fabs(cy),way->name,0,0,0,255);
-				//}
-				//else{
-				//stringRGBA(renderer,coordx,coordy,way->name,0,0,0,255);
-				//}
+			else{
+				if(drawContour ==1){
+					polygonRGBA(renderer,coord_x,coord_y,way->size,139,71,137,255);
+				}
+				filledPolygonRGBA(renderer,coord_x,coord_y,way->size,way->tag->c->red,way->tag->c->green,way->tag->c->blue,255);
 			}
 		}
 		else{
-			if(drawContour ==1){
-				polygonRGBA(renderer,coord_x,coord_y,way->size,139,71,137,255);
-			}
-			filledPolygonRGBA(renderer,coord_x,coord_y,way->size,way->tag->c->red,way->tag->c->green,way->tag->c->blue,255);
+			filledPolygonRGBA(renderer,coord_x,coord_y,way->size,0,0,255,255);
 		}
 	}
-	else{
-		filledPolygonRGBA(renderer,coord_x,coord_y,way->size,0,0,255,255);
-	}
-}
 }
 
 void analyseCoastline(Way* w, Map* map){
@@ -248,32 +247,33 @@ void parcourList(ListWay *l){
 			if(currentWay != NULL){
 				if((currentWay->draw == 0)&&(strcmp(currentWay->visible,"T")==0)){
 					// case coastline
-					if(strcmp(currentWay->tag->tagValue, "coastline") ==0){ printf("coastline");
-					if(coastline==0){
-						colorBackground(0,102,205,100);
-						coastline = 1;
-						SDL_RenderClear(renderer);
-						analyseCoastline(currentWay, map);
-						printf("id= %ld \n", currentWay->listNd->lastRef->nd);
-						fillWay(map,currentWay);
+					if(strcmp(currentWay->tag->tagValue, "coastline") ==0){
+						printf("coastline");
+						if(coastline==0){
+							colorBackground(0,102,205,100);
+							coastline = 1;
+							SDL_RenderClear(renderer);
+							analyseCoastline(currentWay, map);
+							printf("id= %ld \n", currentWay->listNd->lastRef->nd);
+							fillWay(currentWay);
+						}
+						else{
+							analyseCoastline(currentWay, map);
+						}
 					}
-					else{
-						analyseCoastline(currentWay, map);
-					}
+					fillWay(currentWay);
+					currentWay->draw = 1;
 				}
-				fillWay(map,currentWay);
-				currentWay->draw = 1;
+				else if((strcmp(currentWay->visible,"F") !=0) && (currentWay->draw !=1) ){
+					fprintf(stderr,"Le champs visible du way %ld ne vaut ni true ni false mais %s draw: %d\n",currentWay->id,currentWay->visible, currentWay->draw );
+				}
 			}
-			else if((strcmp(currentWay->visible,"F") !=0) && (currentWay->draw !=1) ){
-				fprintf(stderr,"Le champs visible du way %ld ne vaut ni true ni false mais %s draw: %d\n",currentWay->id,currentWay->visible, currentWay->draw );
+			else{
+				fprintf(stderr,"Le way %ld n'est pas définis dans le fichier d'entree dans line parcourList\n",current->way );
 			}
+			current = current->next;
 		}
-		else{
-			fprintf(stderr,"Le way %ld n'est pas définis dans le fichier d'entree dans line parcourList\n",current->way );
-		}
-		current = current->next;
 	}
-}
 }
 
 void parcourRelation(ListRelation *lr){
@@ -287,7 +287,7 @@ void parcourRelation(ListRelation *lr){
 					if(strcmp(cW->role,"outer") == 0){
 						Way * currentWay =searchWay(map->avlWay,cW->way);
 						if((currentWay != NULL) && (currentWay->draw == 0) && (strcmp(currentWay->visible,"T") == 0)){
-							fillWay(map,currentWay);
+							fillWay(currentWay);
 							currentWay->draw = 1;
 
 						}
@@ -299,7 +299,7 @@ void parcourRelation(ListRelation *lr){
 					if(strcmp(cW->role,"inner") ==0){
 						Way * currentWay = searchWay(map->avlWay,cW->way);
 						if((currentWay !=NULL) && (currentWay->draw == 0)&&(strcmp(currentWay->visible,"T") ==0)){
-							fillWay(map,currentWay);
+							fillWay(currentWay);
 							currentWay->draw = 1;
 						}
 					}

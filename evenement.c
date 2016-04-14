@@ -33,8 +33,10 @@ float clavier(SDL_Event e,float i){
   switch(e.key.keysym.sym){
 
     case SDLK_p:
-    i = calculateZoom(windows_Width/2,windows_Height/2,i,0);
-    drawMapSa();
+    if(zoom <= 64){
+      i = calculateZoom(windows_Width/2,windows_Height/2,i,0);
+      drawMapSa();
+    }
     break;
 
     case SDLK_m:
@@ -98,7 +100,7 @@ void evenement(){
       switch (e.type) {
 
         case SDL_MOUSEWHEEL :
-        if(e.motion.x>0){
+        if(e.motion.x>0 && zoom <= 64){
           i = calculateZoom(sourisX,sourisY,i,0);
           drawMapSa();
         }
