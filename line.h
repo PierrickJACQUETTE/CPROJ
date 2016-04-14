@@ -13,6 +13,7 @@
 #include "conversionElements.h"
 #include "Avl.h"
 
+int drawContour; // par defaut 1 = true
 
 /**
 * \fn  parcoursListWay(Map *map);
