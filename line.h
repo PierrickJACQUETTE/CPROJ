@@ -13,15 +13,14 @@
 #include "conversionElements.h"
 #include "Avl.h"
 
+extern Map * map;
 int drawContour; // par defaut 1 = true
 
 /**
 * \fn  parcoursListWay(Map *map);
 * \brief Courses way the list
 *
-* \param map This represents all of our data
-* \param renderer That's where we draw
 */
-void parcoursListWay(Map *map);
+void parcoursListWay();
 
 #endif /* __LINE_H__ */

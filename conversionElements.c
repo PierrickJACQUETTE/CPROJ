@@ -14,7 +14,6 @@ int deplacZX;
 int deplacZY;
 int clicker;
 
-
 Coordinate* conversionLatLon(float lat, float lon){
 	Coordinate *c= malloc(sizeof(Coordinate));
 	c->x=lon;
@@ -102,7 +101,6 @@ Sint16 * extremite(float a, float d, float e, Sint16 tab[4], int signe,int extre
 		}
 	}
 	return tab;
-
 }
 
 Sint16* midle(float b, float e, int signe, Sint16 tab[4]){
@@ -134,7 +132,7 @@ float miseAEchelleY(float x, float y,int size){
 	return size-(x*size/y);
 }
 
-int calculateZoom(int refX, int refY,int decalage,int flag){ //flag vaut 0 qd + 1 qd -
+float calculateZoom(int refX, int refY,float decalage,int flag){ //flag vaut 0 qd + 1 qd -
 	if(flag == 0){
 		zoom *= 2;
 		decalage=(decalage*2)+0.5;

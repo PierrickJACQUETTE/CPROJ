@@ -14,7 +14,6 @@
 #include "point.h"
 #include "line.h"
 
-Map* my_map;
 char* typeOfDraw;
 
 /**
@@ -33,6 +32,6 @@ void evenement();
 * @param  Map* is the pointer to the information of map
 * @param  *typeOfDessin is the line or ponct
 */
-void drawMap(Map* map, char* typeOfDessin);
+void drawMap(Map* m, char* typeOfDessin);
 
 #endif

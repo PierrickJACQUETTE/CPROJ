@@ -11,7 +11,6 @@ void parcoursAvl(Avl **a, Bounds* bounds){
   float wi = miseAEchelleX((*a)->node->c->x,bounds->max->x,windows_Width);
   float he = miseAEchelleY((*a)->node->c->y,bounds->max->y,windows_Height);
   affichage(wi,he);
-
   if((*a)->right != NULL){
     parcoursAvl(&((*a)->right),bounds);
   }

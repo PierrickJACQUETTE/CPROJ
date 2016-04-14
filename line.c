@@ -1,7 +1,6 @@
 #include "line.h"
 
-
-Map * map = NULL;
+Map * map;
 
 float rightCoordValue(float coord, int max){
 	if(coord<0){
@@ -180,8 +179,6 @@ void fillWay(Map* map, Way * way){
 			highway(way,coord_y,coord_x,thick);
 			*/
 
-
-
 			if(way->name!=NULL){
 				Node * firstNode = searchNode(map->avl,l->firstRef->nd);
 				Node * lastNode = searchNode(map->avl,l->lastRef->nd);
@@ -211,7 +208,6 @@ void fillWay(Map* map, Way * way){
 				//stringRGBA(renderer,coordx,coordy,way->name,0,0,0,255);
 				//}
 			}
-
 		}
 		else{
 			if(drawContour ==1){
@@ -226,7 +222,6 @@ void fillWay(Map* map, Way * way){
 }
 }
 
-
 void analyseCoastline(Way* w, Map* map){
 	printf("analyse coastline\n");
 	ListNode * ln =w->listNd;
@@ -240,13 +235,9 @@ void analyseCoastline(Way* w, Map* map){
 	w->listNd=addRefListNode((unsigned long)3, ln);
 	w->size++;
 
-
 	//	current=current->next;
 	//}
-
-
 }
-
 
 void parcourList(ListWay *l){
 	if(l!=NULL){
@@ -323,8 +314,7 @@ void parcourRelation(ListRelation *lr){
 	}
 }
 
-void parcoursListWay(Map* mapG){
-	map = mapG;
+void parcoursListWay(){
 	drawContour = 1;
 	//parcourList(map->wayHighway,map,WINDOW_WIDTH,WINDOW_HEIGHT,renderer);
 	parcourList(map->wayWater);

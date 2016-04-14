@@ -4,10 +4,10 @@ void drawMapSa(){
   colorBackgroundDefault();
   SDL_RenderClear(renderer);
   if(strcmp(typeOfDraw,"point") ==0){
-    parcoursAvl(&(my_map->avl),my_map->bounds);
+    parcoursAvl(&(map->avl),map->bounds);
   }
   else if(strcmp(typeOfDraw,"line") ==0){
-    parcoursListWay(my_map);
+    parcoursListWay();
   }
   else{
     fprintf(stderr,"Le deuxieme argument est inconnu %s\n", typeOfDraw);
@@ -15,8 +15,8 @@ void drawMapSa(){
   SDL_RenderPresent(renderer);
 }
 
-void drawMap(Map* map,char* typeOfDessin){
-  my_map = map;
+void drawMap(Map* m,char* typeOfDessin){
+  map = m;
   typeOfDraw = typeOfDessin;
   zoom = 1;
   deplacX = 0;
@@ -29,7 +29,7 @@ void drawMap(Map* map,char* typeOfDessin){
   drawMapSa();
 }
 
-int clavier(SDL_Event e,int i){
+float clavier(SDL_Event e,float i){
   switch(e.key.keysym.sym){
 
     case SDLK_p:
