@@ -1,7 +1,7 @@
 #include "point.h"
 
 void affichage(float x, float y){
-  pixelRGBA(renderer,x,y,1,1,1,155);
+  pixelRGBA(renderer,(x* zoom) + deplacX+ deplacZX,(y* zoom) + deplacY+ deplacZY,1,1,1,255);
 }
 
 void parcoursAvl(Avl **a, Bounds* bounds){

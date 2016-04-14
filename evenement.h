@@ -14,6 +14,9 @@
 #include "point.h"
 #include "line.h"
 
+Map* my_map;
+char* typeOfDraw;
+
 /**
 * Fonction that permit the display
 * While we haven't closed the window it is still on the screen

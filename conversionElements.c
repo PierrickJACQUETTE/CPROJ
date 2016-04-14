@@ -5,6 +5,15 @@ int windows_Width;
 SDL_Renderer* renderer;
 int quit;
 
+int deplacX;
+int deplacY;
+float zoom;
+int pasSourisX;
+int pasSourisY;
+int deplacZX;
+int deplacZY;
+int clicker;
+
 
 Coordinate* conversionLatLon(float lat, float lon){
 	Coordinate *c= malloc(sizeof(Coordinate));
@@ -123,6 +132,28 @@ float miseAEchelleX(float x, float y,int size){
 
 float miseAEchelleY(float x, float y,int size){
 	return size-(x*size/y);
+}
+
+int calculateZoom(int refX, int refY,int decalage,int flag){ //flag vaut 0 qd + 1 qd -
+	if(flag == 0){
+		zoom *= 2;
+		decalage=(decalage*2)+0.5;
+	}
+	else if(flag == 1){
+		zoom /= 2;
+		decalage=(decalage-0.5)/2;
+	}
+	deplacZX = -decalage*2*refX;
+	deplacZY = -decalage*2*refY;
+	if(flag == 0){
+		deplacX*=2;
+		deplacY*=2;
+	}
+	else{
+		deplacX/=2;
+		deplacY/=2;
+	}
+	return decalage;
 }
 
 int colorBackground(int red, int blue, int green,int oppacity){

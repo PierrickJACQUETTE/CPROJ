@@ -21,10 +21,21 @@
 #include <SDL2/SDL2_gfxPrimitives.h>
 #include "Core.h"
 
+#define PASCLAVIER 10;
+
 extern int windows_Height;
 extern int windows_Width;
 extern SDL_Renderer* renderer;
 extern int quit;
+
+extern int deplacX;
+extern int deplacY;
+extern float zoom;
+extern int pasSourisX;
+extern int pasSourisY;
+extern int deplacZX;
+extern int deplacZY;
+extern int clicker;
 
 /**
 * \fn Coordinate* conversionLatLon(float lat, float lon)
@@ -171,6 +182,16 @@ float miseAEchelleX(float x, float y,int size);
 * \return  value of the ordonate put to scale
 */
 float miseAEchelleY(float x, float y,int size);
+
+/**
+ * This function calculates the offset of each point zonction zoom
+ * @param  refX     The reference point x
+ * @param  refY     The reference point y
+ * @param  decalage The current decalage
+ * @param  flag     Whether one or +zoom -zoom
+ * @return          The new decalage
+ */
+int calculateZoom(int refX, int refY,int decalage,int flag);
 
 /**
  * According initialising the bottom of the window
