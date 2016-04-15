@@ -14,6 +14,8 @@
 #include "point.h"
 #include "line.h"
 
+char* typeOfDraw;
+
 /**
 * Fonction that permit the display
 * While we haven't closed the window it is still on the screen
@@ -30,6 +32,6 @@ void evenement();
 * @param  Map* is the pointer to the information of map
 * @param  *typeOfDessin is the line or ponct
 */
-void drawMap(Map* map, char* typeOfDessin);
+void drawMap(Map* m, char* typeOfDessin);
 
 #endif
