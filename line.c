@@ -227,26 +227,47 @@ void analyseCoastline(Way* w, Map* map){
 	Node* last = searchNode(map->avl,w->listNd->lastRef->nd);
 	float dx= distanceX(last->c->x, first->c->x);
 	float dy= distanceY(last->c->y, first->c->y);
-	//float pente= dx/dy;
-	//float a = (last->c->x - first->c->x)/ (last->c->y-first->c->y);
-	//float ax= last->c->x - first->c->x;
-	//float ay= last->c->y-first->c->y;
-	if((dx>=map->bounds->max->x)&& (dy<map->bounds->max->y) && (last->c->x<=0) && (first->c->x>=map->bounds->max->x)){ // horizontale bas
+	float pente= dx/dy;
+	float a = (last->c->x - first->c->x)/ (last->c->y-first->c->y);
+	float ax= last->c->x - first->c->x;
+	float ay= last->c->y-first->c->y;
+	if((dx>=map->bounds->max->x)&& (dy<map->bounds->max->y) && (last->c->x<=0) && (first->c->x>=map->bounds->max->x) && a>0){ // horizontale bas
 		w->listNd=addRefListNode((unsigned long)0, ln);
 		w->listNd=addRefListNode((unsigned long)3, ln);printf("bbb2");
 		w->size=w->size+2;
 	}
-	else if((dx>=map->bounds->max->x) && (dy<map->bounds->max->y) &&(first->c->x<=0) && (last->c->x>=map->bounds->max->x)){ // horizontale haut
+	else if((dx>=map->bounds->max->x)&& (dy>=map->bounds->max->y) && (last->c->x<=0) && (first->c->x>=map->bounds->max->x) && a<0){ // horizontale bas
+		w->listNd=addRefListNode((unsigned long)0, ln);
+		w->listNd=addRefListNode((unsigned long)3, ln);printf("bbb2");
+		w->size=w->size+2;
+	}
+	else if((dx>=map->bounds->max->x) && (dy<map->bounds->max->y) &&(first->c->x<=0) && (last->c->x>=map->bounds->max->x) && a>0){ // horizontale haut
 		w->listNd=addRefListNode((unsigned long)2, ln);
 		w->listNd=addRefListNode((unsigned long)1, ln);
 		w->size=w->size+2;
 	}
-	else if((dy>=map->bounds->max->y) && (dx<map->bounds->max->x) && (last->c->y<=0) && (first->c->y>=map->bounds->max->y)){ // verticale  
-		w->listNd=addRefListNode((unsigned long)3, ln); printf("bbb1");
+		else if((dx>=map->bounds->max->x) && (dy>=map->bounds->max->y) &&(first->c->x<=0) && (last->c->x>=map->bounds->max->x) && a<0){ // horizontale haut
+		w->listNd=addRefListNode((unsigned long)2, ln);
+		w->listNd=addRefListNode((unsigned long)1, ln);
+		w->size=w->size+2;
+	}
+
+	else if((dy>=map->bounds->max->y) && (dx<map->bounds->max->x) && (last->c->y<=0) && (first->c->y>=map->bounds->max->y) && a>0){ // verticale  
+		w->listNd=addRefListNode((unsigned long)3, ln);
 		w->listNd=addRefListNode((unsigned long)2, ln);
 		w->size=w->size+2;
 	}
-	else if((dy>=map->bounds->max->y) && (dx<map->bounds->max->x) &&(first->c->y<=0) && (last->c->y>=map->bounds->max->y)){ // verticale
+	else if((dy>=map->bounds->max->y) && (dx>=map->bounds->max->x) && (last->c->y<=0) && (first->c->y>=map->bounds->max->y) && a<0){ // verticale  
+		w->listNd=addRefListNode((unsigned long)3, ln);
+		w->listNd=addRefListNode((unsigned long)2, ln);
+		w->size=w->size+2;
+	} 
+	else if((dy>=map->bounds->max->y) && (dx<map->bounds->max->x) &&(first->c->y<=0) && (last->c->y>=map->bounds->max->y) && a>0){ // verticale
+		w->listNd=addRefListNode((unsigned long)1, ln);
+		w->listNd=addRefListNode((unsigned long)0, ln);
+		w->size=w->size+2;
+	}
+	else if((dy>=map->bounds->max->y) && (dx>=map->bounds->max->x) &&(first->c->y<=0) && (last->c->y>=map->bounds->max->y) && a<0){ // verticale
 		w->listNd=addRefListNode((unsigned long)1, ln);
 		w->listNd=addRefListNode((unsigned long)0, ln);
 		w->size=w->size+2;
@@ -279,13 +300,18 @@ void analyseCoastline(Way* w, Map* map){
 		w->size++;
 		
 	}
-		/*printf("First: lon= %f lat= %f \n", first->c->x,first->c->y);
+	/*else{	
+		w->listNd=addRefListNode((unsigned long)3, ln);
+		w->listNd=addRefListNode((unsigned long)2, ln);
+		w->size=w->size+2;
+	}*/
+		printf("First: lon= %f lat= %f \n", first->c->x,first->c->y);
 		printf("Last : lon= %f lat= %f \n", last->c->x,last->c->y);
 		//float a = (last->c->x - first->c->x)/ (last->c->y-first->c->y);
 		printf("pente %f  %f \n", a, pente);
 		printf("dx %f dy %f \n", dx, dy);
 		printf("Bounds : lon= %f lat= %f \n", map->bounds->max->x,map->bounds->max->y);
-	*/
+	
 
 }
 
@@ -299,7 +325,6 @@ void parcourList(ListWay *l){
 				if((currentWay->draw == 0)&&(strcmp(currentWay->visible,"T")==0)){
 					// case coastline
 					if(strcmp(currentWay->tag->tagValue, "coastline") ==0){
-						printf("coastline");
 						if(coastline==0){
 							colorBackground(0,102,205,100);
 							coastline = 1;
