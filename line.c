@@ -155,7 +155,7 @@ void fillWay(Way * way){
 				//generer le cas d'un node par un point
 				int thick =0;
 				if(way->tag->thick != 0){
-					thick = way->tag->thick;
+					thick = way->tag->thick*zoom;
 				}
 				int i;
 				int x = coord_x[0];
@@ -246,22 +246,22 @@ void analyseCoastline(Way* w, Map* map){
 		w->listNd=addRefListNode((unsigned long)1, ln);
 		w->size=w->size+2;
 	}
-		else if((dx>=map->bounds->max->x) && (dy>=map->bounds->max->y) &&(first->c->x<=0) && (last->c->x>=map->bounds->max->x) && a<0){ // horizontale haut
+	else if((dx>=map->bounds->max->x) && (dy>=map->bounds->max->y) &&(first->c->x<=0) && (last->c->x>=map->bounds->max->x) && a<0){ // horizontale haut
 		w->listNd=addRefListNode((unsigned long)2, ln);
 		w->listNd=addRefListNode((unsigned long)1, ln);
 		w->size=w->size+2;
 	}
 
-	else if((dy>=map->bounds->max->y) && (dx<map->bounds->max->x) && (last->c->y<=0) && (first->c->y>=map->bounds->max->y) && a>0){ // verticale  
+	else if((dy>=map->bounds->max->y) && (dx<map->bounds->max->x) && (last->c->y<=0) && (first->c->y>=map->bounds->max->y) && a>0){ // verticale
 		w->listNd=addRefListNode((unsigned long)3, ln);
 		w->listNd=addRefListNode((unsigned long)2, ln);
 		w->size=w->size+2;
 	}
-	else if((dy>=map->bounds->max->y) && (dx>=map->bounds->max->x) && (last->c->y<=0) && (first->c->y>=map->bounds->max->y) && a<0){ // verticale  
+	else if((dy>=map->bounds->max->y) && (dx>=map->bounds->max->x) && (last->c->y<=0) && (first->c->y>=map->bounds->max->y) && a<0){ // verticale
 		w->listNd=addRefListNode((unsigned long)3, ln);
 		w->listNd=addRefListNode((unsigned long)2, ln);
 		w->size=w->size+2;
-	} 
+	}
 	else if((dy>=map->bounds->max->y) && (dx<map->bounds->max->x) &&(first->c->y<=0) && (last->c->y>=map->bounds->max->y) && a>0){ // verticale
 		w->listNd=addRefListNode((unsigned long)1, ln);
 		w->listNd=addRefListNode((unsigned long)0, ln);
@@ -272,19 +272,19 @@ void analyseCoastline(Way* w, Map* map){
 		w->listNd=addRefListNode((unsigned long)0, ln);
 		w->size=w->size+2;
 	}
-	
+
 	else if(dx==0 && dy==0){
 		return;
 	}
-	
+
 	else if((first->c->x)>0 && (last->c->x)>0){
-		if(((first->c->y)>(last->c->y))) { // bas droite 
-		w->listNd=addRefListNode((unsigned long)3, ln);
-		w->size++;
+		if(((first->c->y)>(last->c->y))) { // bas droite
+			w->listNd=addRefListNode((unsigned long)3, ln);
+			w->size++;
 		}
 	}
 	else if((first->c->y)>0 && (last->c->y)>0){
-		if((first->c->x)>(last->c->x)){ // haut gauche  
+		if((first->c->x)>(last->c->x)){ // haut gauche
 			w->listNd=addRefListNode((unsigned long)1, ln);
 			w->size++;
 		}
@@ -294,24 +294,24 @@ void analyseCoastline(Way* w, Map* map){
 		}
 
 	}
-	
-	else if(((first->c->x)<-(last->c->x)) && ((last->c->y)<-(first->c->y))){ //bas gauche 
+
+	else if(((first->c->x)<-(last->c->x)) && ((last->c->y)<-(first->c->y))){ //bas gauche
 		w->listNd=addRefListNode((unsigned long)0, ln);
 		w->size++;
-		
+
 	}
-	/*else{	
-		w->listNd=addRefListNode((unsigned long)3, ln);
-		w->listNd=addRefListNode((unsigned long)2, ln);
-		w->size=w->size+2;
-	}*/
-		printf("First: lon= %f lat= %f \n", first->c->x,first->c->y);
-		printf("Last : lon= %f lat= %f \n", last->c->x,last->c->y);
-		//float a = (last->c->x - first->c->x)/ (last->c->y-first->c->y);
-		printf("pente %f  %f \n", a, pente);
-		printf("dx %f dy %f \n", dx, dy);
-		printf("Bounds : lon= %f lat= %f \n", map->bounds->max->x,map->bounds->max->y);
-	
+	/*else{
+	w->listNd=addRefListNode((unsigned long)3, ln);
+	w->listNd=addRefListNode((unsigned long)2, ln);
+	w->size=w->size+2;
+}*/
+printf("First: lon= %f lat= %f \n", first->c->x,first->c->y);
+printf("Last : lon= %f lat= %f \n", last->c->x,last->c->y);
+//float a = (last->c->x - first->c->x)/ (last->c->y-first->c->y);
+printf("pente %f  %f \n", a, pente);
+printf("dx %f dy %f \n", dx, dy);
+printf("Bounds : lon= %f lat= %f \n", map->bounds->max->x,map->bounds->max->y);
+
 
 }
 

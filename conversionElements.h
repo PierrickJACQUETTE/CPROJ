@@ -24,6 +24,7 @@
 
 extern int windows_Height;
 extern int windows_Width;
+extern SDL_Window *window;
 extern SDL_Renderer* renderer;
 extern int quit;
 extern int deplacX;

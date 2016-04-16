@@ -3,6 +3,7 @@
 int windows_Height;
 int windows_Width;
 SDL_Renderer* renderer;
+SDL_Window *window;
 int quit;
 
 int deplacX;

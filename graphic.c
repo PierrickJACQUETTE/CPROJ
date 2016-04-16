@@ -1,7 +1,5 @@
 #include "graphic.h"
 
-SDL_Window *window;
-
 void sizeWindows(Map* map){
   float diffX = (map->bounds->max->x) - (map->bounds->min->x);
   float diffY = (map->bounds->max->y) - (map->bounds->min->y);
