@@ -227,18 +227,17 @@ void analyseCoastline(Way* w, Map* map){
 	Node* last = searchNode(map->avl,w->listNd->lastRef->nd);
 	float dx= distanceX(last->c->x, first->c->x);
 	float dy= distanceY(last->c->y, first->c->y);
-	float pente= dx/dy;
+	//float pente= dx/dy;
 	float a = (last->c->x - first->c->x)/ (last->c->y-first->c->y);
-	float ax= last->c->x - first->c->x;
-	float ay= last->c->y-first->c->y;
+
 	if((dx>=map->bounds->max->x)&& (dy<map->bounds->max->y) && (last->c->x<=0) && (first->c->x>=map->bounds->max->x) && a>0){ // horizontale bas
 		w->listNd=addRefListNode((unsigned long)0, ln);
-		w->listNd=addRefListNode((unsigned long)3, ln);printf("bbb2");
+		w->listNd=addRefListNode((unsigned long)3, ln);
 		w->size=w->size+2;
 	}
 	else if((dx>=map->bounds->max->x)&& (dy>=map->bounds->max->y) && (last->c->x<=0) && (first->c->x>=map->bounds->max->x) && a<0){ // horizontale bas
 		w->listNd=addRefListNode((unsigned long)0, ln);
-		w->listNd=addRefListNode((unsigned long)3, ln);printf("bbb2");
+		w->listNd=addRefListNode((unsigned long)3, ln);
 		w->size=w->size+2;
 	}
 	else if((dx>=map->bounds->max->x) && (dy<map->bounds->max->y) &&(first->c->x<=0) && (last->c->x>=map->bounds->max->x) && a>0){ // horizontale haut
@@ -252,12 +251,12 @@ void analyseCoastline(Way* w, Map* map){
 		w->size=w->size+2;
 	}
 
-	else if((dy>=map->bounds->max->y) && (dx<map->bounds->max->x) && (last->c->y<=0) && (first->c->y>=map->bounds->max->y) && a>0){ // verticale
+	else if((dy>=map->bounds->max->y) && (dx<map->bounds->max->x) && (last->c->y<=0) && (first->c->y>=map->bounds->max->y) && a<0){ // verticale
 		w->listNd=addRefListNode((unsigned long)3, ln);
 		w->listNd=addRefListNode((unsigned long)2, ln);
 		w->size=w->size+2;
 	}
-	else if((dy>=map->bounds->max->y) && (dx>=map->bounds->max->x) && (last->c->y<=0) && (first->c->y>=map->bounds->max->y) && a<0){ // verticale
+	else if((dy>=map->bounds->max->y) && (dx>=map->bounds->max->x) && (last->c->y<=0) && (first->c->y>=map->bounds->max->y) && a>0){ // verticale
 		w->listNd=addRefListNode((unsigned long)3, ln);
 		w->listNd=addRefListNode((unsigned long)2, ln);
 		w->size=w->size+2;
@@ -300,19 +299,14 @@ void analyseCoastline(Way* w, Map* map){
 		w->size++;
 
 	}
-	/*else{
-	w->listNd=addRefListNode((unsigned long)3, ln);
-	w->listNd=addRefListNode((unsigned long)2, ln);
-	w->size=w->size+2;
-}*/
-printf("First: lon= %f lat= %f \n", first->c->x,first->c->y);
-printf("Last : lon= %f lat= %f \n", last->c->x,last->c->y);
-//float a = (last->c->x - first->c->x)/ (last->c->y-first->c->y);
-printf("pente %f  %f \n", a, pente);
-printf("dx %f dy %f \n", dx, dy);
-printf("Bounds : lon= %f lat= %f \n", map->bounds->max->x,map->bounds->max->y);
-
-
+	
+	/*printf("First: lon= %f lat= %f \n", first->c->x,first->c->y);
+	printf("Last : lon= %f lat= %f \n", last->c->x,last->c->y);
+	printf("pente %f  %f \n", a, pente);
+	printf("dx %f dy %f \n", dx, dy);
+	printf("Bounds : lon= %f lat= %f \n", map->bounds->max->x,map->bounds->max->y);
+*/
+	
 }
 
 void parcourList(ListWay *l){
@@ -322,26 +316,31 @@ void parcourList(ListWay *l){
 		while(current != NULL){
 			Way * currentWay = searchWay(map->avlWay,current->way);
 			if(currentWay != NULL){
-				if((currentWay->draw == 0)&&(strcmp(currentWay->visible,"T")==0)){
+				if((currentWay->draw== drawNumber)&&(strcmp(currentWay->visible,"T")==0)){
 					// case coastline
 					if(strcmp(currentWay->tag->tagValue, "coastline") ==0){
+						drawContour = 0;
 						if(coastline==0){
 							colorBackground(0,102,205,100);
 							coastline = 1;
 							SDL_RenderClear(renderer);
 							analyseCoastline(currentWay, map);
 							//printf("id= %ld \n", currentWay->listNd->lastRef->nd);
-							fillWay(currentWay);
 						}
 						else{
 							analyseCoastline(currentWay, map);
 						}
+						fillWay(currentWay);	
+						currentWay->draw ++;
+						drawContour = 1;
 					}
-					fillWay(currentWay);
-					currentWay->draw = 1;
+					else {
+						fillWay(currentWay);
+						currentWay->draw ++;
+					}
 				}
-				else if((strcmp(currentWay->visible,"F") !=0) && (currentWay->draw !=1) ){
-					fprintf(stderr,"Le champs visible du way %ld ne vaut ni true ni false mais %s draw: %d\n",currentWay->id,currentWay->visible, currentWay->draw );
+				else if((strcmp(currentWay->visible,"F") !=0) && (currentWay->draw <= drawNumber) ){
+					fprintf(stderr," fd Le champs visible du way %ld ne vaut ni true ni false mais %s \n",currentWay->id,currentWay->visible );
 				}
 			}
 			else{
@@ -362,9 +361,9 @@ void parcourRelation(ListRelation *lr){
 				while(cW != NULL){
 					if(strcmp(cW->role,"outer") == 0){
 						Way * currentWay =searchWay(map->avlWay,cW->way);
-						if((currentWay != NULL) && (currentWay->draw == 0) && (strcmp(currentWay->visible,"T") == 0)){
+						if((currentWay != NULL) && (currentWay->draw == drawNumber) && (strcmp(currentWay->visible,"T") == 0)){
 							fillWay(currentWay);
-							currentWay->draw = 1;
+							currentWay->draw ++;
 
 						}
 					}
@@ -374,9 +373,9 @@ void parcourRelation(ListRelation *lr){
 				while(cW!=NULL){
 					if(strcmp(cW->role,"inner") ==0){
 						Way * currentWay = searchWay(map->avlWay,cW->way);
-						if((currentWay !=NULL) && (currentWay->draw == 0)&&(strcmp(currentWay->visible,"T") ==0)){
+						if((currentWay !=NULL) && (currentWay->draw == drawNumber)&&(strcmp(currentWay->visible,"T") ==0)){
 							fillWay(currentWay);
-							currentWay->draw = 1;
+							currentWay->draw ++;
 						}
 					}
 					cW = cW->next;
@@ -399,4 +398,5 @@ void parcoursListWay(){
 	parcourList(map->wayGreen);
 	parcourList(map->wayBuilding);
 	parcourList(map->wayHighway);
+	drawNumber++;
 }

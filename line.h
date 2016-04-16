@@ -15,6 +15,7 @@
 
 extern Map * map;
 int drawContour; // par defaut 1 = true
+int drawNumber; // nombre de fois que l'on a tracer les ways
 
 /**
 * \fn  parcoursListWay(Map *map);
