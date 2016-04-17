@@ -130,8 +130,12 @@ Avl* insert(Avl **a, Node *n, Way * w){
 		}
 		aux->left = aux->right = NULL;
 		aux->height = 1;
-		if(w == NULL){aux->node = n;}
-		if(n == NULL){aux->way = w;}
+		if(w == NULL){
+			aux->node = n;
+		}
+		if(n == NULL){
+			aux->way = w;
+		}
 	}
 
 	return aux;
@@ -177,8 +181,14 @@ void init(Avl **a, Node* n, Way *w){
 		}
 		aux->left = aux->right = NULL;
 		aux->height = 1;
-		if(w == NULL){aux->node = n;}
-		if(n == NULL){aux->way = w;}
+		if(w == NULL){
+			aux->node = n;
+			aux->way = NULL;
+		}
+		if(n == NULL){
+			aux->way = w;
+			aux->node = NULL;
+		}
 		*a = aux;
 	}
 	else {

@@ -1,5 +1,3 @@
-#include<stdlib.h>
-#include <check.h>
 #include "check_init.h"
 #include "check_avl.h"
 
