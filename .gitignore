@@ -1,4 +1,5 @@
 *.o
 CPROJ
 a.out
-check_*
+check_main
+*.gch
