@@ -178,7 +178,7 @@ void fillWay(Way * way){
 				//printf("\n");
 				//highway(way,coord_y,coord_x,thick);
 
-				if(way->name!=NULL){
+				if(way->name != NULL){
 					Node * firstNode = searchNode(map->avl,l->firstRef->nd);
 					Node * lastNode = searchNode(map->avl,l->lastRef->nd);
 
@@ -209,7 +209,7 @@ void fillWay(Way * way){
 				}
 			}
 			else{
-				if(drawContour ==1){
+				if(drawContour == 1){
 					polygonRGBA(renderer,coord_x,coord_y,way->size,139,71,137,255);
 				}
 				filledPolygonRGBA(renderer,coord_x,coord_y,way->size,way->tag->c->red,way->tag->c->green,way->tag->c->blue,255);
@@ -222,91 +222,88 @@ void fillWay(Way * way){
 }
 
 void analyseCoastline(Way* w, Map* map){
-	ListNode * ln =w->listNd;
-	Node * first= searchNode(map->avl,w->listNd->firstRef->nd);
+	ListNode * ln = w->listNd;
+	Node * first = searchNode(map->avl,w->listNd->firstRef->nd);
 	Node* last = searchNode(map->avl,w->listNd->lastRef->nd);
-	float dx= distanceX(last->c->x, first->c->x);
-	float dy= distanceY(last->c->y, first->c->y);
+	float dx = distanceX(last->c->x, first->c->x);
+	float dy = distanceY(last->c->y, first->c->y);
 	//float pente= dx/dy;
-	float a = (last->c->x - first->c->x)/ (last->c->y-first->c->y);
+	float a = (last->c->x - first->c->x)/ (last->c->y - first->c->y);
 
-	if((dx>=map->bounds->max->x)&& (dy<map->bounds->max->y) && (last->c->x<=0) && (first->c->x>=map->bounds->max->x) && a>0){ // horizontale bas
-		w->listNd=addRefListNode((unsigned long)0, ln);
-		w->listNd=addRefListNode((unsigned long)3, ln);
-		w->size=w->size+2;
+	if((dx >= map->bounds->max->x) && (dy < map->bounds->max->y) && (last->c->x <= 0) && (first->c->x >= map->bounds->max->x) && a > 0){ // horizontale bas
+		w->listNd = addRefListNode((unsigned long)0, ln);
+		w->listNd = addRefListNode((unsigned long)3, ln);
+		w->size = w->size + 2;
 	}
-	else if((dx>=map->bounds->max->x)&& (dy>=map->bounds->max->y) && (last->c->x<=0) && (first->c->x>=map->bounds->max->x) && a<0){ // horizontale bas
-		w->listNd=addRefListNode((unsigned long)0, ln);
-		w->listNd=addRefListNode((unsigned long)3, ln);
-		w->size=w->size+2;
+	else if((dx >= map->bounds->max->x) && (dy >= map->bounds->max->y) && (last->c->x <= 0) && (first->c->x >= map->bounds->max->x) && a < 0){ // horizontale bas
+		w->listNd = addRefListNode((unsigned long)0, ln);
+		w->listNd = addRefListNode((unsigned long)3, ln);
+		w->size = w->size + 2;
 	}
-	else if((dx>=map->bounds->max->x) && (dy<map->bounds->max->y) &&(first->c->x<=0) && (last->c->x>=map->bounds->max->x) && a>0){ // horizontale haut
-		w->listNd=addRefListNode((unsigned long)2, ln);
-		w->listNd=addRefListNode((unsigned long)1, ln);
-		w->size=w->size+2;
+	else if((dx >= map->bounds->max->x) && (dy < map->bounds->max->y) && (first->c->x <= 0) && (last->c->x >= map->bounds->max->x) && a > 0){ // horizontale haut
+		w->listNd = addRefListNode((unsigned long)2, ln);
+		w->listNd = addRefListNode((unsigned long)1, ln);
+		w->size = w->size + 2;
 	}
-	else if((dx>=map->bounds->max->x) && (dy>=map->bounds->max->y) &&(first->c->x<=0) && (last->c->x>=map->bounds->max->x) && a<0){ // horizontale haut
-		w->listNd=addRefListNode((unsigned long)2, ln);
-		w->listNd=addRefListNode((unsigned long)1, ln);
-		w->size=w->size+2;
-	}
-
-	else if((dy>=map->bounds->max->y) && (dx<map->bounds->max->x) && (last->c->y<=0) && (first->c->y>=map->bounds->max->y) && a<0){ // verticale
-		w->listNd=addRefListNode((unsigned long)3, ln);
-		w->listNd=addRefListNode((unsigned long)2, ln);
-		w->size=w->size+2;
-	}
-	else if((dy>=map->bounds->max->y) && (dx>=map->bounds->max->x) && (last->c->y<=0) && (first->c->y>=map->bounds->max->y) && a>0){ // verticale
-		w->listNd=addRefListNode((unsigned long)3, ln);
-		w->listNd=addRefListNode((unsigned long)2, ln);
-		w->size=w->size+2;
-	}
-	else if((dy>=map->bounds->max->y) && (dx<map->bounds->max->x) &&(first->c->y<=0) && (last->c->y>=map->bounds->max->y) && a>0){ // verticale
-		w->listNd=addRefListNode((unsigned long)1, ln);
-		w->listNd=addRefListNode((unsigned long)0, ln);
-		w->size=w->size+2;
-	}
-	else if((dy>=map->bounds->max->y) && (dx>=map->bounds->max->x) &&(first->c->y<=0) && (last->c->y>=map->bounds->max->y) && a<0){ // verticale
-		w->listNd=addRefListNode((unsigned long)1, ln);
-		w->listNd=addRefListNode((unsigned long)0, ln);
-		w->size=w->size+2;
+	else if((dx >= map->bounds->max->x) && (dy >= map->bounds->max->y) && (first->c->x <= 0) && (last->c->x >= map->bounds->max->x) && a < 0){ // horizontale haut
+		w->listNd = addRefListNode((unsigned long)2, ln);
+		w->listNd = addRefListNode((unsigned long)1, ln);
+		w->size = w->size + 2;
 	}
 
-	else if(dx==0 && dy==0){
+	else if((dy >= map->bounds->max->y) && (dx < map->bounds->max->x) && (last->c->y <= 0) && (first->c->y >= map->bounds->max->y) && a < 0){ // verticale
+		w->listNd = addRefListNode((unsigned long)3, ln);
+		w->listNd = addRefListNode((unsigned long)2, ln);
+		w->size = w->size + 2;
+	}
+	else if((dy >= map->bounds->max->y) && (dx >= map->bounds->max->x) && (last->c->y <= 0) && (first->c->y >= map->bounds->max->y) && a > 0){ // verticale
+		w->listNd = addRefListNode((unsigned long)3, ln);
+		w->listNd = addRefListNode((unsigned long)2, ln);
+		w->size = w->size + 2;
+	}
+	else if((dy >= map->bounds->max->y) && (dx < map->bounds->max->x) && (first->c->y <= 0) && (last->c->y >= map->bounds->max->y) && a > 0){ // verticale
+		w->listNd = addRefListNode((unsigned long)1, ln);
+		w->listNd = addRefListNode((unsigned long)0, ln);
+		w->size = w->size + 2;
+	}
+	else if((dy >= map->bounds->max->y) && (dx >= map->bounds->max->x) && (first->c->y <= 0) && (last->c->y >= map->bounds->max->y) && a < 0){ // verticale
+		w->listNd = addRefListNode((unsigned long)1, ln);
+		w->listNd = addRefListNode((unsigned long)0, ln);
+		w->size = w->size + 2;
+	}
+	else if(dx == 0 && dy == 0){
 		return;
 	}
-
-	else if((first->c->x)>0 && (last->c->x)>0){
-		if(((first->c->y)>(last->c->y))) { // bas droite
-			w->listNd=addRefListNode((unsigned long)3, ln);
-			w->size++;
+	else if((first->c->x) > 0 && (last->c->x) > 0){
+		if(((first->c->y) > (last->c->y))) { // bas droite
+			w->listNd = addRefListNode((unsigned long)3, ln);
+			w->size ++;
 		}
 	}
-	else if((first->c->y)>0 && (last->c->y)>0){
+	else if((first->c->y) > 0 && (last->c->y) > 0){
 		if((first->c->x)>(last->c->x)){ // haut gauche
-			w->listNd=addRefListNode((unsigned long)1, ln);
-			w->size++;
+			w->listNd = addRefListNode((unsigned long)1, ln);
+			w->size ++;
 		}
-		else if((first->c->x)>(last->c->x)){ // haut droite
-			w->listNd=addRefListNode((unsigned long)2, ln);
-			w->size++;
+		else if((first->c->x) > (last->c->x)){ // haut droite
+			w->listNd = addRefListNode((unsigned long)2, ln);
+			w->size ++;
 		}
 
 	}
-
-	else if(((first->c->x)<-(last->c->x)) && ((last->c->y)<-(first->c->y))){ //bas gauche
-		w->listNd=addRefListNode((unsigned long)0, ln);
-		w->size++;
+	else if(((first->c->x) < -(last->c->x)) && ((last->c->y) < -(first->c->y))){ //bas gauche
+		w->listNd = addRefListNode((unsigned long)0, ln);
+		w->size ++;
 
 	}
-	
+
 	/*printf("First: lon= %f lat= %f \n", first->c->x,first->c->y);
 	printf("Last : lon= %f lat= %f \n", last->c->x,last->c->y);
 	printf("pente %f  %f \n", a, pente);
 	printf("dx %f dy %f \n", dx, dy);
 	printf("Bounds : lon= %f lat= %f \n", map->bounds->max->x,map->bounds->max->y);
-*/
-	
+	*/
+
 }
 
 void parcourList(ListWay *l){
@@ -330,7 +327,7 @@ void parcourList(ListWay *l){
 						else{
 							analyseCoastline(currentWay, map);
 						}
-						fillWay(currentWay);	
+						fillWay(currentWay);
 						currentWay->draw ++;
 						drawContour = 1;
 					}
