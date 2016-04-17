@@ -11,17 +11,29 @@ Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b)
 	n->id=id;
 	int negativex=0;
 	int negativey=0;
-	if(lat<(b->min->y)){negativey=1;}
-	if(lon<(b->min->x)){negativex=1;}
+	if(b != NULL && b->min != NULL){
+		if(lat < (b->min->y)){
+			negativey=1;
+		}
+		if(lon < (b->min->x)){
+			negativex=1;
+		}
+	}
 	n->c= malloc(sizeof(Coordinate));
 	if(n->c == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initNode");
 		exit(EXIT_FAILURE);
 	}
-	n->c->x= distanceLatLon(lat, lon, lat, b->min->x);
-	if(negativex==1){ n->c->x = -(n->c->x);}
-	n->c->y= distanceLatLon(lat, lon, b->min->y, lon);
-	if(negativey==1){ n->c->y = -(n->c->y);}
+	if(b != NULL && b->min != NULL){
+		n->c->x = distanceLatLon(lat, lon, lat, b->min->x);
+		n->c->y = distanceLatLon(lat, lon, b->min->y, lon);
+	}
+	if(negativex == 1){
+		n->c->x = -(n->c->x);
+	}
+	if(negativey == 1){
+		n->c->y = -(n->c->y);
+	}
 	if(strcmp(visible, "true")==0){
 		n->visible="T";
 	}
@@ -116,37 +128,37 @@ Tag** initReferenceTag(){
 	t[38]->tagKey ="source"; t[38]->tagValue ="cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"; t[38]->c->red=255; t[38]->c->green=255; t[38]->c->blue=255; //blanc
 
 	t[0]->type= 2;   // 1=water, 2=green, 3=highway, 4= building, 0=other; 5= cadastre;
-	t[1]->type= 4; 
+	t[1]->type= 4;
 	t[2]->type= 3; t[2]->thick=6;
-	t[3]->type= 1; 
-	t[4]->type= 1; 
-	t[5]->type= 1; 
-	t[6]->type= 1; 
-	t[7]->type= 2; 
-	t[8]->type= 2; 
+	t[3]->type= 1;
+	t[4]->type= 1;
+	t[5]->type= 1;
+	t[6]->type= 1;
+	t[7]->type= 2;
+	t[8]->type= 2;
 	t[9]->type= 3; t[9]->thick=5;
 	t[10]->type=3; t[10]->thick=9;
 	t[11]->type= 3; t[11]->thick=7;
 	t[12]->type= 3; t[12]->thick=9;
 	t[13]->type= 3; t[13]->thick=9;
-	t[14]->type= 1; 
+	t[14]->type= 1;
 	t[15]->type= 3; t[15]->thick=9;
 	t[16]->type= 0; t[16]->priority=0;
-	t[17]->type= 1; 
-	t[18]->type= 2; 
+	t[17]->type= 1;
+	t[18]->type= 2;
 	t[19]->type= 3; t[19]->thick=3;
-	t[20]->type= 3; 
+	t[20]->type= 3;
 	t[21]->type= 0; t[21]->thick=3;
-	t[22]->type= 0; 
-	t[23]->type= 0; 
-	t[24]->type= 4; 
-	t[25]->type= 1; 
+	t[22]->type= 0;
+	t[23]->type= 0;
+	t[24]->type= 4;
+	t[25]->type= 1;
 	t[26]->type= 3; t[26]->thick=1;
-	t[27]->type= 4; 
-	t[28]->type= 2; 
-	t[29]->type= 3; t[29]->thick=9; 
-	t[30]->type= 4; 
-	t[31]->type= 4; 
+	t[27]->type= 4;
+	t[28]->type= 2;
+	t[29]->type= 3; t[29]->thick=9;
+	t[30]->type= 4;
+	t[31]->type= 4;
 	t[32]->type= 3; t[32]->thick=9;
 	t[33]->type= 3; t[33]->thick=9;
 	t[34]->type= 3; t[34]->thick=9;
@@ -276,7 +288,7 @@ Tag * goodTagRelation(char * k, char *v){
 
 Tag* goodTag(char * k, char *v, Tag**  ref){
 	int i=0;
-	if(ref!=NULL){					
+	if(ref!=NULL){
 		for(i=0; i<SIZETABTAG; i++){
 			if(ref[i]!=NULL){
 				if(strcmp(k, ref[i]->tagKey)==0 && strcmp(v, ref[i]->tagValue)==0){

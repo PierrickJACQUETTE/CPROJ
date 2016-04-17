@@ -100,7 +100,7 @@ void deleteRelation(Relation *r);
  * Frees the memory of a avl
  * @param avl  Avl which is deleted
  */
-void deleteAvl(Avl** avl);
+void deleteAvl(Avl** avl,int isNode);
 
 /**
 * Frees the memory of a Map
