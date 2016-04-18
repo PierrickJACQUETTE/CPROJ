@@ -50,7 +50,7 @@ Avl* insert(Avl **a,Node *n, Way *w);
 * @param n it is the reference node
 * @param w it is the reference way
 */
-void init(Avl **a,Node *n, Way*w);
+Avl * init(Avl **a,Node *n, Way*w);
 
 /**
 * function allowing display of the AVL

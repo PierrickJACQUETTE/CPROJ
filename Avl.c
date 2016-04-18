@@ -123,8 +123,7 @@ Avl* insert(Avl **a, Node *n, Way * w){
 	}
 	else{
 		aux = (Avl*) malloc(sizeof(Avl));
-		if ( aux == NULL )
-		{
+		if ( aux == NULL ){
 			fprintf(stderr,"Allocation impossible : %s\n","fonction insert feuille");
 			exit(EXIT_FAILURE);
 		}
@@ -172,12 +171,12 @@ Way* searchWay(Avl *a, unsigned long key){
 	return NULL;
 }
 
-void init(Avl **a, Node* n, Way *w){
+Avl * init(Avl **a, Node* n, Way *w){
 	Avl *aux = (Avl*)malloc(sizeof(Avl));
 	if(aux != NULL){
 		if(n == NULL && w == NULL){
-			fprintf(stderr,"Allocation impossible : %s\n","fonction initAVL");
-			exit(EXIT_FAILURE);
+			fprintf(stderr,"Allocation impossible car le type de l'avl n'est pas définie: %s\n","fonction initAVL");
+			return NULL;
 		}
 		aux->left = aux->right = NULL;
 		aux->height = 1;
@@ -195,6 +194,7 @@ void init(Avl **a, Node* n, Way *w){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction init");
 		exit(EXIT_FAILURE);
 	}
+	return aux;
 }
 
 void printNode(Avl **a, unsigned long nombre){

@@ -198,13 +198,13 @@ ListNode* addRefListNode(unsigned long n, ListNode* l){
 	refListNode* r=initRefListNode(n,NULL);
 	if(l!=NULL){
 		if((l->firstRef!=NULL) && (l->firstRef->nd!=0)){
-			l->lastRef->next=r;
-			l->lastRef=r;
+			l->lastRef->next = r;
+			l->lastRef = r;
 			return l;
 		}
 		else{
-			l->firstRef=r;
-			l->lastRef=r;
+			l->firstRef = r;
+			l->lastRef = r;
 			return l;
 		}
 	}
@@ -220,62 +220,62 @@ Tag* initTag(char* key, char* value, Color* c, int type, int thick, int priority
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initTag");
 		exit(EXIT_FAILURE);
 	}
-	t->tagKey=key;
-	t->tagValue=value;
-	t->c=c;
-	t->type=type;
-	t->thick=thick;
-	t->priority=priority;
+	t->tagKey = key;
+	t->tagValue = value;
+	t->c = c;
+	t->type = type;
+	t->thick = thick;
+	t->priority = priority;
 	return t;
 }
 
 Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size, char* nameway){
-	Way* w= malloc(sizeof(Way));
+	Way* w = malloc(sizeof(Way));
 	if(w == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initWay");
 		exit(EXIT_FAILURE);
 	}
-	w->id=id;
-	w->listNd=ln;
+	w->id = id;
+	w->listNd = ln;
 	if(strcmp(visible, "true")==0){
-		w->visible="T";
+		w->visible = "T";
 	}
 	else{
-		w->visible="F";
+		w->visible = "F";
 	}
 	w->tag=malloc(sizeof(Tag));
 	if(w->tag == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initWay");
 		exit(EXIT_FAILURE);
 	}
-	w->tag=tag;
-	w->size=size;
-	w->draw=0;
-	if(nameway!=NULL){
+	w->tag = tag;
+	w->size = size;
+	w->draw = 0;
+	if(nameway != NULL){
 		w->name=malloc(sizeof(char*)*strlen(nameway));
 		strcpy(w->name,nameway);
 	}
 	else{
-		w->name=NULL;
+		w->name = NULL;
 	}
 	return w;
 }
 
 Relation* initRelation(unsigned long id, char* visible,Tag* t, ListWay* lw, ListNode* ln){
-	Relation* r= malloc(sizeof(Relation));
+	Relation* r = malloc(sizeof(Relation));
 	if(r == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initRelation");
 		exit(EXIT_FAILURE);
 	}
-	r->id=id;
-	r->listW=lw;
-	r->listN=ln;
-	r->tag=t;
+	r->id = id;
+	r->listW = lw;
+	r->listN = ln;
+	r->tag = t;
 	if(strcmp(visible, "true")==0){
-		r->visible="T";
+		r->visible = "T";
 	}
 	else{
-		r->visible="F";
+		r->visible = "F";
 	}
 	return r;
 }
@@ -287,10 +287,10 @@ Tag * goodTagRelation(char * k, char *v){
 }
 
 Tag* goodTag(char * k, char *v, Tag**  ref){
-	int i=0;
-	if(ref!=NULL){
-		for(i=0; i<SIZETABTAG; i++){
-			if(ref[i]!=NULL){
+	int i = 0;
+	if(ref != NULL){
+		for(i = 0; i < SIZETABTAG; i++){
+			if(ref[i] != NULL){
 				if(strcmp(k, ref[i]->tagKey)==0 && strcmp(v, ref[i]->tagValue)==0){
 					return initTag(k, v, ref[i]->c,ref[i]->type, ref[i]->thick, ref[i]->priority);
 				}
@@ -302,100 +302,100 @@ Tag* goodTag(char * k, char *v, Tag**  ref){
 
 
 refListWay* initRefListWay(unsigned long  w, char *role, refListWay* next){
-	refListWay* r=malloc(sizeof(refListWay));
+	refListWay* r= malloc(sizeof(refListWay));
 	if(r == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initRefListWay");
 		exit(EXIT_FAILURE);
 	}
-	r->way=w;
+	r->way = w;
 	if(strcmp(role, "inner")==0){
-		r->role="inner";
+		r->role = "inner";
 	}
 	else{
-		r->role="outer";
+		r->role = "outer";
 	}
-	r->next=next;
+	r->next = next;
 	return r;
 }
 
 ListWay* initListWay(unsigned long first){
-	ListWay* l=malloc(sizeof(ListWay));
+	ListWay* l = malloc(sizeof(ListWay));
 	if(l == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initListWay");
 		exit(EXIT_FAILURE);
 	}
-	refListWay* f=initRefListWay(first, " ",NULL);
-	l->firstRef=f;
-	l->lastRef=f;
+	refListWay* f = initRefListWay(first, " ",NULL);
+	l->firstRef = f;
+	l->lastRef = f;
 	return l;
 }
 
 
 ListWay* addRefListWay(unsigned long way,char *role, ListWay* lw){
-	refListWay* r=initRefListWay(way,role, NULL);
-	if(lw!=NULL){
-		if((lw->firstRef!=NULL) && (lw->firstRef->way!=0)){
-			lw->lastRef->next=r;
-			lw->lastRef=r;
+	refListWay* r = initRefListWay(way,role, NULL);
+	if(lw != NULL){
+		if((lw->firstRef != NULL) && (lw->firstRef->way != 0)){
+			lw->lastRef->next = r;
+			lw->lastRef = r;
 			return lw;
 		}
 		else{
-			lw->firstRef=r;
-			lw->lastRef=r;
+			lw->firstRef = r;
+			lw->lastRef = r;
 			return lw;
 		}
 	}
 	else{
-		lw=initListWay(way);
+		lw = initListWay(way);
 	}
 	return lw;
 }
 
 
 refListRel* initRefListRel(Relation* id, refListRel* next){
-	refListRel* r=malloc(sizeof(refListRel));
+	refListRel* r = malloc(sizeof(refListRel));
 	if(r == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initRefListRel");
 		exit(EXIT_FAILURE);
 	}
-	r->relation=malloc(sizeof(Relation));
+	r->relation = malloc(sizeof(Relation));
 	if(r->relation == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initRefListRel");
 		exit(EXIT_FAILURE);
 	}
-	r->relation=id;
-	r->next=next;
+	r->relation = id;
+	r->next = next;
 	return r;
 }
 
 ListRelation* initListRelation(Relation* first){
-	ListRelation* l=malloc(sizeof(ListRelation));
+	ListRelation* l = malloc(sizeof(ListRelation));
 	if(l == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initListRelation");
 		exit(EXIT_FAILURE);
 	}
-	refListRel* f=initRefListRel(first,NULL);
-	l->firstRef=f;
-	l->lastRef=f;
+	refListRel* f = initRefListRel(first,NULL);
+	l->firstRef = f;
+	l->lastRef = f;
 	return l;
 }
 
 ListRelation* addRefListRelation(Relation* id ,ListRelation* lr){
-	refListRel* r=initRefListRel(id,NULL);
-	if(lr!=NULL){
-		if((lr->firstRef!=NULL) && (lr->firstRef->relation!=0)){
-			lr->lastRef->next=r;
-			lr->lastRef=r;
+	refListRel* r = initRefListRel(id,NULL);
+	if(lr != NULL){
+		if((lr->firstRef != NULL) && (lr->firstRef->relation !=0 )){
+			lr->lastRef->next = r;
+			lr->lastRef = r;
 			return lr;
 		}
 		else{
-			lr->firstRef=r;
-			lr->lastRef=r;
+			lr->firstRef = r;
+			lr->lastRef = r;
 			return lr;
 		}
 	}
 	else{
-		lr=initListRelation(id);
+		lr = initListRelation(id);
 	}
 	return lr;
 }
@@ -405,6 +405,6 @@ Map* initMap(){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initMap");
 		exit(EXIT_FAILURE);
 	}
-	map->referenceTag=initReferenceTag();
+	map->referenceTag = initReferenceTag();
 	return map;
 }

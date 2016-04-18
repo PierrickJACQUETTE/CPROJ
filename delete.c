@@ -18,8 +18,8 @@ void deleteColor(Color *c){
 
 void deleteTag(Tag *t){
 	if(t != NULL){
-		free(t->tagKey);
-		free(t->tagValue);
+		//free(t->tagKey);
+		//free(t->tagValue);
 		deleteColor(t->c);
 	}
 	free(t);
@@ -35,24 +35,24 @@ void deleteTabTag(Tag **t){
 
 void deleteRefListNode(refListNode *r){
 	while(r != NULL){
-		deleteRefListNode(r->next);
+		refListNode *tmp = r->next;
+		free(r);
+		r = tmp;
 	}
-	free(r);
 }
 
 void deleteListNode(ListNode *l){
 	if(l != NULL){
 		deleteRefListNode(l->firstRef);
-		deleteRefListNode(l->lastRef);
 	}
-
 	free(l);
 }
 
 void deleteRefListWay(refListWay *r){
 	while(r!=NULL){
-		free(r->role);
-		deleteRefListWay(r->next);
+		refListWay *tmp = r->next;
+		free(r);
+		r = tmp;
 	}
 	free(r);
 }
@@ -60,7 +60,6 @@ void deleteRefListWay(refListWay *r){
 void deleteListWay(ListWay *l){
 	if(l != NULL){
 		deleteRefListWay(l->firstRef);
-		deleteRefListWay(l->lastRef);
 	}
 	free(l);
 }
@@ -120,12 +119,11 @@ void deleteAvl(Avl** avl,int isNode){
 	deleteAvl(&((*avl)->right),isNode);
 	if(isNode == 1){
 		deleteNode((*avl)->node);
-		//free(*avl);
 	}
-	else{
-		//deleteWay((*avl)->way);
-		free(*avl);
+	if(isNode == 0){
+		deleteWay((*avl)->way);
 	}
+	free(*avl);
 }
 
 void deleteMap(Map *map){
