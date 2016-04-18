@@ -23,10 +23,10 @@ Coordinate* conversionLatLon(float lat, float lon){
 }
 
 Bounds* convertBounds(Bounds *b ){
-	b->max->x= distanceLatLon(b->min->y, b->min->x, b->min->y, b->max->x);
-	b->max->y= distanceLatLon(b->min->y, b->min->x, b->max->y, b->min->x);
-	b->min->x=0;
-	b->min->y=0;
+	b->max->x = distanceLatLon(b->min->y, b->min->x, b->min->y, b->max->x);
+	b->max->y = distanceLatLon(b->min->y, b->min->x, b->max->y, b->min->x);
+	b->min->x = 0;
+	b->min->y = 0;
 	return b;
 }
 
@@ -43,7 +43,7 @@ float distanceX(float x1, float x2){
 }
 
 float normalize(float a, float b,float length){
-	return (b-a)/length;
+	return (b - a) / length;
 }
 
 Node* distanceToBounds(Bounds *b, Node* n){
@@ -54,14 +54,14 @@ Node* distanceToBounds(Bounds *b, Node* n){
 
 float distanceLatLon(float lat1, float lon1, float lat2, float lon2){
 	int EarthRayon = 6371;
-	lon1= lon1*M_PI/180;
-	lon2= lon2*M_PI/180;
-	lat1= lat1*M_PI/180;
-	lat2= lat2*M_PI/180;
-	float dlon= (lon2-lon1)/2;
-	float dlat= (lat2-lat1)/2;
-	float a = sinf(dlat)*sinf(dlat)+ cosf(lat1)*cosf(lat2) *sinf(dlon)*sinf(dlon);
-	return EarthRayon *2 *atan2(sqrt(a), sqrt(1-a));
+	lon1 = lon1*M_PI / 180;
+	lon2 = lon2*M_PI / 180;
+	lat1 = lat1*M_PI / 180;
+	lat2 = lat2*M_PI / 180;
+	float dlon = (lon2 - lon1) / 2;
+	float dlat = (lat2 - lat1) / 2;
+	float a = sinf(dlat) * sinf(dlat) + cosf(lat1) * cosf(lat2) * sinf(dlon) * sinf(dlon);
+	return EarthRayon * 2 * atan2(sqrt(a), sqrt(1 - a));
 }
 
 float angle(float ax, float ay, float bx,float by,float cx,float cy){
@@ -126,12 +126,12 @@ Sint16* swap(Sint16 tab[4]){
 
 
 float miseAEchelleX(float x, float y,int size){
-	return ((x*size/y)* zoom) + deplacX+ deplacZX;
+	return ((x * size / y) * zoom) + deplacX + deplacZX;
 	//return ((x*size/y));
 }
 
 float miseAEchelleY(float x, float y,int size){
-	return ((size-(x*size/y))* zoom) + deplacY+ deplacZY;
+	return ((size - (x * size / y)) * zoom) + deplacY + deplacZY;
 	//return ((size-(x*size/y)));
 }
 

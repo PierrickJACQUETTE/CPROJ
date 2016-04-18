@@ -3,23 +3,23 @@
 
 
 Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b){
-	Node * n= malloc(sizeof(Node));
+	Node * n = malloc(sizeof(Node));
 	if(n == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initNode");
 		exit(EXIT_FAILURE);
 	}
 	n->id=id;
-	int negativex=0;
-	int negativey=0;
+	int negativex = 0;
+	int negativey = 0;
 	if(b != NULL && b->min != NULL){
 		if(lat < (b->min->y)){
-			negativey=1;
+			negativey = 1;
 		}
 		if(lon < (b->min->x)){
-			negativex=1;
+			negativex = 1;
 		}
 	}
-	n->c= malloc(sizeof(Coordinate));
+	n->c = malloc(sizeof(Coordinate));
 	if(n->c == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initNode");
 		exit(EXIT_FAILURE);
@@ -59,32 +59,32 @@ Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initBounds");
 		exit(EXIT_FAILURE);
 	}
-	b->min= conversionLatLon(lat_min, lon_min);
-	b->max= conversionLatLon(lat_max, lon_max);
+	b->min = conversionLatLon(lat_min, lon_min);
+	b->max = conversionLatLon(lat_max, lon_max);
 	return b;
 }
 
 
 Tag** initReferenceTag(){
-	Tag **t=malloc(SIZETABTAG*sizeof(Tag*));
+	Tag **t = malloc(SIZETABTAG*sizeof(Tag*));
 	if(t == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initReferenceTag");
 		exit(EXIT_FAILURE);
 	}
-	int i=1;
-	for(i=0; i<SIZETABTAG; i++){
-		t[i]=malloc(sizeof(Tag));
+	int i = 1;
+	for(i = 0; i < SIZETABTAG; i++){
+		t[i] = malloc(sizeof(Tag));
 		if(t[i] == NULL){
 			fprintf(stderr,"Allocation impossible : %s\n","fonction initReferenceTag");
 			exit(EXIT_FAILURE);
 		}
-		t[i]->c=malloc(sizeof(Color));
+		t[i]->c = malloc(sizeof(Color));
 		if(t[i]->c == NULL){
 			fprintf(stderr,"Allocation impossible : %s\n","fonction initReferenceTag");
 			exit(EXIT_FAILURE);
 		}
-		t[i]->priority=1;
-		t[i]->thick=0;
+		t[i]->priority = 1;
+		t[i]->thick = 0;
 	}
 	t[0]->tagKey ="landuse"; t[0]->tagValue ="forest"; t[0]->c->red=51; t[0]->c->green=102; t[0]->c->blue=0; //vert
 	t[1]->tagKey ="building"; t[1]->tagValue ="yes"; t[1]->c->red=205; t[1]->c->green=183; t[1]->c->blue=158;	//beige
@@ -172,32 +172,32 @@ Tag** initReferenceTag(){
 
 
 refListNode* initRefListNode(unsigned long  n, refListNode* next){
-	refListNode* r=malloc(sizeof(refListNode));
+	refListNode* r= malloc(sizeof(refListNode));
 	if(r == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initRefListNode");
 		exit(EXIT_FAILURE);
 	}
-	r->nd=n;
-	r->next=next;
+	r->nd = n;
+	r->next = next;
 	return r;
 }
 
 ListNode* initListNode(unsigned long first){
-	ListNode* l=malloc(sizeof(ListNode));
+	ListNode* l = malloc(sizeof(ListNode));
 	if(l == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initListNode");
 		exit(EXIT_FAILURE);
 	}
-	refListNode* f=initRefListNode(first,NULL);
-	l->firstRef=f;
-	l->lastRef=f;
+	refListNode* f = initRefListNode(first,NULL);
+	l->firstRef = f;
+	l->lastRef = f;
 	return l;
 }
 
 ListNode* addRefListNode(unsigned long n, ListNode* l){
-	refListNode* r=initRefListNode(n,NULL);
-	if(l!=NULL){
-		if((l->firstRef!=NULL) && (l->firstRef->nd!=0)){
+	refListNode* r = initRefListNode(n,NULL);
+	if(l != NULL){
+		if((l->firstRef != NULL) && (l->firstRef->nd != 0)){
 			l->lastRef->next = r;
 			l->lastRef = r;
 			return l;
@@ -215,7 +215,7 @@ ListNode* addRefListNode(unsigned long n, ListNode* l){
 }
 
 Tag* initTag(char* key, char* value, Color* c, int type, int thick, int priority){
-	Tag* t=malloc(sizeof(Tag));
+	Tag* t = malloc(sizeof(Tag));
 	if(t == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initTag");
 		exit(EXIT_FAILURE);
@@ -280,7 +280,7 @@ Relation* initRelation(unsigned long id, char* visible,Tag* t, ListWay* lw, List
 	return r;
 }
 Tag * goodTagRelation(char * k, char *v){
-	if(strcmp(k, "type")==0 && (strcmp(v,"multipolygon")==0 ||strcmp(v,"route")==0)){
+	if(strcmp(k, "type")==0 && (strcmp(v,"multipolygon")==0 || strcmp(v,"route")==0)){
 		return initTag(k, v, NULL, -1, 0, 0);
 	}
 	return NULL;
@@ -291,7 +291,7 @@ Tag* goodTag(char * k, char *v, Tag**  ref){
 	if(ref != NULL){
 		for(i = 0; i < SIZETABTAG; i++){
 			if(ref[i] != NULL){
-				if(strcmp(k, ref[i]->tagKey)==0 && strcmp(v, ref[i]->tagValue)==0){
+				if(strcmp(k, ref[i]->tagKey)==0 && strcmp(v, ref[i]->tagValue) ==0){
 					return initTag(k, v, ref[i]->c,ref[i]->type, ref[i]->thick, ref[i]->priority);
 				}
 			}
@@ -300,15 +300,14 @@ Tag* goodTag(char * k, char *v, Tag**  ref){
 	return NULL;
 }
 
-
 refListWay* initRefListWay(unsigned long  w, char *role, refListWay* next){
-	refListWay* r= malloc(sizeof(refListWay));
+	refListWay* r = malloc(sizeof(refListWay));
 	if(r == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initRefListWay");
 		exit(EXIT_FAILURE);
 	}
 	r->way = w;
-	if(strcmp(role, "inner")==0){
+	if(strcmp(role, "inner") ==0){
 		r->role = "inner";
 	}
 	else{

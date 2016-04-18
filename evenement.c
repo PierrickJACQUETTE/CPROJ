@@ -11,7 +11,7 @@ int init_Renderer(){
 
 void drawMapSa(){
 	SDL_DestroyRenderer(renderer);
-	renderer =NULL;
+	renderer = NULL;
 	init_Renderer();
 	colorBackgroundDefault();
 	SDL_RenderClear(renderer);

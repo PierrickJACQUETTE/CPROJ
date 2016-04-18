@@ -2,8 +2,7 @@
 * \file line.h
 * \brief This file displays polygons on the map depending on what is stored in the different structures
 * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
-* \date 6 April 2016
-*
+* \date 18 April 2016
 *
 */
 

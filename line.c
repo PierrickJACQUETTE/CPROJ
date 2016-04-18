@@ -6,7 +6,7 @@ float rightCoordValue(float coord, int max){
 	if(coord<0){
 		return 0;
 	}
-	if(coord>max){
+	if(coord > max){
 		return max;
 	}
 	else return coord;
@@ -16,9 +16,9 @@ void highway(Way *way, short coord_y[way->size],short coord_x[way->size],int thi
 	Sint16 coord_xNode[4] = {0.0,0.0,0.0,0.0};
 	Sint16 coord_yNode[4] = {0.0,0.0,0.0,0.0};
 	int i;
-	for(i=1;i<way->size;i++){
+	for(i = 1;i < way->size;i++){
 
-		if(i==1){
+		if(i == 1){
 			float length = distanceXY(coord_x[i-1],coord_y[i-1],coord_x[i],coord_y[i]);
 			float fx = normalize(coord_y[i-1],coord_y[i],length);
 			float gx = fx;
@@ -133,10 +133,10 @@ void fillWay(Way * way){
 	if(way->size != 0){
 		short coord_x [way->size];
 		short coord_y [way->size];
-		while(current!=NULL){
+		while(current != NULL){
 			Node * currentNode = searchNode(map->avl,current->nd);
 			if(currentNode != NULL){
-				if(currentNode->c !=NULL){
+				if(currentNode->c != NULL){
 					coord_x[nbre] = miseAEchelleX(currentNode->c->x,map->bounds->max->x,windows_Width);
 					coord_y[nbre] = miseAEchelleY(currentNode->c->y,map->bounds->max->y,windows_Height);
 					nbre++;
@@ -182,10 +182,10 @@ void fillWay(Way * way){
 					Node * firstNode = searchNode(map->avl,l->firstRef->nd);
 					Node * lastNode = searchNode(map->avl,l->lastRef->nd);
 
-					float coordxf= miseAEchelleX(firstNode->c->x ,map->bounds->max->x,windows_Width);
-					float coordyf= miseAEchelleY(firstNode->c->y ,map->bounds->max->y,windows_Height);
-					float coordxl= miseAEchelleX(lastNode->c->x,map->bounds->max->x,windows_Width);
-					float coordyl= miseAEchelleY(lastNode->c->y,map->bounds->max->y,windows_Height);
+					float coordxf = miseAEchelleX(firstNode->c->x ,map->bounds->max->x,windows_Width);
+					float coordyf = miseAEchelleY(firstNode->c->y ,map->bounds->max->y,windows_Height);
+					float coordxl = miseAEchelleX(lastNode->c->x,map->bounds->max->x,windows_Width);
+					float coordyl = miseAEchelleY(lastNode->c->y,map->bounds->max->y,windows_Height);
 
 					coordxf = rightCoordValue(coordxf,windows_Width);
 					coordxl = rightCoordValue(coordxl,windows_Width);
@@ -195,8 +195,8 @@ void fillWay(Way * way){
 					//float coordx= miseAEchelleX((firstNode->c->x + lastNode->c->x) /2,map->bounds->max->x,WINDOW_WIDTH);
 					//float coordy= miseAEchelleY((firstNode->c->y + lastNode->c->y) /2,map->bounds->max->y,WINDOW_HEIGHT);
 
-					float cx = (coordxf+coordxl)/2;
-					float cy = (coordyf+coordyl)/2;
+					float cx = (coordxf+coordxl) / 2;
+					float cy = (coordyf+coordyl) / 2;
 
 					//					printf("Way id: %ld, Name: %s,coord noeud : %f, %f\n",way->id,way->name,fabs(cx),fabs(cy));
 
@@ -307,17 +307,17 @@ void analyseCoastline(Way* w, Map* map){
 }
 
 void parcourList(ListWay *l){
-	if(l!=NULL){
-		int coastline=0;
+	if(l != NULL){
+		int coastline = 0;
 		refListWay * current = l->firstRef;
 		while(current != NULL){
 			Way * currentWay = searchWay(map->avlWay,current->way);
 			if(currentWay != NULL){
-				if((currentWay->draw== drawNumber)&&(strcmp(currentWay->visible,"T")==0)){
+				if((currentWay->draw == drawNumber) && (strcmp(currentWay->visible,"T") == 0)){
 					// case coastline
 					if(strcmp(currentWay->tag->tagValue, "coastline") ==0){
 						drawContour = 0;
-						if(coastline==0){
+						if(coastline == 0){
 							colorBackground(0,102,205,100);
 							coastline = 1;
 							SDL_RenderClear(renderer);
@@ -353,7 +353,7 @@ void parcourRelation(ListRelation *lr){
 		refListRel * current = lr->firstRef;
 		while(current != NULL){
 			Relation * currentRel = current->relation;
-			if((strcmp(currentRel->visible,"T" )== 0) && currentRel->listW != NULL){
+			if((strcmp(currentRel->visible,"T") == 0) && currentRel->listW != NULL){
 				refListWay * cW = currentRel->listW->firstRef;
 				while(cW != NULL){
 					if(strcmp(cW->role,"outer") == 0){
@@ -370,7 +370,7 @@ void parcourRelation(ListRelation *lr){
 				while(cW!=NULL){
 					if(strcmp(cW->role,"inner") ==0){
 						Way * currentWay = searchWay(map->avlWay,cW->way);
-						if((currentWay !=NULL) && (currentWay->draw == drawNumber)&&(strcmp(currentWay->visible,"T") ==0)){
+						if((currentWay != NULL) && (currentWay->draw == drawNumber) && (strcmp(currentWay->visible,"T") ==0)){
 							fillWay(currentWay);
 							currentWay->draw ++;
 						}
