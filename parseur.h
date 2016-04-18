@@ -18,11 +18,10 @@
 #include <libxml/parser.h>
 #include "Avl.h"
 
-
 /**
-* Fonction that parses a file, get the root_element and, if there is no problem with the file, calls the parseElements fonction 
+* Fonction that parses a file, get the root_element and, if there is no problem with the file, calls the parseElements fonction
 * @param  a char* filename which is the file name
-* @return  a pointer to a map which is a structure where we put the avl and the bounds 
+* @return  a pointer to a map which is a structure where we put the avl and the bounds
 */
 Map* parseDoc(char* filename);
 
@@ -33,13 +32,13 @@ Map* parseDoc(char* filename);
 * at the end, it adds the avl to the map structure and returns the map
 * @param  xmlDocPtr doc which is the file parsed
 * @param  xmlNodePtr cur which is a pointer to the current node (at the beginning, it is called with the root node)
-* @return  a pointer to a map which is a structure created where we put the avl and the bounds 
+* @return  a pointer to a map which is a structure created where we put the avl and the bounds
 */
 Map* parseElements(xmlDocPtr doc, xmlNodePtr cur);
 
 /**
 * Fonction that parses the "bounds" element
-* It initialise the bounds structure we need for the map with the coordinates 
+* It initialise the bounds structure we need for the map with the coordinates
 * @param  xmlNodePtr cur which is a pointer to the current node (here,the bounds node)
 * @return  pointer to a Bound structure where we put the coordinates we got from the bounds element
 */
@@ -48,7 +47,7 @@ Bounds* parseBounds (xmlNodePtr cur);
 /**
 * Fonction that parses a node
 * @param  xmlDocPtr doc which is the file parsed
-* @param  xmlNodePtr cur which is a pointer to the current node 
+* @param  xmlNodePtr cur which is a pointer to the current node
 * @param  Bounds *bounds which is the structure of the bounds element we need to init the nodes
 * @return  a pointer to a node structure created whith the attributes we got from the parsing
 */
@@ -57,8 +56,8 @@ Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds);
 /**
 * Fonction that parses a way
 * @param  xmlDocPtr doc which is the file parsed
-* @param  xmlNodePtr cur which is a pointer to the current node 
-* @param  Tag** table represente the tag that we need 
+* @param  xmlNodePtr cur which is a pointer to the current node
+* @param  Tag** table represente the tag that we need
 * @return  a pointer to a way structure created whith the attributes we got from the parsing
 */
 Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag);
@@ -66,7 +65,7 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag);
 /**
 * Fonction that parses a relation
 * @param  xmlDocPtr doc which is the file parsed
-* @param  xmlNodePtr cur which is a pointer to the current node 
+* @param  xmlNodePtr cur which is a pointer to the current node
 * @return  a pointer to a relation structure created whith the attributes we got from the parsing
 */
 Relation* parseRelation(xmlDocPtr doc, xmlNodePtr cur);
