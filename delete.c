@@ -80,7 +80,6 @@ void deleteListRelation(ListRelation *l){
 	free(l);
 }
 
-
 void deleteNode(Node *n){
 	if(n != NULL){
 		deleteCoordinate(n->c);

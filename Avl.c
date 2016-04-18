@@ -87,11 +87,19 @@ void equilibrateAVL(Avl **a){
 
 Avl* insert(Avl **a, Node *n, Way * w){
 	Avl *aux = NULL;
-
+	if(n == NULL && w == NULL){
+		fprintf(stderr,"Insertion impossible car le type de l'avl n'est pas définie: %s\n","fonction insertAVL");
+		return NULL;
+	}
+	if(n != NULL && w != NULL){
+		fprintf(stderr,"Insertion impossible car le type de l'avl est trop definie: %s\n","fonction insertAVL");
+		return NULL;
+	}
 	if(*a){
 		if(w == NULL){
 			if((*a)->node->id == n->id){
-				aux = *a;
+				fprintf(stderr,"Insertion impossible car il existe deja ce noeud dans l'avl: %s\n","fonction insertAVL");
+				return NULL;
 			}
 			else if(n->id < (*a)->node->id){
 				(*a)->left = insert(&((*a)->left),n,NULL);
@@ -118,7 +126,6 @@ Avl* insert(Avl **a, Node *n, Way * w){
 				equilibrateAVL(&(*a));
 				aux = *a;
 			}
-
 		}
 	}
 	else{
@@ -136,7 +143,6 @@ Avl* insert(Avl **a, Node *n, Way * w){
 			aux->way = w;
 		}
 	}
-
 	return aux;
 }
 
@@ -158,7 +164,6 @@ Node* searchNode(Avl *a, unsigned long key){
 Way* searchWay(Avl *a, unsigned long key){
 	if(a != NULL){
 		if(key == a->way->id){
-			//  printf("searchway visible = %s\n",a->way->visible);
 			return a->way;
 		}
 		else if(key > a->way->id ){
@@ -172,29 +177,39 @@ Way* searchWay(Avl *a, unsigned long key){
 }
 
 Avl * init(Avl **a, Node* n, Way *w){
-	Avl *aux = (Avl*)malloc(sizeof(Avl));
-	if(aux != NULL){
-		if(n == NULL && w == NULL){
-			fprintf(stderr,"Allocation impossible car le type de l'avl n'est pas définie: %s\n","fonction initAVL");
-			return NULL;
-		}
-		aux->left = aux->right = NULL;
-		aux->height = 1;
-		if(w == NULL){
-			aux->node = n;
-			aux->way = NULL;
-		}
-		if(n == NULL){
-			aux->way = w;
-			aux->node = NULL;
-		}
-		*a = aux;
+	if(*a != NULL){
+		fprintf(stderr,"Il y a deja des elements dans l'avl, appeler la methode insert: %s\n","fonction initAVL");
+		return NULL;
 	}
-	else {
-		fprintf(stderr,"Allocation impossible : %s\n","fonction init");
-		exit(EXIT_FAILURE);
+	else{
+		Avl *aux = (Avl*)malloc(sizeof(Avl));
+		if(aux != NULL){
+			if(n == NULL && w == NULL){
+				fprintf(stderr,"Allocation impossible car le type de l'avl n'est pas définie: %s\n","fonction initAVL");
+				return NULL;
+			}
+			if(n != NULL && w != NULL){
+				fprintf(stderr,"Allocation impossible car le type de l'avl est trop definie: %s\n","fonction initAVL");
+				return NULL;
+			}
+			aux->left = aux->right = NULL;
+			aux->height = 1;
+			if(w == NULL){
+				aux->node = n;
+				aux->way = NULL;
+			}
+			if(n == NULL){
+				aux->way = w;
+				aux->node = NULL;
+			}
+			*a = aux;
+		}
+		else {
+			fprintf(stderr,"Allocation impossible : %s\n","fonction init");
+			exit(EXIT_FAILURE);
+		}
+		return aux;
 	}
-	return aux;
 }
 
 void printNode(Avl **a, unsigned long nombre){
