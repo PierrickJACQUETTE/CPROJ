@@ -3,3 +3,12 @@ CPROJ
 a.out
 check_main
 *.gch
+*.dvi
+*.aux
+*.bbl
+*.blg
+*.log
+*.nav
+*.out
+*.snm
+*.toc
