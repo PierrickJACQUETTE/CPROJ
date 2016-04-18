@@ -1,9 +1,9 @@
 #include "parseur.h"
 
 Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
-	Way* w;
-	unsigned long id;
-	char *visible;
+	Way* w=NULL;
+	unsigned long id=-1;
+	char *visible="T";
 	ListNode* ln=initListNode(0);
 	Tag* tag=NULL;
 	Tag* t=NULL;
@@ -53,9 +53,9 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 	}
 }
 Relation* parseRelation(xmlDocPtr doc, xmlNodePtr cur){
-	Relation* r;
-	unsigned long id;
-	char *visible;
+	Relation* r=NULL;
+	unsigned long id=-1;
+	char *visible="T";
 	ListWay* lw=initListWay(0);
 	ListNode* ln=initListNode(0);
 	Tag* tag=NULL;
@@ -104,10 +104,11 @@ Relation* parseRelation(xmlDocPtr doc, xmlNodePtr cur){
 }
 
 Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
-	Node* node;
-	unsigned long id;
-	float lat, lon;
-	char *visible;
+	Node* node=NULL;
+	unsigned long id=-1;
+	float lat=100;
+	float lon=100;
+	char *visible="T";
 
 	xmlAttr *node_attr = cur->properties;
 
@@ -136,7 +137,10 @@ Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
 
 Bounds* parseBounds (xmlNodePtr cur) {
 	Bounds *b;
-	float minlat, minlon, maxlat, maxlon;
+	float minlat=100;
+	float minlon=100;
+	float maxlat=100;
+	float maxlon=100;
 
 	minlat = strtof((const char *)(xmlGetProp(cur, (const xmlChar *)"minlat")),NULL);
 	minlon = strtof((const char *)(xmlGetProp(cur, (const xmlChar *)"minlon")),NULL);
