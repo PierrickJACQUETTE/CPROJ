@@ -1,0 +1,58 @@
+\hypertarget{evenement_8h}{\section{evenement.\-h File Reference}
+\label{evenement_8h}\index{evenement.\-h@{evenement.\-h}}
+}
+
+
+Declare fonctions to convert elements.  
+
+
+{\ttfamily \#include \char`\"{}point.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}line.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{evenement_8h_a992ddeca01850c361d0baaae2d2e206f}{evenement} ()
+\item 
+void \hyperlink{evenement_8h_a96c334a614da0507d23f49d2c23e062b}{draw\-Map} (\hyperlink{structMap}{Map} $\ast$m, char $\ast$type\-Of\-Dessin)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{evenement_8h_a076489b58a3cd509b38f120ae469da1b}{char $\ast$ {\bfseries type\-Of\-Draw}}\label{evenement_8h_a076489b58a3cd509b38f120ae469da1b}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Declare fonctions to convert elements. \begin{DoxyAuthor}{Author}
+Isabelle M\-A\-R\-I\-N\-O Pierrick J\-A\-C\-Q\-U\-E\-T\-T\-E Hafça T\-I\-R\-I\-C\-H\-I\-N\-E 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+8 April 2016
+\end{DoxyDate}
+Evenement Window 
+
+\subsection{Function Documentation}
+\hypertarget{evenement_8h_a96c334a614da0507d23f49d2c23e062b}{\index{evenement.\-h@{evenement.\-h}!draw\-Map@{draw\-Map}}
+\index{draw\-Map@{draw\-Map}!evenement.h@{evenement.\-h}}
+\subsubsection[{draw\-Map}]{\setlength{\rightskip}{0pt plus 5cm}void draw\-Map (
+\begin{DoxyParamCaption}
+\item[{{\bf Map} $\ast$}]{m, }
+\item[{char $\ast$}]{type\-Of\-Dessin}
+\end{DoxyParamCaption}
+)}}\label{evenement_8h_a96c334a614da0507d23f49d2c23e062b}
+Fonction that browse the avl tree by calling the \char`\"{}parcours\-Avl\char`\"{} fonction and displays it to the screen by calling the \char`\"{}evenement\char`\"{} fonction 
+\begin{DoxyParams}{Parameters}
+{\em Map$\ast$} & is the pointer to the information of map \\
+\hline
+{\em $\ast$type\-Of\-Dessin} & is the line or ponct \\
+\hline
+\end{DoxyParams}
+\hypertarget{evenement_8h_a992ddeca01850c361d0baaae2d2e206f}{\index{evenement.\-h@{evenement.\-h}!evenement@{evenement}}
+\index{evenement@{evenement}!evenement.h@{evenement.\-h}}
+\subsubsection[{evenement}]{\setlength{\rightskip}{0pt plus 5cm}void evenement (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{evenement_8h_a992ddeca01850c361d0baaae2d2e206f}
+Fonction that permit the display While we haven't closed the window it is still on the screen When we do close it, it displays a message saying we closed it This event is handeled by a loop \-: while the statut is \char`\"{}\-C\-O\-N\-T\-I\-N\-U\-E\char`\"{} we keep the window to the screen Otherwise, we close it and change the statut to \char`\"{}\-Q\-U\-I\-T\char`\"{} 

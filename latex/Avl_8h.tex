@@ -1,0 +1,142 @@
+\hypertarget{Avl_8h}{\section{Avl.\-h File Reference}
+\label{Avl_8h}\index{Avl.\-h@{Avl.\-h}}
+}
+
+
+This file can create, insert and retrieve nodes in an \hyperlink{structAvl}{Avl} ( balanced binary tree search )  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}init.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structNode}{Node} $\ast$ \hyperlink{Avl_8h_a8e52d368bebcfc9c324c0ba0fa6d36c1}{search\-Node} (\hyperlink{structAvl}{Avl} $\ast$a, unsigned long key)
+\item 
+\hyperlink{structWay}{Way} $\ast$ \hyperlink{Avl_8h_a6ffec005bae68bcbbf4c5a35c26b2fc7}{search\-Way} (\hyperlink{structAvl}{Avl} $\ast$a, unsigned long key)
+\item 
+\hyperlink{structAvl}{Avl} $\ast$ \hyperlink{Avl_8h_ac32b350d2833f3ab0ba4ce82401a294c}{insert} (\hyperlink{structAvl}{Avl} $\ast$$\ast$a, \hyperlink{structNode}{Node} $\ast$n, \hyperlink{structWay}{Way} $\ast$w)
+\item 
+\hyperlink{structAvl}{Avl} $\ast$ \hyperlink{Avl_8h_aea98efe3919ecf1862aaf803d80daae1}{init} (\hyperlink{structAvl}{Avl} $\ast$$\ast$a, \hyperlink{structNode}{Node} $\ast$n, \hyperlink{structWay}{Way} $\ast$w)
+\item 
+void \hyperlink{Avl_8h_a8bc4ab41e0f9a381c6eba6de37b02a6f}{print\-Node} (\hyperlink{structAvl}{Avl} $\ast$$\ast$a, unsigned long nombre)
+\item 
+void \hyperlink{Avl_8h_af25e0f0f73416c86303d8d36f4416cf8}{print\-Way} (\hyperlink{structAvl}{Avl} $\ast$$\ast$a, unsigned long nombre)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file can create, insert and retrieve nodes in an \hyperlink{structAvl}{Avl} ( balanced binary tree search ) \begin{DoxyAuthor}{Author}
+Isabelle M\-A\-R\-I\-N\-O Pierrick J\-A\-C\-Q\-U\-E\-T\-T\-E Hafça T\-I\-R\-I\-C\-H\-I\-N\-E
+\end{DoxyAuthor}
+Basic operations of an A\-V\-L tree involve carrying out the same actions as would be carried out on an unbalanced binary search tree, but modifications are followed by zero or more operations called tree rotations, which help to restore the height balance of the subtrees.
+
+The insertion, search are O(log n) 
+
+\subsection{Function Documentation}
+\hypertarget{Avl_8h_aea98efe3919ecf1862aaf803d80daae1}{\index{Avl.\-h@{Avl.\-h}!init@{init}}
+\index{init@{init}!Avl.h@{Avl.\-h}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Avl}$\ast$ init (
+\begin{DoxyParamCaption}
+\item[{{\bf Avl} $\ast$$\ast$}]{a, }
+\item[{{\bf Node} $\ast$}]{n, }
+\item[{{\bf Way} $\ast$}]{w}
+\end{DoxyParamCaption}
+)}}\label{Avl_8h_aea98efe3919ecf1862aaf803d80daae1}
+Initializing the A\-V\-L with the root , the parameter content 
+\begin{DoxyParams}{Parameters}
+{\em a} & Self-\/balancing binary search tree \\
+\hline
+{\em n} & it is the reference node \\
+\hline
+{\em w} & it is the reference way \\
+\hline
+\end{DoxyParams}
+\hypertarget{Avl_8h_ac32b350d2833f3ab0ba4ce82401a294c}{\index{Avl.\-h@{Avl.\-h}!insert@{insert}}
+\index{insert@{insert}!Avl.h@{Avl.\-h}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Avl}$\ast$ insert (
+\begin{DoxyParamCaption}
+\item[{{\bf Avl} $\ast$$\ast$}]{a, }
+\item[{{\bf Node} $\ast$}]{n, }
+\item[{{\bf Way} $\ast$}]{w}
+\end{DoxyParamCaption}
+)}}\label{Avl_8h_ac32b350d2833f3ab0ba4ce82401a294c}
+function to insert the key in the A\-V\-L in the right place according to its value , and the transition if necessary, rebalanced the tree 
+\begin{DoxyParams}{Parameters}
+{\em a} & Self-\/balancing binary search tree \\
+\hline
+{\em n} & it is the reference node \\
+\hline
+{\em w} & it is the reference way \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A tree under the pointer with the change 
+\end{DoxyReturn}
+\hypertarget{Avl_8h_a8bc4ab41e0f9a381c6eba6de37b02a6f}{\index{Avl.\-h@{Avl.\-h}!print\-Node@{print\-Node}}
+\index{print\-Node@{print\-Node}!Avl.h@{Avl.\-h}}
+\subsubsection[{print\-Node}]{\setlength{\rightskip}{0pt plus 5cm}void print\-Node (
+\begin{DoxyParamCaption}
+\item[{{\bf Avl} $\ast$$\ast$}]{a, }
+\item[{unsigned long}]{nombre}
+\end{DoxyParamCaption}
+)}}\label{Avl_8h_a8bc4ab41e0f9a381c6eba6de37b02a6f}
+function allowing display of the A\-V\-L 
+\begin{DoxyParams}{Parameters}
+{\em a} & Self-\/balancing binary search tree \\
+\hline
+{\em nombre} & dentifier of the tree level view \\
+\hline
+\end{DoxyParams}
+\hypertarget{Avl_8h_af25e0f0f73416c86303d8d36f4416cf8}{\index{Avl.\-h@{Avl.\-h}!print\-Way@{print\-Way}}
+\index{print\-Way@{print\-Way}!Avl.h@{Avl.\-h}}
+\subsubsection[{print\-Way}]{\setlength{\rightskip}{0pt plus 5cm}void print\-Way (
+\begin{DoxyParamCaption}
+\item[{{\bf Avl} $\ast$$\ast$}]{a, }
+\item[{unsigned long}]{nombre}
+\end{DoxyParamCaption}
+)}}\label{Avl_8h_af25e0f0f73416c86303d8d36f4416cf8}
+function allowing display of the A\-V\-L 
+\begin{DoxyParams}{Parameters}
+{\em a} & Self-\/balancing binary search tree \\
+\hline
+{\em nombre} & dentifier of the tree level view \\
+\hline
+\end{DoxyParams}
+\hypertarget{Avl_8h_a8e52d368bebcfc9c324c0ba0fa6d36c1}{\index{Avl.\-h@{Avl.\-h}!search\-Node@{search\-Node}}
+\index{search\-Node@{search\-Node}!Avl.h@{Avl.\-h}}
+\subsubsection[{search\-Node}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ search\-Node (
+\begin{DoxyParamCaption}
+\item[{{\bf Avl} $\ast$}]{a, }
+\item[{unsigned long}]{key}
+\end{DoxyParamCaption}
+)}}\label{Avl_8h_a8e52d368bebcfc9c324c0ba0fa6d36c1}
+search function in an A\-V\-L according to a key, this key is the reference node 
+\begin{DoxyParams}{Parameters}
+{\em a} & Self-\/balancing binary search tree \\
+\hline
+{\em key} & it is the reference node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return the node if it exists, otherwise null 
+\end{DoxyReturn}
+\hypertarget{Avl_8h_a6ffec005bae68bcbbf4c5a35c26b2fc7}{\index{Avl.\-h@{Avl.\-h}!search\-Way@{search\-Way}}
+\index{search\-Way@{search\-Way}!Avl.h@{Avl.\-h}}
+\subsubsection[{search\-Way}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Way}$\ast$ search\-Way (
+\begin{DoxyParamCaption}
+\item[{{\bf Avl} $\ast$}]{a, }
+\item[{unsigned long}]{key}
+\end{DoxyParamCaption}
+)}}\label{Avl_8h_a6ffec005bae68bcbbf4c5a35c26b2fc7}
+search function in an A\-V\-L according to a key, this key is the reference way 
+\begin{DoxyParams}{Parameters}
+{\em a} & Self-\/balancing binary search tree \\
+\hline
+{\em key} & it is the reference node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return the way if it exists, otherwise null 
+\end{DoxyReturn}

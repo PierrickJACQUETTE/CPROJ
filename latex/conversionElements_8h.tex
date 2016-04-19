@@ -1,0 +1,425 @@
+\hypertarget{conversionElements_8h}{\section{conversion\-Elements.\-h File Reference}
+\label{conversionElements_8h}\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}}
+}
+
+
+Declare fonctions to convert elements.  
+
+
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$math.\-h$>$}\\*
+{\ttfamily \#include $<$S\-D\-L2/\-S\-D\-L.\-h$>$}\\*
+{\ttfamily \#include $<$S\-D\-L2/\-S\-D\-L2\-\_\-gfx\-Primitives.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}Core.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{conversionElements_8h_a0b4d28030851e5c6a15aae83dcad585c}{\#define {\bfseries P\-A\-S\-C\-L\-A\-V\-I\-E\-R}~10}\label{conversionElements_8h_a0b4d28030851e5c6a15aae83dcad585c}
+
+\item 
+\hypertarget{conversionElements_8h_a1144aeb2fb68d520a15c401ab2c75e7b}{\#define {\bfseries W\-I\-N\-D\-O\-W\-S\-\_\-\-W\-I\-D\-T\-H\-M\-I\-N}~100}\label{conversionElements_8h_a1144aeb2fb68d520a15c401ab2c75e7b}
+
+\item 
+\hypertarget{conversionElements_8h_ab384bd131e1670d9cf30e71200e7615b}{\#define {\bfseries W\-I\-N\-D\-O\-W\-S\-\_\-\-W\-I\-D\-T\-H\-M\-A\-X}~900}\label{conversionElements_8h_ab384bd131e1670d9cf30e71200e7615b}
+
+\item 
+\hypertarget{conversionElements_8h_a74511922386b54de0a6b3db99841aa3b}{\#define {\bfseries W\-I\-N\-D\-O\-W\-S\-\_\-\-H\-E\-I\-G\-H\-T\-M\-I\-N}~100}\label{conversionElements_8h_a74511922386b54de0a6b3db99841aa3b}
+
+\item 
+\hypertarget{conversionElements_8h_a6f1a8cfb4190c5fff3f18b7f2bc7eaac}{\#define {\bfseries W\-I\-N\-D\-O\-W\-S\-\_\-\-H\-E\-I\-G\-H\-T\-M\-A\-X}~700}\label{conversionElements_8h_a6f1a8cfb4190c5fff3f18b7f2bc7eaac}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structCoordinate}{Coordinate} $\ast$ \hyperlink{conversionElements_8h_ad66d504f94bd54c34335365e98edd4e7}{conversion\-Lat\-Lon} (float lat, float lon)
+\begin{DoxyCompactList}\small\item\em calculate the \hyperlink{structCoordinate}{Coordinate} for a point in openstreetmap \end{DoxyCompactList}\item 
+\hyperlink{structBounds}{Bounds} $\ast$ \hyperlink{conversionElements_8h_a53a0d679e571c6851a5c6d0c7d37e763}{convert\-Bounds} (\hyperlink{structBounds}{Bounds} $\ast$b)
+\begin{DoxyCompactList}\small\item\em convert the bounds of the map to the min is (0,0) \end{DoxyCompactList}\item 
+float \hyperlink{conversionElements_8h_a78254a65bf2ec07b4268479ec6104c55}{distance\-X\-Y} (float x1, float y1, float x2, float y2)
+\begin{DoxyCompactList}\small\item\em calculate the distance beetween 2 points in a carthesien repere \end{DoxyCompactList}\item 
+float \hyperlink{conversionElements_8h_ae51377d214fc1d1063596883f0ed80ea}{distance\-Y} (float y1, float y2)
+\begin{DoxyCompactList}\small\item\em calculate the ordinate's distance beetween 2 points in a carthesien repere \end{DoxyCompactList}\item 
+float \hyperlink{conversionElements_8h_a075c229cf74f9814e529c85a425f2734}{distance\-X} (float x1, float x2)
+\begin{DoxyCompactList}\small\item\em calculate the abscisse's distance beetween 2 points in a carthesien repere \end{DoxyCompactList}\item 
+\hypertarget{conversionElements_8h_a953a883457e9906cfba52d505afbbe2b}{float {\bfseries normalize} (float a, float b, float length)}\label{conversionElements_8h_a953a883457e9906cfba52d505afbbe2b}
+
+\item 
+float \hyperlink{conversionElements_8h_a830c114c07e594b1b50f27627c98f5da}{angle} (float ax, float ay, float bx, float by, float cx, float cy)
+\item 
+\hyperlink{structNode}{Node} $\ast$ \hyperlink{conversionElements_8h_a248ef05c0bf1752dbdd368a8d3084ad9}{distance\-To\-Bounds} (\hyperlink{structBounds}{Bounds} $\ast$b, \hyperlink{structNode}{Node} $\ast$n)
+\begin{DoxyCompactList}\small\item\em calcule the distance between a \hyperlink{structNode}{Node} and the \hyperlink{structBounds}{Bounds}'s map \end{DoxyCompactList}\item 
+float \hyperlink{conversionElements_8h_a90591e521d718a45a88ec4b8d67a988b}{distance\-Lat\-Lon} (float lat1, float lon1, float lat2, float lon2)
+\begin{DoxyCompactList}\small\item\em calculate the distance beetween 2 points in a map \end{DoxyCompactList}\item 
+\hypertarget{conversionElements_8h_a023b9909d36d14d6f1693e4c437a0c51}{Sint16 $\ast$ {\bfseries midle} (float b, float e, int signe, Sint16 tab\mbox{[}4\mbox{]})}\label{conversionElements_8h_a023b9909d36d14d6f1693e4c437a0c51}
+
+\item 
+\hypertarget{conversionElements_8h_a04078c5a468feac011be27760f7c9d84}{Sint16 $\ast$ {\bfseries swap} (Sint16 tab\mbox{[}4\mbox{]})}\label{conversionElements_8h_a04078c5a468feac011be27760f7c9d84}
+
+\item 
+\hypertarget{conversionElements_8h_ac3e66c5ea95a9da290e4d89457724abf}{Sint16 $\ast$ {\bfseries extremite} (float a, float d, float e, Sint16 tab\mbox{[}4\mbox{]}, int signe, int extremite)}\label{conversionElements_8h_ac3e66c5ea95a9da290e4d89457724abf}
+
+\item 
+float \hyperlink{conversionElements_8h_a26f3232214f74a1eff1d8927c4f4b296}{mise\-A\-Echelle\-X} (float x, float y, int size)
+\item 
+float \hyperlink{conversionElements_8h_a4cb5ae2d71cf1e9c01b8439b5697e9d5}{mise\-A\-Echelle\-Y} (float x, float y, int size)
+\item 
+float \hyperlink{conversionElements_8h_a2851552394abaf56e2cc232660580e53}{calculate\-Zoom} (int ref\-X, int ref\-Y, float decalage, int flag)
+\item 
+int \hyperlink{conversionElements_8h_aa5c04722427362120674bd42606fbf9b}{color\-Background} (int red, int blue, int green, int oppacity)
+\item 
+int \hyperlink{conversionElements_8h_a9b565a29e63df82d12fae0a2a3f84349}{color\-Background\-Default} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{conversionElements_8h_a4063f0cc3259f847616fd638138216df}{int {\bfseries windows\-\_\-\-Height}}\label{conversionElements_8h_a4063f0cc3259f847616fd638138216df}
+
+\item 
+\hypertarget{conversionElements_8h_a443b5fae5439020c773c1f0e39354dbc}{int {\bfseries windows\-\_\-\-Width}}\label{conversionElements_8h_a443b5fae5439020c773c1f0e39354dbc}
+
+\item 
+\hypertarget{conversionElements_8h_aaa8e409e04dcf575ef63fd5fb3db06f9}{S\-D\-L\-\_\-\-Window $\ast$ {\bfseries window}}\label{conversionElements_8h_aaa8e409e04dcf575ef63fd5fb3db06f9}
+
+\item 
+\hypertarget{conversionElements_8h_a966da7a60c4ea3ba301e26ccc5efe452}{S\-D\-L\-\_\-\-Renderer $\ast$ {\bfseries renderer}}\label{conversionElements_8h_a966da7a60c4ea3ba301e26ccc5efe452}
+
+\item 
+\hypertarget{conversionElements_8h_a2896431d6a80cd39b3d24b40237612ee}{int {\bfseries quit}}\label{conversionElements_8h_a2896431d6a80cd39b3d24b40237612ee}
+
+\item 
+\hypertarget{conversionElements_8h_a51c5a239ff83d14d16f49f8ebd9e0a24}{int {\bfseries deplac\-X}}\label{conversionElements_8h_a51c5a239ff83d14d16f49f8ebd9e0a24}
+
+\item 
+\hypertarget{conversionElements_8h_ad8cc417990fc387a0d9f869c31c30453}{int {\bfseries deplac\-Y}}\label{conversionElements_8h_ad8cc417990fc387a0d9f869c31c30453}
+
+\item 
+\hypertarget{conversionElements_8h_a15776f201dc8b554110222e67a51cbae}{float {\bfseries zoom}}\label{conversionElements_8h_a15776f201dc8b554110222e67a51cbae}
+
+\item 
+\hypertarget{conversionElements_8h_ad7479fac074a257102bfd447e67fdff6}{int {\bfseries pas\-Souris\-X}}\label{conversionElements_8h_ad7479fac074a257102bfd447e67fdff6}
+
+\item 
+\hypertarget{conversionElements_8h_a958d1dedb8459e6f32b9d17711340199}{int {\bfseries pas\-Souris\-Y}}\label{conversionElements_8h_a958d1dedb8459e6f32b9d17711340199}
+
+\item 
+\hypertarget{conversionElements_8h_ab9ae0370892e108e95fa4babb4be60a7}{int {\bfseries deplac\-Z\-X}}\label{conversionElements_8h_ab9ae0370892e108e95fa4babb4be60a7}
+
+\item 
+\hypertarget{conversionElements_8h_a26ee2b2b6e2fb87613c6087536c0f4e3}{int {\bfseries deplac\-Z\-Y}}\label{conversionElements_8h_a26ee2b2b6e2fb87613c6087536c0f4e3}
+
+\item 
+\hypertarget{conversionElements_8h_a70fb04839c37c2948139a6310ec94bda}{int {\bfseries clicker}}\label{conversionElements_8h_a70fb04839c37c2948139a6310ec94bda}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Declare fonctions to convert elements. \begin{DoxyAuthor}{Author}
+Isabelle M\-A\-R\-I\-N\-O Pierrick J\-A\-C\-Q\-U\-E\-T\-T\-E Hafça T\-I\-R\-I\-C\-H\-I\-N\-E 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6 April 2016
+\end{DoxyDate}
+Declare fonctions to convert elements\-: nodes, bounds Calculate distances between points Declare fonctions that put coordinates values to the window scale 
+
+\subsection{Function Documentation}
+\hypertarget{conversionElements_8h_a830c114c07e594b1b50f27627c98f5da}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!angle@{angle}}
+\index{angle@{angle}!conversionElements.h@{conversion\-Elements.\-h}}
+\subsubsection[{angle}]{\setlength{\rightskip}{0pt plus 5cm}float angle (
+\begin{DoxyParamCaption}
+\item[{float}]{ax, }
+\item[{float}]{ay, }
+\item[{float}]{bx, }
+\item[{float}]{by, }
+\item[{float}]{cx, }
+\item[{float}]{cy}
+\end{DoxyParamCaption}
+)}}\label{conversionElements_8h_a830c114c07e594b1b50f27627c98f5da}
+This method calculates the angle between two vectors. The returned value is in degrees
+
+
+\begin{DoxyParams}{Parameters}
+{\em ax} & float X coordinate of point a \\
+\hline
+{\em ay} & float Y coordinate of point a \\
+\hline
+{\em bx} & float X coordinate of point b \\
+\hline
+{\em by} & float Y coordinate of point b \\
+\hline
+{\em cx} & float X coordinate of point c \\
+\hline
+{\em cy} & float Y coordinate of point c \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float \-: The angle between the two vectors A\-B and B\-C (degree) 
+\end{DoxyReturn}
+\hypertarget{conversionElements_8h_a2851552394abaf56e2cc232660580e53}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!calculate\-Zoom@{calculate\-Zoom}}
+\index{calculate\-Zoom@{calculate\-Zoom}!conversionElements.h@{conversion\-Elements.\-h}}
+\subsubsection[{calculate\-Zoom}]{\setlength{\rightskip}{0pt plus 5cm}float calculate\-Zoom (
+\begin{DoxyParamCaption}
+\item[{int}]{ref\-X, }
+\item[{int}]{ref\-Y, }
+\item[{float}]{decalage, }
+\item[{int}]{flag}
+\end{DoxyParamCaption}
+)}}\label{conversionElements_8h_a2851552394abaf56e2cc232660580e53}
+This function calculates the offset of each point zonction zoom 
+\begin{DoxyParams}{Parameters}
+{\em ref\-X} & int The reference point x \\
+\hline
+{\em ref\-Y} & int The reference point y \\
+\hline
+{\em decalage} & float The current decalage \\
+\hline
+{\em flag} & int Whether one or +zoom -\/zoom \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float The new decalage 
+\end{DoxyReturn}
+\hypertarget{conversionElements_8h_aa5c04722427362120674bd42606fbf9b}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!color\-Background@{color\-Background}}
+\index{color\-Background@{color\-Background}!conversionElements.h@{conversion\-Elements.\-h}}
+\subsubsection[{color\-Background}]{\setlength{\rightskip}{0pt plus 5cm}int color\-Background (
+\begin{DoxyParamCaption}
+\item[{int}]{red, }
+\item[{int}]{blue, }
+\item[{int}]{green, }
+\item[{int}]{oppacity}
+\end{DoxyParamCaption}
+)}}\label{conversionElements_8h_aa5c04722427362120674bd42606fbf9b}
+According initialising the bottom of the window 
+\begin{DoxyParams}{Parameters}
+{\em red} & int color R \\
+\hline
+{\em blue} & int color G \\
+\hline
+{\em green} & int color B \\
+\hline
+{\em oppacity} & int oppacity color \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Lets see if everything went well 
+\end{DoxyReturn}
+\hypertarget{conversionElements_8h_a9b565a29e63df82d12fae0a2a3f84349}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!color\-Background\-Default@{color\-Background\-Default}}
+\index{color\-Background\-Default@{color\-Background\-Default}!conversionElements.h@{conversion\-Elements.\-h}}
+\subsubsection[{color\-Background\-Default}]{\setlength{\rightskip}{0pt plus 5cm}int color\-Background\-Default (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{conversionElements_8h_a9b565a29e63df82d12fae0a2a3f84349}
+According initialising the bottom of the window by default \begin{DoxyReturn}{Returns}
+int Lets see if everything went well 
+\end{DoxyReturn}
+\hypertarget{conversionElements_8h_ad66d504f94bd54c34335365e98edd4e7}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!conversion\-Lat\-Lon@{conversion\-Lat\-Lon}}
+\index{conversion\-Lat\-Lon@{conversion\-Lat\-Lon}!conversionElements.h@{conversion\-Elements.\-h}}
+\subsubsection[{conversion\-Lat\-Lon}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Coordinate}$\ast$ conversion\-Lat\-Lon (
+\begin{DoxyParamCaption}
+\item[{float}]{lat, }
+\item[{float}]{lon}
+\end{DoxyParamCaption}
+)}}\label{conversionElements_8h_ad66d504f94bd54c34335365e98edd4e7}
+
+
+calculate the \hyperlink{structCoordinate}{Coordinate} for a point in openstreetmap 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lat} & float that represente the latitude of this point \\
+\hline
+{\em lon} & float that represente the longitude of this point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{structCoordinate}{Coordinate} $\ast$ 
+\end{DoxyReturn}
+\hypertarget{conversionElements_8h_a53a0d679e571c6851a5c6d0c7d37e763}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!convert\-Bounds@{convert\-Bounds}}
+\index{convert\-Bounds@{convert\-Bounds}!conversionElements.h@{conversion\-Elements.\-h}}
+\subsubsection[{convert\-Bounds}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bounds}$\ast$ convert\-Bounds (
+\begin{DoxyParamCaption}
+\item[{{\bf Bounds} $\ast$}]{b}
+\end{DoxyParamCaption}
+)}}\label{conversionElements_8h_a53a0d679e571c6851a5c6d0c7d37e763}
+
+
+convert the bounds of the map to the min is (0,0) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & \hyperlink{structBounds}{Bounds} that represente the bounds of the map before the changement \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Bounds$\ast$ 
+\end{DoxyReturn}
+\hypertarget{conversionElements_8h_a90591e521d718a45a88ec4b8d67a988b}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!distance\-Lat\-Lon@{distance\-Lat\-Lon}}
+\index{distance\-Lat\-Lon@{distance\-Lat\-Lon}!conversionElements.h@{conversion\-Elements.\-h}}
+\subsubsection[{distance\-Lat\-Lon}]{\setlength{\rightskip}{0pt plus 5cm}float distance\-Lat\-Lon (
+\begin{DoxyParamCaption}
+\item[{float}]{lat1, }
+\item[{float}]{lon1, }
+\item[{float}]{lat2, }
+\item[{float}]{lon2}
+\end{DoxyParamCaption}
+)}}\label{conversionElements_8h_a90591e521d718a45a88ec4b8d67a988b}
+
+
+calculate the distance beetween 2 points in a map 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lat1} & float that represente the latitude of point 1 \\
+\hline
+{\em lon1} & float that represente the longitude of point1 \\
+\hline
+{\em lat2} & float that represente the latitude of point 2 \\
+\hline
+{\em lon2} & float that represente the longitude of point2 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float the distance 
+\end{DoxyReturn}
+\hypertarget{conversionElements_8h_a248ef05c0bf1752dbdd368a8d3084ad9}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!distance\-To\-Bounds@{distance\-To\-Bounds}}
+\index{distance\-To\-Bounds@{distance\-To\-Bounds}!conversionElements.h@{conversion\-Elements.\-h}}
+\subsubsection[{distance\-To\-Bounds}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ distance\-To\-Bounds (
+\begin{DoxyParamCaption}
+\item[{{\bf Bounds} $\ast$}]{b, }
+\item[{{\bf Node} $\ast$}]{n}
+\end{DoxyParamCaption}
+)}}\label{conversionElements_8h_a248ef05c0bf1752dbdd368a8d3084ad9}
+
+
+calcule the distance between a \hyperlink{structNode}{Node} and the \hyperlink{structBounds}{Bounds}'s map 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & represente the point on the map \\
+\hline
+{\em b} & represente the bounds of the map \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Node$\ast$ 
+\end{DoxyReturn}
+\hypertarget{conversionElements_8h_a075c229cf74f9814e529c85a425f2734}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!distance\-X@{distance\-X}}
+\index{distance\-X@{distance\-X}!conversionElements.h@{conversion\-Elements.\-h}}
+\subsubsection[{distance\-X}]{\setlength{\rightskip}{0pt plus 5cm}float distance\-X (
+\begin{DoxyParamCaption}
+\item[{float}]{x1, }
+\item[{float}]{x2}
+\end{DoxyParamCaption}
+)}}\label{conversionElements_8h_a075c229cf74f9814e529c85a425f2734}
+
+
+calculate the abscisse's distance beetween 2 points in a carthesien repere 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x1} & float that represente the abcisse of point 1 \\
+\hline
+{\em x2} & float that represente the abcisse of point 2 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\hypertarget{conversionElements_8h_a78254a65bf2ec07b4268479ec6104c55}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!distance\-X\-Y@{distance\-X\-Y}}
+\index{distance\-X\-Y@{distance\-X\-Y}!conversionElements.h@{conversion\-Elements.\-h}}
+\subsubsection[{distance\-X\-Y}]{\setlength{\rightskip}{0pt plus 5cm}float distance\-X\-Y (
+\begin{DoxyParamCaption}
+\item[{float}]{x1, }
+\item[{float}]{y1, }
+\item[{float}]{x2, }
+\item[{float}]{y2}
+\end{DoxyParamCaption}
+)}}\label{conversionElements_8h_a78254a65bf2ec07b4268479ec6104c55}
+
+
+calculate the distance beetween 2 points in a carthesien repere 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x1} & float that represente the abcisse of point 1 \\
+\hline
+{\em y1} & float that represente the ordinate of point1 \\
+\hline
+{\em x2} & float that represente the abcisse of point 2 \\
+\hline
+{\em y2} & float that represente the ordinate of point2 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\hypertarget{conversionElements_8h_ae51377d214fc1d1063596883f0ed80ea}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!distance\-Y@{distance\-Y}}
+\index{distance\-Y@{distance\-Y}!conversionElements.h@{conversion\-Elements.\-h}}
+\subsubsection[{distance\-Y}]{\setlength{\rightskip}{0pt plus 5cm}float distance\-Y (
+\begin{DoxyParamCaption}
+\item[{float}]{y1, }
+\item[{float}]{y2}
+\end{DoxyParamCaption}
+)}}\label{conversionElements_8h_ae51377d214fc1d1063596883f0ed80ea}
+
+
+calculate the ordinate's distance beetween 2 points in a carthesien repere 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y1} & float that represente the ordinate of point1 \\
+\hline
+{\em y2} & float that represente the ordinate of point2 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+\hypertarget{conversionElements_8h_a26f3232214f74a1eff1d8927c4f4b296}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!mise\-A\-Echelle\-X@{mise\-A\-Echelle\-X}}
+\index{mise\-A\-Echelle\-X@{mise\-A\-Echelle\-X}!conversionElements.h@{conversion\-Elements.\-h}}
+\subsubsection[{mise\-A\-Echelle\-X}]{\setlength{\rightskip}{0pt plus 5cm}float mise\-A\-Echelle\-X (
+\begin{DoxyParamCaption}
+\item[{float}]{x, }
+\item[{float}]{y, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{conversionElements_8h_a26f3232214f74a1eff1d8927c4f4b296}
+Fonction that puts the ordonate's X value to the window scale
+
+
+\begin{DoxyParams}{Parameters}
+{\em float} & x the ordonate value of the point \\
+\hline
+{\em float} & y \hyperlink{structCoordinate}{Coordinate} bounds the window's bounds \\
+\hline
+{\em int} & size Size window's \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value of the ordonate put to scale 
+\end{DoxyReturn}
+\hypertarget{conversionElements_8h_a4cb5ae2d71cf1e9c01b8439b5697e9d5}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!mise\-A\-Echelle\-Y@{mise\-A\-Echelle\-Y}}
+\index{mise\-A\-Echelle\-Y@{mise\-A\-Echelle\-Y}!conversionElements.h@{conversion\-Elements.\-h}}
+\subsubsection[{mise\-A\-Echelle\-Y}]{\setlength{\rightskip}{0pt plus 5cm}float mise\-A\-Echelle\-Y (
+\begin{DoxyParamCaption}
+\item[{float}]{x, }
+\item[{float}]{y, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{conversionElements_8h_a4cb5ae2d71cf1e9c01b8439b5697e9d5}
+Fonction that puts the ordonate's X value to the window scale
+
+
+\begin{DoxyParams}{Parameters}
+{\em float} & x the ordonate value of the point \\
+\hline
+{\em float} & y \hyperlink{structCoordinate}{Coordinate} bounds the window's bounds \\
+\hline
+{\em int} & size Size window's \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value of the ordonate put to scale 
+\end{DoxyReturn}

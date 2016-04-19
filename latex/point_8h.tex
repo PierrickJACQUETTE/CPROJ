@@ -1,0 +1,68 @@
+\hypertarget{point_8h}{\section{point.\-h File Reference}
+\label{point_8h}\index{point.\-h@{point.\-h}}
+}
+
+
+Declaration of fonctions that draws the map by using points.  
+
+
+{\ttfamily \#include \char`\"{}conversion\-Elements.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{point_8h_a75fdb75bdd5f02928df67efa64f89db9}{affichage} (float x, float y)
+\item 
+void \hyperlink{point_8h_a8743c50004f98704b526683ed4c554f2}{parcours\-Avl} (\hyperlink{structAvl}{Avl} $\ast$$\ast$a, \hyperlink{structBounds}{Bounds} $\ast$bounds)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Declaration of fonctions that draws the map by using points. \begin{DoxyAuthor}{Author}
+Isabelle M\-A\-R\-I\-N\-O Pierrick J\-A\-C\-Q\-U\-E\-T\-T\-E Hafça T\-I\-R\-I\-C\-H\-I\-N\-E 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6 April 2016 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{point_8h_a75fdb75bdd5f02928df67efa64f89db9}{\index{point.\-h@{point.\-h}!affichage@{affichage}}
+\index{affichage@{affichage}!point.h@{point.\-h}}
+\subsubsection[{affichage}]{\setlength{\rightskip}{0pt plus 5cm}void affichage (
+\begin{DoxyParamCaption}
+\item[{float}]{x, }
+\item[{float}]{y}
+\end{DoxyParamCaption}
+)}}\label{point_8h_a75fdb75bdd5f02928df67efa64f89db9}
+Fonction that draws a point in the window
+
+
+\begin{DoxyParams}{Parameters}
+{\em float} & x the coordinate of the abscisse of the point \\
+\hline
+{\em float} & y the coordinate of the ordonate of the point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing it just draws the point 
+\end{DoxyReturn}
+\hypertarget{point_8h_a8743c50004f98704b526683ed4c554f2}{\index{point.\-h@{point.\-h}!parcours\-Avl@{parcours\-Avl}}
+\index{parcours\-Avl@{parcours\-Avl}!point.h@{point.\-h}}
+\subsubsection[{parcours\-Avl}]{\setlength{\rightskip}{0pt plus 5cm}void parcours\-Avl (
+\begin{DoxyParamCaption}
+\item[{{\bf Avl} $\ast$$\ast$}]{a, }
+\item[{{\bf Bounds} $\ast$}]{bounds}
+\end{DoxyParamCaption}
+)}}\label{point_8h_a8743c50004f98704b526683ed4c554f2}
+Fonction that browse the avl tree and displays the nodes in the window by calling the affichage fonction
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{structAvl}{Avl}} & $\ast$$\ast$a is the pointer to the avl of node we need to browse \\
+\hline
+{\em Bounds$\ast$} & bounds the window's bounds \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value of the abscisse put to scale 
+\end{DoxyReturn}

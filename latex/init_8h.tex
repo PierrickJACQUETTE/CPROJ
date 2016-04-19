@@ -1,0 +1,175 @@
+\hypertarget{init_8h}{\section{init.\-h File Reference}
+\label{init_8h}\index{init.\-h@{init.\-h}}
+}
+
+
+Initialisation of the principal structure.  
+
+
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}conversion\-Elements.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Core.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{init_8h_ac1955f7bead73c4774d0289a95f3f83a}{\#define {\bfseries S\-I\-Z\-E\-T\-A\-B\-T\-A\-G}~37}\label{init_8h_ac1955f7bead73c4774d0289a95f3f83a}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{init_8h_aa51c8605d9f43fa1f59aa68bced096b1}{\hyperlink{structNode}{Node} $\ast$ {\bfseries init\-Node} (unsigned long id, float lat, float lon, char $\ast$visible, \hyperlink{structBounds}{Bounds} $\ast$b)}\label{init_8h_aa51c8605d9f43fa1f59aa68bced096b1}
+
+\item 
+\hyperlink{structBounds}{Bounds} $\ast$ \hyperlink{init_8h_a9b7a8bd53cc479b0e61df92adaa7e134}{init\-Bounds} (float lat\-\_\-min, float lat\-\_\-max, float lon\-\_\-min, float lon\-\_\-max)
+\begin{DoxyCompactList}\small\item\em initialise the bounds of a map \end{DoxyCompactList}\item 
+\hyperlink{structTag}{Tag} $\ast$$\ast$ \hyperlink{init_8h_a11b35904d2fc2e971583e591fd292226}{init\-Reference\-Tag} ()
+\begin{DoxyCompactList}\small\item\em initialise the table of prinicpal tag (color, keyx and value) \end{DoxyCompactList}\item 
+\hypertarget{init_8h_a1f0dab5959a46337a0f80769fc21c83d}{\hyperlink{structListNode}{List\-Node} $\ast$ {\bfseries init\-List\-Node} (unsigned long first)}\label{init_8h_a1f0dab5959a46337a0f80769fc21c83d}
+
+\item 
+\hypertarget{init_8h_a92feed9689f5431e85a0cb48e92fd962}{\hyperlink{structListNode}{List\-Node} $\ast$ {\bfseries add\-Ref\-List\-Node} (unsigned long n, \hyperlink{structListNode}{List\-Node} $\ast$l)}\label{init_8h_a92feed9689f5431e85a0cb48e92fd962}
+
+\item 
+\hypertarget{init_8h_a9be0478bb0b26ce996c1a9205aca3549}{\hyperlink{structTag}{Tag} $\ast$ {\bfseries init\-Tag} (char $\ast$key, char $\ast$value, \hyperlink{structColor}{Color} $\ast$c, int type, int thick, int priority)}\label{init_8h_a9be0478bb0b26ce996c1a9205aca3549}
+
+\item 
+\hypertarget{init_8h_aaa5ad46af608861d8cfaf989e404ad3e}{\hyperlink{structWay}{Way} $\ast$ {\bfseries init\-Way} (unsigned long id, char $\ast$visible, \hyperlink{structListNode}{List\-Node} $\ast$ln, \hyperlink{structTag}{Tag} $\ast$tag, int size, char $\ast$name)}\label{init_8h_aaa5ad46af608861d8cfaf989e404ad3e}
+
+\item 
+\hyperlink{structTag}{Tag} $\ast$ \hyperlink{init_8h_a1fa18d380873f31ebf88c45dc852cacd}{good\-Tag\-Relation} (char $\ast$k, char $\ast$v)
+\begin{DoxyCompactList}\small\item\em analyse if a tag could be stock for a relation \end{DoxyCompactList}\item 
+\hyperlink{structTag}{Tag} $\ast$ \hyperlink{init_8h_a4d74851d216b980f933b4846b78fb8e9}{good\-Tag} (char $\ast$k, char $\ast$v, \hyperlink{structTag}{Tag} $\ast$$\ast$ref)
+\begin{DoxyCompactList}\small\item\em analyse if a tag could be stock \end{DoxyCompactList}\item 
+\hypertarget{init_8h_aba261d6f41480222c49b66ff2c0c6a9c}{\hyperlink{structRelation}{Relation} $\ast$ {\bfseries init\-Relation} (unsigned long id, char $\ast$visible, \hyperlink{structTag}{Tag} $\ast$t, \hyperlink{structListWay}{List\-Way} $\ast$lw, \hyperlink{structListNode}{List\-Node} $\ast$ln)}\label{init_8h_aba261d6f41480222c49b66ff2c0c6a9c}
+
+\item 
+\hypertarget{init_8h_a179957fb7b8d375f27bb3ee482269035}{\hyperlink{structListWay}{List\-Way} $\ast$ {\bfseries init\-List\-Way} (unsigned long first)}\label{init_8h_a179957fb7b8d375f27bb3ee482269035}
+
+\item 
+\hypertarget{init_8h_abbd0021029464c61dffc5111c22eb721}{\hyperlink{structListWay}{List\-Way} $\ast$ {\bfseries add\-Ref\-List\-Way} (unsigned long way, char $\ast$role, \hyperlink{structListWay}{List\-Way} $\ast$lw)}\label{init_8h_abbd0021029464c61dffc5111c22eb721}
+
+\item 
+\hypertarget{init_8h_abdee006514c0ef2134f7c04e4a63de83}{\hyperlink{structListRelation}{List\-Relation} $\ast$ {\bfseries init\-List\-Relation} (\hyperlink{structRelation}{Relation} $\ast$first)}\label{init_8h_abdee006514c0ef2134f7c04e4a63de83}
+
+\item 
+\hypertarget{init_8h_abaa47ed2a10a224134df38481c1a54d6}{\hyperlink{structListRelation}{List\-Relation} $\ast$ {\bfseries add\-Ref\-List\-Relation} (\hyperlink{structRelation}{Relation} $\ast$id, \hyperlink{structListRelation}{List\-Relation} $\ast$lr)}\label{init_8h_abaa47ed2a10a224134df38481c1a54d6}
+
+\item 
+\hyperlink{structMap}{Map} $\ast$ \hyperlink{init_8h_af7560ce2af2a08abe0b230e7ba56cf45}{init\-Map} ()
+\begin{DoxyCompactList}\small\item\em initalise a \hyperlink{structMap}{Map} from Open\-Street\-Map \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Initialisation of the principal structure. \begin{DoxyAuthor}{Author}
+Isabelle M\-A\-R\-I\-N\-O Pierrick J\-A\-C\-Q\-U\-E\-T\-T\-E Hafça T\-I\-R\-I\-C\-H\-I\-N\-E 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+18 avril 2016 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{init_8h_a4d74851d216b980f933b4846b78fb8e9}{\index{init.\-h@{init.\-h}!good\-Tag@{good\-Tag}}
+\index{good\-Tag@{good\-Tag}!init.h@{init.\-h}}
+\subsubsection[{good\-Tag}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tag}$\ast$ good\-Tag (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{k, }
+\item[{char $\ast$}]{v, }
+\item[{{\bf Tag} $\ast$$\ast$}]{ref}
+\end{DoxyParamCaption}
+)}}\label{init_8h_a4d74851d216b980f933b4846b78fb8e9}
+
+
+analyse if a tag could be stock 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & represente the key of the tag \\
+\hline
+{\em value} & represente the value of the tag \\
+\hline
+{\em ref} & is a table with all the tag which it should be stock \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tag$\ast$ 
+\end{DoxyReturn}
+\hypertarget{init_8h_a1fa18d380873f31ebf88c45dc852cacd}{\index{init.\-h@{init.\-h}!good\-Tag\-Relation@{good\-Tag\-Relation}}
+\index{good\-Tag\-Relation@{good\-Tag\-Relation}!init.h@{init.\-h}}
+\subsubsection[{good\-Tag\-Relation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tag}$\ast$ good\-Tag\-Relation (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{k, }
+\item[{char $\ast$}]{v}
+\end{DoxyParamCaption}
+)}}\label{init_8h_a1fa18d380873f31ebf88c45dc852cacd}
+
+
+analyse if a tag could be stock for a relation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & represente the key of the tag \\
+\hline
+{\em value} & represente the value of the tag \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tag$\ast$ 
+\end{DoxyReturn}
+\hypertarget{init_8h_a9b7a8bd53cc479b0e61df92adaa7e134}{\index{init.\-h@{init.\-h}!init\-Bounds@{init\-Bounds}}
+\index{init\-Bounds@{init\-Bounds}!init.h@{init.\-h}}
+\subsubsection[{init\-Bounds}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bounds}$\ast$ init\-Bounds (
+\begin{DoxyParamCaption}
+\item[{float}]{lat\-\_\-min, }
+\item[{float}]{lat\-\_\-max, }
+\item[{float}]{lon\-\_\-min, }
+\item[{float}]{lon\-\_\-max}
+\end{DoxyParamCaption}
+)}}\label{init_8h_a9b7a8bd53cc479b0e61df92adaa7e134}
+
+
+initialise the bounds of a map 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lat\-\_\-max} & float that represente the maximal latitude on the map \\
+\hline
+{\em lon\-\_\-max} & float that represente the maximal longitude on the map \\
+\hline
+{\em lat\-\_\-min} & float that represente the minium latitude on the map \\
+\hline
+{\em lon\-\_\-min} & float that represente the minimum longitude on the map \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Bounds$\ast$ 
+\end{DoxyReturn}
+\hypertarget{init_8h_af7560ce2af2a08abe0b230e7ba56cf45}{\index{init.\-h@{init.\-h}!init\-Map@{init\-Map}}
+\index{init\-Map@{init\-Map}!init.h@{init.\-h}}
+\subsubsection[{init\-Map}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Map}$\ast$ init\-Map (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{init_8h_af7560ce2af2a08abe0b230e7ba56cf45}
+
+
+initalise a \hyperlink{structMap}{Map} from Open\-Street\-Map 
+
+\begin{DoxyReturn}{Returns}
+Map$\ast$ 
+\end{DoxyReturn}
+\hypertarget{init_8h_a11b35904d2fc2e971583e591fd292226}{\index{init.\-h@{init.\-h}!init\-Reference\-Tag@{init\-Reference\-Tag}}
+\index{init\-Reference\-Tag@{init\-Reference\-Tag}!init.h@{init.\-h}}
+\subsubsection[{init\-Reference\-Tag}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tag}$\ast$$\ast$ init\-Reference\-Tag (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{init_8h_a11b35904d2fc2e971583e591fd292226}
+
+
+initialise the table of prinicpal tag (color, keyx and value) 
+
+\begin{DoxyReturn}{Returns}
+Tag$\ast$$\ast$ 
+\end{DoxyReturn}

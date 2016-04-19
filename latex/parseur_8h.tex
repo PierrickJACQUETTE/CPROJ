@@ -1,0 +1,149 @@
+\hypertarget{parseur_8h}{\section{parseur.\-h File Reference}
+\label{parseur_8h}\index{parseur.\-h@{parseur.\-h}}
+}
+
+
+Declare fonctions needed to parse the xml document.  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$libxml/xmlmemory.\-h$>$}\\*
+{\ttfamily \#include $<$libxml/parser.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}Avl.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structMap}{Map} $\ast$ \hyperlink{parseur_8h_ab981a83063e9c8590280d4daa099b954}{parse\-Doc} (char $\ast$filename)
+\item 
+\hyperlink{structMap}{Map} $\ast$ \hyperlink{parseur_8h_ac9de7359c01e2cecdf418a3b774740d5}{parse\-Elements} (xml\-Doc\-Ptr doc, xml\-Node\-Ptr cur)
+\item 
+\hyperlink{structBounds}{Bounds} $\ast$ \hyperlink{parseur_8h_ab3fffeb855be45e17ea11a656c21befe}{parse\-Bounds} (xml\-Node\-Ptr cur)
+\item 
+\hyperlink{structNode}{Node} $\ast$ \hyperlink{parseur_8h_aa21c1a535b102b28a87c3d74d24f76da}{parse\-Node} (xml\-Doc\-Ptr doc, xml\-Node\-Ptr cur, \hyperlink{structBounds}{Bounds} $\ast$bounds)
+\item 
+\hyperlink{structWay}{Way} $\ast$ \hyperlink{parseur_8h_ae42c6b558e8d4a101d02b0e0254dcdea}{parse\-Way} (xml\-Doc\-Ptr doc, xml\-Node\-Ptr cur, \hyperlink{structTag}{Tag} $\ast$$\ast$ref\-Tag)
+\item 
+\hyperlink{structRelation}{Relation} $\ast$ \hyperlink{parseur_8h_a3aa116722a4a61edaefbda85c8d81adc}{parse\-Relation} (xml\-Doc\-Ptr doc, xml\-Node\-Ptr cur)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Declare fonctions needed to parse the xml document. \begin{DoxyAuthor}{Author}
+Hafça T\-I\-R\-I\-C\-H\-I\-N\-E Isabelle M\-A\-R\-I\-N\-O Pierrick J\-A\-C\-Q\-U\-E\-T\-T\-E 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+02 mars 2016
+\end{DoxyDate}
+Declaration of fonctions needed to parse the xml document 
+
+\subsection{Function Documentation}
+\hypertarget{parseur_8h_ab3fffeb855be45e17ea11a656c21befe}{\index{parseur.\-h@{parseur.\-h}!parse\-Bounds@{parse\-Bounds}}
+\index{parse\-Bounds@{parse\-Bounds}!parseur.h@{parseur.\-h}}
+\subsubsection[{parse\-Bounds}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bounds}$\ast$ parse\-Bounds (
+\begin{DoxyParamCaption}
+\item[{xml\-Node\-Ptr}]{cur}
+\end{DoxyParamCaption}
+)}}\label{parseur_8h_ab3fffeb855be45e17ea11a656c21befe}
+Fonction that parses the \char`\"{}bounds\char`\"{} element It initialise the bounds structure we need for the map with the coordinates 
+\begin{DoxyParams}{Parameters}
+{\em xml\-Node\-Ptr} & cur which is a pointer to the current node (here,the bounds node) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to a Bound structure where we put the coordinates we got from the bounds element 
+\end{DoxyReturn}
+\hypertarget{parseur_8h_ab981a83063e9c8590280d4daa099b954}{\index{parseur.\-h@{parseur.\-h}!parse\-Doc@{parse\-Doc}}
+\index{parse\-Doc@{parse\-Doc}!parseur.h@{parseur.\-h}}
+\subsubsection[{parse\-Doc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Map}$\ast$ parse\-Doc (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}}\label{parseur_8h_ab981a83063e9c8590280d4daa099b954}
+Fonction that parses a file, get the root\-\_\-element and, if there is no problem with the file, calls the parse\-Elements fonction 
+\begin{DoxyParams}{Parameters}
+{\em a} & char$\ast$ filename which is the file name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a map which is a structure where we put the avl and the bounds 
+\end{DoxyReturn}
+\hypertarget{parseur_8h_ac9de7359c01e2cecdf418a3b774740d5}{\index{parseur.\-h@{parseur.\-h}!parse\-Elements@{parse\-Elements}}
+\index{parse\-Elements@{parse\-Elements}!parseur.h@{parseur.\-h}}
+\subsubsection[{parse\-Elements}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Map}$\ast$ parse\-Elements (
+\begin{DoxyParamCaption}
+\item[{xml\-Doc\-Ptr}]{doc, }
+\item[{xml\-Node\-Ptr}]{cur}
+\end{DoxyParamCaption}
+)}}\label{parseur_8h_ac9de7359c01e2cecdf418a3b774740d5}
+Fonction that parses the elements needed\-: the bounds, nodes and ways. It creates a map and inserts the bounds element it creates an A\-V\-L, initialise it and add's the nodes. at the end, it adds the avl to the map structure and returns the map 
+\begin{DoxyParams}{Parameters}
+{\em xml\-Doc\-Ptr} & doc which is the file parsed \\
+\hline
+{\em xml\-Node\-Ptr} & cur which is a pointer to the current node (at the beginning, it is called with the root node) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a map which is a structure created where we put the avl and the bounds 
+\end{DoxyReturn}
+\hypertarget{parseur_8h_aa21c1a535b102b28a87c3d74d24f76da}{\index{parseur.\-h@{parseur.\-h}!parse\-Node@{parse\-Node}}
+\index{parse\-Node@{parse\-Node}!parseur.h@{parseur.\-h}}
+\subsubsection[{parse\-Node}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ parse\-Node (
+\begin{DoxyParamCaption}
+\item[{xml\-Doc\-Ptr}]{doc, }
+\item[{xml\-Node\-Ptr}]{cur, }
+\item[{{\bf Bounds} $\ast$}]{bounds}
+\end{DoxyParamCaption}
+)}}\label{parseur_8h_aa21c1a535b102b28a87c3d74d24f76da}
+Fonction that parses a node 
+\begin{DoxyParams}{Parameters}
+{\em xml\-Doc\-Ptr} & doc which is the file parsed \\
+\hline
+{\em xml\-Node\-Ptr} & cur which is a pointer to the current node \\
+\hline
+{\em \hyperlink{structBounds}{Bounds}} & $\ast$bounds which is the structure of the bounds element we need to init the nodes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a node structure created whith the attributes we got from the parsing 
+\end{DoxyReturn}
+\hypertarget{parseur_8h_a3aa116722a4a61edaefbda85c8d81adc}{\index{parseur.\-h@{parseur.\-h}!parse\-Relation@{parse\-Relation}}
+\index{parse\-Relation@{parse\-Relation}!parseur.h@{parseur.\-h}}
+\subsubsection[{parse\-Relation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Relation}$\ast$ parse\-Relation (
+\begin{DoxyParamCaption}
+\item[{xml\-Doc\-Ptr}]{doc, }
+\item[{xml\-Node\-Ptr}]{cur}
+\end{DoxyParamCaption}
+)}}\label{parseur_8h_a3aa116722a4a61edaefbda85c8d81adc}
+Fonction that parses a relation 
+\begin{DoxyParams}{Parameters}
+{\em xml\-Doc\-Ptr} & doc which is the file parsed \\
+\hline
+{\em xml\-Node\-Ptr} & cur which is a pointer to the current node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a relation structure created whith the attributes we got from the parsing 
+\end{DoxyReturn}
+\hypertarget{parseur_8h_ae42c6b558e8d4a101d02b0e0254dcdea}{\index{parseur.\-h@{parseur.\-h}!parse\-Way@{parse\-Way}}
+\index{parse\-Way@{parse\-Way}!parseur.h@{parseur.\-h}}
+\subsubsection[{parse\-Way}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Way}$\ast$ parse\-Way (
+\begin{DoxyParamCaption}
+\item[{xml\-Doc\-Ptr}]{doc, }
+\item[{xml\-Node\-Ptr}]{cur, }
+\item[{{\bf Tag} $\ast$$\ast$}]{ref\-Tag}
+\end{DoxyParamCaption}
+)}}\label{parseur_8h_ae42c6b558e8d4a101d02b0e0254dcdea}
+Fonction that parses a way 
+\begin{DoxyParams}{Parameters}
+{\em xml\-Doc\-Ptr} & doc which is the file parsed \\
+\hline
+{\em xml\-Node\-Ptr} & cur which is a pointer to the current node \\
+\hline
+{\em Tag$\ast$$\ast$} & table represente the tag that we need \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to a way structure created whith the attributes we got from the parsing 
+\end{DoxyReturn}
