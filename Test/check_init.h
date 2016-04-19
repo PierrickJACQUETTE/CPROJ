@@ -1,5 +1,6 @@
 #include<stdlib.h>
 #include <check.h>
-#include "init.h"
+#include "check_include.h"
+
 
 Suite* init_suite(void);
