@@ -5,6 +5,7 @@ void sizeWindows(Map* map){
   float diffY = (map->bounds->max->y) - (map->bounds->min->y);
   float QX = windows_Width / diffX;
   float QY = windows_Height / diffY;
+   
   if(QX > QY){
     windows_Width = diffX * QY;
     windows_Height = diffY * QY;
@@ -13,6 +14,18 @@ void sizeWindows(Map* map){
     windows_Width = diffX * QX;
     windows_Height = diffY * QX;
   }
+  if(windows_Width < WINDOWS_WIDTHMIN){
+  	windows_Width = WINDOWS_WIDTHMIN;
+  }
+  if(windows_Width > WINDOWS_WIDTHMAX){
+  	windows_Width = WINDOWS_WIDTHMAX;
+  }
+  if(windows_Height < WINDOWS_HEIGHTMIN){
+  	windows_Height = WINDOWS_HEIGHTMIN;
+  }
+  else if(windows_Height > WINDOWS_HEIGHTMAX){
+  	windows_Height = WINDOWS_HEIGHTMAX;
+   }
 }
 
 int init_SDL() {
@@ -20,8 +33,6 @@ int init_SDL() {
     fprintf(stderr,"SDL could not initialize! SDL Error: %s\n",SDL_GetError());
     return 0;
   }
-  windows_Width = 800;
-  windows_Height = 600;
   window = SDL_CreateWindow("CPROJ",SDL_WINDOWPOS_UNDEFINED,SDL_WINDOWPOS_UNDEFINED,windows_Width,windows_Height,SDL_WINDOW_SHOWN);
   if(window == NULL) {
     fprintf(stderr,"Window could not be created! SDL Error: %s\n",SDL_GetError());
@@ -29,8 +40,8 @@ int init_SDL() {
   }
   renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
   if(renderer == NULL) {
-    fprintf(stderr,"Renderer could not be created! SDL Error: %s\n",SDL_GetError());
-    return 0;
+	printf("Renderer could not be created! SDL Error: %s\n",SDL_GetError());
+	return 0;
   }
   return colorBackgroundDefault();
 }
@@ -60,6 +71,8 @@ void printMap(Map* map,char* typeOfDessin){
     fprintf(stderr,"Le max de la bound de la map vaut null : %s\n","fonction printMap");
     exit(EXIT_FAILURE);
   }
+  windows_Width = 800;
+  windows_Height = 600;
   sizeWindows(map);
   quit = 1;
   if(init_SDL() ==0) {

@@ -20,7 +20,11 @@
 #include <SDL2/SDL2_gfxPrimitives.h>
 #include "Core.h"
 
-#define PASCLAVIER 10;
+#define PASCLAVIER 10
+#define WINDOWS_WIDTHMIN 100
+#define WINDOWS_WIDTHMAX 900
+#define WINDOWS_HEIGHTMIN 100
+#define WINDOWS_HEIGHTMAX 700
 
 extern int windows_Height;
 extern int windows_Width;
@@ -35,7 +39,6 @@ extern int pasSourisY;
 extern int deplacZX;
 extern int deplacZY;
 extern int clicker;
-
 /**
 * \fn Coordinate* conversionLatLon(float lat, float lon)
 * \brief calculate the Coordinate for a point in openstreetmap

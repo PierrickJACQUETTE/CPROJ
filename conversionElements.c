@@ -14,6 +14,8 @@ int pasSourisY;
 int deplacZX;
 int deplacZY;
 int clicker;
+int decalageX;
+int decalageY;
 
 Coordinate* conversionLatLon(float lat, float lon){
 	Coordinate *c= malloc(sizeof(Coordinate));
@@ -126,12 +128,12 @@ Sint16* swap(Sint16 tab[4]){
 
 
 float miseAEchelleX(float x, float y,int size){
-	return ((x * size / y) * zoom) + deplacX + deplacZX;
+	return (((x + decalageX) * size / y) * zoom) + deplacX + deplacZX;
 	//return ((x*size/y));
 }
 
 float miseAEchelleY(float x, float y,int size){
-	return ((size - (x * size / y)) * zoom) + deplacY + deplacZY;
+	return ((size - ((x + decalageY) * size / y)) * zoom) + deplacY + deplacZY;
 	//return ((size-(x*size/y)));
 }
 
