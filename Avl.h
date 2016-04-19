@@ -28,27 +28,28 @@ Node* searchNode(Avl *a, unsigned long key);
 
 /**
 * search function in an AVL according to a key, this key is the reference way
-* @param  a   Self-balancing binary search tree
+* @param  a Self-balancing binary search tree
 * @param  key it is the reference node
-* @return     return the way if it exists, otherwise null
+* @return  return the way if it exists, otherwise null
 */
 Way* searchWay(Avl *a, unsigned long key);
 
 /**
 * function to insert the key in the AVL in the right place according to its
 * value , and the transition if necessary, rebalanced the tree
-* @param  a       Self-balancing binary search tree
+* @param  a Self-balancing binary search tree
 * @param  n it is the reference node
 * @param  w it is the reference way
-* @return         A tree under the pointer with the change
+* @return  A tree under the pointer with the change
 */
 Avl* insert(Avl **a,Node *n, Way *w);
 
 /**
 * Initializing the AVL with the root , the parameter content
-* @param a       Self-balancing binary search tree
+* @param a Self-balancing binary search tree
 * @param n it is the reference node
 * @param w it is the reference way
+* @return  A tree under the pointer with the change
 */
 Avl * init(Avl **a,Node *n, Way*w);
 

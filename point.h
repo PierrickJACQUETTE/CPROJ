@@ -13,19 +13,19 @@
 
 /**
 * Fonction that draws a point in the window
+*  it just draws the point
 *
 * @param  float x the coordinate of the abscisse of the point
 * @param  float y the coordinate of the ordonate of the point
-* @return  nothing it just draws the point
 */
 void affichage(float x, float y);
 
 /**
 * Fonction that browse the avl tree and displays the nodes in the window by calling the affichage fonction
+* value of the abscisse put to scale
 *
 * @param  Avl **a is the pointer to the avl of node we need to browse
 * @param  Bounds* bounds the window's bounds
-* @return  value of the abscisse put to scale
 */
 void parcoursAvl(Avl **a, Bounds* bounds);
 
