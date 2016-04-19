@@ -115,16 +115,6 @@ float normalize(float a, float b,float length);
 float angle(float ax, float ay, float bx,float by,float cx,float cy);
 
 /**
-* \fn distanceToBounds(Bounds *b, Node* n)
-* \brief calcule the distance between a Node and the Bounds's map
-*
-* \param n represente the point on the map
-* \param b represente the bounds of the map
-* \return Node*
-*/
-Node* distanceToBounds(Bounds *b, Node* n);
-
-/**
 * \fn void distanceLatLon(float lat1, float lon1, float lat2, float lon2)
 * \brief calculate the distance beetween 2 points in a map
 *

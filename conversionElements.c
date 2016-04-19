@@ -14,8 +14,6 @@ int pasSourisY;
 int deplacZX;
 int deplacZY;
 int clicker;
-int decalageX;
-int decalageY;
 
 Coordinate* conversionLatLon(float lat, float lon){
 	Coordinate *c= malloc(sizeof(Coordinate));
@@ -46,12 +44,6 @@ float distanceX(float x1, float x2){
 
 float normalize(float a, float b,float length){
 	return (b - a) / length;
-}
-
-Node* distanceToBounds(Bounds *b, Node* n){
-	n->c->x = distanceX(b->min->x, n->c->x);
-	n->c->y = distanceY(b->min->y, n->c->x);
-	return n;
 }
 
 float distanceLatLon(float lat1, float lon1, float lat2, float lon2){
@@ -126,15 +118,12 @@ Sint16* swap(Sint16 tab[4]){
 	return tab;
 }
 
-
 float miseAEchelleX(float x, float y,int size){
-	return (((x + decalageX) * size / y) * zoom) + deplacX + deplacZX;
-	//return ((x*size/y));
+	return ((x * size / y) * zoom) + deplacX + deplacZX;
 }
 
 float miseAEchelleY(float x, float y,int size){
-	return ((size - ((x + decalageY) * size / y)) * zoom) + deplacY + deplacZY;
-	//return ((size-(x*size/y)));
+	return ((size - (x * size / y)) * zoom) + deplacY + deplacZY;
 }
 
 float calculateZoom(int refX, int refY,float decalage,int flag){ //flag vaut 0 qd + 1 qd -

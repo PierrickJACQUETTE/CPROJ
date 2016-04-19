@@ -1,7 +1,5 @@
 #include "init.h"
 
-
-
 Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b){
 	Node * n = malloc(sizeof(Node));
 	if(n == NULL){
