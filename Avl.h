@@ -1,6 +1,6 @@
 /**
 * \file Avl.h
-* \brief This file can create, insert and retrieve nodes in an AVL ( balanced binary tree search )
+* \brief This file can create, insert and retrieve nodes in an Avl ( balanced binary tree search )
 * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
 *
 * Basic operations of an AVL tree involve carrying out the same actions as would

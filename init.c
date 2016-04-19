@@ -6,7 +6,7 @@ Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b)
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initNode");
 		exit(EXIT_FAILURE);
 	}
-	if(b == NULL ||  b->min == NULL){
+	if(b == NULL ||  b->min == NULL || id<0 || lat==100 || lon==100 || id==-1){
 		return NULL;
 	}
 	n->id=id;
@@ -33,20 +33,20 @@ Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b)
 	if(negativey == 1){
 		n->c->y = -(n->c->y);
 	}
-	if(strcmp(visible, "true")==0){
-		n->visible="T";
+	if(strcmp(visible, "false")==0){
+		n->visible="F";
 	}
 	else{
-		n->visible="F";
+		n->visible="T";
 	}
 	return n;
 }
 
 Bounds* initBounds(float lat_min,float lat_max, float lon_min, float lon_max){
 	Bounds *b=malloc(sizeof(Bounds));
-	if(b == NULL){
+	if(b == NULL || lat_min==100 || lon_min==100|| lon_max==100|| lat_max==100){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initBounds");
-		exit(EXIT_FAILURE);
+		return NULL;
 	}
 	b->min =malloc(sizeof(Coordinate));
 	if(b->min == NULL){
@@ -159,7 +159,7 @@ Tag** initReferenceTag(){
 	t[24]->type= 2;
 	t[25]->type= 2;
 	t[26]->type= 2;
-	t[27]->type= 2;
+	t[27]->type= 5;
 
 	t[28]->type= 4;
 	t[29]->type= 4; 
@@ -226,6 +226,9 @@ Tag* initTag(char* key, char* value, Color* c, int type, int thick, int priority
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initTag");
 		exit(EXIT_FAILURE);
 	}
+	if(c==NULL){
+		return NULL;
+	}
 	t->tagKey = key;
 	t->tagValue = value;
 	t->c = c;
@@ -241,13 +244,16 @@ Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size, c
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initWay");
 		exit(EXIT_FAILURE);
 	}
+	if(id==-1){
+		return NULL;
+	}
 	w->id = id;
 	w->listNd = ln;
-	if(strcmp(visible, "true")==0){
-		w->visible = "T";
+	if(strcmp(visible, "false")==0){
+		w->visible = "F";
 	}
 	else{
-		w->visible = "F";
+		w->visible = "T";
 	}
 	w->tag=malloc(sizeof(Tag));
 	if(w->tag == NULL){
@@ -273,15 +279,18 @@ Relation* initRelation(unsigned long id, char* visible,Tag* t, ListWay* lw, List
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initRelation");
 		exit(EXIT_FAILURE);
 	}
+	if(id==-1){
+		return NULL;
+	}
 	r->id = id;
 	r->listW = lw;
 	r->listN = ln;
 	r->tag = t;
-	if(strcmp(visible, "true")==0){
-		r->visible = "T";
+	if(strcmp(visible, "false")==0){
+		r->visible = "F";
 	}
 	else{
-		r->visible = "F";
+		r->visible = "T";
 	}
 	return r;
 }

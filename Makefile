@@ -20,10 +20,12 @@ CPROJ: $(OBJECTS)
 
 %.o: %.c $(HEADERS)
 	$(CC) -c -o $@ $< $(CFLAGS) $(HXML) $(HSDL) $(HFLAGS)
-
+doc: 
+	doxygen -g
+	doxygen
 
 clean:
-	rm -f $(OBJECTS)
+	rm -f *.o
 
 mrproper: clean
 	rm -f $(EXEC)
