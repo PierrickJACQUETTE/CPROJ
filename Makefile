@@ -25,7 +25,7 @@ doc:
 	doxygen
 
 clean:
-	rm -f $(OBJECTS)
+	rm -f *.o
 
 mrproper: clean
 	rm -f $(EXEC)
