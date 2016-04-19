@@ -63,8 +63,6 @@ float angle(float ax, float ay, float bx,float by,float cx,float cy){
 	float longeurBC = distanceXY(bx,by,cx,cy);
 	float quotientSin = ((ax-bx)*(cx-bx))-((ay-by)*(cy-by));
 	float quotient = ((ax-bx)*(cx-bx))+((ay-by)*(cy-by));
-	//float sin = asinf(quotient/(longeurAB*longeurBC));
-	//quotient = pow(longeurAB,2)+pow(longeurBC,2)-pow((distanceXY(ax,ay,cx,cy)),2);
 	float cos = acosf(quotient/(2*longeurAB*longeurBC));
 	if(quotientSin>0){
 		return cos*180/M_PI;
@@ -126,7 +124,7 @@ float miseAEchelleY(float x, float y,int size){
 	return ((size - (x * size / y)) * zoom) + deplacY + deplacZY;
 }
 
-float calculateZoom(int refX, int refY,float decalage,int flag){ //flag vaut 0 qd + 1 qd -
+float calculateZoom(int refX, int refY,float decalage,int flag){
 	if(flag == 0){
 		zoom *= 2;
 		decalage=(decalage*2)+0.5;

@@ -363,7 +363,6 @@ ListWay* addRefListWay(unsigned long way,char *role, ListWay* lw){
 	return lw;
 }
 
-
 refListRel* initRefListRel(Relation* id, refListRel* next){
 	refListRel* r = malloc(sizeof(refListRel));
 	if(r == NULL){

@@ -108,7 +108,7 @@ void evenement(){
 	float i = 0;
 	do {
 		SDL_Event e;
-		if (SDL_PollEvent(&e)) { // detecte si il y a un even
+		if (SDL_PollEvent(&e)) {
 			switch (e.type) {
 
 				case SDL_MOUSEWHEEL :
@@ -127,7 +127,7 @@ void evenement(){
 				pasSourisY = e.motion.y;
 				clicker = 1;
 				break;
-
+				
 				case SDL_MOUSEMOTION :
 				sourisX = e.motion.x;
 				sourisY = e.motion.y;

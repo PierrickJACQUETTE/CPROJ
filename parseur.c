@@ -13,7 +13,6 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 	xmlAttr *node_attr = cur->properties;
 	xmlNodePtr tmpcur = NULL;
 
-	//we browse the element's properties list and we only print the attributs we need to
 	while(node_attr != NULL){
 		if( xmlStrcmp(node_attr->name,(const xmlChar *)"id")==0 ){
 			id = strtoul((const char *)((node_attr->children)->content),NULL,0);
@@ -25,7 +24,6 @@ Way* parseWay (xmlDocPtr doc, xmlNodePtr cur, Tag** refTag){
 	}
 	tmpcur = cur->xmlChildrenNode;
 
-	//while "way" has childs
 	while(tmpcur != NULL){
 		if (tmpcur->type == XML_ELEMENT_NODE) {
 			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag")==0){
@@ -64,7 +62,6 @@ Relation* parseRelation(xmlDocPtr doc, xmlNodePtr cur){
 	xmlAttr *node_attr = cur->properties;
 	xmlNodePtr tmpcur = NULL;
 
-	//we browse the element's properties list and we only print the attributs we need to
 	while(node_attr != NULL){
 		if( xmlStrcmp(node_attr->name,(const xmlChar *)"id") ==0 ){
 			id = strtoul((const char *)((node_attr->children)->content),NULL,0);
@@ -76,7 +73,6 @@ Relation* parseRelation(xmlDocPtr doc, xmlNodePtr cur){
 	}
 	tmpcur = cur->xmlChildrenNode;
 
-	//while "way" has childs
 	while(tmpcur != NULL){
 		if (tmpcur->type == XML_ELEMENT_NODE) {
 			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag") ==0 ){
@@ -112,7 +108,6 @@ Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
 
 	xmlAttr *node_attr = cur->properties;
 
-	//we browse the element's properties list and we only print the attributs we need to
 	while(node_attr != NULL)
 	{
 		if( xmlStrcmp(node_attr->name,(const xmlChar *)"id")==0 ){
@@ -129,9 +124,7 @@ Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
 		}
 		node_attr = node_attr->next;
 	}
-
 	node = initNode(id,lat,lon,visible, bounds);
-
 	return node;
 }
 
@@ -150,7 +143,6 @@ Bounds* parseBounds (xmlNodePtr cur) {
 	return b;
 }
 
-/*Fonction that parses the elements needed*/
 Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 	Map* map = initMap();
 	Node *node;
@@ -235,7 +227,6 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 	map->wayHighway = wH;
 	map->wayCadastre = wC;
 	map->listRelation = lr;
-	//add 4 Node for the 4 point of bounds
 
 	Node* n0 = initNode(0, map->bounds->min->y, map->bounds->min->x, "true", map->bounds);
 	Node* n1 = initNode(1, map->bounds->max->y, map->bounds->min->x, "true", map->bounds);
@@ -250,7 +241,6 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 	return map;
 }
 
-/*Fonction that parses the file*/
 Map* parseDoc(char* filename){
 
 	xmlDocPtr doc;
@@ -262,7 +252,6 @@ Map* parseDoc(char* filename){
 		return NULL;
 	}
 
-	/*Get the root element node */
 	root_element = xmlDocGetRootElement(doc);
 
 	if (root_element == NULL){

@@ -98,7 +98,6 @@ void highway(Way *way, short coord_y[way->size],short coord_x[way->size],int thi
 			}
 			printf("\n");
 			filledPolygonRGBA(renderer,coord_xNode,coord_yNode,4,255,0,0,255);
-			//thickLineRGBA(renderer,coord_xNode[0],coord_yNode[0],coord_xNode[3],coord_yNode[3],1,0,255,0,255);
 			if(i !=way->size-1){
 				swap(coord_yNode);
 				swap(coord_xNode);
@@ -129,21 +128,9 @@ void nameHighway(Way * way,ListNode * l){
 		coordxl = rightCoordValue(coordxl,windows_Width);
 		coordyf = rightCoordValue(coordyf,windows_Height);
 		coordyl = rightCoordValue(coordyl,windows_Height);
-
-		//float coordx= miseAEchelleX((firstNode->c->x + lastNode->c->x) /2,map->bounds->max->x,WINDOW_WIDTH);
-		//float coordy= miseAEchelleY((firstNode->c->y + lastNode->c->y) /2,map->bounds->max->y,WINDOW_HEIGHT);
-
 		float cx = (coordxf+coordxl) / 2;
 		float cy = (coordyf+coordyl) / 2;
-
-		//					printf("Way id: %ld, Name: %s,coord noeud : %f, %f\n",way->id,way->name,fabs(cx),fabs(cy));
-
-		//if(cx>cy){
 		stringRGBA(renderer,fabs(cx),fabs(cy),way->name,0,0,0,255);
-		//}
-		//else{
-		//stringRGBA(renderer,coordx,coordy,way->name,0,0,0,255);
-		//}
 	}
 }
 
@@ -185,7 +172,6 @@ void fillWay(Way * way){
 		}
 		if(way->tag != NULL && way->tag->tagKey != NULL && way->tag->c != NULL){
 			if(strcmp(way->tag->tagKey,"highway")==0){
-				//generer le cas d'un node par un point
 				int thick =0;
 				if(way->tag->thick != 0){
 					thick = (way->tag->thick+modifThink);
@@ -207,8 +193,6 @@ void fillWay(Way * way){
 					x = coord_x[i];
 					y = coord_y[i];
 				}
-
-
 				//highway(way,coord_y,coord_x,thick);
 				//nameHighway(way,l);
 			}
@@ -298,14 +282,11 @@ else if((first->c->y) > 0 && (last->c->y) > 0){
 		w->listNd = addRefListNode((unsigned long)3, ln);
 		w->size ++;
 	}
-
 }
 else if(((first->c->x) < -(last->c->x)) && ((last->c->y) < -(first->c->y))){ //bas gauche
 	w->listNd = addRefListNode((unsigned long)0, ln);
 	w->size ++;
-
 }
-
 }
 
 void parcourList(ListWay *l){
