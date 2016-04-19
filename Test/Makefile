@@ -6,8 +6,9 @@ EXEC 	  = check_main
 
 all: $(EXEC)
 
-check_main: check_main.o check_init.o ../conversionElements.o ../init.o ../delete.o ../Avl.o check_avl.o
-check_init: check_init.o
+check_main: check_main.o ../conversionElements.o ../init.o ../delete.o ../Avl.o check_avl.o check_init.o check_fixture.o
+check_init:
+check_fixture:
 check_avl:
 
 clean:

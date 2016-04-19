@@ -8,6 +8,9 @@ Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b)
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initNode");
 		exit(EXIT_FAILURE);
 	}
+	if(b == NULL ||  b->min == NULL){
+		return NULL;
+	}
 	n->id=id;
 	int negativex = 0;
 	int negativey = 0;
@@ -24,10 +27,8 @@ Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b)
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initNode");
 		exit(EXIT_FAILURE);
 	}
-	if(b != NULL && b->min != NULL){
 		n->c->x = distanceLatLon(lat, lon, lat, b->min->x);
 		n->c->y = distanceLatLon(lat, lon, b->min->y, lon);
-	}
 	if(negativex == 1){
 		n->c->x = -(n->c->x);
 	}

@@ -27,7 +27,7 @@ void deleteTag(Tag *t){
 
 void deleteTabTag(Tag **t){
 	int i;
-	for(i=0;i<39;i++){
+	for(i=0;i<37;i++){
 		deleteTag(t[i]);
 	}
 	free(t);
@@ -104,7 +104,7 @@ void deleteRelation(Relation *r){
 	if(r != NULL){
 		deleteListWay(r->listW);
 		deleteListNode(r->listN);
-		free(r->visible);
+		//free(r->visible);
 		deleteTag(r->tag);
 	}
 	free(r);
