@@ -235,7 +235,6 @@ void analyseCoastline(Way* w, Map* map){
 	Node* last = searchNode(map->avl,w->listNd->lastRef->nd);
 	float dx = distanceX(last->c->x, first->c->x);
 	float dy = distanceY(last->c->y, first->c->y);
-	//float pente= dx/dy;
 	float a = (last->c->x - first->c->x)/ (last->c->y - first->c->y);
 
 	if((dx >= map->bounds->max->x) && (dy < map->bounds->max->y) && (last->c->x <= 0) && (first->c->x >= map->bounds->max->x) && a > 0){ // horizontale bas 
@@ -253,9 +252,14 @@ void analyseCoastline(Way* w, Map* map){
 		w->listNd = addRefListNode((unsigned long)1, ln);
 		w->size = w->size + 2;
 	}
-	else if((dx >= map->bounds->max->x) && (dy >= map->bounds->max->y) && (first->c->x <= 0) && (last->c->x >= map->bounds->max->x) && a < 0){ // horizontale haut	
+	else if((dx >= map->bounds->max->x) && (dy >= map->bounds->max->y) && (first->c->x <= 0) && (last->c->x >= map->bounds->max->x) && a < 0){ // horizontale haut
 		w->listNd = addRefListNode((unsigned long)2, ln);
 		w->listNd = addRefListNode((unsigned long)1, ln);
+		w->size = w->size + 2;
+	}
+	else if((dx >= map->bounds->max->x) && (dy >= map->bounds->max->y) && (first->c->x <= 0) && (last->c->y <0) && a < 0){ // horizontale haut
+		w->listNd = addRefListNode((unsigned long)3, ln);
+		w->listNd = addRefListNode((unsigned long)2, ln);
 		w->size = w->size + 2;
 	}
 
@@ -305,13 +309,6 @@ void analyseCoastline(Way* w, Map* map){
 		w->size ++;
 
 	}
-
-	/*printf("First: lon= %f lat= %f \n", first->c->x,first->c->y);
-	printf("Last : lon= %f lat= %f \n", last->c->x,last->c->y);
-	printf("pente %f  %f \n", a, pente);
-	printf("dx %f dy %f \n", dx, dy);
-	printf("Bounds : lon= %f lat= %f \n", map->bounds->max->x,map->bounds->max->y);*/
-	
 
 }
 
@@ -396,9 +393,9 @@ void parcourRelation(ListRelation *lr){
 void parcoursListWay(){
 	drawContour = 1;
 	parcourList(map->wayWater);
+	parcourList(map->wayGreen);
 	parcourRelation(map->listRelation);
 	parcourList(map->wayOther);
-	parcourList(map->wayGreen);
 	parcourList(map->wayBuilding);
 	parcourList(map->wayHighway);
 	drawNumber++;
