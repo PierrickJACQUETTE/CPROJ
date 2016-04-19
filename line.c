@@ -208,13 +208,9 @@ void fillWay(Way * way){
 					y = coord_y[i];
 				}
 
-				//int kk=0;
-				//for(kk=0;kk<way->size;kk++){
-				//	printf("Coor X : %d, Y %d\n",coord_x[kk],coord_y[kk] );
-				//}
-				//printf("\n");
+				
 				//highway(way,coord_y,coord_x,thick);
-				nameHighway(way,l);
+				//nameHighway(way,l);
 			}
 			else{
 				if(drawContour == 1){
