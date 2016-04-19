@@ -12,3 +12,4 @@ check_main
 *.out
 *.snm
 *.toc
+*.sync*
