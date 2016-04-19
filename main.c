@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
 			}
 		}
 		else{
-			fprintf(stderr,"ERROR: \nUsage: %s filename [line|point] [-s]\n", argv[0]);
+			printMap(map,"line",NULL);
 		}
 		deleteMap(map);
 		xmlCleanupParser();

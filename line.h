@@ -2,7 +2,7 @@
 * \file line.h
 * \brief This file displays polygons on the map depending on what is stored in the different structures
 * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
-* \date 18 April 2016
+* \date 19 April 2016
 *
 */
 
@@ -13,6 +13,7 @@
 #include "Avl.h"
 
 extern Map * map;
+extern int modifThink;
 int drawContour; // par defaut 1 = true
 int drawNumber; // nombre de fois que l'on a tracer les ways
 

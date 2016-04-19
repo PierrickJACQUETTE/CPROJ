@@ -1,8 +1,26 @@
 #include "graphic.h"
 
+void modifThinck(float ref){
+	if(ref < 2 && ref > 1){
+		modifThink = -1;
+	}
+	else if(ref < 3 && ref >=2){
+		modifThink = -5;
+	}
+	else if(ref < 4 && ref >=3){
+		modifThink = -6;
+	}
+}
+
 void sizeWindows(Map* map){
   float diffX = (map->bounds->max->x) - (map->bounds->min->x);
   float diffY = (map->bounds->max->y) - (map->bounds->min->y);
+  if(diffX > diffY){
+  	modifThinck(fabs(diffX));
+  }
+  else {
+  	modifThinck(fabs(diffY));
+  }
   float QX = windows_Width / diffX;
   float QY = windows_Height / diffY;
    
@@ -38,7 +56,7 @@ int init_SDL() {
     fprintf(stderr,"Window could not be created! SDL Error: %s\n",SDL_GetError());
     return 0;
   }
-  renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
+  renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
   if(renderer == NULL) {
 	printf("Renderer could not be created! SDL Error: %s\n",SDL_GetError());
 	return 0;
@@ -73,6 +91,7 @@ void printMap(Map* map, char* typeOfDessin, char* signal){
   }
   windows_Width = 800;
   windows_Height = 600;
+  modifThink = 0;
   sizeWindows(map);
   quit = 1;
   if(init_SDL() ==0) {

@@ -1,6 +1,7 @@
 #include "line.h"
 
 Map * map;
+int modifThink;
 
 float rightCoordValue(float coord, int max){
 	if(coord<0){
@@ -114,6 +115,38 @@ Sint16 checkColor(int color){
 	return color;
 }
 
+void nameHighway(Way * way,ListNode * l){
+	if(way->name != NULL){
+			Node * firstNode = searchNode(map->avl,l->firstRef->nd);
+				Node * lastNode = searchNode(map->avl,l->lastRef->nd);
+
+					float coordxf = miseAEchelleX(firstNode->c->x ,map->bounds->max->x,windows_Width);
+					float coordyf = miseAEchelleY(firstNode->c->y ,map->bounds->max->y,windows_Height);
+					float coordxl = miseAEchelleX(lastNode->c->x,map->bounds->max->x,windows_Width);
+					float coordyl = miseAEchelleY(lastNode->c->y,map->bounds->max->y,windows_Height);
+
+					coordxf = rightCoordValue(coordxf,windows_Width);
+					coordxl = rightCoordValue(coordxl,windows_Width);
+					coordyf = rightCoordValue(coordyf,windows_Height);
+					coordyl = rightCoordValue(coordyl,windows_Height);
+
+					//float coordx= miseAEchelleX((firstNode->c->x + lastNode->c->x) /2,map->bounds->max->x,WINDOW_WIDTH);
+					//float coordy= miseAEchelleY((firstNode->c->y + lastNode->c->y) /2,map->bounds->max->y,WINDOW_HEIGHT);
+
+					float cx = (coordxf+coordxl) / 2;
+					float cy = (coordyf+coordyl) / 2;
+
+					//					printf("Way id: %ld, Name: %s,coord noeud : %f, %f\n",way->id,way->name,fabs(cx),fabs(cy));
+
+					//if(cx>cy){
+					stringRGBA(renderer,fabs(cx),fabs(cy),way->name,0,0,0,255);
+					//}
+					//else{
+					//stringRGBA(renderer,coordx,coordy,way->name,0,0,0,255);
+					//}
+				}
+}
+
 void fillWay(Way * way){
 	if(map == NULL){
 		fprintf(stderr,"La map est NULL dans line fonction fillWay\n");
@@ -155,7 +188,11 @@ void fillWay(Way * way){
 				//generer le cas d'un node par un point
 				int thick =0;
 				if(way->tag->thick != 0){
-					thick = way->tag->thick*zoom;
+					thick = (way->tag->thick+modifThink);
+					if(thick <1){
+						thick = 1;
+					}
+					thick *= zoom;
 				}
 				int i;
 				int x = coord_x[0];
@@ -177,36 +214,7 @@ void fillWay(Way * way){
 				//}
 				//printf("\n");
 				//highway(way,coord_y,coord_x,thick);
-
-				if(way->name != NULL){
-					Node * firstNode = searchNode(map->avl,l->firstRef->nd);
-					Node * lastNode = searchNode(map->avl,l->lastRef->nd);
-
-					float coordxf = miseAEchelleX(firstNode->c->x ,map->bounds->max->x,windows_Width);
-					float coordyf = miseAEchelleY(firstNode->c->y ,map->bounds->max->y,windows_Height);
-					float coordxl = miseAEchelleX(lastNode->c->x,map->bounds->max->x,windows_Width);
-					float coordyl = miseAEchelleY(lastNode->c->y,map->bounds->max->y,windows_Height);
-
-					coordxf = rightCoordValue(coordxf,windows_Width);
-					coordxl = rightCoordValue(coordxl,windows_Width);
-					coordyf = rightCoordValue(coordyf,windows_Height);
-					coordyl = rightCoordValue(coordyl,windows_Height);
-
-					//float coordx= miseAEchelleX((firstNode->c->x + lastNode->c->x) /2,map->bounds->max->x,WINDOW_WIDTH);
-					//float coordy= miseAEchelleY((firstNode->c->y + lastNode->c->y) /2,map->bounds->max->y,WINDOW_HEIGHT);
-
-					float cx = (coordxf+coordxl) / 2;
-					float cy = (coordyf+coordyl) / 2;
-
-					//					printf("Way id: %ld, Name: %s,coord noeud : %f, %f\n",way->id,way->name,fabs(cx),fabs(cy));
-
-					//if(cx>cy){
-					stringRGBA(renderer,fabs(cx),fabs(cy),way->name,0,0,0,255);
-					//}
-					//else{
-					//stringRGBA(renderer,coordx,coordy,way->name,0,0,0,255);
-					//}
-				}
+				nameHighway(way,l);
 			}
 			else{
 				if(drawContour == 1){
@@ -323,7 +331,6 @@ void parcourList(ListWay *l){
 							coastline = 1;
 							SDL_RenderClear(renderer);
 							analyseCoastline(currentWay, map);
-							//printf("id= %ld \n", currentWay->listNd->lastRef->nd);
 						}
 						else{
 							analyseCoastline(currentWay, map);
@@ -362,7 +369,6 @@ void parcourRelation(ListRelation *lr){
 						if((currentWay != NULL) && (currentWay->draw == drawNumber) && (strcmp(currentWay->visible,"T") == 0)){
 							fillWay(currentWay);
 							currentWay->draw ++;
-
 						}
 					}
 					cW = cW->next;
@@ -389,7 +395,6 @@ void parcourRelation(ListRelation *lr){
 
 void parcoursListWay(){
 	drawContour = 1;
-	//parcourList(map->wayHighway,map,WINDOW_WIDTH,WINDOW_HEIGHT,renderer);
 	parcourList(map->wayWater);
 	parcourRelation(map->listRelation);
 	parcourList(map->wayOther);
