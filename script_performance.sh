@@ -21,7 +21,7 @@ parcoursRep(){
 
       time1=$(($(date +%s%N)/1000000))
 
-      $(../CPROJ $fic -s)
+      $(../CPROJ/CPROJ $fic -s)
 
       time2=$(($(date +%s%N)/1000000))
 
