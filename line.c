@@ -230,28 +230,28 @@ void analyseCoastline(Way* w, Map* map){
 	//float pente= dx/dy;
 	float a = (last->c->x - first->c->x)/ (last->c->y - first->c->y);
 
-	if((dx >= map->bounds->max->x) && (dy < map->bounds->max->y) && (last->c->x <= 0) && (first->c->x >= map->bounds->max->x) && a > 0){ // horizontale bas
+	if((dx >= map->bounds->max->x) && (dy < map->bounds->max->y) && (last->c->x <= 0) && (first->c->x >= map->bounds->max->x) && a > 0){ // horizontale bas 
 		w->listNd = addRefListNode((unsigned long)0, ln);
 		w->listNd = addRefListNode((unsigned long)3, ln);
 		w->size = w->size + 2;
 	}
-	else if((dx >= map->bounds->max->x) && (dy >= map->bounds->max->y) && (last->c->x <= 0) && (first->c->x >= map->bounds->max->x) && a < 0){ // horizontale bas
+	else if((dx >= map->bounds->max->x) && (dy >= map->bounds->max->y) && (last->c->x <= 0) && (first->c->x >= map->bounds->max->x) && a < 0){ // horizontale bas	
 		w->listNd = addRefListNode((unsigned long)0, ln);
 		w->listNd = addRefListNode((unsigned long)3, ln);
 		w->size = w->size + 2;
 	}
-	else if((dx >= map->bounds->max->x) && (dy < map->bounds->max->y) && (first->c->x <= 0) && (last->c->x >= map->bounds->max->x) && a > 0){ // horizontale haut
+	else if((dx >= map->bounds->max->x) && (dy < map->bounds->max->y) && (first->c->x <= 0) && (last->c->x >= map->bounds->max->x) && a > 0){ // horizontale haut	
 		w->listNd = addRefListNode((unsigned long)2, ln);
 		w->listNd = addRefListNode((unsigned long)1, ln);
 		w->size = w->size + 2;
 	}
-	else if((dx >= map->bounds->max->x) && (dy >= map->bounds->max->y) && (first->c->x <= 0) && (last->c->x >= map->bounds->max->x) && a < 0){ // horizontale haut
+	else if((dx >= map->bounds->max->x) && (dy >= map->bounds->max->y) && (first->c->x <= 0) && (last->c->x >= map->bounds->max->x) && a < 0){ // horizontale haut	
 		w->listNd = addRefListNode((unsigned long)2, ln);
 		w->listNd = addRefListNode((unsigned long)1, ln);
 		w->size = w->size + 2;
 	}
 
-	else if((dy >= map->bounds->max->y) && (dx < map->bounds->max->x) && (last->c->y <= 0) && (first->c->y >= map->bounds->max->y) && a < 0){ // verticale
+	else if((dy >= map->bounds->max->y) && (dx < map->bounds->max->x) && (last->c->y <= 0) && (first->c->y >= map->bounds->max->y) && a < 0){ // verticale	
 		w->listNd = addRefListNode((unsigned long)3, ln);
 		w->listNd = addRefListNode((unsigned long)2, ln);
 		w->size = w->size + 2;
@@ -261,6 +261,7 @@ void analyseCoastline(Way* w, Map* map){
 		w->listNd = addRefListNode((unsigned long)2, ln);
 		w->size = w->size + 2;
 	}
+	
 	else if((dy >= map->bounds->max->y) && (dx < map->bounds->max->x) && (first->c->y <= 0) && (last->c->y >= map->bounds->max->y) && a > 0){ // verticale
 		w->listNd = addRefListNode((unsigned long)1, ln);
 		w->listNd = addRefListNode((unsigned long)0, ln);
@@ -271,22 +272,22 @@ void analyseCoastline(Way* w, Map* map){
 		w->listNd = addRefListNode((unsigned long)0, ln);
 		w->size = w->size + 2;
 	}
-	else if(dx == 0 && dy == 0){
+	else if(dx == 0 && dy == 0){		printf("null \n");
 		return;
 	}
 	else if((first->c->x) > 0 && (last->c->x) > 0){
-		if(((first->c->y) > (last->c->y))) { // bas droite
-			w->listNd = addRefListNode((unsigned long)3, ln);
+		if(((first->c->y) > (last->c->y))) { // haut droite
+			w->listNd = addRefListNode((unsigned long)2, ln);
 			w->size ++;
 		}
 	}
 	else if((first->c->y) > 0 && (last->c->y) > 0){
-		if((first->c->x)>(last->c->x)){ // haut gauche
+		if((first->c->x)>(last->c->x)){ // haut gauche	
 			w->listNd = addRefListNode((unsigned long)1, ln);
 			w->size ++;
 		}
-		else if((first->c->x) > (last->c->x)){ // haut droite
-			w->listNd = addRefListNode((unsigned long)2, ln);
+		else if((first->c->x) > (last->c->x)){ // bas droite	
+			w->listNd = addRefListNode((unsigned long)3, ln);
 			w->size ++;
 		}
 
@@ -301,8 +302,8 @@ void analyseCoastline(Way* w, Map* map){
 	printf("Last : lon= %f lat= %f \n", last->c->x,last->c->y);
 	printf("pente %f  %f \n", a, pente);
 	printf("dx %f dy %f \n", dx, dy);
-	printf("Bounds : lon= %f lat= %f \n", map->bounds->max->x,map->bounds->max->y);
-	*/
+	printf("Bounds : lon= %f lat= %f \n", map->bounds->max->x,map->bounds->max->y);*/
+	
 
 }
 
