@@ -164,6 +164,7 @@ void fillWay(Way * way){
 				else{
 					fprintf(stderr,"le node %ld n'a pas de coordonnees\n",current->nd );
 				}
+				
 				current = current->next;
 			}
 			else{
@@ -376,4 +377,31 @@ void parcoursListWay(){
 	parcourList(map->wayBuilding);
 	parcourList(map->wayHighway);
 	drawNumber++;
+}
+
+void drawNameNode(Node* node){
+	if(node->name != NULL){	
+		float coordxf = miseAEchelleX(node->c->x ,map->bounds->max->x,windows_Width);
+		float coordyf = miseAEchelleY(node->c->y ,map->bounds->max->y,windows_Height);
+		stringRGBA(renderer,coordxf,coordyf,node->name,0,0,0,255);
+	}
+}
+
+void parcoursListNode(){
+	ListNode* ln = map->nodeOther;
+	if(ln != NULL){
+		refListNode* current = ln->firstRef;
+		while(current != NULL){
+			Node * currentNode = searchNode(map->avl,current->nd);
+			if(currentNode != NULL){
+				if(strcmp(currentNode->visible,"T") == 0){
+					drawNameNode(currentNode);
+				}
+			}
+			else{
+				fprintf(stderr,"Le node %ld n'est pas définis dans le fichier d'entree dans line parcourNode\n",current->nd );
+			}
+			current = current->next;
+		}
+	}
 }

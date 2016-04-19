@@ -105,9 +105,11 @@ Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
 	float lat = 100;
 	float lon = 100;
 	char *visible = "T";
-
+	char* name = NULL;
+	
 	xmlAttr *node_attr = cur->properties;
-
+	xmlNodePtr tmpcur = NULL;
+	
 	while(node_attr != NULL)
 	{
 		if( xmlStrcmp(node_attr->name,(const xmlChar *)"id")==0 ){
@@ -124,7 +126,19 @@ Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
 		}
 		node_attr = node_attr->next;
 	}
-	node = initNode(id,lat,lon,visible, bounds);
+	
+	tmpcur = cur->xmlChildrenNode;
+
+	while(tmpcur != NULL){
+		if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag")==0){
+			if( xmlStrcmp( (const xmlChar *) xmlGetProp( tmpcur, (const xmlChar *)"k" ), (const xmlChar *)"name" ) ==0){
+				name = (char *) xmlGetProp(tmpcur, (const xmlChar *)"v");
+			}
+		}
+		tmpcur = tmpcur->next;
+	}
+	node = initNode(id,lat,lon,visible,bounds,name);
+
 	return node;
 }
 
@@ -148,8 +162,9 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 	Node *node;
 	Way* way;
 	Relation *r;
-	Avl *aNode = NULL;
+	Avl* aNode = NULL;
 	Avl* avlWay = NULL;
+	ListNode* ln = NULL;
 	ListWay* wO = NULL;
 	ListWay* wW = NULL;
 	ListWay* wG = NULL;
@@ -170,6 +185,9 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 
 			if ((!xmlStrcmp(cur->name, (const xmlChar *)"node"))){
 				node = parseNode (doc, cur, map->bounds);
+				if(node->name!=NULL){
+					ln = addRefListNode(node->id,ln);
+				}
 				if(flagN == 1){
 					init(&aNode,node,NULL);
 					flagN = 0;
@@ -220,6 +238,7 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 
 	map->avl = aNode;
 	map->avlWay = avlWay;
+	map->nodeOther = ln;
 	map->wayWater = wW;
 	map->wayOther = wO;
 	map->wayGreen = wG;
@@ -228,10 +247,10 @@ Map* parseElements(xmlDocPtr doc, xmlNodePtr cur){
 	map->wayCadastre = wC;
 	map->listRelation = lr;
 
-	Node* n0 = initNode(0, map->bounds->min->y, map->bounds->min->x, "true", map->bounds);
-	Node* n1 = initNode(1, map->bounds->max->y, map->bounds->min->x, "true", map->bounds);
-	Node* n2 = initNode(2, map->bounds->max->y, map->bounds->max->x, "true", map->bounds);
-	Node* n3 = initNode(3, map->bounds->min->y, map->bounds->max->x, "true", map->bounds);
+	Node* n0 = initNode(0, map->bounds->min->y, map->bounds->min->x, "true", map->bounds, NULL);
+	Node* n1 = initNode(1, map->bounds->max->y, map->bounds->min->x, "true", map->bounds, NULL);
+	Node* n2 = initNode(2, map->bounds->max->y, map->bounds->max->x, "true", map->bounds, NULL);
+	Node* n3 = initNode(3, map->bounds->min->y, map->bounds->max->x, "true", map->bounds, NULL);
 	insert(&aNode,n0,NULL);
 	insert(&aNode,n1,NULL);
 	insert(&aNode,n2,NULL);

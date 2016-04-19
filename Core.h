@@ -87,6 +87,7 @@ typedef struct{
 	unsigned long id;
 	Coordinate* c;
 	char* visible; // True,False;
+	char* name;
 }Node;
 
 /**
@@ -242,6 +243,7 @@ typedef struct{
 	Bounds* bounds;
 	Avl* avl;
 	Avl* avlWay;
+	ListNode* nodeOther;
 	ListWay* wayOther;
 	ListWay* wayWater;
 	ListWay* wayGreen;

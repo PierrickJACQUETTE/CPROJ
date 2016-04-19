@@ -1,6 +1,6 @@
 #include "init.h"
 
-Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b){
+Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b, char* name){
 	Node * n = malloc(sizeof(Node));
 	if(n == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initNode");
@@ -38,6 +38,14 @@ Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b)
 	}
 	else{
 		n->visible="T";
+	}
+	if(name != NULL){
+		n->name=malloc(sizeof(char*)*strlen(name));
+		strcpy(n->name,name);
+		printf("INIT=  id: %ld name: %s\n",n->id,n->name);
+	}
+	else{
+		n->name = NULL;
 	}
 	return n;
 }

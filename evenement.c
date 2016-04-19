@@ -20,6 +20,7 @@ void drawMapSa(){
 	}
 	else if(strcmp(typeOfDraw,"line") ==0){
 		parcoursListWay();
+		//parcoursListNode();
 	}
 	else{
 		fprintf(stderr,"Le deuxieme argument est inconnu %s\n", typeOfDraw);

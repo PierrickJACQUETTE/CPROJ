@@ -19,9 +19,16 @@ int drawNumber; // nombre de fois que l'on a tracer les ways
 
 /**
 * \fn  parcoursListWay(Map *map);
-* \brief Courses way the list
+* \brief Courses the way list
 *
 */
 void parcoursListWay();
+
+/**
+* \fn  parcoursListNode(Map *map);
+* \brief Courses the node list
+*
+*/
+void parcoursListNode();
 
 #endif /* __LINE_H__ */

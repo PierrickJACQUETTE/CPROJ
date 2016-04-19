@@ -27,7 +27,7 @@
 * \param b Bounds that represente the bounds of the map
 * \return Node*
 */
-Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b);
+Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b, char* name);
 
 
 /**
