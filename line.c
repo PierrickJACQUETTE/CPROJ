@@ -117,34 +117,34 @@ Sint16 checkColor(int color){
 
 void nameHighway(Way * way,ListNode * l){
 	if(way->name != NULL){
-			Node * firstNode = searchNode(map->avl,l->firstRef->nd);
-				Node * lastNode = searchNode(map->avl,l->lastRef->nd);
+		Node * firstNode = searchNode(map->avl,l->firstRef->nd);
+		Node * lastNode = searchNode(map->avl,l->lastRef->nd);
 
-					float coordxf = miseAEchelleX(firstNode->c->x ,map->bounds->max->x,windows_Width);
-					float coordyf = miseAEchelleY(firstNode->c->y ,map->bounds->max->y,windows_Height);
-					float coordxl = miseAEchelleX(lastNode->c->x,map->bounds->max->x,windows_Width);
-					float coordyl = miseAEchelleY(lastNode->c->y,map->bounds->max->y,windows_Height);
+		float coordxf = miseAEchelleX(firstNode->c->x ,map->bounds->max->x,windows_Width);
+		float coordyf = miseAEchelleY(firstNode->c->y ,map->bounds->max->y,windows_Height);
+		float coordxl = miseAEchelleX(lastNode->c->x,map->bounds->max->x,windows_Width);
+		float coordyl = miseAEchelleY(lastNode->c->y,map->bounds->max->y,windows_Height);
 
-					coordxf = rightCoordValue(coordxf,windows_Width);
-					coordxl = rightCoordValue(coordxl,windows_Width);
-					coordyf = rightCoordValue(coordyf,windows_Height);
-					coordyl = rightCoordValue(coordyl,windows_Height);
+		coordxf = rightCoordValue(coordxf,windows_Width);
+		coordxl = rightCoordValue(coordxl,windows_Width);
+		coordyf = rightCoordValue(coordyf,windows_Height);
+		coordyl = rightCoordValue(coordyl,windows_Height);
 
-					//float coordx= miseAEchelleX((firstNode->c->x + lastNode->c->x) /2,map->bounds->max->x,WINDOW_WIDTH);
-					//float coordy= miseAEchelleY((firstNode->c->y + lastNode->c->y) /2,map->bounds->max->y,WINDOW_HEIGHT);
+		//float coordx= miseAEchelleX((firstNode->c->x + lastNode->c->x) /2,map->bounds->max->x,WINDOW_WIDTH);
+		//float coordy= miseAEchelleY((firstNode->c->y + lastNode->c->y) /2,map->bounds->max->y,WINDOW_HEIGHT);
 
-					float cx = (coordxf+coordxl) / 2;
-					float cy = (coordyf+coordyl) / 2;
+		float cx = (coordxf+coordxl) / 2;
+		float cy = (coordyf+coordyl) / 2;
 
-					//					printf("Way id: %ld, Name: %s,coord noeud : %f, %f\n",way->id,way->name,fabs(cx),fabs(cy));
+		//					printf("Way id: %ld, Name: %s,coord noeud : %f, %f\n",way->id,way->name,fabs(cx),fabs(cy));
 
-					//if(cx>cy){
-					stringRGBA(renderer,fabs(cx),fabs(cy),way->name,0,0,0,255);
-					//}
-					//else{
-					//stringRGBA(renderer,coordx,coordy,way->name,0,0,0,255);
-					//}
-				}
+		//if(cx>cy){
+		stringRGBA(renderer,fabs(cx),fabs(cy),way->name,0,0,0,255);
+		//}
+		//else{
+		//stringRGBA(renderer,coordx,coordy,way->name,0,0,0,255);
+		//}
+	}
 }
 
 void fillWay(Way * way){
@@ -208,7 +208,7 @@ void fillWay(Way * way){
 					y = coord_y[i];
 				}
 
-				
+
 				//highway(way,coord_y,coord_x,thick);
 				//nameHighway(way,l);
 			}
@@ -233,17 +233,17 @@ void analyseCoastline(Way* w, Map* map){
 	float dy = distanceY(last->c->y, first->c->y);
 	float a = (last->c->x - first->c->x)/ (last->c->y - first->c->y);
 
-	if((dx >= map->bounds->max->x) && (dy < map->bounds->max->y) && (last->c->x <= 0) && (first->c->x >= map->bounds->max->x) && a > 0){ // horizontale bas 
+	if((dx >= map->bounds->max->x) && (dy < map->bounds->max->y) && (last->c->x <= 0) && (first->c->x >= map->bounds->max->x) && a > 0){ // horizontale bas
 		w->listNd = addRefListNode((unsigned long)0, ln);
 		w->listNd = addRefListNode((unsigned long)3, ln);
 		w->size = w->size + 2;
 	}
-	else if((dx >= map->bounds->max->x) && (dy >= map->bounds->max->y) && (last->c->x <= 0) && (first->c->x >= map->bounds->max->x) && a < 0){ // horizontale bas	
+	else if((dx >= map->bounds->max->x) && (dy >= map->bounds->max->y) && (last->c->x <= 0) && (first->c->x >= map->bounds->max->x) && a < 0){ // horizontale bas
 		w->listNd = addRefListNode((unsigned long)0, ln);
 		w->listNd = addRefListNode((unsigned long)3, ln);
 		w->size = w->size + 2;
 	}
-	else if((dx >= map->bounds->max->x) && (dy < map->bounds->max->y) && (first->c->x <= 0) && (last->c->x >= map->bounds->max->x) && a > 0){ // horizontale haut	
+	else if((dx >= map->bounds->max->x) && (dy < map->bounds->max->y) && (first->c->x <= 0) && (last->c->x >= map->bounds->max->x) && a > 0){ // horizontale haut
 		w->listNd = addRefListNode((unsigned long)2, ln);
 		w->listNd = addRefListNode((unsigned long)1, ln);
 		w->size = w->size + 2;
@@ -259,7 +259,7 @@ void analyseCoastline(Way* w, Map* map){
 		w->size = w->size + 2;
 	}
 
-	else if((dy >= map->bounds->max->y) && (dx < map->bounds->max->x) && (last->c->y <= 0) && (first->c->y >= map->bounds->max->y) && a < 0){ // verticale	
+	else if((dy >= map->bounds->max->y) && (dx < map->bounds->max->x) && (last->c->y <= 0) && (first->c->y >= map->bounds->max->y) && a < 0){ // verticale
 		w->listNd = addRefListNode((unsigned long)3, ln);
 		w->listNd = addRefListNode((unsigned long)2, ln);
 		w->size = w->size + 2;
@@ -269,7 +269,7 @@ void analyseCoastline(Way* w, Map* map){
 		w->listNd = addRefListNode((unsigned long)2, ln);
 		w->size = w->size + 2;
 	}
-	
+
 	else if((dy >= map->bounds->max->y) && (dx < map->bounds->max->x) && (first->c->y <= 0) && (last->c->y >= map->bounds->max->y) && a > 0){ // verticale
 		w->listNd = addRefListNode((unsigned long)1, ln);
 		w->listNd = addRefListNode((unsigned long)0, ln);
@@ -281,30 +281,30 @@ void analyseCoastline(Way* w, Map* map){
 		w->size = w->size + 2;
 	}
 	else if(dx == 0 && dy == 0){		printf("null \n");
-		return;
-	}
-	else if((first->c->x) > 0 && (last->c->x) > 0){
-		if(((first->c->y) > (last->c->y))) { // haut droite
-			w->listNd = addRefListNode((unsigned long)2, ln);
-			w->size ++;
-		}
-	}
-	else if((first->c->y) > 0 && (last->c->y) > 0){
-		if((first->c->x)>(last->c->x)){ // haut gauche	
-			w->listNd = addRefListNode((unsigned long)1, ln);
-			w->size ++;
-		}
-		else if((first->c->x) > (last->c->x)){ // bas droite	
-			w->listNd = addRefListNode((unsigned long)3, ln);
-			w->size ++;
-		}
-
-	}
-	else if(((first->c->x) < -(last->c->x)) && ((last->c->y) < -(first->c->y))){ //bas gauche
-		w->listNd = addRefListNode((unsigned long)0, ln);
+	return;
+}
+else if((first->c->x) > 0 && (last->c->x) > 0){
+	if(((first->c->y) > (last->c->y))) { // haut droite
+		w->listNd = addRefListNode((unsigned long)2, ln);
 		w->size ++;
-
 	}
+}
+else if((first->c->y) > 0 && (last->c->y) > 0){
+	if((first->c->x)>(last->c->x)){ // haut gauche
+		w->listNd = addRefListNode((unsigned long)1, ln);
+		w->size ++;
+	}
+	else if((first->c->x) > (last->c->x)){ // bas droite
+		w->listNd = addRefListNode((unsigned long)3, ln);
+		w->size ++;
+	}
+
+}
+else if(((first->c->x) < -(last->c->x)) && ((last->c->y) < -(first->c->y))){ //bas gauche
+	w->listNd = addRefListNode((unsigned long)0, ln);
+	w->size ++;
+
+}
 
 }
 

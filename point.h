@@ -4,7 +4,6 @@
 * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
 * \date 6 April 2016
 *
-*
 */
 
 #ifndef __POINT_H__
