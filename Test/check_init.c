@@ -1,6 +1,5 @@
 #include "check_init.h"
 
-
 START_TEST(InitNode){
 	Bounds *bo = initBounds(1.0,2.0,2.0,2.0);
 	Node *nd = initNode(1,1.0,2.0,"true",bo);
@@ -66,11 +65,6 @@ START_TEST(InitRelation){
 	ck_assert_ptr_eq(r->tag, NULL);
 	deleteRelation(r);
 }END_TEST
-
-
-
-
-
 
 Suite* init_suite(void){
 	Suite* s= suite_create("ini");
