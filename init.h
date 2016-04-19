@@ -14,7 +14,7 @@
 #include "conversionElements.h"
 #include "Core.h"
 
-#define SIZETABTAG 39
+#define SIZETABTAG 37
 
 /**
 * \fn initNode(unsigned long id, float lat, float lon, char visible, Bounds* b)

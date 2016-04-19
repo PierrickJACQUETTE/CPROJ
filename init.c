@@ -86,86 +86,93 @@ Tag** initReferenceTag(){
 		t[i]->priority = 1;
 		t[i]->thick = 0;
 	}
-	t[0]->tagKey ="landuse"; t[0]->tagValue ="forest"; t[0]->c->red=51; t[0]->c->green=102; t[0]->c->blue=0; //vert
-	t[1]->tagKey ="building"; t[1]->tagValue ="yes"; t[1]->c->red=205; t[1]->c->green=183; t[1]->c->blue=158;	//beige
-	t[2]->tagKey ="highway"; t[2]->tagValue ="residential"; t[2]->c->red=135; t[2]->c->green=135; t[2]->c->blue=135; //gris clair
-	t[3]->tagKey ="waterway"; t[3]->tagValue ="canal"; t[3]->c->red=51; t[3]->c->green=102; t[3]->c->blue=204; //bleu fonce
-	/**/t[4]->tagKey ="waterway"; t[4]->tagValue ="river "; t[4]->c->red=0; t[4]->c->green=153; t[4]->c->blue=204; //bleu clair
-	t[5]->tagKey ="waterway"; t[5]->tagValue ="water"; t[5]->c->red=51; t[5]->c->green=204; t[5]->c->blue=255;
-	t[6]->tagKey ="waterway"; t[6]->tagValue ="coastline"; t[6]->c->red=0; t[6]->c->green=204; t[6]->c->blue=255;
-	t[7]->tagKey ="landuse"; t[7]->tagValue ="grass"; t[7]->c->red=102; t[7]->c->green=204; t[7]->c->blue=51;
-	t[8]->tagKey ="leisure"; t[8]->tagValue ="park"; t[8]->c->red=51; t[8]->c->green=153; t[8]->c->blue=0;
-	t[9]->tagKey ="highway"; t[9]->tagValue ="service"; t[9]->c->red=170; t[9]->c->green=170; t[9]->c->blue=170; //gris tres clair
+
+	t[0]->tagKey ="highway"; t[0]->tagValue ="primary_link"; t[0]->c->red=255; t[0]->c->green=102; t[0]->c->blue=51; //orange
+	t[1]->tagKey ="highway"; t[1]->tagValue ="footway"; t[1]->c->red=255; t[1]->c->green=102; t[1]->c->blue=51;//orange
+	t[2]->tagKey ="highway"; t[2]->tagValue ="residential"; t[2]->c->red=135; t[2]->c->green=135; t[2]->c->blue=135; //gris clair	
+	t[3]->tagKey ="highway"; t[3]->tagValue ="secondary_link"; t[3]->c->red=255; t[3]->c->green=204; t[3]->c->blue=51; //jaune
+	t[4]->tagKey ="highway"; t[4]->tagValue ="tertiary_link"; t[4]->c->red=80; t[4]->c->green=80; t[4]->c->blue=80; //gris fonce
+	t[5]->tagKey ="highway"; t[5]->tagValue ="trunk"; t[5]->c->red=255; t[5]->c->green=51; t[5]->c->blue=0; //orange fonce
+	t[6]->tagKey ="highway"; t[6]->tagValue ="trunk_link"; t[6]->c->red=255; t[6]->c->green=51; t[6]->c->blue=0; //orange fonce
+	t[7]->tagKey ="highway"; t[7]->tagValue ="road"; t[7]->c->red=155; t[7]->c->green=155; t[7]->c->blue=155; //gris moyen
+	t[8]->tagKey ="highway"; t[8]->tagValue ="pedestrian"; t[8]->c->red=190; t[8]->c->green=190; t[8]->c->blue=190; //gris tres tres
+	t[9]->tagKey ="highway"; t[9]->tagValue ="service"; t[9]->c->red=170; t[9]->c->green=170; t[9]->c->blue=170; //gris tres clair	
 	t[10]->tagKey ="highway"; t[10]->tagValue ="secondary"; t[10]->c->red=255; t[10]->c->green=204; t[10]->c->blue=51; //jaune
 	t[11]->tagKey ="highway"; t[11]->tagValue ="unclassified"; t[11]->c->red=115; t[11]->c->green=115; t[11]->c->blue=115; //gris moyen
 	t[12]->tagKey ="highway"; t[12]->tagValue ="motorway"; t[12]->c->red=255; t[12]->c->green=0; t[12]->c->blue=0; //rouge
 	t[13]->tagKey ="highway"; t[13]->tagValue ="motorway_link"; t[13]->c->red=255; t[13]->c->green=0; t[13]->c->blue=0; // rouge
-	t[14]->tagKey ="natural"; t[14]->tagValue ="water"; t[14]->c->red=0; t[14]->c->green=55; t[14]->c->blue=204;
+	t[14]->tagKey ="highway"; t[14]->tagValue ="tertiary"; t[14]->c->red=80; t[14]->c->green=80; t[14]->c->blue=80; //gris fonce
 	t[15]->tagKey ="highway"; t[15]->tagValue ="primary"; t[15]->c->red=255; t[15]->c->green=102; t[15]->c->blue=51; //orange
-	t[16]->tagKey ="bridge"; t[16]->tagValue ="yes"; t[16]->c->red=255; t[16]->c->green=255; t[16]->c->blue=204; //jaune pale
-	t[18]->tagKey ="leisure"; t[18]->tagValue ="garden"; t[18]->c->red=0; t[18]->c->green=200; t[18]->c->blue=0;
-	t[17]->tagKey ="natural"; t[17]->tagValue ="coastline"; t[17]->c->red=255; t[17]->c->green=255; t[17]->c->blue=255; //blanc
-	t[19]->tagKey ="highway"; t[19]->tagValue ="pedestrian"; t[19]->c->red=190; t[19]->c->green=190; t[19]->c->blue=190; //gris tres tres clair
-	t[20]->tagKey ="service"; t[20]->tagValue ="alley"; t[20]->c->red=255; t[20]->c->green=255; t[20]->c->blue=204; //jaune pale
-	//t[21]->tagKey ="layer"; t[21]->tagValue ="1"; t[21]->c->red=255; t[21]->c->green=255; t[21]->c->blue=204; //jaune pale
-	/**/t[21]->tagKey ="brigde  "; t[21]->tagValue ="yes"; t[21]->c->red=255; t[21]->c->green=255; t[21]->c->blue=255; //blanc
-	t[22]->tagKey ="surface"; t[22]->tagValue ="ground"; t[22]->c->red=255; t[22]->c->green=255; t[22]->c->blue=255; //blanc
-	t[23]->tagKey ="surface"; t[23]->tagValue ="gravel"; t[23]->c->red=255; t[23]->c->green=0; t[23]->c->blue=0; //blanc
-	t[24]->tagKey ="building"; t[24]->tagValue ="church"; t[24]->c->red=133; t[24]->c->green=109; t[24]->c->blue=77; //marron
-	t[25]->tagKey ="waterway"; t[25]->tagValue ="riverbank"; t[25]->c->red=0; t[25]->c->green=153; t[25]->c->blue=204;
-	t[26]->tagKey ="highway"; t[26]->tagValue ="footway"; t[26]->c->red=255; t[26]->c->green=102; t[26]->c->blue=51;//orange
-	t[27]->tagKey ="barrier"; t[27]->tagValue ="wall"; t[27]->c->red=0; t[27]->c->green=50; t[27]->c->blue=0;
-	t[28]->tagKey ="leisure"; t[28]->tagValue ="playground"; t[28]->c->red=51; t[28]->c->green=153; t[28]->c->blue=0;
-	t[29]->tagKey ="highway"; t[29]->tagValue ="tertiary"; t[29]->c->red=80; t[29]->c->green=80; t[29]->c->blue=80; //gris fonce
-	t[30]->tagKey ="leisure"; t[30]->tagValue ="marina"; t[30]->c->red=255; t[30]->c->green=255; t[30]->c->blue=204; // jaune pale
-	/**/t[31]->tagKey ="landuse "; t[31]->tagValue ="residential"; t[31]->c->red=255; t[31]->c->green=255; t[31]->c->blue=255; //jaune pale
-	t[32]->tagKey ="highway"; t[32]->tagValue ="primary_link"; t[32]->c->red=255; t[32]->c->green=102; t[32]->c->blue=51; //orange
-	t[33]->tagKey ="highway"; t[33]->tagValue ="secondary_link"; t[33]->c->red=255; t[33]->c->green=204; t[33]->c->blue=51; //jaune
-	t[34]->tagKey ="highway"; t[34]->tagValue ="tertiary_link"; t[34]->c->red=80; t[34]->c->green=80; t[34]->c->blue=80; //gris fonce
-	t[35]->tagKey ="highway"; t[35]->tagValue ="trunk"; t[35]->c->red=255; t[35]->c->green=51; t[35]->c->blue=0; //orange fonce
-	t[36]->tagKey ="highway"; t[36]->tagValue ="trunk_link"; t[36]->c->red=255; t[36]->c->green=51; t[36]->c->blue=0; //orange fonce
-	t[37]->tagKey ="highway"; t[37]->tagValue ="road"; t[37]->c->red=155; t[37]->c->green=155; t[37]->c->blue=155; //gris moyen
-	t[38]->tagKey ="source"; t[38]->tagValue ="cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"; t[38]->c->red=255; t[38]->c->green=255; t[38]->c->blue=255; //blanc
+	t[16]->tagKey ="service"; t[16]->tagValue ="alley"; t[16]->c->red=255; t[16]->c->green=255; t[16]->c->blue=204; //jaune pale
+	
 
-	t[0]->type= 2;   // 1=water, 2=green, 3=highway, 4= building, 0=other; 5= cadastre;
-	t[1]->type= 4;
-	t[2]->type= 3; t[2]->thick=6;
-	t[3]->type= 1;
-	t[4]->type= 1;
-	t[5]->type= 1;
-	t[6]->type= 1;
-	t[7]->type= 2;
-	t[8]->type= 2;
-	t[9]->type= 3; t[9]->thick=5;
-	t[10]->type=3; t[10]->thick=9;
+	t[17]->tagKey ="waterway"; t[17]->tagValue ="canal"; t[17]->c->red=51; t[17]->c->green=102; t[17]->c->blue=204; //bleu fonce
+	t[18]->tagKey ="waterway"; t[18]->tagValue ="water"; t[18]->c->red=51; t[18]->c->green=204; t[18]->c->blue=255;
+	t[19]->tagKey ="natural"; t[19]->tagValue ="coastline"; t[19]->c->red=255; t[19]->c->green=255; t[19]->c->blue=255; //blanc
+	t[20]->tagKey ="natural"; t[20]->tagValue ="water"; t[20]->c->red=0; t[20]->c->green=55; t[20]->c->blue=204;
+	t[21]->tagKey ="waterway"; t[21]->tagValue ="riverbank"; t[21]->c->red=0; t[21]->c->green=153; t[21]->c->blue=204;
+
+	t[22]->tagKey ="leisure"; t[22]->tagValue ="playground"; t[22]->c->red=51; t[22]->c->green=153; t[22]->c->blue=0;	
+	t[23]->tagKey ="landuse"; t[23]->tagValue ="forest"; t[23]->c->red=51; t[23]->c->green=102; t[23]->c->blue=0; //vert
+	t[24]->tagKey ="landuse"; t[24]->tagValue ="grass"; t[24]->c->red=102; t[24]->c->green=204; t[24]->c->blue=51;
+	t[25]->tagKey ="leisure"; t[25]->tagValue ="park"; t[25]->c->red=51; t[25]->c->green=153; t[25]->c->blue=0;
+	t[26]->tagKey ="leisure"; t[26]->tagValue ="garden"; t[26]->c->red=0; t[26]->c->green=200; t[26]->c->blue=0;
+	t[27]->tagKey ="barrier"; t[27]->tagValue ="fence"; t[27]->c->red=51; t[27]->c->green=153; t[27]->c->blue=0;	
+	
+	t[28]->tagKey ="building"; t[28]->tagValue ="church"; t[28]->c->red=133; t[28]->c->green=109; t[28]->c->blue=77; //marron
+	t[29]->tagKey ="leisure"; t[29]->tagValue ="marina"; t[29]->c->red=255; t[29]->c->green=255; t[29]->c->blue=204; // jaune pale clair
+	t[30]->tagKey ="building"; t[30]->tagValue ="yes"; t[30]->c->red=205; t[30]->c->green=183; t[30]->c->blue=158;	//beige
+	
+	t[31]->tagKey ="surface"; t[31]->tagValue ="ground"; t[31]->c->red=255; t[31]->c->green=255; t[31]->c->blue=255; //blanc
+	t[32]->tagKey ="surface"; t[32]->tagValue ="gravel"; t[32]->c->red=255; t[32]->c->green=0; t[32]->c->blue=0; //blanc
+	t[33]->tagKey ="barrier"; t[33]->tagValue ="wall"; t[33]->c->red=0; t[33]->c->green=50; t[33]->c->blue=0;
+	t[34]->tagKey ="amenity"; t[34]->tagValue ="hospital"; t[34]->c->red=255; t[34]->c->green=150; t[34]->c->blue=102; // saumon
+	t[35]->tagKey ="bridge"; t[35]->tagValue ="yes"; t[35]->c->red=255; t[35]->c->green=255; t[35]->c->blue=204; //jaune pale
+	
+	t[36]->tagKey ="source"; t[36]->tagValue ="cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2010"; t[36]->c->red=255; t[36]->c->green=255; t[36]->c->blue=255; //blanc
+
+	t[0]->type= 3; 	t[0]->thick=9;   // 1=water, 2=green, 3=highway, 4= building, 0=other; 5= cadastre;
+	t[1]->type= 3; 	t[1]->thick=1;
+	t[2]->type= 3; 	t[2]->thick=6;
+	t[3]->type= 3; 	t[3]->thick=9;
+	t[4]->type= 3; 	t[4]->thick=9;
+	t[5]->type= 3; 	t[5]->thick=9;
+	t[6]->type= 3; 	t[6]->thick=9;
+	t[7]->type= 3; 	t[7]->thick=4;
+	t[8]->type= 3;	t[8]->thick=3;
+	t[9]->type= 3; 	t[9]->thick=5;
+	t[10]->type=3; 	t[10]->thick=9;
 	t[11]->type= 3; t[11]->thick=7;
 	t[12]->type= 3; t[12]->thick=9;
 	t[13]->type= 3; t[13]->thick=9;
-	t[14]->type= 1;
+	t[14]->type= 3; t[14]->thick=9;
 	t[15]->type= 3; t[15]->thick=9;
-	t[16]->type= 0; t[16]->priority=0;
+	t[16]->type= 3; t[16]->thick=1;                 	
+
 	t[17]->type= 1;
-	t[18]->type= 2;
-	t[19]->type= 3; t[19]->thick=3;
-	t[20]->type= 3;
-	t[21]->type= 0; t[21]->thick=3;
-	t[22]->type= 0;
-	t[23]->type= 0;
-	t[24]->type= 4;
-	t[25]->type= 1;
-	t[26]->type= 3; t[26]->thick=1;
-	t[27]->type= 4;
-	t[28]->type= 2;
-	t[29]->type= 3; t[29]->thick=9;
+	t[18]->type= 1;
+	t[19]->type= 1; 
+	t[20]->type= 1;
+	t[21]->type= 1;
+
+	t[22]->type= 2;
+	t[23]->type= 2;
+	t[24]->type= 2;
+	t[25]->type= 2;
+	t[26]->type= 2;
+	t[27]->type= 2;
+
+	t[28]->type= 4;
+	t[29]->type= 4; 
 	t[30]->type= 4;
-	t[31]->type= 4;
-	t[32]->type= 3; t[32]->thick=9;
-	t[33]->type= 3; t[33]->thick=9;
-	t[34]->type= 3; t[34]->thick=9;
-	t[35]->type= 3; t[35]->thick=9;
-	t[36]->type= 3; t[36]->thick=9;
-	t[37]->type= 3; t[37]->thick=4;
-	t[38]->type= 5;                  t[38]->priority=0;
+
+	t[31]->type= 0;
+	t[32]->type= 0; 
+	t[33]->type= 0; 
+	t[34]->type= 0; 
+	t[35]->type= 0;				t[35]->priority=0;
+	 
+	t[36]->type= 5; 			t[36]->priority=0;
 	return t;
 
 }
