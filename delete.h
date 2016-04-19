@@ -1,5 +1,5 @@
 /**
-* \file init.h
+* \file delete.h
 * \brief Initialisation of the principal structure
 * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
 * \date 25 february 2016
