@@ -54,7 +54,7 @@ void close_SDL() {
   SDL_Quit();
 }
 
-void printMap(Map* map,char* typeOfDessin){
+void printMap(Map* map, char* typeOfDessin, char* signal){
   if(map == NULL){
     fprintf(stderr,"La map vaut null : %s\n","fonction printMap");
     exit(EXIT_FAILURE);
@@ -79,7 +79,9 @@ void printMap(Map* map,char* typeOfDessin){
     exit(EXIT_FAILURE);
   }
   drawMap(map, typeOfDessin);
-  evenement();
+  if(signal==NULL){
+    evenement();
+  }
   close_SDL();
   exit(EXIT_SUCCESS);
 

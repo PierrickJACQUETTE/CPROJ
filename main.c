@@ -16,12 +16,26 @@ int main(int argc, char **argv) {
 			fprintf(stderr,"Le pointer vers la map est NULL dans fonction main \n");
 		}
 		map = parseDoc(filename);
-		//printWay(&(map->avlWay),0);
 		if(argc == 3){
-			printMap(map,argv[2]);
+			if(strcmp(argv[2],"line")==0){
+				printMap(map,"line",NULL);
+			}
+			else if(strcmp(argv[2],"point")==0){
+				printMap(map,"point",NULL);
+			}
+			else{
+				char* signal = argv[2];
+				if(strcmp(signal,"-s")!=0){
+					fprintf(stderr,"SIGNAL ERROR: Wrong signal \nUsage: %s filename -s\n", argv[0]);
+					exit(0);
+				}
+				else{
+					printMap(map,"line",signal);
+				}
+			}
 		}
 		else{
-			printMap(map,"line");
+			fprintf(stderr,"ERROR: \nUsage: %s filename [line|point] [-s]\n", argv[0]);
 		}
 		deleteMap(map);
 		xmlCleanupParser();
