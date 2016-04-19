@@ -9,26 +9,29 @@ parcoursRep(){
 
   droits=`stat -c "%a" $repertoire`
   #droits=`stat -f "%0p" $repertoire`
+
   chmod u+xr $repertoire
   cd $repertoire
 
   for fic in `ls`
   do
     if [ -f $fic ]
-      then
+      then 
+
       echo "Fichier: $fic"
       let nbFic++
 
       time1=$(($(date +%s%N)/1000000))
-
       $(../CPROJ/CPROJ $fic -s)
-
       time2=$(($(date +%s%N)/1000000))
 
-      time3=$(($time2-$time1))
-      echo "temps: $time3 ms"
+      time3=$(($time2-$time1))     
+      tailleFic=$(ls -lh $fic | cut -d " " -f5)
+
+      echo "Taille_fichier: $tailleFic  Temps_d'execution: $time3 ms" 
 
       let tmpsMis=$(($tmpsMis+$time3))
+
     else
       if [ -d $fic ]
         then
@@ -51,5 +54,6 @@ else
 	repertoire_test=$1
 	parcoursRep $repertoire_test
 	echo "Nombre de fichiers traité: "$nbFic
+	echo "Temps d'execution: $tmpsMis ms"
   echo "Temps moyen d'execution: "$(($tmpsMis/$nbFic))" ms"
 fi
