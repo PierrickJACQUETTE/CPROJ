@@ -42,7 +42,6 @@ Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b,
 	if(name != NULL){
 		n->name=malloc(sizeof(char*)*strlen(name));
 		strcpy(n->name,name);
-		printf("INIT=  id: %ld name: %s\n",n->id,n->name);
 	}
 	else{
 		n->name = NULL;

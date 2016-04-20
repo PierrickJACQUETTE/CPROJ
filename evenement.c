@@ -128,7 +128,7 @@ void evenement(){
 				pasSourisY = e.motion.y;
 				clicker = 1;
 				break;
-				
+
 				case SDL_MOUSEMOTION :
 				sourisX = e.motion.x;
 				sourisY = e.motion.y;

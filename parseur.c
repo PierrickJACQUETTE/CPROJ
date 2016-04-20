@@ -75,28 +75,24 @@ Relation* parseRelation(xmlDocPtr doc, xmlNodePtr cur){
 
 	while(tmpcur != NULL){
 		if (tmpcur->type == XML_ELEMENT_NODE) {
-			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag") ==0 ){
-
-				//else{
-				t = goodTagRelation((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"));
-				if(t != NULL){
-					tag = t;
-				}
-				//}
-			}
-			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"member") ==0 ){
-				if((strcmp((char *)xmlGetProp(tmpcur, (const xmlChar *)"type"),"way") ==0)){
-					lw = addRefListWay(strtoul((const char *)(xmlGetProp(tmpcur, (const xmlChar *)"ref")),NULL,0),(char *)xmlGetProp(tmpcur, (const xmlChar *)"role"), lw);
-				}
-				if((strcmp((char *)xmlGetProp(tmpcur, (const xmlChar *)"type"),"node") ==0)){
-					ln = addRefListNode(strtoul((const char *)(xmlGetProp(tmpcur, (const xmlChar *)"ref")),NULL,0), ln);
-				}
+			t = goodTagRelation((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"));
+			if(t != NULL){
+				tag = t;
 			}
 		}
-		tmpcur = tmpcur->next;
+		if( xmlStrcmp(tmpcur->name,(const xmlChar *)"member") ==0 ){
+			if((strcmp((char *)xmlGetProp(tmpcur, (const xmlChar *)"type"),"way") ==0)){
+				lw = addRefListWay(strtoul((const char *)(xmlGetProp(tmpcur, (const xmlChar *)"ref")),NULL,0),(char *)xmlGetProp(tmpcur, (const xmlChar *)"role"), lw);
+			}
+			if((strcmp((char *)xmlGetProp(tmpcur, (const xmlChar *)"type"),"node") ==0)){
+				ln = addRefListNode(strtoul((const char *)(xmlGetProp(tmpcur, (const xmlChar *)"ref")),NULL,0), ln);
+			}
+		}
 	}
-	r = initRelation(id,visible, tag,lw, ln);
-	return r;
+	tmpcur = tmpcur->next;
+}
+r = initRelation(id,visible, tag,lw, ln);
+return r;
 }
 
 Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
@@ -106,10 +102,10 @@ Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
 	float lon = 100;
 	char *visible = "T";
 	char* name = NULL;
-	
+
 	xmlAttr *node_attr = cur->properties;
 	xmlNodePtr tmpcur = NULL;
-	
+
 	while(node_attr != NULL)
 	{
 		if( xmlStrcmp(node_attr->name,(const xmlChar *)"id")==0 ){
@@ -126,7 +122,7 @@ Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
 		}
 		node_attr = node_attr->next;
 	}
-	
+
 	tmpcur = cur->xmlChildrenNode;
 
 	while(tmpcur != NULL){

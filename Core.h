@@ -2,7 +2,7 @@
 * \file Core.h
 * \brief Declaration of structure for the project
 * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
-* \date 02 mars 2016
+* \date 20 avril 2016
 *
 * Declaration of structure for the project open stree map
 *
@@ -82,6 +82,7 @@ typedef struct{
 * id represente the name of this object
 * c represente where is this point on the map
 * visible represente if this point is visible or not
+* name is the char * with represente the name of node
 */
 typedef struct{
 	unsigned long id;
@@ -230,6 +231,7 @@ typedef struct sAvl{
 * Bounds of a Map
 * Avl of Node
 * Avl of Way
+*ListNode nodeOther;
 * List wayOther
 * List wayWater
 * List wayGreen

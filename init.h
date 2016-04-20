@@ -2,8 +2,7 @@
 * \file init.h
 * \brief Initialisation of the principal structure
 * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
-* \date 18 avril 2016
-*
+* \date 20 avril 2016
 *
 */
 
@@ -25,6 +24,7 @@
 * \param lon float that represente the longitude of this point
 * \param visible char that represente if the node is visibl or not
 * \param b Bounds that represente the bounds of the map
+* \param name the char * with represente the name of node
 * \return Node*
 */
 Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b, char* name);
