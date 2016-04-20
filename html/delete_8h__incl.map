@@ -1,6 +1,6 @@
 <map id="delete.h" name="delete.h">
-<area shape="rect" id="node2" href="$Avl_8h.html" title="This file can create, insert and retrieve nodes in an Avl ( balanced binary tree search ) ..." alt="" coords="40,80,92,107"/>
-<area shape="rect" id="node5" href="$init_8h.html" title="Initialisation of the principal structure. " alt="" coords="177,155,228,181"/>
-<area shape="rect" id="node7" href="$conversionElements_8h.html" title="Declare fonctions to convert elements. " alt="" coords="194,229,344,256"/>
-<area shape="rect" id="node11" href="$Core_8h.html" title="Declaration of structure for the project. " alt="" coords="546,304,608,331"/>
+<area shape="rect" id="node2" href="$Avl_8h.html" title="This file can create, insert and retrieve nodes in an Avl ( balanced binary tree search ) ..." alt="" coords="93,80,144,107"/>
+<area shape="rect" id="node4" href="$init_8h.html" title="Initialisation of the principal structure. " alt="" coords="135,155,185,181"/>
+<area shape="rect" id="node6" href="$conversionElements_8h.html" title="Declare fonctions to convert elements. " alt="" coords="151,229,301,256"/>
+<area shape="rect" id="node11" href="$Core_8h.html" title="Declaration of structure for the project. " alt="" coords="509,304,571,331"/>
 </map>

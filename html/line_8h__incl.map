@@ -1,6 +1,6 @@
 <map id="line.h" name="line.h">
-<area shape="rect" id="node2" href="$conversionElements_8h.html" title="Declare fonctions to convert elements. " alt="" coords="229,229,379,256"/>
-<area shape="rect" id="node9" href="$Avl_8h.html" title="This file can create, insert and retrieve nodes in an Avl ( balanced binary tree search ) ..." alt="" coords="497,80,548,107"/>
-<area shape="rect" id="node7" href="$Core_8h.html" title="Declaration of structure for the project. " alt="" coords="423,304,484,331"/>
-<area shape="rect" id="node10" href="$init_8h.html" title="Initialisation of the principal structure. " alt="" coords="427,155,477,181"/>
+<area shape="rect" id="node2" href="$Avl_8h.html" title="This file can create, insert and retrieve nodes in an Avl ( balanced binary tree search ) ..." alt="" coords="93,80,144,107"/>
+<area shape="rect" id="node4" href="$init_8h.html" title="Initialisation of the principal structure. " alt="" coords="135,155,185,181"/>
+<area shape="rect" id="node6" href="$conversionElements_8h.html" title="Declare fonctions to convert elements. " alt="" coords="151,229,301,256"/>
+<area shape="rect" id="node11" href="$Core_8h.html" title="Declaration of structure for the project. " alt="" coords="509,304,571,331"/>
 </map>
