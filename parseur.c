@@ -75,24 +75,25 @@ Relation* parseRelation(xmlDocPtr doc, xmlNodePtr cur){
 
 	while(tmpcur != NULL){
 		if (tmpcur->type == XML_ELEMENT_NODE) {
-			t = goodTagRelation((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"));
-			if(t != NULL){
-				tag = t;
+			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"tag") ==0 ){
+				t = goodTagRelation((char *)xmlGetProp(tmpcur, (const xmlChar *)"k"),(char *) xmlGetProp(tmpcur, (const xmlChar *)"v"));
+				if(t != NULL){
+					tag = t;
+				}
+			}
+			if( xmlStrcmp(tmpcur->name,(const xmlChar *)"member") ==0 ){
+				if((strcmp((char *)xmlGetProp(tmpcur, (const xmlChar *)"type"),"way") ==0)){
+					lw = addRefListWay(strtoul((const char *)(xmlGetProp(tmpcur, (const xmlChar *)"ref")),NULL,0),(char *)xmlGetProp(tmpcur, (const xmlChar *)"role"), lw);
+				}
+				if((strcmp((char *)xmlGetProp(tmpcur, (const xmlChar *)"type"),"node") ==0)){
+					ln = addRefListNode(strtoul((const char *)(xmlGetProp(tmpcur, (const xmlChar *)"ref")),NULL,0), ln);
+				}
 			}
 		}
-		if( xmlStrcmp(tmpcur->name,(const xmlChar *)"member") ==0 ){
-			if((strcmp((char *)xmlGetProp(tmpcur, (const xmlChar *)"type"),"way") ==0)){
-				lw = addRefListWay(strtoul((const char *)(xmlGetProp(tmpcur, (const xmlChar *)"ref")),NULL,0),(char *)xmlGetProp(tmpcur, (const xmlChar *)"role"), lw);
-			}
-			if((strcmp((char *)xmlGetProp(tmpcur, (const xmlChar *)"type"),"node") ==0)){
-				ln = addRefListNode(strtoul((const char *)(xmlGetProp(tmpcur, (const xmlChar *)"ref")),NULL,0), ln);
-			}
-		}
+		tmpcur = tmpcur->next;
 	}
-	tmpcur = tmpcur->next;
-}
-r = initRelation(id,visible, tag,lw, ln);
-return r;
+	r = initRelation(id,visible, tag,lw, ln);
+	return r;
 }
 
 Node* parseNode (xmlDocPtr doc, xmlNodePtr cur, Bounds *bounds) {
