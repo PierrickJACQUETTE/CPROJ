@@ -42,6 +42,15 @@
 
 \section{Librairies utilisées}
 \begin{frame}{Librairies utilisées}
+	\textbf{Pour parser les elements du document XML} :
+	\begin{itemize}
+	\item Libxml2
+	\end{itemize}
+	\textbf{Pour l'affichage graphique} :
+	\begin{itemize}
+	\item SDL2
+	\item SDL2\_gfx 
+	\end{itemize}
 \end{frame}
 
 \section{Graphe de structure}
@@ -60,11 +69,11 @@
 	}
 	\begin{itemize}
 	\item<2-3> \textbf{Insertion} : $\theta$(log n) : la hauteur de l'arbre
-	\item<3> \textbf{Recherche} : $\theta$(log n) : la hauteur de l'arbre
-\end{itemize}
+	\item<3>   \textbf{Recherche} : $\theta$(log n) : la hauteur de l'arbre
+	\end{itemize}
 \end{frame}
 
-\begin{frame}{Equilibrage lors d'une insertion}
+\begin{frame}[fragile]{Equilibrage lors d'une insertion}
 \framesubtitle{Rotation simple gauche et droite}
 	\begin{tabular}{ccc}
 		 \multicolumn{2}{l}{
@@ -191,7 +200,7 @@
 	\end{tabular}
 \end{frame}
 
-\begin{frame}{Equilibrage lors d'une insertion}
+\begin{frame}[fragile]{Equilibrage lors d'une insertion}
 \framesubtitle{Rotation double droite gauche et gauche droite}
 	\begin{tabular}{ccc}
 	 	\multicolumn{2}{l}{
@@ -371,9 +380,9 @@
  	 \item<3-8> \textbf{Relation} (Outer/Inner)
 	 \item<4-8> \textbf{Green} (forêt, parc, espace vert, ...)
 	 \item<5-8> \textbf{Other} (église, marina, pont) 
-	 \item<6-8>\textbf{Building}
+	 \item<6-8>	\textbf{Building}
 	 \item<7-8> \textbf{Highway} 
-	 \item<8> \textbf{Cadastre} (sources)
+	 \item<8> 	\textbf{Cadastre} (sources)
 
 	\end{itemize}
 \end{frame}
@@ -385,24 +394,40 @@
  	 \item<2-5> \textbf{Relation} (Outer/Inner)
 	 \item<3-5> \textbf{Zoom et déplacement} (à la souris et au clavier)
 	 \item<4-5> \textbf{Coastline}
-	 \item<5>\textbf{Adaptation de la taille de la fenêtre en fonction des bounds }
+	 \item<5>	\textbf{Adaptation de la taille de la fenêtre en fonction des bounds }
 	\end{itemize}
 \end{frame}
 
-\section{Documentation , check et performance}
-\begin{frame}{Documentation,check et performance}
-
+\section{Documentation, Check et performance}
+\begin{frame}{Documentation, Check et performance}
+  \begin{itemize}
+	\item <1-9>\textbf{Documentation}
+	\begin{itemize}
+	\item  <2-9>Doxygen
+	\end{itemize}
+ 	\item <3-9> \textbf{Check}
+	\begin{itemize}
+	\item  <4-9>tests\_unitaires
+	\item  <5-9>cas limites
+	\item  <6-9>check\_main
+	\item  <7-9>Makefile
+	\end{itemize}
+	\item <8-9> \textbf{Test de performance}
+	\begin{itemize}
+	\item  <9>script de performance
+	\end{itemize}
+      \end{itemize}
 \end{frame}
 
 \section{Où nous en sommes}
 \begin{frame}{Où nous en sommes}
 	 \textbf{A améliorer}
 	 \begin{itemize}
-	 \item<2-3>\textbf{Nom des rues} (Rotation)
+	 \item<1-3>\textbf{Nom des rues} (rotation)
+	 \item<2-3>\textbf{Affichage nom des hotels, cafes} (taille, police de l'ecriture)
  	 \item<3> \textbf{Highway} (traçage en polygône)
 	\end{itemize}
 \end{frame}
-
 
 
 
