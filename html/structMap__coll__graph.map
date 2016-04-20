@@ -1,0 +1,14 @@
+<map id="Map" name="Map">
+<area shape="rect" id="node2" href="$structBounds.html" title="Objet that represente bounds for an open street map. " alt="" coords="15,717,81,795"/>
+<area shape="rect" id="node3" href="$structCoordinate.html" title="Objet that represente the coordinate of a point. " alt="" coords="5,547,91,639"/>
+<area shape="rect" id="node4" href="$structAvl.html" title="This is the structure for representing an AVL . " alt="" coords="113,717,153,795"/>
+<area shape="rect" id="node5" href="$structTag.html" title="Objet that represente tags for an open street map. " alt="" coords="203,189,288,325"/>
+<area shape="rect" id="node11" href="$structRelation.html" title="Objet that represente a construction like a building or a garden in openstreetmap. " alt="" coords="411,390,481,482"/>
+<area shape="rect" id="node6" href="$structColor.html" title="Objet that represente color in rgb. " alt="" coords="212,5,279,112"/>
+<area shape="rect" id="node7" href="$structListNode.html" title="Objet that represente a List of Node. " alt="" coords="328,219,401,296"/>
+<area shape="rect" id="node8" href="$structrefListNode.html" title="{refListNode\n|+ nd\l|}" alt="" coords="321,20,409,97"/>
+<area shape="rect" id="node9" href="$structListRelation.html" title="{ListRelation\n||}" alt="" coords="396,717,487,795"/>
+<area shape="rect" id="node10" href="$structrefListRel.html" title="Objet that represente a long and the next long (id) " alt="" coords="442,555,520,632"/>
+<area shape="rect" id="node12" href="$structListWay.html" title="{ListWay\n||}" alt="" coords="559,219,629,296"/>
+<area shape="rect" id="node13" href="$structrefListWay.html" title="Objet that represente a long and the next long (id) " alt="" coords="552,13,637,105"/>
+</map>

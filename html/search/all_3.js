@@ -18,7 +18,6 @@ var searchData=
   ['deletetag',['deleteTag',['../delete_8h.html#a382f7ebaf756b41ba032b0e290b5f516',1,'delete.c']]],
   ['deleteway',['deleteWay',['../delete_8h.html#a0aa33ed5aec66c1b0e0aae8327426b34',1,'delete.c']]],
   ['distancelatlon',['distanceLatLon',['../conversionElements_8h.html#a90591e521d718a45a88ec4b8d67a988b',1,'conversionElements.c']]],
-  ['distancetobounds',['distanceToBounds',['../conversionElements_8h.html#a248ef05c0bf1752dbdd368a8d3084ad9',1,'conversionElements.c']]],
   ['distancex',['distanceX',['../conversionElements_8h.html#a075c229cf74f9814e529c85a425f2734',1,'conversionElements.c']]],
   ['distancexy',['distanceXY',['../conversionElements_8h.html#a78254a65bf2ec07b4268479ec6104c55',1,'conversionElements.c']]],
   ['distancey',['distanceY',['../conversionElements_8h.html#ae51377d214fc1d1063596883f0ed80ea',1,'conversionElements.c']]],

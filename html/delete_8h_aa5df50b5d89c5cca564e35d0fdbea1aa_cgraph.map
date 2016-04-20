@@ -1,0 +1,8 @@
+<map id="deleteRelation" name="deleteRelation">
+<area shape="rect" id="node2" href="$delete_8h.html#abba7d9544581c9a16d37e95c65f1ffcd" title="deleteListWay" alt="" coords="162,5,267,32"/>
+<area shape="rect" id="node4" href="$delete_8h.html#a20fcde4cd5c1832af41571eda7a3b354" title="deleteListNode" alt="" coords="160,56,269,83"/>
+<area shape="rect" id="node6" href="$delete_8h.html#a382f7ebaf756b41ba032b0e290b5f516" title="deleteTag" alt="" coords="175,107,254,133"/>
+<area shape="rect" id="node3" href="$delete_8h.html#a00e184d58606e40ccadd140f1d558a78" title="deleteRefListWay" alt="" coords="319,5,446,32"/>
+<area shape="rect" id="node5" href="$delete_8h.html#a3039fc4ca0a95e618defd345fb15c374" title="deleteRefListNode" alt="" coords="317,56,448,83"/>
+<area shape="rect" id="node7" href="$delete_8h.html#a2054ef66b2a91686e692de6b86039390" title="deleteColor" alt="" coords="339,107,427,133"/>
+</map>

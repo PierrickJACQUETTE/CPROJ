@@ -1,0 +1,17 @@
+<map id="deleteMap" name="deleteMap">
+<area shape="rect" id="node2" href="$delete_8h.html#a4e05fb65ebbcd56d00e688e356a1351f" title="deleteBounds" alt="" coords="321,5,423,32"/>
+<area shape="rect" id="node4" href="$delete_8h.html#a062b25ef0ead36d4cd7944abfe9494f9" title="deleteAvl" alt="" coords="162,107,238,133"/>
+<area shape="rect" id="node11" href="$delete_8h.html#abba7d9544581c9a16d37e95c65f1ffcd" title="deleteListWay" alt="" coords="650,233,755,260"/>
+<area shape="rect" id="node13" href="$delete_8h.html#afddcdba6a7fea86c3adaa74434cd9c4e" title="deleteListRelation" alt="" coords="137,157,263,184"/>
+<area shape="rect" id="node16" href="$delete_8h.html#acb0f3666b83b4d008a67250e1cf83123" title="deleteTabTag" alt="" coords="149,208,251,235"/>
+<area shape="rect" id="node3" href="$delete_8h.html#ad754c1da05e433eeb224483438d6d5a7" title="deleteCoordinate" alt="" coords="480,31,600,57"/>
+<area shape="rect" id="node5" href="$delete_8h.html#a10776a3abd69dfae7f75c7ce7cee3a69" title="deleteNode" alt="" coords="328,56,416,83"/>
+<area shape="rect" id="node6" href="$delete_8h.html#a0aa33ed5aec66c1b0e0aae8327426b34" title="deleteWay" alt="" coords="498,107,582,133"/>
+<area shape="rect" id="node7" href="$delete_8h.html#a20fcde4cd5c1832af41571eda7a3b354" title="deleteListNode" alt="" coords="648,107,757,133"/>
+<area shape="rect" id="node9" href="$delete_8h.html#a382f7ebaf756b41ba032b0e290b5f516" title="deleteTag" alt="" coords="663,157,742,184"/>
+<area shape="rect" id="node8" href="$delete_8h.html#a3039fc4ca0a95e618defd345fb15c374" title="deleteRefListNode" alt="" coords="805,107,936,133"/>
+<area shape="rect" id="node10" href="$delete_8h.html#a2054ef66b2a91686e692de6b86039390" title="deleteColor" alt="" coords="827,157,915,184"/>
+<area shape="rect" id="node12" href="$delete_8h.html#a00e184d58606e40ccadd140f1d558a78" title="deleteRefListWay" alt="" coords="807,233,934,260"/>
+<area shape="rect" id="node14" href="$delete_8h.html#a8446cb9c727e0503ceaedaebe45855aa" title="deleteRefListRel" alt="" coords="313,157,431,184"/>
+<area shape="rect" id="node15" href="$delete_8h.html#aa5df50b5d89c5cca564e35d0fdbea1aa" title="deleteRelation" alt="" coords="487,157,593,184"/>
+</map>

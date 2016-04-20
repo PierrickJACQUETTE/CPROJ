@@ -1,0 +1,8 @@
+<map id="Relation" name="Relation">
+<area shape="rect" id="node2" href="$structTag.html" title="Objet that represente tags for an open street map. " alt="" coords="5,189,91,325"/>
+<area shape="rect" id="node3" href="$structColor.html" title="Objet that represente color in rgb. " alt="" coords="15,5,81,112"/>
+<area shape="rect" id="node4" href="$structListNode.html" title="Objet that represente a List of Node. " alt="" coords="115,219,188,296"/>
+<area shape="rect" id="node5" href="$structrefListNode.html" title="{refListNode\n|+ nd\l|}" alt="" coords="106,20,195,97"/>
+<area shape="rect" id="node6" href="$structListWay.html" title="{ListWay\n||}" alt="" coords="251,219,321,296"/>
+<area shape="rect" id="node7" href="$structrefListWay.html" title="Objet that represente a long and the next long (id) " alt="" coords="281,13,367,105"/>
+</map>

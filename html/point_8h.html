@@ -37,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -69,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,6 +89,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>Declaration of fonctions that draws the map by using points.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="conversionElements_8h_source.html">conversionElements.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for point.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="point_8h__incl.png" border="0" usemap="#point_8h" alt=""/></div>
+<map name="point_8h" id="point_8h">
+<area shape="rect" id="node2" href="conversionElements_8h.html" title="Declare fonctions to convert elements. " alt="" coords="154,80,304,107"/><area shape="rect" id="node7" href="Core_8h.html" title="Declaration of structure for the project. " alt="" coords="512,155,573,181"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="point_8h__dep__incl.png" border="0" usemap="#point_8hdep" alt=""/></div>
+<map name="point_8hdep" id="point_8hdep">
+<area shape="rect" id="node2" href="evenement_8h.html" title="Declare fonctions to convert elements. " alt="" coords="5,80,101,107"/><area shape="rect" id="node3" href="graphic_8h.html" title="Display the Node and the way from a map. " alt="" coords="16,155,89,181"/><area shape="rect" id="node4" href="main_8h.html" title="This file calls the main fonction of the program. " alt="" coords="23,229,84,256"/></map>
+</div>
 </div>
 <p><a href="point_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -128,7 +141,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Fonction that draws a point in the window</p>
+<p>Fonction that draws a point in the window it just draws the point</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">float</td><td>x the coordinate of the abscisse of the point </td></tr>
@@ -136,7 +149,15 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>nothing it just draws the point </dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="point_8h_a75fdb75bdd5f02928df67efa64f89db9_icgraph.png" border="0" usemap="#point_8h_a75fdb75bdd5f02928df67efa64f89db9_icgraph" alt=""/></div>
+<map name="point_8h_a75fdb75bdd5f02928df67efa64f89db9_icgraph" id="point_8h_a75fdb75bdd5f02928df67efa64f89db9_icgraph">
+<area shape="rect" id="node2" href="point_8h.html#a8743c50004f98704b526683ed4c554f2" title="parcoursAvl" alt="" coords="128,5,219,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -163,7 +184,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Fonction that browse the avl tree and displays the nodes in the window by calling the affichage fonction</p>
+<p>Fonction that browse the avl tree and displays the nodes in the window by calling the affichage fonction value of the abscisse put to scale</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structAvl.html" title="This is the structure for representing an AVL . ">Avl</a></td><td>**a is the pointer to the avl of node we need to browse </td></tr>
@@ -171,14 +192,22 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>value of the abscisse put to scale </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="point_8h_a8743c50004f98704b526683ed4c554f2_cgraph.png" border="0" usemap="#point_8h_a8743c50004f98704b526683ed4c554f2_cgraph" alt=""/></div>
+<map name="point_8h_a8743c50004f98704b526683ed4c554f2_cgraph" id="point_8h_a8743c50004f98704b526683ed4c554f2_cgraph">
+<area shape="rect" id="node2" href="conversionElements_8h.html#a26f3232214f74a1eff1d8927c4f4b296" title="miseAEchelleX" alt="" coords="145,5,255,32"/><area shape="rect" id="node3" href="conversionElements_8h.html#a4cb5ae2d71cf1e9c01b8439b5697e9d5" title="miseAEchelleY" alt="" coords="145,56,255,83"/><area shape="rect" id="node4" href="point_8h.html#a75fdb75bdd5f02928df67efa64f89db9" title="affichage" alt="" coords="163,107,237,133"/></map>
+</div>
+</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 19 2016 17:54:24 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 20 2016 10:08:29 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -11,6 +11,22 @@ Declare fonctions to convert elements.
 {\ttfamily \#include $<$S\-D\-L2/\-S\-D\-L.\-h$>$}\\*
 {\ttfamily \#include $<$S\-D\-L2/\-S\-D\-L2\-\_\-gfx\-Primitives.\-h$>$}\\*
 {\ttfamily \#include \char`\"{}Core.\-h\char`\"{}}\\*
+Include dependency graph for conversion\-Elements.\-h\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{conversionElements_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{conversionElements_8h__dep__incl}
+\end{center}
+\end{figure}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -47,8 +63,6 @@ float \hyperlink{conversionElements_8h_a075c229cf74f9814e529c85a425f2734}{distan
 \item 
 float \hyperlink{conversionElements_8h_a830c114c07e594b1b50f27627c98f5da}{angle} (float ax, float ay, float bx, float by, float cx, float cy)
 \item 
-\hyperlink{structNode}{Node} $\ast$ \hyperlink{conversionElements_8h_a248ef05c0bf1752dbdd368a8d3084ad9}{distance\-To\-Bounds} (\hyperlink{structBounds}{Bounds} $\ast$b, \hyperlink{structNode}{Node} $\ast$n)
-\begin{DoxyCompactList}\small\item\em calcule the distance between a \hyperlink{structNode}{Node} and the \hyperlink{structBounds}{Bounds}'s map \end{DoxyCompactList}\item 
 float \hyperlink{conversionElements_8h_a90591e521d718a45a88ec4b8d67a988b}{distance\-Lat\-Lon} (float lat1, float lon1, float lat2, float lon2)
 \begin{DoxyCompactList}\small\item\em calculate the distance beetween 2 points in a map \end{DoxyCompactList}\item 
 \hypertarget{conversionElements_8h_a023b9909d36d14d6f1693e4c437a0c51}{Sint16 $\ast$ {\bfseries midle} (float b, float e, int signe, Sint16 tab\mbox{[}4\mbox{]})}\label{conversionElements_8h_a023b9909d36d14d6f1693e4c437a0c51}
@@ -156,6 +170,18 @@ This method calculates the angle between two vectors. The returned value is in d
 \begin{DoxyReturn}{Returns}
 float \-: The angle between the two vectors A\-B and B\-C (degree) 
 \end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{conversionElements_8h_a830c114c07e594b1b50f27627c98f5da_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{conversionElements_8h_a2851552394abaf56e2cc232660580e53}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!calculate\-Zoom@{calculate\-Zoom}}
 \index{calculate\-Zoom@{calculate\-Zoom}!conversionElements.h@{conversion\-Elements.\-h}}
 \subsubsection[{calculate\-Zoom}]{\setlength{\rightskip}{0pt plus 5cm}float calculate\-Zoom (
@@ -180,6 +206,18 @@ This function calculates the offset of each point zonction zoom
 \begin{DoxyReturn}{Returns}
 float The new decalage 
 \end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{conversionElements_8h_a2851552394abaf56e2cc232660580e53_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{conversionElements_8h_aa5c04722427362120674bd42606fbf9b}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!color\-Background@{color\-Background}}
 \index{color\-Background@{color\-Background}!conversionElements.h@{conversion\-Elements.\-h}}
 \subsubsection[{color\-Background}]{\setlength{\rightskip}{0pt plus 5cm}int color\-Background (
@@ -204,6 +242,18 @@ According initialising the bottom of the window
 \begin{DoxyReturn}{Returns}
 int Lets see if everything went well 
 \end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{conversionElements_8h_aa5c04722427362120674bd42606fbf9b_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{conversionElements_8h_a9b565a29e63df82d12fae0a2a3f84349}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!color\-Background\-Default@{color\-Background\-Default}}
 \index{color\-Background\-Default@{color\-Background\-Default}!conversionElements.h@{conversion\-Elements.\-h}}
 \subsubsection[{color\-Background\-Default}]{\setlength{\rightskip}{0pt plus 5cm}int color\-Background\-Default (
@@ -214,6 +264,18 @@ int Lets see if everything went well
 According initialising the bottom of the window by default \begin{DoxyReturn}{Returns}
 int Lets see if everything went well 
 \end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{conversionElements_8h_a9b565a29e63df82d12fae0a2a3f84349_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{conversionElements_8h_ad66d504f94bd54c34335365e98edd4e7}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!conversion\-Lat\-Lon@{conversion\-Lat\-Lon}}
 \index{conversion\-Lat\-Lon@{conversion\-Lat\-Lon}!conversionElements.h@{conversion\-Elements.\-h}}
 \subsubsection[{conversion\-Lat\-Lon}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Coordinate}$\ast$ conversion\-Lat\-Lon (
@@ -236,6 +298,18 @@ calculate the \hyperlink{structCoordinate}{Coordinate} for a point in openstreet
 \begin{DoxyReturn}{Returns}
 \hyperlink{structCoordinate}{Coordinate} $\ast$ 
 \end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{conversionElements_8h_ad66d504f94bd54c34335365e98edd4e7_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{conversionElements_8h_a53a0d679e571c6851a5c6d0c7d37e763}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!convert\-Bounds@{convert\-Bounds}}
 \index{convert\-Bounds@{convert\-Bounds}!conversionElements.h@{conversion\-Elements.\-h}}
 \subsubsection[{convert\-Bounds}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bounds}$\ast$ convert\-Bounds (
@@ -255,6 +329,30 @@ convert the bounds of the map to the min is (0,0)
 \begin{DoxyReturn}{Returns}
 Bounds$\ast$ 
 \end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{conversionElements_8h_a53a0d679e571c6851a5c6d0c7d37e763_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{conversionElements_8h_a53a0d679e571c6851a5c6d0c7d37e763_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{conversionElements_8h_a90591e521d718a45a88ec4b8d67a988b}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!distance\-Lat\-Lon@{distance\-Lat\-Lon}}
 \index{distance\-Lat\-Lon@{distance\-Lat\-Lon}!conversionElements.h@{conversion\-Elements.\-h}}
 \subsubsection[{distance\-Lat\-Lon}]{\setlength{\rightskip}{0pt plus 5cm}float distance\-Lat\-Lon (
@@ -283,28 +381,18 @@ calculate the distance beetween 2 points in a map
 \begin{DoxyReturn}{Returns}
 float the distance 
 \end{DoxyReturn}
-\hypertarget{conversionElements_8h_a248ef05c0bf1752dbdd368a8d3084ad9}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!distance\-To\-Bounds@{distance\-To\-Bounds}}
-\index{distance\-To\-Bounds@{distance\-To\-Bounds}!conversionElements.h@{conversion\-Elements.\-h}}
-\subsubsection[{distance\-To\-Bounds}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ distance\-To\-Bounds (
-\begin{DoxyParamCaption}
-\item[{{\bf Bounds} $\ast$}]{b, }
-\item[{{\bf Node} $\ast$}]{n}
-\end{DoxyParamCaption}
-)}}\label{conversionElements_8h_a248ef05c0bf1752dbdd368a8d3084ad9}
 
 
-calcule the distance between a \hyperlink{structNode}{Node} and the \hyperlink{structBounds}{Bounds}'s map 
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{conversionElements_8h_a90591e521d718a45a88ec4b8d67a988b_icgraph}
+\end{center}
+\end{figure}
 
 
-\begin{DoxyParams}{Parameters}
-{\em n} & represente the point on the map \\
-\hline
-{\em b} & represente the bounds of the map \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Node$\ast$ 
-\end{DoxyReturn}
 \hypertarget{conversionElements_8h_a075c229cf74f9814e529c85a425f2734}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!distance\-X@{distance\-X}}
 \index{distance\-X@{distance\-X}!conversionElements.h@{conversion\-Elements.\-h}}
 \subsubsection[{distance\-X}]{\setlength{\rightskip}{0pt plus 5cm}float distance\-X (
@@ -327,6 +415,18 @@ calculate the abscisse's distance beetween 2 points in a carthesien repere
 \begin{DoxyReturn}{Returns}
 float 
 \end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{conversionElements_8h_a075c229cf74f9814e529c85a425f2734_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{conversionElements_8h_a78254a65bf2ec07b4268479ec6104c55}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!distance\-X\-Y@{distance\-X\-Y}}
 \index{distance\-X\-Y@{distance\-X\-Y}!conversionElements.h@{conversion\-Elements.\-h}}
 \subsubsection[{distance\-X\-Y}]{\setlength{\rightskip}{0pt plus 5cm}float distance\-X\-Y (
@@ -355,6 +455,18 @@ calculate the distance beetween 2 points in a carthesien repere
 \begin{DoxyReturn}{Returns}
 float 
 \end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{conversionElements_8h_a78254a65bf2ec07b4268479ec6104c55_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{conversionElements_8h_ae51377d214fc1d1063596883f0ed80ea}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!distance\-Y@{distance\-Y}}
 \index{distance\-Y@{distance\-Y}!conversionElements.h@{conversion\-Elements.\-h}}
 \subsubsection[{distance\-Y}]{\setlength{\rightskip}{0pt plus 5cm}float distance\-Y (
@@ -377,6 +489,18 @@ calculate the ordinate's distance beetween 2 points in a carthesien repere
 \begin{DoxyReturn}{Returns}
 float 
 \end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{conversionElements_8h_ae51377d214fc1d1063596883f0ed80ea_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{conversionElements_8h_a26f3232214f74a1eff1d8927c4f4b296}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!mise\-A\-Echelle\-X@{mise\-A\-Echelle\-X}}
 \index{mise\-A\-Echelle\-X@{mise\-A\-Echelle\-X}!conversionElements.h@{conversion\-Elements.\-h}}
 \subsubsection[{mise\-A\-Echelle\-X}]{\setlength{\rightskip}{0pt plus 5cm}float mise\-A\-Echelle\-X (
@@ -400,6 +524,18 @@ Fonction that puts the ordonate's X value to the window scale
 \begin{DoxyReturn}{Returns}
 value of the ordonate put to scale 
 \end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{conversionElements_8h_a26f3232214f74a1eff1d8927c4f4b296_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{conversionElements_8h_a4cb5ae2d71cf1e9c01b8439b5697e9d5}{\index{conversion\-Elements.\-h@{conversion\-Elements.\-h}!mise\-A\-Echelle\-Y@{mise\-A\-Echelle\-Y}}
 \index{mise\-A\-Echelle\-Y@{mise\-A\-Echelle\-Y}!conversionElements.h@{conversion\-Elements.\-h}}
 \subsubsection[{mise\-A\-Echelle\-Y}]{\setlength{\rightskip}{0pt plus 5cm}float mise\-A\-Echelle\-Y (
@@ -423,3 +559,15 @@ Fonction that puts the ordonate's X value to the window scale
 \begin{DoxyReturn}{Returns}
 value of the ordonate put to scale 
 \end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{conversionElements_8h_a4cb5ae2d71cf1e9c01b8439b5697e9d5_icgraph}
+\end{center}
+\end{figure}
+
+

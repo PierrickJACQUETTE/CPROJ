@@ -1,0 +1,9 @@
+<map id="sAvl" name="sAvl">
+<area shape="rect" id="node2" href="$structNode.html" title="Objet that represente a point in openstreetmap. " alt="" coords="21,404,91,511"/>
+<area shape="rect" id="node3" href="$structCoordinate.html" title="Objet that represente the coordinate of a point. " alt="" coords="5,211,91,303"/>
+<area shape="rect" id="node4" href="$structWay.html" title="Objet that represente a construction like a building or a garden in openstreetmap. " alt="" coords="122,389,192,525"/>
+<area shape="rect" id="node5" href="$structTag.html" title="Objet that represente tags for an open street map. " alt="" coords="115,189,200,325"/>
+<area shape="rect" id="node6" href="$structColor.html" title="Objet that represente color in rgb. " alt="" coords="124,5,191,112"/>
+<area shape="rect" id="node7" href="$structListNode.html" title="Objet that represente a List of Node. " alt="" coords="224,219,297,296"/>
+<area shape="rect" id="node8" href="$structrefListNode.html" title="{refListNode\n|+ nd\l|}" alt="" coords="217,20,305,97"/>
+</map>

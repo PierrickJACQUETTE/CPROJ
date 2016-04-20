@@ -1,0 +1,38 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$parseur_8h.html#ab981a83063e9c8590280d4daa099b954" title="parseDoc" alt="" coords="106,259,185,285"/>
+<area shape="rect" id="node18" href="$graphic_8h.html#a93642d42e7cad3d6ee5cd6d0e719e127" title="printMap" alt="" coords="109,385,181,412"/>
+<area shape="rect" id="node22" href="$delete_8h.html#af9a88755f0e56e50088c87ce1f89c58f" title="deleteMap" alt="" coords="104,537,187,564"/>
+<area shape="rect" id="node3" href="$parseur_8h.html#ac9de7359c01e2cecdf418a3b774740d5" title="parseElements" alt="" coords="244,208,353,235"/>
+<area shape="rect" id="node4" href="$init_8h.html#af7560ce2af2a08abe0b230e7ba56cf45" title="initalise a Map from OpenStreetMap " alt="" coords="439,309,503,336"/>
+<area shape="rect" id="node6" href="$parseur_8h.html#ab3fffeb855be45e17ea11a656c21befe" title="parseBounds" alt="" coords="421,360,520,387"/>
+<area shape="rect" id="node9" href="$parseur_8h.html#aa21c1a535b102b28a87c3d74d24f76da" title="parseNode" alt="" coords="428,5,513,32"/>
+<area shape="rect" id="node10" href="$Avl_8h.html#aea98efe3919ecf1862aaf803d80daae1" title="init" alt="" coords="451,56,490,83"/>
+<area shape="rect" id="node11" href="$Avl_8h.html#ac32b350d2833f3ab0ba4ce82401a294c" title="insert" alt="" coords="443,107,498,133"/>
+<area shape="rect" id="node12" href="$parseur_8h.html#ae42c6b558e8d4a101d02b0e0254dcdea" title="parseWay" alt="" coords="430,157,511,184"/>
+<area shape="rect" id="node14" href="$parseur_8h.html#a3aa116722a4a61edaefbda85c8d81adc" title="parseRelation" alt="" coords="419,208,522,235"/>
+<area shape="rect" id="node16" href="$conversionElements_8h.html#a53a0d679e571c6851a5c6d0c7d37e763" title="convert the bounds of the map to the min is (0,0) " alt="" coords="416,259,525,285"/>
+<area shape="rect" id="node5" href="$init_8h.html#a11b35904d2fc2e971583e591fd292226" title="initialise the table of prinicpal tag (color, keyx and value) " alt="" coords="579,309,701,336"/>
+<area shape="rect" id="node7" href="$init_8h.html#a9b7a8bd53cc479b0e61df92adaa7e134" title="initialise the bounds of a map " alt="" coords="599,360,681,387"/>
+<area shape="rect" id="node8" href="$conversionElements_8h.html#ad66d504f94bd54c34335365e98edd4e7" title="calculate the Coordinate for a point in openstreetmap " alt="" coords="750,360,874,387"/>
+<area shape="rect" id="node13" href="$init_8h.html#a4d74851d216b980f933b4846b78fb8e9" title="analyse if a tag could be stock " alt="" coords="604,157,676,184"/>
+<area shape="rect" id="node15" href="$init_8h.html#a1fa18d380873f31ebf88c45dc852cacd" title="analyse if a tag could be stock for a relation " alt="" coords="580,208,700,235"/>
+<area shape="rect" id="node17" href="$conversionElements_8h.html#a90591e521d718a45a88ec4b8d67a988b" title="calculate the distance beetween 2 points in a map " alt="" coords="585,259,695,285"/>
+<area shape="rect" id="node19" href="$evenement_8h.html#a96c334a614da0507d23f49d2c23e062b" title="drawMap" alt="" coords="261,360,336,387"/>
+<area shape="rect" id="node20" href="$evenement_8h.html#a992ddeca01850c361d0baaae2d2e206f" title="evenement" alt="" coords="255,411,342,437"/>
+<area shape="rect" id="node21" href="$conversionElements_8h.html#a2851552394abaf56e2cc232660580e53" title="calculateZoom" alt="" coords="417,411,524,437"/>
+<area shape="rect" id="node23" href="$delete_8h.html#a4e05fb65ebbcd56d00e688e356a1351f" title="deleteBounds" alt="" coords="248,639,349,665"/>
+<area shape="rect" id="node25" href="$delete_8h.html#a062b25ef0ead36d4cd7944abfe9494f9" title="deleteAvl" alt="" coords="261,563,337,589"/>
+<area shape="rect" id="node32" href="$delete_8h.html#abba7d9544581c9a16d37e95c65f1ffcd" title="deleteListWay" alt="" coords="759,461,865,488"/>
+<area shape="rect" id="node34" href="$delete_8h.html#afddcdba6a7fea86c3adaa74434cd9c4e" title="deleteListRelation" alt="" coords="235,512,362,539"/>
+<area shape="rect" id="node37" href="$delete_8h.html#acb0f3666b83b4d008a67250e1cf83123" title="deleteTabTag" alt="" coords="248,689,349,716"/>
+<area shape="rect" id="node24" href="$delete_8h.html#ad754c1da05e433eeb224483438d6d5a7" title="deleteCoordinate" alt="" coords="580,639,700,665"/>
+<area shape="rect" id="node26" href="$delete_8h.html#a10776a3abd69dfae7f75c7ce7cee3a69" title="deleteNode" alt="" coords="427,613,515,640"/>
+<area shape="rect" id="node27" href="$delete_8h.html#a0aa33ed5aec66c1b0e0aae8327426b34" title="deleteWay" alt="" coords="598,563,682,589"/>
+<area shape="rect" id="node28" href="$delete_8h.html#a20fcde4cd5c1832af41571eda7a3b354" title="deleteListNode" alt="" coords="757,512,867,539"/>
+<area shape="rect" id="node30" href="$delete_8h.html#a382f7ebaf756b41ba032b0e290b5f516" title="deleteTag" alt="" coords="773,563,851,589"/>
+<area shape="rect" id="node29" href="$delete_8h.html#a3039fc4ca0a95e618defd345fb15c374" title="deleteRefListNode" alt="" coords="923,512,1053,539"/>
+<area shape="rect" id="node31" href="$delete_8h.html#a2054ef66b2a91686e692de6b86039390" title="deleteColor" alt="" coords="944,563,1032,589"/>
+<area shape="rect" id="node33" href="$delete_8h.html#a00e184d58606e40ccadd140f1d558a78" title="deleteRefListWay" alt="" coords="925,461,1051,488"/>
+<area shape="rect" id="node35" href="$delete_8h.html#a8446cb9c727e0503ceaedaebe45855aa" title="deleteRefListRel" alt="" coords="411,512,530,539"/>
+<area shape="rect" id="node36" href="$delete_8h.html#aa5df50b5d89c5cca564e35d0fdbea1aa" title="deleteRelation" alt="" coords="587,512,693,539"/>
+</map>

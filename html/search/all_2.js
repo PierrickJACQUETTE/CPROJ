@@ -8,6 +8,5 @@ var searchData=
   ['conversionlatlon',['conversionLatLon',['../conversionElements_8h.html#ad66d504f94bd54c34335365e98edd4e7',1,'conversionElements.c']]],
   ['convertbounds',['convertBounds',['../conversionElements_8h.html#a53a0d679e571c6851a5c6d0c7d37e763',1,'conversionElements.c']]],
   ['coordinate',['Coordinate',['../structCoordinate.html',1,'']]],
-  ['core_2eh',['Core.h',['../Core_8h.html',1,'']]],
-  ['cproj',['CPROJ',['../md_README.html',1,'']]]
+  ['core_2eh',['Core.h',['../Core_8h.html',1,'']]]
 ];

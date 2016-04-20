@@ -37,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -69,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -93,6 +92,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><code>#include &lt;string.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="conversionElements_8h_source.html">conversionElements.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Core_8h_source.html">Core.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for init.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="init_8h__incl.png" border="0" usemap="#init_8h" alt=""/></div>
+<map name="init_8h" id="init_8h">
+<area shape="rect" id="node3" href="conversionElements_8h.html" title="Declare fonctions to convert elements. " alt="" coords="203,80,353,107"/><area shape="rect" id="node8" href="Core_8h.html" title="Declaration of structure for the project. " alt="" coords="512,155,573,181"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="init_8h__dep__incl.png" border="0" usemap="#init_8hdep" alt=""/></div>
+<map name="init_8hdep" id="init_8hdep">
+<area shape="rect" id="node2" href="Avl_8h.html" title="This file can create, insert and retrieve nodes in an Avl ( balanced binary tree search ) ..." alt="" coords="119,80,171,107"/><area shape="rect" id="node3" href="delete_8h.html" title="Initialisation of the principal structure. " alt="" coords="5,229,72,256"/><area shape="rect" id="node5" href="line_8h.html" title="This file displays polygons on the map depending on what is stored in the different structures..." alt="" coords="119,155,172,181"/><area shape="rect" id="node8" href="parseur_8h.html" title="Declare fonctions needed to parse the xml document. " alt="" coords="194,304,269,331"/><area shape="rect" id="node4" href="main_8h.html" title="This file calls the main fonction of the program. " alt="" coords="101,379,163,405"/><area shape="rect" id="node6" href="evenement_8h.html" title="Declare fonctions to convert elements. " alt="" coords="97,229,193,256"/><area shape="rect" id="node7" href="graphic_8h.html" title="Display the Node and the way from a map. " alt="" coords="95,304,168,331"/></map>
+</div>
 </div>
 <p><a href="init_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -104,9 +117,9 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa51c8605d9f43fa1f59aa68bced096b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa51c8605d9f43fa1f59aa68bced096b1"></a>
-<a class="el" href="structNode.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>initNode</b> (unsigned long id, float lat, float lon, char *visible, <a class="el" href="structBounds.html">Bounds</a> *b)</td></tr>
-<tr class="separator:aa51c8605d9f43fa1f59aa68bced096b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecf0faedecc3b2eb5d5c492cc03fc87b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aecf0faedecc3b2eb5d5c492cc03fc87b"></a>
+<a class="el" href="structNode.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>initNode</b> (unsigned long id, float lat, float lon, char *visible, <a class="el" href="structBounds.html">Bounds</a> *b, char *name)</td></tr>
+<tr class="separator:aecf0faedecc3b2eb5d5c492cc03fc87b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b7a8bd53cc479b0e61df92adaa7e134"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBounds.html">Bounds</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="init_8h.html#a9b7a8bd53cc479b0e61df92adaa7e134">initBounds</a> (float lat_min, float lat_max, float lon_min, float lon_max)</td></tr>
 <tr class="memdesc:a9b7a8bd53cc479b0e61df92adaa7e134"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise the bounds of a map  <a href="#a9b7a8bd53cc479b0e61df92adaa7e134">More...</a><br/></td></tr>
 <tr class="separator:a9b7a8bd53cc479b0e61df92adaa7e134"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,7 +166,7 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Initialisation of the principal structure. </p>
 <dl class="section author"><dt>Author</dt><dd>Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>18 avril 2016 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>20 avril 2016 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a4d74851d216b980f933b4846b78fb8e9"></a>
 <div class="memitem">
@@ -196,6 +209,15 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Tag* </dd></dl>
 
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="init_8h_a4d74851d216b980f933b4846b78fb8e9_icgraph.png" border="0" usemap="#init_8h_a4d74851d216b980f933b4846b78fb8e9_icgraph" alt=""/></div>
+<map name="init_8h_a4d74851d216b980f933b4846b78fb8e9_icgraph" id="init_8h_a4d74851d216b980f933b4846b78fb8e9_icgraph">
+<area shape="rect" id="node2" href="parseur_8h.html#ae42c6b558e8d4a101d02b0e0254dcdea" title="parseWay" alt="" coords="126,5,207,32"/><area shape="rect" id="node3" href="parseur_8h.html#ac9de7359c01e2cecdf418a3b774740d5" title="parseElements" alt="" coords="256,5,365,32"/><area shape="rect" id="node4" href="parseur_8h.html#ab981a83063e9c8590280d4daa099b954" title="parseDoc" alt="" coords="414,5,493,32"/><area shape="rect" id="node5" href="main_8h.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="541,5,592,32"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a1fa18d380873f31ebf88c45dc852cacd"></a>
@@ -231,6 +253,15 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Tag* </dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="init_8h_a1fa18d380873f31ebf88c45dc852cacd_icgraph.png" border="0" usemap="#init_8h_a1fa18d380873f31ebf88c45dc852cacd_icgraph" alt=""/></div>
+<map name="init_8h_a1fa18d380873f31ebf88c45dc852cacd_icgraph" id="init_8h_a1fa18d380873f31ebf88c45dc852cacd_icgraph">
+<area shape="rect" id="node2" href="parseur_8h.html#a3aa116722a4a61edaefbda85c8d81adc" title="parseRelation" alt="" coords="174,5,277,32"/><area shape="rect" id="node3" href="parseur_8h.html#ac9de7359c01e2cecdf418a3b774740d5" title="parseElements" alt="" coords="325,5,435,32"/><area shape="rect" id="node4" href="parseur_8h.html#ab981a83063e9c8590280d4daa099b954" title="parseDoc" alt="" coords="483,5,562,32"/><area shape="rect" id="node5" href="main_8h.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="611,5,661,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -282,6 +313,24 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Bounds* </dd></dl>
 
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="init_8h_a9b7a8bd53cc479b0e61df92adaa7e134_cgraph.png" border="0" usemap="#init_8h_a9b7a8bd53cc479b0e61df92adaa7e134_cgraph" alt=""/></div>
+<map name="init_8h_a9b7a8bd53cc479b0e61df92adaa7e134_cgraph" id="init_8h_a9b7a8bd53cc479b0e61df92adaa7e134_cgraph">
+<area shape="rect" id="node2" href="conversionElements_8h.html#ad66d504f94bd54c34335365e98edd4e7" title="calculate the Coordinate for a point in openstreetmap " alt="" coords="137,5,261,32"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="init_8h_a9b7a8bd53cc479b0e61df92adaa7e134_icgraph.png" border="0" usemap="#init_8h_a9b7a8bd53cc479b0e61df92adaa7e134_icgraph" alt=""/></div>
+<map name="init_8h_a9b7a8bd53cc479b0e61df92adaa7e134_icgraph" id="init_8h_a9b7a8bd53cc479b0e61df92adaa7e134_icgraph">
+<area shape="rect" id="node2" href="parseur_8h.html#ab3fffeb855be45e17ea11a656c21befe" title="parseBounds" alt="" coords="136,5,235,32"/><area shape="rect" id="node3" href="parseur_8h.html#ac9de7359c01e2cecdf418a3b774740d5" title="parseElements" alt="" coords="283,5,392,32"/><area shape="rect" id="node4" href="parseur_8h.html#ab981a83063e9c8590280d4daa099b954" title="parseDoc" alt="" coords="441,5,519,32"/><area shape="rect" id="node5" href="main_8h.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="568,5,619,32"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="af7560ce2af2a08abe0b230e7ba56cf45"></a>
@@ -299,6 +348,24 @@ Functions</h2></td></tr>
 
 <p>initalise a <a class="el" href="structMap.html" title="This is the structure for representing a Map from OpenstreetMap . Bounds of a Map Avl of Node Avl of ...">Map</a> from OpenStreetMap </p>
 <dl class="section return"><dt>Returns</dt><dd>Map* </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="init_8h_af7560ce2af2a08abe0b230e7ba56cf45_cgraph.png" border="0" usemap="#init_8h_af7560ce2af2a08abe0b230e7ba56cf45_cgraph" alt=""/></div>
+<map name="init_8h_af7560ce2af2a08abe0b230e7ba56cf45_cgraph" id="init_8h_af7560ce2af2a08abe0b230e7ba56cf45_cgraph">
+<area shape="rect" id="node2" href="init_8h.html#a11b35904d2fc2e971583e591fd292226" title="initialise the table of prinicpal tag (color, keyx and value) " alt="" coords="118,5,239,32"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="init_8h_af7560ce2af2a08abe0b230e7ba56cf45_icgraph.png" border="0" usemap="#init_8h_af7560ce2af2a08abe0b230e7ba56cf45_icgraph" alt=""/></div>
+<map name="init_8h_af7560ce2af2a08abe0b230e7ba56cf45_icgraph" id="init_8h_af7560ce2af2a08abe0b230e7ba56cf45_icgraph">
+<area shape="rect" id="node2" href="parseur_8h.html#ac9de7359c01e2cecdf418a3b774740d5" title="parseElements" alt="" coords="117,5,227,32"/><area shape="rect" id="node3" href="parseur_8h.html#ab981a83063e9c8590280d4daa099b954" title="parseDoc" alt="" coords="275,5,354,32"/><area shape="rect" id="node4" href="main_8h.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="403,5,453,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -318,12 +385,21 @@ Functions</h2></td></tr>
 <p>initialise the table of prinicpal tag (color, keyx and value) </p>
 <dl class="section return"><dt>Returns</dt><dd>Tag** </dd></dl>
 
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="init_8h_a11b35904d2fc2e971583e591fd292226_icgraph.png" border="0" usemap="#init_8h_a11b35904d2fc2e971583e591fd292226_icgraph" alt=""/></div>
+<map name="init_8h_a11b35904d2fc2e971583e591fd292226_icgraph" id="init_8h_a11b35904d2fc2e971583e591fd292226_icgraph">
+<area shape="rect" id="node2" href="init_8h.html#af7560ce2af2a08abe0b230e7ba56cf45" title="initalise a Map from OpenStreetMap " alt="" coords="176,5,240,32"/><area shape="rect" id="node3" href="parseur_8h.html#ac9de7359c01e2cecdf418a3b774740d5" title="parseElements" alt="" coords="288,5,397,32"/><area shape="rect" id="node4" href="parseur_8h.html#ab981a83063e9c8590280d4daa099b954" title="parseDoc" alt="" coords="446,5,525,32"/><area shape="rect" id="node5" href="main_8h.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="573,5,624,32"/></map>
+</div>
+</p>
+
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 19 2016 17:54:24 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 20 2016 10:08:29 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

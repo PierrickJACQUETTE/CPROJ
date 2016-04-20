@@ -12,6 +12,22 @@ Declare fonctions needed to parse the xml document.
 {\ttfamily \#include $<$libxml/xmlmemory.\-h$>$}\\*
 {\ttfamily \#include $<$libxml/parser.\-h$>$}\\*
 {\ttfamily \#include \char`\"{}Avl.\-h\char`\"{}}\\*
+Include dependency graph for parseur.\-h\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parseur_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=136pt]{parseur_8h__dep__incl}
+\end{center}
+\end{figure}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -54,6 +70,30 @@ Fonction that parses the \char`\"{}bounds\char`\"{} element It initialise the bo
 \begin{DoxyReturn}{Returns}
 pointer to a Bound structure where we put the coordinates we got from the bounds element 
 \end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parseur_8h_ab3fffeb855be45e17ea11a656c21befe_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parseur_8h_ab3fffeb855be45e17ea11a656c21befe_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{parseur_8h_ab981a83063e9c8590280d4daa099b954}{\index{parseur.\-h@{parseur.\-h}!parse\-Doc@{parse\-Doc}}
 \index{parse\-Doc@{parse\-Doc}!parseur.h@{parseur.\-h}}
 \subsubsection[{parse\-Doc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Map}$\ast$ parse\-Doc (
@@ -69,6 +109,30 @@ Fonction that parses a file, get the root\-\_\-element and, if there is no probl
 \begin{DoxyReturn}{Returns}
 a pointer to a map which is a structure where we put the avl and the bounds 
 \end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parseur_8h_ab981a83063e9c8590280d4daa099b954_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{parseur_8h_ab981a83063e9c8590280d4daa099b954_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{parseur_8h_ac9de7359c01e2cecdf418a3b774740d5}{\index{parseur.\-h@{parseur.\-h}!parse\-Elements@{parse\-Elements}}
 \index{parse\-Elements@{parse\-Elements}!parseur.h@{parseur.\-h}}
 \subsubsection[{parse\-Elements}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Map}$\ast$ parse\-Elements (
@@ -87,6 +151,30 @@ Fonction that parses the elements needed\-: the bounds, nodes and ways. It creat
 \begin{DoxyReturn}{Returns}
 a pointer to a map which is a structure created where we put the avl and the bounds 
 \end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parseur_8h_ac9de7359c01e2cecdf418a3b774740d5_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{parseur_8h_ac9de7359c01e2cecdf418a3b774740d5_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{parseur_8h_aa21c1a535b102b28a87c3d74d24f76da}{\index{parseur.\-h@{parseur.\-h}!parse\-Node@{parse\-Node}}
 \index{parse\-Node@{parse\-Node}!parseur.h@{parseur.\-h}}
 \subsubsection[{parse\-Node}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ parse\-Node (
@@ -108,6 +196,18 @@ Fonction that parses a node
 \begin{DoxyReturn}{Returns}
 a pointer to a node structure created whith the attributes we got from the parsing 
 \end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parseur_8h_aa21c1a535b102b28a87c3d74d24f76da_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{parseur_8h_a3aa116722a4a61edaefbda85c8d81adc}{\index{parseur.\-h@{parseur.\-h}!parse\-Relation@{parse\-Relation}}
 \index{parse\-Relation@{parse\-Relation}!parseur.h@{parseur.\-h}}
 \subsubsection[{parse\-Relation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Relation}$\ast$ parse\-Relation (
@@ -126,6 +226,30 @@ Fonction that parses a relation
 \begin{DoxyReturn}{Returns}
 a pointer to a relation structure created whith the attributes we got from the parsing 
 \end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{parseur_8h_a3aa116722a4a61edaefbda85c8d81adc_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parseur_8h_a3aa116722a4a61edaefbda85c8d81adc_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{parseur_8h_ae42c6b558e8d4a101d02b0e0254dcdea}{\index{parseur.\-h@{parseur.\-h}!parse\-Way@{parse\-Way}}
 \index{parse\-Way@{parse\-Way}!parseur.h@{parseur.\-h}}
 \subsubsection[{parse\-Way}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Way}$\ast$ parse\-Way (
@@ -147,3 +271,27 @@ Fonction that parses a way
 \begin{DoxyReturn}{Returns}
 a pointer to a way structure created whith the attributes we got from the parsing 
 \end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{parseur_8h_ae42c6b558e8d4a101d02b0e0254dcdea_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parseur_8h_ae42c6b558e8d4a101d02b0e0254dcdea_icgraph}
+\end{center}
+\end{figure}
+
+

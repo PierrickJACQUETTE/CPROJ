@@ -1,0 +1,9 @@
+<map id="deleteAvl" name="deleteAvl">
+<area shape="rect" id="node2" href="$delete_8h.html#a10776a3abd69dfae7f75c7ce7cee3a69" title="deleteNode" alt="" coords="131,5,219,32"/>
+<area shape="rect" id="node4" href="$delete_8h.html#a0aa33ed5aec66c1b0e0aae8327426b34" title="deleteWay" alt="" coords="133,56,217,83"/>
+<area shape="rect" id="node3" href="$delete_8h.html#ad754c1da05e433eeb224483438d6d5a7" title="deleteCoordinate" alt="" coords="267,5,387,32"/>
+<area shape="rect" id="node5" href="$delete_8h.html#a20fcde4cd5c1832af41571eda7a3b354" title="deleteListNode" alt="" coords="272,56,381,83"/>
+<area shape="rect" id="node7" href="$delete_8h.html#a382f7ebaf756b41ba032b0e290b5f516" title="deleteTag" alt="" coords="287,107,366,133"/>
+<area shape="rect" id="node6" href="$delete_8h.html#a3039fc4ca0a95e618defd345fb15c374" title="deleteRefListNode" alt="" coords="435,56,565,83"/>
+<area shape="rect" id="node8" href="$delete_8h.html#a2054ef66b2a91686e692de6b86039390" title="deleteColor" alt="" coords="456,107,544,133"/>
+</map>

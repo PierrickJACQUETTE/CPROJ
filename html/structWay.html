@@ -37,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -69,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,6 +91,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  <a href="structWay.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Core_8h_source.html">Core.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for Way:</div>
+<div class="dyncontent">
+<div class="center"><img src="structWay__coll__graph.png" border="0" usemap="#Way_coll__map" alt="Collaboration graph"/></div>
+<map name="Way_coll__map" id="Way_coll__map">
+<area shape="rect" id="node2" href="structTag.html" title="Objet that represente tags for an open street map. " alt="" coords="5,189,91,325"/><area shape="rect" id="node3" href="structColor.html" title="Objet that represente color in rgb. " alt="" coords="15,5,81,112"/><area shape="rect" id="node4" href="structListNode.html" title="Objet that represente a List of Node. " alt="" coords="115,219,188,296"/><area shape="rect" id="node5" href="structrefListNode.html" title="{refListNode\n|+ nd\l|}" alt="" coords="107,20,196,97"/></map>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -119,14 +125,14 @@ char *&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Objet that represente a construction like a building or a garden in openstreetmap. </p>
-<p>id represente the name of this object listNd is the list of the differents node that it compose this object visible represente if this point is visible or not tag is the type of this object size is the number of <a class="el" href="structNode.html" title="Objet that represente a point in openstreetmap. ">Node</a> draw egal 0 if the tag was never draw else 1 </p>
+<p>id represente the name of this object listNd is the list of the differents node that it compose this object visible represente if this point is visible or not tag is the type of this object size is the number of <a class="el" href="structNode.html" title="Objet that represente a point in openstreetmap. ">Node</a> draw egal 0 if the tag was never draw else 1 name is the char * with represente the name of highway </p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="Core_8h_source.html">Core.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 19 2016 17:54:24 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 20 2016 10:08:29 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

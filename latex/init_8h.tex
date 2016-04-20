@@ -9,6 +9,22 @@ Initialisation of the principal structure.
 {\ttfamily \#include $<$string.\-h$>$}\\*
 {\ttfamily \#include \char`\"{}conversion\-Elements.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Core.\-h\char`\"{}}\\*
+Include dependency graph for init.\-h\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{init_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{init_8h__dep__incl}
+\end{center}
+\end{figure}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -18,7 +34,7 @@ Initialisation of the principal structure.
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{init_8h_aa51c8605d9f43fa1f59aa68bced096b1}{\hyperlink{structNode}{Node} $\ast$ {\bfseries init\-Node} (unsigned long id, float lat, float lon, char $\ast$visible, \hyperlink{structBounds}{Bounds} $\ast$b)}\label{init_8h_aa51c8605d9f43fa1f59aa68bced096b1}
+\hypertarget{init_8h_aecf0faedecc3b2eb5d5c492cc03fc87b}{\hyperlink{structNode}{Node} $\ast$ {\bfseries init\-Node} (unsigned long id, float lat, float lon, char $\ast$visible, \hyperlink{structBounds}{Bounds} $\ast$b, char $\ast$name)}\label{init_8h_aecf0faedecc3b2eb5d5c492cc03fc87b}
 
 \item 
 \hyperlink{structBounds}{Bounds} $\ast$ \hyperlink{init_8h_a9b7a8bd53cc479b0e61df92adaa7e134}{init\-Bounds} (float lat\-\_\-min, float lat\-\_\-max, float lon\-\_\-min, float lon\-\_\-max)
@@ -65,7 +81,7 @@ Initialisation of the principal structure. \begin{DoxyAuthor}{Author}
 Isabelle M\-A\-R\-I\-N\-O Pierrick J\-A\-C\-Q\-U\-E\-T\-T\-E Hafça T\-I\-R\-I\-C\-H\-I\-N\-E 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
-18 avril 2016 
+20 avril 2016 
 \end{DoxyDate}
 
 
@@ -95,6 +111,18 @@ analyse if a tag could be stock
 \begin{DoxyReturn}{Returns}
 Tag$\ast$ 
 \end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{init_8h_a4d74851d216b980f933b4846b78fb8e9_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{init_8h_a1fa18d380873f31ebf88c45dc852cacd}{\index{init.\-h@{init.\-h}!good\-Tag\-Relation@{good\-Tag\-Relation}}
 \index{good\-Tag\-Relation@{good\-Tag\-Relation}!init.h@{init.\-h}}
 \subsubsection[{good\-Tag\-Relation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tag}$\ast$ good\-Tag\-Relation (
@@ -117,6 +145,18 @@ analyse if a tag could be stock for a relation
 \begin{DoxyReturn}{Returns}
 Tag$\ast$ 
 \end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{init_8h_a1fa18d380873f31ebf88c45dc852cacd_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{init_8h_a9b7a8bd53cc479b0e61df92adaa7e134}{\index{init.\-h@{init.\-h}!init\-Bounds@{init\-Bounds}}
 \index{init\-Bounds@{init\-Bounds}!init.h@{init.\-h}}
 \subsubsection[{init\-Bounds}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bounds}$\ast$ init\-Bounds (
@@ -145,6 +185,30 @@ initialise the bounds of a map
 \begin{DoxyReturn}{Returns}
 Bounds$\ast$ 
 \end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{init_8h_a9b7a8bd53cc479b0e61df92adaa7e134_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{init_8h_a9b7a8bd53cc479b0e61df92adaa7e134_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{init_8h_af7560ce2af2a08abe0b230e7ba56cf45}{\index{init.\-h@{init.\-h}!init\-Map@{init\-Map}}
 \index{init\-Map@{init\-Map}!init.h@{init.\-h}}
 \subsubsection[{init\-Map}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Map}$\ast$ init\-Map (
@@ -159,6 +223,30 @@ initalise a \hyperlink{structMap}{Map} from Open\-Street\-Map
 \begin{DoxyReturn}{Returns}
 Map$\ast$ 
 \end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{init_8h_af7560ce2af2a08abe0b230e7ba56cf45_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{init_8h_af7560ce2af2a08abe0b230e7ba56cf45_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{init_8h_a11b35904d2fc2e971583e591fd292226}{\index{init.\-h@{init.\-h}!init\-Reference\-Tag@{init\-Reference\-Tag}}
 \index{init\-Reference\-Tag@{init\-Reference\-Tag}!init.h@{init.\-h}}
 \subsubsection[{init\-Reference\-Tag}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Tag}$\ast$$\ast$ init\-Reference\-Tag (
@@ -173,3 +261,15 @@ initialise the table of prinicpal tag (color, keyx and value)
 \begin{DoxyReturn}{Returns}
 Tag$\ast$$\ast$ 
 \end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{init_8h_a11b35904d2fc2e971583e591fd292226_icgraph}
+\end{center}
+\end{figure}
+
+

@@ -37,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -69,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,6 +95,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;SDL2/SDL.h&gt;</code><br/>
 <code>#include &lt;SDL2/SDL2_gfxPrimitives.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="Core_8h_source.html">Core.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for conversionElements.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="conversionElements_8h__incl.png" border="0" usemap="#conversionElements_8h" alt=""/></div>
+<map name="conversionElements_8h" id="conversionElements_8h">
+<area shape="rect" id="node6" href="Core_8h.html" title="Declaration of structure for the project. " alt="" coords="512,80,573,107"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="conversionElements_8h__dep__incl.png" border="0" usemap="#conversionElements_8hdep" alt=""/></div>
+<map name="conversionElements_8hdep" id="conversionElements_8hdep">
+<area shape="rect" id="node2" href="init_8h.html" title="Initialisation of the principal structure. " alt="" coords="80,80,131,107"/><area shape="rect" id="node6" href="line_8h.html" title="This file displays polygons on the map depending on what is stored in the different structures..." alt="" coords="141,229,195,256"/><area shape="rect" id="node10" href="point_8h.html" title="Declaration of fonctions that draws the map by using points. " alt="" coords="205,155,267,181"/><area shape="rect" id="node3" href="Avl_8h.html" title="This file can create, insert and retrieve nodes in an Avl ( balanced binary tree search ) ..." alt="" coords="78,155,129,181"/><area shape="rect" id="node4" href="delete_8h.html" title="Initialisation of the principal structure. " alt="" coords="81,304,148,331"/><area shape="rect" id="node9" href="parseur_8h.html" title="Declare fonctions needed to parse the xml document. " alt="" coords="5,379,80,405"/><area shape="rect" id="node5" href="main_8h.html" title="This file calls the main fonction of the program. " alt="" coords="88,453,149,480"/><area shape="rect" id="node7" href="evenement_8h.html" title="Declare fonctions to convert elements. " alt="" coords="173,304,269,331"/><area shape="rect" id="node8" href="graphic_8h.html" title="Display the Node and the way from a map. " alt="" coords="169,379,243,405"/></map>
+</div>
 </div>
 <p><a href="conversionElements_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -139,9 +152,6 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>normalize</b> (float
 <tr class="separator:a953a883457e9906cfba52d505afbbe2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a830c114c07e594b1b50f27627c98f5da"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conversionElements_8h.html#a830c114c07e594b1b50f27627c98f5da">angle</a> (float ax, float ay, float bx, float by, float cx, float cy)</td></tr>
 <tr class="separator:a830c114c07e594b1b50f27627c98f5da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a248ef05c0bf1752dbdd368a8d3084ad9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structNode.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conversionElements_8h.html#a248ef05c0bf1752dbdd368a8d3084ad9">distanceToBounds</a> (<a class="el" href="structBounds.html">Bounds</a> *b, <a class="el" href="structNode.html">Node</a> *n)</td></tr>
-<tr class="memdesc:a248ef05c0bf1752dbdd368a8d3084ad9"><td class="mdescLeft">&#160;</td><td class="mdescRight">calcule the distance between a <a class="el" href="structNode.html" title="Objet that represente a point in openstreetmap. ">Node</a> and the <a class="el" href="structBounds.html" title="Objet that represente bounds for an open street map. ">Bounds</a>'s map  <a href="#a248ef05c0bf1752dbdd368a8d3084ad9">More...</a><br/></td></tr>
-<tr class="separator:a248ef05c0bf1752dbdd368a8d3084ad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90591e521d718a45a88ec4b8d67a988b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conversionElements_8h.html#a90591e521d718a45a88ec4b8d67a988b">distanceLatLon</a> (float lat1, float lon1, float lat2, float lon2)</td></tr>
 <tr class="memdesc:a90591e521d718a45a88ec4b8d67a988b"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculate the distance beetween 2 points in a map  <a href="#a90591e521d718a45a88ec4b8d67a988b">More...</a><br/></td></tr>
 <tr class="separator:a90591e521d718a45a88ec4b8d67a988b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -274,6 +284,15 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>clicker</b></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>float : The angle between the two vectors AB and BC (degree) </dd></dl>
 
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="conversionElements_8h_a830c114c07e594b1b50f27627c98f5da_cgraph.png" border="0" usemap="#conversionElements_8h_a830c114c07e594b1b50f27627c98f5da_cgraph" alt=""/></div>
+<map name="conversionElements_8h_a830c114c07e594b1b50f27627c98f5da_cgraph" id="conversionElements_8h_a830c114c07e594b1b50f27627c98f5da_cgraph">
+<area shape="rect" id="node2" href="conversionElements_8h.html#a78254a65bf2ec07b4268479ec6104c55" title="calculate the distance beetween 2 points in a carthesien repere " alt="" coords="107,5,197,32"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a2851552394abaf56e2cc232660580e53"></a>
@@ -322,6 +341,15 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>clicker</b></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>float The new decalage </dd></dl>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="conversionElements_8h_a2851552394abaf56e2cc232660580e53_icgraph.png" border="0" usemap="#conversionElements_8h_a2851552394abaf56e2cc232660580e53_icgraph" alt=""/></div>
+<map name="conversionElements_8h_a2851552394abaf56e2cc232660580e53_icgraph" id="conversionElements_8h_a2851552394abaf56e2cc232660580e53_icgraph">
+<area shape="rect" id="node2" href="evenement_8h.html#a992ddeca01850c361d0baaae2d2e206f" title="evenement" alt="" coords="161,5,247,32"/><area shape="rect" id="node3" href="graphic_8h.html#a93642d42e7cad3d6ee5cd6d0e719e127" title="printMap" alt="" coords="296,5,368,32"/><area shape="rect" id="node4" href="main_8h.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="416,5,467,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -372,6 +400,15 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>clicker</b></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int Lets see if everything went well </dd></dl>
 
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="conversionElements_8h_aa5c04722427362120674bd42606fbf9b_icgraph.png" border="0" usemap="#conversionElements_8h_aa5c04722427362120674bd42606fbf9b_icgraph" alt=""/></div>
+<map name="conversionElements_8h_aa5c04722427362120674bd42606fbf9b_icgraph" id="conversionElements_8h_aa5c04722427362120674bd42606fbf9b_icgraph">
+<area shape="rect" id="node2" href="conversionElements_8h.html#a9b565a29e63df82d12fae0a2a3f84349" title="colorBackgroundDefault" alt="" coords="174,5,335,32"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a9b565a29e63df82d12fae0a2a3f84349"></a>
@@ -388,6 +425,15 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>clicker</b></td></tr>
 </div><div class="memdoc">
 <p>According initialising the bottom of the window by default </p>
 <dl class="section return"><dt>Returns</dt><dd>int Lets see if everything went well </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="conversionElements_8h_a9b565a29e63df82d12fae0a2a3f84349_cgraph.png" border="0" usemap="#conversionElements_8h_a9b565a29e63df82d12fae0a2a3f84349_cgraph" alt=""/></div>
+<map name="conversionElements_8h_a9b565a29e63df82d12fae0a2a3f84349_cgraph" id="conversionElements_8h_a9b565a29e63df82d12fae0a2a3f84349_cgraph">
+<area shape="rect" id="node2" href="conversionElements_8h.html#aa5c04722427362120674bd42606fbf9b" title="colorBackground" alt="" coords="217,5,335,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -425,6 +471,15 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>clicker</b></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="structCoordinate.html" title="Objet that represente the coordinate of a point. ">Coordinate</a> * </dd></dl>
 
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="conversionElements_8h_ad66d504f94bd54c34335365e98edd4e7_icgraph.png" border="0" usemap="#conversionElements_8h_ad66d504f94bd54c34335365e98edd4e7_icgraph" alt=""/></div>
+<map name="conversionElements_8h_ad66d504f94bd54c34335365e98edd4e7_icgraph" id="conversionElements_8h_ad66d504f94bd54c34335365e98edd4e7_icgraph">
+<area shape="rect" id="node2" href="init_8h.html#a9b7a8bd53cc479b0e61df92adaa7e134" title="initialise the bounds of a map " alt="" coords="179,5,261,32"/><area shape="rect" id="node3" href="parseur_8h.html#ab3fffeb855be45e17ea11a656c21befe" title="parseBounds" alt="" coords="309,5,408,32"/><area shape="rect" id="node4" href="parseur_8h.html#ac9de7359c01e2cecdf418a3b774740d5" title="parseElements" alt="" coords="456,5,565,32"/><area shape="rect" id="node5" href="parseur_8h.html#ab981a83063e9c8590280d4daa099b954" title="parseDoc" alt="" coords="614,5,693,32"/><area shape="rect" id="node6" href="main_8h.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="741,5,792,32"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a53a0d679e571c6851a5c6d0c7d37e763"></a>
@@ -449,6 +504,24 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>clicker</b></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Bounds* </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="conversionElements_8h_a53a0d679e571c6851a5c6d0c7d37e763_cgraph.png" border="0" usemap="#conversionElements_8h_a53a0d679e571c6851a5c6d0c7d37e763_cgraph" alt=""/></div>
+<map name="conversionElements_8h_a53a0d679e571c6851a5c6d0c7d37e763_cgraph" id="conversionElements_8h_a53a0d679e571c6851a5c6d0c7d37e763_cgraph">
+<area shape="rect" id="node2" href="conversionElements_8h.html#a90591e521d718a45a88ec4b8d67a988b" title="calculate the distance beetween 2 points in a map " alt="" coords="163,5,274,32"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="conversionElements_8h_a53a0d679e571c6851a5c6d0c7d37e763_icgraph.png" border="0" usemap="#conversionElements_8h_a53a0d679e571c6851a5c6d0c7d37e763_icgraph" alt=""/></div>
+<map name="conversionElements_8h_a53a0d679e571c6851a5c6d0c7d37e763_icgraph" id="conversionElements_8h_a53a0d679e571c6851a5c6d0c7d37e763_icgraph">
+<area shape="rect" id="node2" href="parseur_8h.html#ac9de7359c01e2cecdf418a3b774740d5" title="parseElements" alt="" coords="163,5,272,32"/><area shape="rect" id="node3" href="parseur_8h.html#ab981a83063e9c8590280d4daa099b954" title="parseDoc" alt="" coords="321,5,399,32"/><area shape="rect" id="node4" href="main_8h.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="448,5,499,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -500,41 +573,14 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>clicker</b></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>float the distance </dd></dl>
 
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="conversionElements_8h_a90591e521d718a45a88ec4b8d67a988b_icgraph.png" border="0" usemap="#conversionElements_8h_a90591e521d718a45a88ec4b8d67a988b_icgraph" alt=""/></div>
+<map name="conversionElements_8h_a90591e521d718a45a88ec4b8d67a988b_icgraph" id="conversionElements_8h_a90591e521d718a45a88ec4b8d67a988b_icgraph">
+<area shape="rect" id="node2" href="conversionElements_8h.html#a53a0d679e571c6851a5c6d0c7d37e763" title="convert the bounds of the map to the min is (0,0) " alt="" coords="165,5,275,32"/><area shape="rect" id="node3" href="parseur_8h.html#ac9de7359c01e2cecdf418a3b774740d5" title="parseElements" alt="" coords="323,5,432,32"/><area shape="rect" id="node4" href="parseur_8h.html#ab981a83063e9c8590280d4daa099b954" title="parseDoc" alt="" coords="481,5,559,32"/><area shape="rect" id="node5" href="main_8h.html#a3c04138a5bfe5d72780bb7e82a18e627" title="main" alt="" coords="608,5,659,32"/></map>
 </div>
-</div>
-<a class="anchor" id="a248ef05c0bf1752dbdd368a8d3084ad9"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structNode.html">Node</a>* distanceToBounds </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structBounds.html">Bounds</a> *&#160;</td>
-          <td class="paramname"><em>b</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structNode.html">Node</a> *&#160;</td>
-          <td class="paramname"><em>n</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>calcule the distance between a <a class="el" href="structNode.html" title="Objet that represente a point in openstreetmap. ">Node</a> and the <a class="el" href="structBounds.html" title="Objet that represente bounds for an open street map. ">Bounds</a>'s map </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">n</td><td>represente the point on the map </td></tr>
-    <tr><td class="paramname">b</td><td>represente the bounds of the map </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Node* </dd></dl>
+</p>
 
 </div>
 </div>
@@ -571,6 +617,15 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>clicker</b></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="conversionElements_8h_a075c229cf74f9814e529c85a425f2734_cgraph.png" border="0" usemap="#conversionElements_8h_a075c229cf74f9814e529c85a425f2734_cgraph" alt=""/></div>
+<map name="conversionElements_8h_a075c229cf74f9814e529c85a425f2734_cgraph" id="conversionElements_8h_a075c229cf74f9814e529c85a425f2734_cgraph">
+<area shape="rect" id="node2" href="conversionElements_8h.html#a78254a65bf2ec07b4268479ec6104c55" title="calculate the distance beetween 2 points in a carthesien repere " alt="" coords="134,5,223,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -622,6 +677,15 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>clicker</b></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
 
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="conversionElements_8h_a78254a65bf2ec07b4268479ec6104c55_icgraph.png" border="0" usemap="#conversionElements_8h_a78254a65bf2ec07b4268479ec6104c55_icgraph" alt=""/></div>
+<map name="conversionElements_8h_a78254a65bf2ec07b4268479ec6104c55_icgraph" id="conversionElements_8h_a78254a65bf2ec07b4268479ec6104c55_icgraph">
+<area shape="rect" id="node2" href="conversionElements_8h.html#ae51377d214fc1d1063596883f0ed80ea" title="calculate the ordinate&#39;s distance beetween 2 points in a carthesien repere " alt="" coords="144,5,224,32"/><area shape="rect" id="node3" href="conversionElements_8h.html#a075c229cf74f9814e529c85a425f2734" title="calculate the abscisse&#39;s distance beetween 2 points in a carthesien repere " alt="" coords="144,56,224,83"/><area shape="rect" id="node4" href="conversionElements_8h.html#a830c114c07e594b1b50f27627c98f5da" title="angle" alt="" coords="157,107,211,133"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="ae51377d214fc1d1063596883f0ed80ea"></a>
@@ -657,6 +721,15 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>clicker</b></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="conversionElements_8h_ae51377d214fc1d1063596883f0ed80ea_cgraph.png" border="0" usemap="#conversionElements_8h_ae51377d214fc1d1063596883f0ed80ea_cgraph" alt=""/></div>
+<map name="conversionElements_8h_ae51377d214fc1d1063596883f0ed80ea_cgraph" id="conversionElements_8h_ae51377d214fc1d1063596883f0ed80ea_cgraph">
+<area shape="rect" id="node2" href="conversionElements_8h.html#a78254a65bf2ec07b4268479ec6104c55" title="calculate the distance beetween 2 points in a carthesien repere " alt="" coords="134,5,223,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -700,6 +773,15 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>clicker</b></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>value of the ordonate put to scale </dd></dl>
 
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="conversionElements_8h_a26f3232214f74a1eff1d8927c4f4b296_icgraph.png" border="0" usemap="#conversionElements_8h_a26f3232214f74a1eff1d8927c4f4b296_icgraph" alt=""/></div>
+<map name="conversionElements_8h_a26f3232214f74a1eff1d8927c4f4b296_icgraph" id="conversionElements_8h_a26f3232214f74a1eff1d8927c4f4b296_icgraph">
+<area shape="rect" id="node2" href="point_8h.html#a8743c50004f98704b526683ed4c554f2" title="parcoursAvl" alt="" coords="165,5,256,32"/></map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a4cb5ae2d71cf1e9c01b8439b5697e9d5"></a>
@@ -742,12 +824,21 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>clicker</b></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>value of the ordonate put to scale </dd></dl>
 
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="conversionElements_8h_a4cb5ae2d71cf1e9c01b8439b5697e9d5_icgraph.png" border="0" usemap="#conversionElements_8h_a4cb5ae2d71cf1e9c01b8439b5697e9d5_icgraph" alt=""/></div>
+<map name="conversionElements_8h_a4cb5ae2d71cf1e9c01b8439b5697e9d5_icgraph" id="conversionElements_8h_a4cb5ae2d71cf1e9c01b8439b5697e9d5_icgraph">
+<area shape="rect" id="node2" href="point_8h.html#a8743c50004f98704b526683ed4c554f2" title="parcoursAvl" alt="" coords="165,5,256,32"/></map>
+</div>
+</p>
+
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 19 2016 17:54:24 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 20 2016 10:08:29 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

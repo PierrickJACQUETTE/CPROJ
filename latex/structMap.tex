@@ -3,13 +3,23 @@
 }
 
 
-This is the structure for representing a \hyperlink{structMap}{Map} from Openstreet\-Map . \hyperlink{structBounds}{Bounds} of a \hyperlink{structMap}{Map} \hyperlink{structAvl}{Avl} of \hyperlink{structNode}{Node} \hyperlink{structAvl}{Avl} of \hyperlink{structWay}{Way} \hyperlink{structList}{List} \hyperlink{structWay}{Way} \hyperlink{structList}{List} of relation Table of \hyperlink{structTag}{Tag} that represente the principal tag and their particularities.  
+This is the structure for representing a \hyperlink{structMap}{Map} from Openstreet\-Map . \hyperlink{structBounds}{Bounds} of a \hyperlink{structMap}{Map} \hyperlink{structAvl}{Avl} of \hyperlink{structNode}{Node} \hyperlink{structAvl}{Avl} of \hyperlink{structWay}{Way} \hyperlink{structListNode}{List\-Node} node\-Other; \hyperlink{structList}{List} way\-Other \hyperlink{structList}{List} way\-Water \hyperlink{structList}{List} way\-Green \hyperlink{structList}{List} way\-Highway \hyperlink{structList}{List} way\-Building \hyperlink{structList}{List} way\-Cadastre \hyperlink{structList}{List} of relation Table of \hyperlink{structTag}{Tag} that represente the principal tag and their particularities.  
 
 
 
 
 {\ttfamily \#include $<$Core.\-h$>$}
 
+
+
+Collaboration diagram for Map\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structMap__coll__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -20,6 +30,9 @@ This is the structure for representing a \hyperlink{structMap}{Map} from Openstr
 
 \item 
 \hypertarget{structMap_ae62dcd5359ef0ec017dfc8cf19c19346}{\hyperlink{structAvl}{Avl} $\ast$ {\bfseries avl\-Way}}\label{structMap_ae62dcd5359ef0ec017dfc8cf19c19346}
+
+\item 
+\hypertarget{structMap_ad776d6b3ee5210200a7205f0b0cb346d}{\hyperlink{structListNode}{List\-Node} $\ast$ {\bfseries node\-Other}}\label{structMap_ad776d6b3ee5210200a7205f0b0cb346d}
 
 \item 
 \hypertarget{structMap_a3af2f22162a2e43f338ff21f2658443e}{\hyperlink{structListWay}{List\-Way} $\ast$ {\bfseries way\-Other}}\label{structMap_a3af2f22162a2e43f338ff21f2658443e}
@@ -49,7 +62,7 @@ This is the structure for representing a \hyperlink{structMap}{Map} from Openstr
 
 
 \subsection{Detailed Description}
-This is the structure for representing a \hyperlink{structMap}{Map} from Openstreet\-Map . \hyperlink{structBounds}{Bounds} of a \hyperlink{structMap}{Map} \hyperlink{structAvl}{Avl} of \hyperlink{structNode}{Node} \hyperlink{structAvl}{Avl} of \hyperlink{structWay}{Way} \hyperlink{structList}{List} \hyperlink{structWay}{Way} \hyperlink{structList}{List} of relation Table of \hyperlink{structTag}{Tag} that represente the principal tag and their particularities. 
+This is the structure for representing a \hyperlink{structMap}{Map} from Openstreet\-Map . \hyperlink{structBounds}{Bounds} of a \hyperlink{structMap}{Map} \hyperlink{structAvl}{Avl} of \hyperlink{structNode}{Node} \hyperlink{structAvl}{Avl} of \hyperlink{structWay}{Way} \hyperlink{structListNode}{List\-Node} node\-Other; \hyperlink{structList}{List} way\-Other \hyperlink{structList}{List} way\-Water \hyperlink{structList}{List} way\-Green \hyperlink{structList}{List} way\-Highway \hyperlink{structList}{List} way\-Building \hyperlink{structList}{List} way\-Cadastre \hyperlink{structList}{List} of relation Table of \hyperlink{structTag}{Tag} that represente the principal tag and their particularities. 
 
 The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 

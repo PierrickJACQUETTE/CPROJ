@@ -37,7 +37,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -69,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,6 +91,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="conversionElements_8h_source.html">conversionElements.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Avl_8h_source.html">Avl.h</a>&quot;</code><br/>
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for line.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="line_8h__incl.png" border="0" usemap="#line_8h" alt=""/></div>
+<map name="line_8h" id="line_8h">
+<area shape="rect" id="node2" href="conversionElements_8h.html" title="Declare fonctions to convert elements. " alt="" coords="229,229,379,256"/><area shape="rect" id="node9" href="Avl_8h.html" title="This file can create, insert and retrieve nodes in an Avl ( balanced binary tree search ) ..." alt="" coords="497,80,548,107"/><area shape="rect" id="node7" href="Core_8h.html" title="Declaration of structure for the project. " alt="" coords="423,304,484,331"/><area shape="rect" id="node10" href="init_8h.html" title="Initialisation of the principal structure. " alt="" coords="427,155,477,181"/></map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="line_8h__dep__incl.png" border="0" usemap="#line_8hdep" alt=""/></div>
+<map name="line_8hdep" id="line_8hdep">
+<area shape="rect" id="node2" href="evenement_8h.html" title="Declare fonctions to convert elements. " alt="" coords="5,80,101,107"/><area shape="rect" id="node3" href="graphic_8h.html" title="Display the Node and the way from a map. " alt="" coords="16,155,89,181"/><area shape="rect" id="node4" href="main_8h.html" title="This file calls the main fonction of the program. " alt="" coords="23,229,84,256"/></map>
+</div>
 </div>
 <p><a href="line_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -100,6 +113,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a28f4c408227fe4da237a7680dda5e6ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a28f4c408227fe4da237a7680dda5e6ae"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>parcoursListWay</b> ()</td></tr>
 <tr class="separator:a28f4c408227fe4da237a7680dda5e6ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5769bb13c8fcf14d31de118d9fd13c0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab5769bb13c8fcf14d31de118d9fd13c0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>parcoursListNode</b> ()</td></tr>
+<tr class="separator:ab5769bb13c8fcf14d31de118d9fd13c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -119,11 +135,11 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>drawNumber</b></td></t
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file displays polygons on the map depending on what is stored in the different structures. </p>
 <dl class="section author"><dt>Author</dt><dd>Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>19 April 2016 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>20 April 2016 </dd></dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 19 2016 17:54:24 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 20 2016 10:08:29 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
