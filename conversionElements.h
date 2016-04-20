@@ -2,7 +2,7 @@
 * \file conversionElements.h
 * \brief Declare fonctions to convert elements
 * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
-* \date 6 April 2016
+* \date 20 April 2016
 *
 * Declare fonctions to convert elements: nodes, bounds
 * Calculate distances between points
@@ -14,7 +14,7 @@
 #ifndef __CONVERSIONELEMENTS_H__
 #define __CONVERSIONELEMENTS_H__
 
-#include <stdlib.h>
+#include <stdio.h>
 #include <math.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL2_gfxPrimitives.h>

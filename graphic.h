@@ -2,16 +2,13 @@
 * \file graphic.h
 * \brief Display the Node and the way from a map
 * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
-* \date 19 april 2016
+* \date 20 april 2016
 *
 */
 
 #ifndef __GRAPHIC_H__
 #define __GRAPHIC_H__
 
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
 #include "evenement.h"
 
 /**

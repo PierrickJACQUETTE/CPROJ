@@ -164,7 +164,7 @@ void fillWay(Way * way){
 				else{
 					fprintf(stderr,"le node %ld n'a pas de coordonnees\n",current->nd );
 				}
-				
+
 				current = current->next;
 			}
 			else{
@@ -380,7 +380,7 @@ void parcoursListWay(){
 }
 
 void drawNameNode(Node* node){
-	if(node->name != NULL){	
+	if(node->name != NULL){
 		float coordxf = miseAEchelleX(node->c->x ,map->bounds->max->x,windows_Width);
 		float coordyf = miseAEchelleY(node->c->y ,map->bounds->max->y,windows_Height);
 		stringRGBA(renderer,coordxf,coordyf,node->name,0,0,0,255);

@@ -11,8 +11,6 @@
 #ifndef __CORE_H__
 #define __CORE_H__
 
-#include <stdio.h>
-
 /**
 * \struct Coordinate
 * \brief Objet that represente the coordinate of a point
