@@ -18,8 +18,6 @@ void deleteColor(Color *c){
 
 void deleteTag(Tag *t){
 	if(t != NULL){
-		//free(t->tagKey);
-		//free(t->tagValue);
 		deleteColor(t->c);
 	}
 	free(t);
@@ -84,7 +82,6 @@ void deleteNode(Node *n){
 	if(n != NULL){
 		deleteCoordinate(n->c);
 		if(n->visible !=NULL){
-			//free(n->visible);
 		}
 	}
 	free(n);
@@ -93,7 +90,6 @@ void deleteNode(Node *n){
 void deleteWay(Way *w){
 	if(w != NULL){
 		deleteListNode(w->listNd);
-		//free(w->visible);
 		deleteTag(w->tag);
 		free(w->name);
 	}
@@ -104,7 +100,6 @@ void deleteRelation(Relation *r){
 	if(r != NULL){
 		deleteListWay(r->listW);
 		deleteListNode(r->listN);
-		//free(r->visible);
 		deleteTag(r->tag);
 	}
 	free(r);

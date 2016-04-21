@@ -66,8 +66,8 @@ START_TEST(InitWay_limits){
 }END_TEST
 
 START_TEST(InitTag){
-	Color *c=malloc(sizeof(Color));	
-	Tag* t = initTag("key","value", c, 0, 0, 1); 
+	Color *c=malloc(sizeof(Color));
+	Tag* t = initTag("key","value", c, 0, 0, 1);
 	ck_assert_str_eq(t->tagKey, "key");
 	ck_assert_str_eq(t->tagValue,"value");
 	ck_assert_ptr_eq(t->c,c);
@@ -78,13 +78,13 @@ START_TEST(InitTag){
 }END_TEST
 
 START_TEST(InitTag_limits){
-	Tag* t = initTag("key","value", NULL, 0, 0, 1); 
+	Tag* t = initTag("key","value", NULL, 0, 0, 1);
 	ck_assert_ptr_eq(t, NULL);
 	deleteTag(t);
 }END_TEST
 
 START_TEST(InitRelation){
-	Relation* r = initRelation(1, "true", NULL, NULL, NULL); 
+	Relation* r = initRelation(1, "true", NULL, NULL, NULL);
 	ck_assert_uint_eq(r->id, 1);
 	ck_assert_str_eq(r->visible,"T");
 	ck_assert_ptr_eq(r->listW, NULL);
@@ -93,23 +93,17 @@ START_TEST(InitRelation){
 	deleteRelation(r);
 }END_TEST
 
-<<<<<<< HEAD
-=======
 START_TEST(InitRelation_limits){
-	Relation* r = initRelation(1, " ", NULL, NULL, NULL); 
+	Relation* r = initRelation(1, " ", NULL, NULL, NULL);
 	ck_assert_str_eq(r->visible,"T");
-	r= initRelation(-1, " ", NULL, NULL, NULL); 
+	r= initRelation(-1, " ", NULL, NULL, NULL);
 	ck_assert_ptr_eq(r, NULL);
 	deleteRelation(r);
 }END_TEST
 
-
-
-
->>>>>>> origin/master
 Suite* init_suite(void){
 	Suite* s= suite_create("ini");
-	TCase *tc= tcase_create("standar"); 
+	TCase *tc= tcase_create("standar");
 
 	tcase_add_test(tc, InitNode);
 	tcase_add_test(tc, InitBounds);
@@ -128,5 +122,3 @@ Suite* init_suite(void){
 	suite_add_tcase ( s , tc_limits ) ;
 	return s;
 }
-
-

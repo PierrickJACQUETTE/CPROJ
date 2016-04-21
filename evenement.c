@@ -20,6 +20,7 @@ void drawMapSa(){
 	}
 	else if(strcmp(typeOfDraw,"line") ==0){
 		parcoursListWay();
+		//parcoursListNode();
 	}
 	else{
 		fprintf(stderr,"Le deuxieme argument est inconnu %s\n", typeOfDraw);
@@ -108,7 +109,7 @@ void evenement(){
 	float i = 0;
 	do {
 		SDL_Event e;
-		if (SDL_PollEvent(&e)) { // detecte si il y a un even
+		if (SDL_PollEvent(&e)) {
 			switch (e.type) {
 
 				case SDL_MOUSEWHEEL :

@@ -51,7 +51,7 @@ START_TEST(initAvlNodeNOTNULLWayNOTNULL){
 }END_TEST
 
 START_TEST(initAvlNOTNULL){
-	Avl* avl =NULL;	
+	Avl* avl =NULL;
 	Bounds *bo = initBounds(1.0,2.0,2.0,2.0);
 	Node *n = initNode(1,1.0,2.0,"true",bo);
 	init(&avl,n, NULL);
@@ -108,7 +108,7 @@ START_TEST(insertAvlNodeReq){
 	ck_assert_uint_eq(aNode->left->node->id,2);
 	ck_assert_uint_eq(aNode->left->right->node->id,3);
 	ck_assert_uint_eq(aNode->node->id,4);
-	ck_assert_uint_eq(aNode->right->node->id,5);	
+	ck_assert_uint_eq(aNode->right->node->id,5);
 	deleteBounds(bo);
 	deleteAvl(&aNode,1);
 }END_TEST
@@ -261,7 +261,7 @@ START_TEST(searchNodeAvlNo){
 }END_TEST
 
 START_TEST(searchNodeAvlNULL){
-	Avl* avl =NULL;	
+	Avl* avl =NULL;
 	Bounds *bo = initBounds(1.0,2.0,2.0,2.0);
 	Node *n = initNode(1,1.0,2.0,"true",bo);
 	if(searchNode(avl,n->id) != NULL){

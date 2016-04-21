@@ -1,6 +1,4 @@
-#include "parseur.h"
-#include "graphic.h"
-#include "delete.h"
+#include "main.h"
 
 int main(int argc, char **argv) {
 	char *filename;
@@ -41,5 +39,4 @@ int main(int argc, char **argv) {
 		xmlCleanupParser();
 		exit(1);
 	}
-
 }

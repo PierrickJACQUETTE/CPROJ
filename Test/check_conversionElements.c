@@ -14,12 +14,12 @@ START_TEST(DistanceX){
 
 Suite* convert_suite(void){
 	Suite* s= suite_create("convert");
-	TCase *tc= tcase_create("convert"); 
+	TCase *tc= tcase_create("convert");
 
 	tcase_add_test(tc, DistanceXY);
 	tcase_add_test(tc, DistanceY);
 	tcase_add_test(tc, DistanceX);
-	
+
 	suite_add_tcase(s, tc);
 	return s;
 }

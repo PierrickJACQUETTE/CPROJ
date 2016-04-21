@@ -98,7 +98,6 @@ void highway(Way *way, short coord_y[way->size],short coord_x[way->size],int thi
 			}
 			printf("\n");
 			filledPolygonRGBA(renderer,coord_xNode,coord_yNode,4,255,0,0,255);
-			//thickLineRGBA(renderer,coord_xNode[0],coord_yNode[0],coord_xNode[3],coord_yNode[3],1,0,255,0,255);
 			if(i !=way->size-1){
 				swap(coord_yNode);
 				swap(coord_xNode);
@@ -117,34 +116,22 @@ Sint16 checkColor(int color){
 
 void nameHighway(Way * way,ListNode * l){
 	if(way->name != NULL){
-			Node * firstNode = searchNode(map->avl,l->firstRef->nd);
-				Node * lastNode = searchNode(map->avl,l->lastRef->nd);
+		Node * firstNode = searchNode(map->avl,l->firstRef->nd);
+		Node * lastNode = searchNode(map->avl,l->lastRef->nd);
 
-					float coordxf = miseAEchelleX(firstNode->c->x ,map->bounds->max->x,windows_Width);
-					float coordyf = miseAEchelleY(firstNode->c->y ,map->bounds->max->y,windows_Height);
-					float coordxl = miseAEchelleX(lastNode->c->x,map->bounds->max->x,windows_Width);
-					float coordyl = miseAEchelleY(lastNode->c->y,map->bounds->max->y,windows_Height);
+		float coordxf = miseAEchelleX(firstNode->c->x ,map->bounds->max->x,windows_Width);
+		float coordyf = miseAEchelleY(firstNode->c->y ,map->bounds->max->y,windows_Height);
+		float coordxl = miseAEchelleX(lastNode->c->x,map->bounds->max->x,windows_Width);
+		float coordyl = miseAEchelleY(lastNode->c->y,map->bounds->max->y,windows_Height);
 
-					coordxf = rightCoordValue(coordxf,windows_Width);
-					coordxl = rightCoordValue(coordxl,windows_Width);
-					coordyf = rightCoordValue(coordyf,windows_Height);
-					coordyl = rightCoordValue(coordyl,windows_Height);
-
-					//float coordx= miseAEchelleX((firstNode->c->x + lastNode->c->x) /2,map->bounds->max->x,WINDOW_WIDTH);
-					//float coordy= miseAEchelleY((firstNode->c->y + lastNode->c->y) /2,map->bounds->max->y,WINDOW_HEIGHT);
-
-					float cx = (coordxf+coordxl) / 2;
-					float cy = (coordyf+coordyl) / 2;
-
-					//					printf("Way id: %ld, Name: %s,coord noeud : %f, %f\n",way->id,way->name,fabs(cx),fabs(cy));
-
-					//if(cx>cy){
-					stringRGBA(renderer,fabs(cx),fabs(cy),way->name,0,0,0,255);
-					//}
-					//else{
-					//stringRGBA(renderer,coordx,coordy,way->name,0,0,0,255);
-					//}
-				}
+		coordxf = rightCoordValue(coordxf,windows_Width);
+		coordxl = rightCoordValue(coordxl,windows_Width);
+		coordyf = rightCoordValue(coordyf,windows_Height);
+		coordyl = rightCoordValue(coordyl,windows_Height);
+		float cx = (coordxf+coordxl) / 2;
+		float cy = (coordyf+coordyl) / 2;
+		stringRGBA(renderer,fabs(cx),fabs(cy),way->name,0,0,0,255);
+	}
 }
 
 void fillWay(Way * way){
@@ -177,6 +164,7 @@ void fillWay(Way * way){
 				else{
 					fprintf(stderr,"le node %ld n'a pas de coordonnees\n",current->nd );
 				}
+
 				current = current->next;
 			}
 			else{
@@ -185,7 +173,6 @@ void fillWay(Way * way){
 		}
 		if(way->tag != NULL && way->tag->tagKey != NULL && way->tag->c != NULL){
 			if(strcmp(way->tag->tagKey,"highway")==0){
-				//generer le cas d'un node par un point
 				int thick =0;
 				if(way->tag->thick != 0){
 					thick = (way->tag->thick+modifThink);
@@ -207,8 +194,6 @@ void fillWay(Way * way){
 					x = coord_x[i];
 					y = coord_y[i];
 				}
-
-				
 				//highway(way,coord_y,coord_x,thick);
 				//nameHighway(way,l);
 			}
@@ -233,17 +218,17 @@ void analyseCoastline(Way* w, Map* map){
 	float dy = distanceY(last->c->y, first->c->y);
 	float a = (last->c->x - first->c->x)/ (last->c->y - first->c->y);
 
-	if((dx >= map->bounds->max->x) && (dy < map->bounds->max->y) && (last->c->x <= 0) && (first->c->x >= map->bounds->max->x) && a > 0){ // horizontale bas 
+	if((dx >= map->bounds->max->x) && (dy < map->bounds->max->y) && (last->c->x <= 0) && (first->c->x >= map->bounds->max->x) && a > 0){ // horizontale bas
 		w->listNd = addRefListNode((unsigned long)0, ln);
 		w->listNd = addRefListNode((unsigned long)3, ln);
 		w->size = w->size + 2;
 	}
-	else if((dx >= map->bounds->max->x) && (dy >= map->bounds->max->y) && (last->c->x <= 0) && (first->c->x >= map->bounds->max->x) && a < 0){ // horizontale bas	
+	else if((dx >= map->bounds->max->x) && (dy >= map->bounds->max->y) && (last->c->x <= 0) && (first->c->x >= map->bounds->max->x) && a < 0){ // horizontale bas
 		w->listNd = addRefListNode((unsigned long)0, ln);
 		w->listNd = addRefListNode((unsigned long)3, ln);
 		w->size = w->size + 2;
 	}
-	else if((dx >= map->bounds->max->x) && (dy < map->bounds->max->y) && (first->c->x <= 0) && (last->c->x >= map->bounds->max->x) && a > 0){ // horizontale haut	
+	else if((dx >= map->bounds->max->x) && (dy < map->bounds->max->y) && (first->c->x <= 0) && (last->c->x >= map->bounds->max->x) && a > 0){ // horizontale haut
 		w->listNd = addRefListNode((unsigned long)2, ln);
 		w->listNd = addRefListNode((unsigned long)1, ln);
 		w->size = w->size + 2;
@@ -259,7 +244,7 @@ void analyseCoastline(Way* w, Map* map){
 		w->size = w->size + 2;
 	}
 
-	else if((dy >= map->bounds->max->y) && (dx < map->bounds->max->x) && (last->c->y <= 0) && (first->c->y >= map->bounds->max->y) && a < 0){ // verticale	
+	else if((dy >= map->bounds->max->y) && (dx < map->bounds->max->x) && (last->c->y <= 0) && (first->c->y >= map->bounds->max->y) && a < 0){ // verticale
 		w->listNd = addRefListNode((unsigned long)3, ln);
 		w->listNd = addRefListNode((unsigned long)2, ln);
 		w->size = w->size + 2;
@@ -269,7 +254,7 @@ void analyseCoastline(Way* w, Map* map){
 		w->listNd = addRefListNode((unsigned long)2, ln);
 		w->size = w->size + 2;
 	}
-	
+
 	else if((dy >= map->bounds->max->y) && (dx < map->bounds->max->x) && (first->c->y <= 0) && (last->c->y >= map->bounds->max->y) && a > 0){ // verticale
 		w->listNd = addRefListNode((unsigned long)1, ln);
 		w->listNd = addRefListNode((unsigned long)0, ln);
@@ -281,31 +266,28 @@ void analyseCoastline(Way* w, Map* map){
 		w->size = w->size + 2;
 	}
 	else if(dx == 0 && dy == 0){		printf("null \n");
-		return;
-	}
-	else if((first->c->x) > 0 && (last->c->x) > 0){
-		if(((first->c->y) > (last->c->y))) { // haut droite
-			w->listNd = addRefListNode((unsigned long)2, ln);
-			w->size ++;
-		}
-	}
-	else if((first->c->y) > 0 && (last->c->y) > 0){
-		if((first->c->x)>(last->c->x)){ // haut gauche	
-			w->listNd = addRefListNode((unsigned long)1, ln);
-			w->size ++;
-		}
-		else if((first->c->x) > (last->c->x)){ // bas droite	
-			w->listNd = addRefListNode((unsigned long)3, ln);
-			w->size ++;
-		}
-
-	}
-	else if(((first->c->x) < -(last->c->x)) && ((last->c->y) < -(first->c->y))){ //bas gauche
-		w->listNd = addRefListNode((unsigned long)0, ln);
+	return;
+}
+else if((first->c->x) > 0 && (last->c->x) > 0){
+	if(((first->c->y) > (last->c->y))) { // haut droite
+		w->listNd = addRefListNode((unsigned long)2, ln);
 		w->size ++;
-
 	}
-
+}
+else if((first->c->y) > 0 && (last->c->y) > 0){
+	if((first->c->x)>(last->c->x)){ // haut gauche
+		w->listNd = addRefListNode((unsigned long)1, ln);
+		w->size ++;
+	}
+	else if((first->c->x) > (last->c->x)){ // bas droite
+		w->listNd = addRefListNode((unsigned long)3, ln);
+		w->size ++;
+	}
+}
+else if(((first->c->x) < -(last->c->x)) && ((last->c->y) < -(first->c->y))){ //bas gauche
+	w->listNd = addRefListNode((unsigned long)0, ln);
+	w->size ++;
+}
 }
 
 void parcourList(ListWay *l){
@@ -395,4 +377,31 @@ void parcoursListWay(){
 	parcourList(map->wayBuilding);
 	parcourList(map->wayHighway);
 	drawNumber++;
+}
+
+void drawNameNode(Node* node){
+	if(node->name != NULL){
+		float coordxf = miseAEchelleX(node->c->x ,map->bounds->max->x,windows_Width);
+		float coordyf = miseAEchelleY(node->c->y ,map->bounds->max->y,windows_Height);
+		stringRGBA(renderer,coordxf,coordyf,node->name,0,0,0,255);
+	}
+}
+
+void parcoursListNode(){
+	ListNode* ln = map->nodeOther;
+	if(ln != NULL){
+		refListNode* current = ln->firstRef;
+		while(current != NULL){
+			Node * currentNode = searchNode(map->avl,current->nd);
+			if(currentNode != NULL){
+				if(strcmp(currentNode->visible,"T") == 0){
+					drawNameNode(currentNode);
+				}
+			}
+			else{
+				fprintf(stderr,"Le node %ld n'est pas définis dans le fichier d'entree dans line parcourNode\n",current->nd );
+			}
+			current = current->next;
+		}
+	}
 }

@@ -2,7 +2,7 @@
 * \file Core.h
 * \brief Declaration of structure for the project
 * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
-* \date 02 mars 2016
+* \date 20 avril 2016
 *
 * Declaration of structure for the project open stree map
 *
@@ -10,8 +10,6 @@
 
 #ifndef __CORE_H__
 #define __CORE_H__
-
-#include <stdio.h>
 
 /**
 * \struct Coordinate
@@ -61,7 +59,7 @@ typedef struct{
 * tagValue is the value of the tags
 * Color is the color of this type of element
 * thick represente the thickness of the way
-* type represente the type of the tag to know in which listWay it have to be
+* type represente the type of the tag to know in which listWay it have to be :  1=water, 2=green, 3=highway, 4= building, 0=other;
 * priority represente the priority of have this tag, it permit to choose the better tag
 */
 typedef struct{
@@ -70,7 +68,7 @@ typedef struct{
 	Color* c;
 	int thick;
 	int type; // 1=water, 2=green, 3=highway, 4= building, 0=other;
-	int priority; 
+	int priority;
 }Tag;
 
 
@@ -82,11 +80,13 @@ typedef struct{
 * id represente the name of this object
 * c represente where is this point on the map
 * visible represente if this point is visible or not
+* name is the char * with represente the name of node
 */
 typedef struct{
 	unsigned long id;
 	Coordinate* c;
 	char* visible; // True,False;
+	char* name;
 }Node;
 
 /**
@@ -148,7 +148,8 @@ typedef struct{
 * visible represente if this point is visible or not
 * tag is the type of this object
 * size is the number of Node
-* draw egal 0 if the tag was never draw else 1 
+* draw egal 0 if the tag was never draw else 1
+* name is the char * with represente the name of highway
 */
 typedef struct{
 	unsigned long id;
@@ -228,7 +229,13 @@ typedef struct sAvl{
 * Bounds of a Map
 * Avl of Node
 * Avl of Way
-* List Way
+*ListNode nodeOther;
+* List wayOther
+* List wayWater
+* List wayGreen
+* List wayHighway
+* List wayBuilding
+* List wayCadastre
 * List of relation
 * Table of Tag that represente the principal tag and their particularities.
 */
@@ -236,6 +243,7 @@ typedef struct{
 	Bounds* bounds;
 	Avl* avl;
 	Avl* avlWay;
+	ListNode* nodeOther;
 	ListWay* wayOther;
 	ListWay* wayWater;
 	ListWay* wayGreen;

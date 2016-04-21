@@ -2,8 +2,7 @@
 * \file init.h
 * \brief Initialisation of the principal structure
 * \author Isabelle MARINO Pierrick JACQUETTE Hafça TIRICHINE
-* \date 18 avril 2016
-*
+* \date 20 avril 2016
 *
 */
 
@@ -24,9 +23,10 @@
 * \param lon float that represente the longitude of this point
 * \param visible char that represente if the node is visibl or not
 * \param b Bounds that represente the bounds of the map
+* \param name the char * with represente the name of node
 * \return Node*
 */
-Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b);
+Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b, char* name);
 
 
 /**
@@ -91,6 +91,7 @@ Tag* initTag(char* key, char* value,Color *c,int type, int thick,int priority);
 * \param ln represente the ListNode of the way
 * \param tag represente the tag of the way
 * \param size represente the size of the way
+* \param name is the char * with represente the name of highway
 * \return Way*
 */
 Way* initWay(unsigned long id, char* visible, ListNode* ln, Tag* tag,int size, char* name);
@@ -117,6 +118,7 @@ Tag* goodTag(char * k, char *v,Tag **ref);
 /**
 * \fn Relation* initRelation(unsigned long id, char* visible, ListWay* lw, Tag* tag);
 * \brief initialise a Relation
+*
 * \param id represente the id of the Relation
 * \param visible represente if the relation is visible or not
 * \param tag represente the tag of the relation
