@@ -6,7 +6,7 @@ Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b,
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initNode");
 		exit(EXIT_FAILURE);
 	}
-	if(b == NULL ||  b->min == NULL || id<0 || lat==100 || lon==100 || id==-1){
+	if(b == NULL ||  b->min == NULL || id<0 || lat==100 || lon==100 || id==-1 || name==NULL){
 		return NULL;
 	}
 	n->id=id;
@@ -199,6 +199,9 @@ ListNode* initListNode(unsigned long first){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initListNode");
 		exit(EXIT_FAILURE);
 	}
+	if(first ==-1){
+		return NULL;
+	}
 	refListNode* f = initRefListNode(first,NULL);
 	l->firstRef = f;
 	l->lastRef = f;
@@ -343,6 +346,9 @@ ListWay* initListWay(unsigned long first){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initListWay");
 		exit(EXIT_FAILURE);
 	}
+	if(first==-1){
+		return NULL;
+	}
 	refListWay* f = initRefListWay(first, " ",NULL);
 	l->firstRef = f;
 	l->lastRef = f;
@@ -379,7 +385,7 @@ refListRel* initRefListRel(Relation* id, refListRel* next){
 	r->relation = malloc(sizeof(Relation));
 	if(r->relation == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initRefListRel");
-		exit(EXIT_FAILURE);
+		return NULL;
 	}
 	r->relation = id;
 	r->next = next;
@@ -391,6 +397,9 @@ ListRelation* initListRelation(Relation* first){
 	if(l == NULL){
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initListRelation");
 		exit(EXIT_FAILURE);
+	}
+	if(first==NULL){
+		return NULL;
 	}
 	refListRel* f = initRefListRel(first,NULL);
 	l->firstRef = f;

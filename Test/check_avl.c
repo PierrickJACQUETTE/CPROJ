@@ -6,7 +6,7 @@ Avl *avlWay;
 START_TEST(initAvlNode){
 	Avl *aNode = NULL;
 	Bounds *b = initBounds(1.0,2.0,2.0,2.0);
-	Node *n = initNode(1,1.0,2.0,"true",b);
+	Node *n = initNode(1,1.0,2.0,"true",b, "name");
 	init(&aNode ,n, NULL);
 	ck_assert_ptr_eq(aNode->node,n);
 	ck_assert_ptr_eq(aNode->left,NULL);
@@ -44,7 +44,7 @@ START_TEST(initAvlNodeNOTNULLWayNOTNULL){
 	Avl* avl =NULL;
 	Bounds *bo = initBounds(1.0,2.0,2.0,2.0);
 	Way *w = initWay(1,"true",NULL,NULL,1,"test");
-	Node *n = initNode(1,1.0,2.0,"true",bo);
+	Node *n = initNode(1,1.0,2.0,"true",bo, "name");
 	ck_assert_msg(init(&avl,n, w)==NULL, "Check Avl init Erreur 2 types avl");
 	deleteBounds(bo);
 	deleteAvl(&avlWay,0);
@@ -53,9 +53,9 @@ START_TEST(initAvlNodeNOTNULLWayNOTNULL){
 START_TEST(initAvlNOTNULL){
 	Avl* avl =NULL;
 	Bounds *bo = initBounds(1.0,2.0,2.0,2.0);
-	Node *n = initNode(1,1.0,2.0,"true",bo);
+	Node *n = initNode(1,1.0,2.0,"true",bo, "name");
 	init(&avl,n, NULL);
-	Node *n2 = initNode(12,1.0,2.0,"true",bo);
+	Node *n2 = initNode(12,1.0,2.0,"true",bo, "name");
 	ck_assert_msg(init(&avl,n2, NULL)==NULL,"Il y a deja des elements dans l'avl, appeler la methode insert");
 	deleteBounds(bo);
 	deleteAvl(&avlWay,0);
@@ -64,16 +64,16 @@ START_TEST(initAvlNOTNULL){
 START_TEST(insertAvlNode){
 	Avl *aNode = NULL;
 	Bounds *bo = initBounds(1.0,2.0,2.0,2.0);
-	Node *n = initNode(2,1.0,2.0,"true",bo);
+	Node *n = initNode(2,1.0,2.0,"true",bo, "name");
 	init(&aNode ,n, NULL);
 
-	Node *n2 = initNode(3,1.0,2.0,"true",bo);
+	Node *n2 = initNode(3,1.0,2.0,"true",bo, "name");
 	insert(&aNode,n2,NULL);
 	ck_assert_ptr_eq(aNode->right->node,n2);
-	n2 = initNode(1,1.0,2.0,"true",bo);
+	n2 = initNode(1,1.0,2.0,"true",bo, "name");
 	insert(&aNode,n2,NULL);
 	ck_assert_ptr_eq(aNode->left->node,n2);
-	n2 = initNode(4,1.0,2.0,"true",bo);
+	n2 = initNode(4,1.0,2.0,"true",bo, "name");
 	insert(&aNode,n2,NULL);
 	ck_assert_ptr_eq(aNode->right->right->node,n2);
 	deleteBounds(bo);
@@ -83,25 +83,25 @@ START_TEST(insertAvlNode){
 START_TEST(insertAvlNodeReq){
 	Avl *aNode = NULL;
 	Bounds *bo = initBounds(1.0,2.0,2.0,2.0);
-	Node *n = initNode(2,1.0,2.0,"true",bo);
+	Node *n = initNode(2,1.0,2.0,"true",bo, "name");
 	init(&aNode ,n, NULL);
-	Node *n2 = initNode(3,1.0,2.0,"true",bo);
+	Node *n2 = initNode(3,1.0,2.0,"true",bo, "name");
 	insert(&aNode,n2,NULL);
 	ck_assert_ptr_eq(aNode->right->node,n2);
-	n2 = initNode(1,1.0,2.0,"true",bo);
+	n2 = initNode(1,1.0,2.0,"true",bo, "name");
 	insert(&aNode,n2,NULL);
 	ck_assert_ptr_eq(aNode->left->node,n2);
-	n2 = initNode(4,1.0,2.0,"true",bo);
+	n2 = initNode(4,1.0,2.0,"true",bo, "name");
 	insert(&aNode,n2,NULL);
 
 	ck_assert_ptr_eq(aNode->right->right->node,n2);
-	n2 = initNode(5,1.0,2.0,"true",bo);
+	n2 = initNode(5,1.0,2.0,"true",bo, "name");
 	insert(&aNode,n2,NULL);
 
 	ck_assert_ptr_eq(aNode->right->right->node,n2);
 	ck_assert_uint_eq(aNode->right->node->id,4);
 	ck_assert_uint_eq(aNode->right->left->node->id,3);
-	n2 = initNode(6,1.0,2.0,"true",bo);
+	n2 = initNode(6,1.0,2.0,"true",bo, "name");
 	insert(&aNode,n2,NULL);
 	ck_assert_ptr_eq(aNode->right->right->node,n2);
 	ck_assert_uint_eq(aNode->left->left->node->id,1);
@@ -116,13 +116,13 @@ START_TEST(insertAvlNodeReq){
 START_TEST(insertAvlNodeIdYes){
 	Bounds *bo = initBounds(1.0,2.0,2.0,2.0);
 	Avl *aNode = NULL;
-	Node *n = initNode(2,1.0,2.0,"true",bo);
+	Node *n = initNode(2,1.0,2.0,"true",bo, "name");
 	init(&aNode ,n, NULL);
 
-	Node *n2 = initNode(3,1.0,2.0,"true",bo);
+	Node *n2 = initNode(3,1.0,2.0,"true",bo, "name");
 	insert(&aNode,n2,NULL);
 	ck_assert_ptr_eq(aNode->right->node,n2);
-	n2 = initNode(3,1.0,2.0,"true",bo);
+	n2 = initNode(3,1.0,2.0,"true",bo, "name");
 	if(insert(&aNode,n2,NULL) == NULL){
 		ck_assert_uint_eq(aNode->right->node->id,n2->id);
 		ck_abort_msg("Insertion impossible car il existe deja ce noeud dans l'avl");
@@ -206,7 +206,7 @@ START_TEST(insertAvlNodeNOTNULLWayNOTNULL){
 	Avl* avl =NULL;
 	Bounds *bo = initBounds(1.0,2.0,2.0,2.0);
 	Way *w = initWay(1,"true",NULL,NULL,1,"test");
-	Node *n = initNode(1,1.0,2.0,"true",bo);
+	Node *n = initNode(1,1.0,2.0,"true",bo, "name");
 	ck_assert_msg(insert(&avl,n, w)==NULL, "Check Avl insert Erreur 2 type avl");
 	deleteAvl(&avlWay,0);
 	deleteBounds(bo);
@@ -215,7 +215,7 @@ START_TEST(insertAvlNodeNOTNULLWayNOTNULL){
 START_TEST(insertAvlNULL){
 	Avl* avl =NULL;
 	Bounds *bo = initBounds(1.0,2.0,2.0,2.0);
-	Node *n = initNode(1,1.0,2.0,"true",bo);
+	Node *n = initNode(1,1.0,2.0,"true",bo, "name");
 	avl = insert(&avl,n, NULL);
 	ck_assert_msg(avl->height == 1,"Il y a deja des elements dans l'avl, appeler la methode init");
 	deleteAvl(&avlWay,1);
@@ -225,13 +225,13 @@ START_TEST(insertAvlNULL){
 START_TEST(searchNodeAvlYes){
 	Avl *aNode = NULL;
 	Bounds *bo = initBounds(1.0,2.0,2.0,2.0);
-	Node *n = initNode(2,1.0,2.0,"true",bo);
+	Node *n = initNode(2,1.0,2.0,"true",bo, "name");
 	init(&aNode ,n, NULL);
 
-	Node *n2 = initNode(1,1.0,2.0,"true",bo);
+	Node *n2 = initNode(1,1.0,2.0,"true",bo,"name");
 	insert(&aNode,n2,NULL);
 	ck_assert_ptr_eq(aNode->left->node,n2);
-	n2 = initNode(3,1.0,2.0,"true",bo);
+	n2 = initNode(3,1.0,2.0,"true",bo,"name");
 	insert(&aNode,n2,NULL);
 	ck_assert_ptr_eq(aNode->right->node,n2);
 	ck_assert_ptr_eq(searchNode(aNode,3),n2);
@@ -243,13 +243,13 @@ START_TEST(searchNodeAvlYes){
 START_TEST(searchNodeAvlNo){
 	Avl *aNode = NULL;
 	Bounds *bo = initBounds(1.0,2.0,2.0,2.0);
-	Node *n = initNode(2,1.0,2.0,"true",bo);
+	Node *n = initNode(2,1.0,2.0,"true",bo,"name");
 	init(&aNode ,n, NULL);
 
-	Node *n2 = initNode(1,1.0,2.0,"true",bo);
+	Node *n2 = initNode(1,1.0,2.0,"true",bo, "name");
 	insert(&aNode,n2,NULL);
 	ck_assert_ptr_eq(aNode->left->node,n2);
-	Node *n3 = initNode(3,1.0,2.0,"true",bo);
+	Node *n3 = initNode(3,1.0,2.0,"true",bo, "name");
 	insert(&aNode,n3,NULL);
 	ck_assert_ptr_eq(aNode->right->node,n3);
 	ck_assert_ptr_ne(searchNode(aNode,5),n3);
@@ -263,7 +263,7 @@ START_TEST(searchNodeAvlNo){
 START_TEST(searchNodeAvlNULL){
 	Avl* avl =NULL;
 	Bounds *bo = initBounds(1.0,2.0,2.0,2.0);
-	Node *n = initNode(1,1.0,2.0,"true",bo);
+	Node *n = initNode(1,1.0,2.0,"true",bo, "name");
 	if(searchNode(avl,n->id) != NULL){
 		ck_abort_msg("L'avl est vide");
 	}

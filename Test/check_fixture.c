@@ -13,7 +13,7 @@ ListWay *lw;
 ListRelation *lr;
 
 void setup(void){
-	n = initNode(1,1.0,2.0,"true",NULL);
+	n = initNode(1,1.0,2.0,"true",NULL, "name");
 	w = initWay(1,"true",NULL,NULL,1,"test");
 	b = initBounds(0,1,0,1);
 	t= initTag("key", "value", NULL, 1, 1, 1);
@@ -24,7 +24,7 @@ void setup(void){
 	init(&avlWay ,NULL, w);
 	initListNode(1);
 	initListWay(1);
-	initListRelation(NULL);
+	initListRelation(initRelation(1,"true",NULL, NULL, NULL));
 }
 
 void teardown(void){
@@ -38,7 +38,7 @@ void teardown(void){
 	deleteAvl(&avlWay,0);
 	deleteListNode(ln);
 	deleteListWay(lw);
-	deleteListRelation(lr);
+	deleteListRelation(lr);	
 }
 
 Suite* fix_suite(void){

@@ -61,11 +61,21 @@ void deleteListWay(ListWay *l){
 	}
 	free(l);
 }
+void deleteRelation(Relation *r){
+	if(r != NULL){
+		deleteListWay(r->listW);
+		deleteListNode(r->listN);
+		deleteTag(r->tag);
+	}
+	free(r);
+}
 
 void deleteRefListRel(refListRel *r){
 	while(r!=NULL){
+		refListRel *tmp = r->next;
 		deleteRelation(r->relation);
-		deleteRefListRel(r->next);
+		r = tmp;
+		free(tmp);
 	}
 	free(r);
 }
@@ -81,8 +91,7 @@ void deleteListRelation(ListRelation *l){
 void deleteNode(Node *n){
 	if(n != NULL){
 		deleteCoordinate(n->c);
-		if(n->visible !=NULL){
-		}
+		free(n->name);
 	}
 	free(n);
 }
@@ -96,14 +105,14 @@ void deleteWay(Way *w){
 	free(w);
 }
 
-void deleteRelation(Relation *r){
+/*void deleteRelation(Relation *r){
 	if(r != NULL){
 		deleteListWay(r->listW);
 		deleteListNode(r->listN);
 		deleteTag(r->tag);
 	}
 	free(r);
-}
+}*/
 
 void deleteAvl(Avl** avl,int isNode){
 	if(*avl == NULL){
