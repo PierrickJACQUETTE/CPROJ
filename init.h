@@ -12,7 +12,6 @@
 
 #include <string.h>
 #include "conversionElements.h"
-#include "Core.h"
 
 #define SIZETABTAG 37
 
