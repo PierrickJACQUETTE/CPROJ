@@ -173,10 +173,14 @@ void fillWay(Way * way){
 		}
 		if(way->tag != NULL && way->tag->tagKey != NULL && way->tag->c != NULL){
 			if(strcmp(way->tag->tagKey,"highway")==0){
+				int draw = 1;
 				int thick =0;
 				if(way->tag->thick != 0){
 					thick = (way->tag->thick+modifThink);
-					if(thick <1){
+					if(thick < 1){
+						if((modifThink == -9) && !( (strcmp(way->tag->tagValue,"trunk")==0) || (strcmp(way->tag->tagValue,"trunk_link")==0) || (strcmp(way->tag->tagValue,"motorway")==0) || (strcmp(way->tag->tagValue,"motorway_link")==0))){
+							draw = 0;
+						}
 						thick = 1;
 					}
 					thick *= zoom;
@@ -184,19 +188,23 @@ void fillWay(Way * way){
 				int i;
 				int x = coord_x[0];
 				int y = coord_y[0];
-				for(i=0;i<way->size;i++){
-					thickLineRGBA(renderer,x,y,coord_x[i],coord_y[i],thick,way->tag->c->red,way->tag->c->green,way->tag->c->blue,255);
-					if(drawContour ==1){
-						int diff = 100;
-						thickLineRGBA(renderer,x+thick/2,y+thick/2,coord_x[i]+thick/2,coord_y[i]+thick/2,1,checkColor(way->tag->c->red-diff),checkColor(way->tag->c->green-diff),checkColor(way->tag->c->blue-diff),255);
-						thickLineRGBA(renderer,x-thick/2,y-thick/2,coord_x[i]-thick/2,coord_y[i]-thick/2,1,checkColor(way->tag->c->red-diff),checkColor(way->tag->c->green-diff),checkColor(way->tag->c->blue-diff),255);
+				if(draw == 1){
+					for(i=0;i<way->size;i++){
+						thickLineRGBA(renderer,x,y,coord_x[i],coord_y[i],thick,way->tag->c->red,way->tag->c->green,way->tag->c->blue,255);
+						if(drawContour ==1){
+							int diff = 100;
+							thickLineRGBA(renderer,x+thick/2,y+thick/2,coord_x[i]+thick/2,coord_y[i]+thick/2,1,checkColor(way->tag->c->red-diff),checkColor(way->tag->c->green-diff),checkColor(way->tag->c->blue-diff),255);
+							thickLineRGBA(renderer,x-thick/2,y-thick/2,coord_x[i]-thick/2,coord_y[i]-thick/2,1,checkColor(way->tag->c->red-diff),checkColor(way->tag->c->green-diff),checkColor(way->tag->c->blue-diff),255);
+						}
+						x = coord_x[i];
+						y = coord_y[i];
 					}
-					x = coord_x[i];
-					y = coord_y[i];
+
+					//highway(way,coord_y,coord_x,thick);
+					//nameHighway(way,l);
 				}
-				//highway(way,coord_y,coord_x,thick);
-				//nameHighway(way,l);
 			}
+
 			else{
 				if(drawContour == 1){
 					polygonRGBA(renderer,coord_x,coord_y,way->size,139,71,137,255);

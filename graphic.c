@@ -4,17 +4,27 @@ void modifThinck(float ref){
 	if(ref < 2 && ref > 1){
 		modifThink = -1;
 	}
-	else if(ref < 3 && ref >=2){
+	else if(ref < 3 && ref >= 2){
 		modifThink = -5;
 	}
-	else if(ref < 4 && ref >=3){
+	else if(ref < 4 && ref >= 3){
 		modifThink = -6;
+	}
+	else if(ref < 7 && ref >= 4){
+		modifThink = -7;
+	}
+	else if(ref < 10 && ref > 7 ){
+		modifThink = -9;
+	}
+	else{
+		modifThink = -9;
 	}
 }
 
 void sizeWindows(Map* map){
 	float diffX = (map->bounds->max->x) - (map->bounds->min->x);
 	float diffY = (map->bounds->max->y) - (map->bounds->min->y);
+	printf("X : %f, Y : %f\n",diffX,diffY );
 	if(diffX > diffY){
 		modifThinck(fabs(diffX));
 	}
