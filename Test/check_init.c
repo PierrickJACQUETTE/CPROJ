@@ -7,6 +7,7 @@ START_TEST(InitNode){
 	ck_assert_uint_eq(nd->c->x, 0);
 	ck_assert_uint_eq(nd->c->y,0);
 	ck_assert_str_eq(nd->visible,"T");
+	ck_assert_str_eq(nd->name,"name");
 	deleteBounds(bo);
 	deleteNode(nd);
 }END_TEST
@@ -25,7 +26,7 @@ START_TEST(InitNode_limits){
 	nd= initNode(1,100.0,1.0,"",bo, "name");
 	ck_assert_ptr_eq(nd,NULL);
 	nd= initNode(1,0.0,1.0,"",bo, NULL);
-	ck_assert_ptr_eq(nd,NULL);
+	ck_assert_ptr_eq(nd->name,NULL);
 	deleteBounds(bo);
 	deleteNode(nd);
 }END_TEST
@@ -138,7 +139,8 @@ START_TEST(InitListRelation){
 	Relation *r = initRelation(1, "true", NULL, NULL, NULL);
 	ListRelation* lr= initListRelation(r);
 	ck_assert_ptr_eq(lr->firstRef->relation,r);
-	ck_assert_ptr_eq(lr->lastRef->relation,r);
+	ck_assert_ptr_eq(lr->lastRef->relation,r);	
+deleteListRelation(lr);
 }END_TEST
 
 START_TEST(InitListRelation_limits){

@@ -83,7 +83,6 @@ void deleteRefListRel(refListRel *r){
 void deleteListRelation(ListRelation *l){
 	if(l != NULL){
 		deleteRefListRel(l->firstRef);
-		deleteRefListRel(l->lastRef);
 	}
 	free(l);
 }

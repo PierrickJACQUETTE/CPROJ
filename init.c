@@ -6,7 +6,7 @@ Node* initNode(unsigned long id, float lat, float lon, char* visible, Bounds *b,
 		fprintf(stderr,"Allocation impossible : %s\n","fonction initNode");
 		exit(EXIT_FAILURE);
 	}
-	if(b == NULL ||  b->min == NULL || id<0 || lat==100 || lon==100 || id==-1 || name==NULL){
+	if(b == NULL ||  b->min == NULL || id<0 || lat==100 || lon==100 || id==-1){
 		return NULL;
 	}
 	n->id=id;
