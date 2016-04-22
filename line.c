@@ -134,6 +134,51 @@ void nameHighway(Way * way,ListNode * l){
 	}
 }
 
+int oneZoom(char * value){
+	if( (strcmp(value,"trunk")==0) || (strcmp(value,"trunk_link")==0) || (strcmp(value,"motorway")==0) || (strcmp(value,"motorway_link")==0)){
+		return 1;
+	}
+	else{
+		return 0;
+	}
+}
+
+int twoZoom(char * value){
+	if(oneZoom(value) || (strcmp(value,"primary")==0) || (strcmp(value,"primary_link")==0) || (strcmp(value,"secondary")==0) || (strcmp(value,"secondary_link")==0)){
+		return 1;
+	}
+	else{
+		return 0;
+	}
+}
+
+int threeZoom(char * value){
+	if(twoZoom(value) || (strcmp(value,"tertiary")==0) || (strcmp(value,"tertiary_link")==0) || (strcmp(value,"residential")==0)){
+		return 1;
+	}
+	else{
+		return 0;
+	}
+}
+
+int zoomDrawHighway(char *value, int modif){
+	if(modif > -8){
+		return 1;
+	}
+	else{
+		if(zoom == 1){
+			return oneZoom(value);
+		}
+		if(zoom == 2){
+			return twoZoom(value);
+		}
+		if(modif == -9 && zoom == 4){
+			return threeZoom(value);
+		}
+		return 1;
+	}
+}
+
 void fillWay(Way * way){
 	if(map == NULL){
 		fprintf(stderr,"La map est NULL dans line fonction fillWay\n");
@@ -164,7 +209,6 @@ void fillWay(Way * way){
 				else{
 					fprintf(stderr,"le node %ld n'a pas de coordonnees\n",current->nd );
 				}
-
 				current = current->next;
 			}
 			else{
@@ -174,13 +218,11 @@ void fillWay(Way * way){
 		if(way->tag != NULL && way->tag->tagKey != NULL && way->tag->c != NULL){
 			if(strcmp(way->tag->tagKey,"highway")==0){
 				int draw = 1;
-				int thick =0;
+				int thick = 0;
 				if(way->tag->thick != 0){
 					thick = (way->tag->thick+modifThink);
 					if(thick < 1){
-						if((modifThink == -9) && !( (strcmp(way->tag->tagValue,"trunk")==0) || (strcmp(way->tag->tagValue,"trunk_link")==0) || (strcmp(way->tag->tagValue,"motorway")==0) || (strcmp(way->tag->tagValue,"motorway_link")==0))){
-							draw = 0;
-						}
+						draw = zoomDrawHighway(way->tag->tagValue,modifThink);
 						thick = 1;
 					}
 					thick *= zoom;

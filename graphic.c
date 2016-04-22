@@ -1,7 +1,10 @@
 #include "graphic.h"
 
 void modifThinck(float ref){
-	if(ref < 2 && ref > 1){
+	if (ref <= 1) {
+		modifThink = 0;
+	}
+	else if(ref < 2 && ref > 1){
 		modifThink = -1;
 	}
 	else if(ref < 3 && ref >= 2){
@@ -14,7 +17,7 @@ void modifThinck(float ref){
 		modifThink = -7;
 	}
 	else if(ref < 10 && ref > 7 ){
-		modifThink = -9;
+		modifThink = -8;
 	}
 	else{
 		modifThink = -9;
